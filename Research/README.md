@@ -1,3 +1,1 @@
-# game-project-group-3
-
-Thomas Gibbs and Henry Crofts
+Folder to store research documents

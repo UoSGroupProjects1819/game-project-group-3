@@ -1,0 +1,2 @@
+E:\Github\States of Matter\obj\Debug\Assembly-CSharp.csprojAssemblyReference.cache
+E:\Github\States of Matter\obj\Debug\Assembly-CSharp.csproj.CoreCompileInputs.cache

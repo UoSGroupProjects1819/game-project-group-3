@@ -13,6 +13,7 @@ public class DoorTrigger : MonoBehaviour {
     {
         // Pull up the door's animator
         doorAnim = door.GetComponent<Animator>();
+        Debug.Log("Door Anim = " + doorAnim.GetComponent<Animator>());
     }
 
     private void OnTriggerEnter(Collider other)

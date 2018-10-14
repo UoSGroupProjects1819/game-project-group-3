@@ -16,7 +16,8 @@ public class jetpack : MonoBehaviour
     public string verticalInput = "Vertical_P1";
 
     [Header("[number bits]")]
-    Rigidbody2D rb;
+    //Rigidbody2D rb;
+    public Rigidbody2D rb;
     public float fuelLevel;
     public bool jetpackAvailable;
     public bool jetpackRefuel;
@@ -28,7 +29,7 @@ public class jetpack : MonoBehaviour
         jetpackAvailable = true;
         jetpackRefuel = false;
         fuelLevel = 100;
-        rb = GetComponent<Rigidbody2D>();
+        //rb = GetComponent<Rigidbody2D>();
 
         flameWarm.Stop();
         flameHot.Stop();

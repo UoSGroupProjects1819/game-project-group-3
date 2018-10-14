@@ -5134,7 +5134,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 2
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 1, g: 0.93103445, b: 0, a: 1}
+      maxColor: {r: 0.9716981, g: 0.9060195, b: 0.041251317, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -5572,7 +5572,7 @@ ParticleSystem:
     serializedVersion: 5
     enabled: 1
     type: 4
-    angle: 20
+    angle: 19
     length: 5
     boxThickness: {x: 0, y: 0, z: 0}
     radiusThickness: 1
@@ -5602,7 +5602,7 @@ ParticleSystem:
     sphericalDirectionAmount: 0
     randomPositionAmount: 0
     radius:
-      value: 0.2
+      value: 0.22
       mode: 0
       spread: 0
       speed:
@@ -5721,7 +5721,7 @@ ParticleSystem:
     rateOverTime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 33
+      scalar: 35
       minScalar: 10
       maxCurve:
         serializedVersion: 2
@@ -9531,6 +9531,25 @@ Prefab:
     - target: {fileID: 4337514941610042, guid: a39735daca7c1d44688a591732b02e88, type: 2}
       propertyPath: m_LocalScale.z
       value: 0.45
+      objectReference: {fileID: 0}
+    - target: {fileID: 1518637990656226, guid: a39735daca7c1d44688a591732b02e88, type: 2}
+      propertyPath: m_Name
+      value: _SunSphere_sphereBackground
+      objectReference: {fileID: 0}
+    - target: {fileID: 198564599025615460, guid: a39735daca7c1d44688a591732b02e88,
+        type: 2}
+      propertyPath: InitialModule.maxNumParticles
+      value: 999
+      objectReference: {fileID: 0}
+    - target: {fileID: 198433420974464128, guid: a39735daca7c1d44688a591732b02e88,
+        type: 2}
+      propertyPath: EmissionModule.rateOverTime.scalar
+      value: 666
+      objectReference: {fileID: 0}
+    - target: {fileID: 198433420974464128, guid: a39735daca7c1d44688a591732b02e88,
+        type: 2}
+      propertyPath: ColorModule.gradient.maxGradient.atime2
+      value: 61680
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a39735daca7c1d44688a591732b02e88, type: 2}
@@ -29447,7 +29466,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 2
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 1, g: 0.93103445, b: 0, a: 1}
+      maxColor: {r: 0.9716981, g: 0.90407825, b: 0.01375042, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -29915,7 +29934,7 @@ ParticleSystem:
     sphericalDirectionAmount: 0
     randomPositionAmount: 0
     radius:
-      value: 0.2
+      value: 0.22
       mode: 0
       spread: 0
       speed:
@@ -30034,7 +30053,7 @@ ParticleSystem:
     rateOverTime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 33
+      scalar: 35
       minScalar: 10
       maxCurve:
         serializedVersion: 2

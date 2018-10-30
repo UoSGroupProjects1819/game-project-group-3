@@ -1,0 +1,768 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Group Project - discussion</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <style>
+        /* === GENERAL === */
+
+body {
+    font-family: "Whitney", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 16px;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+img {
+    object-fit: contain;
+}
+
+.pre {
+    font-family: "Consolas", "Courier New", Courier, Monospace;
+    white-space: pre-wrap;
+}
+
+.pre--multiline {
+    margin-top: 4px;
+    padding: 8px;
+    border: 2px solid;
+    border-radius: 5px;    
+}
+
+.pre--inline {
+    padding: 2px;
+    border-radius: 3px;
+}
+
+.emoji {
+    width: 24px;
+    height: 24px;
+    margin: 0 1px;
+    vertical-align: middle;
+}
+
+.emoji--small {
+    width: 16px;
+    height: 16px;
+}
+
+.emoji--large {
+    width: 32px;
+    height: 32px;
+}
+
+.mention {
+    font-weight: 600;
+}
+
+/* === INFO === */
+
+.info {
+    display: flex;
+    max-width: 100%;
+    margin: 0 5px 10px 5px;    
+}
+
+.info__guild-icon-container {
+    flex: 0;
+}
+
+.info__guild-icon {
+    max-width: 88px;
+    max-height: 88px;
+}
+
+.info__metadata {
+    flex: 1;
+    margin-left: 10px;
+}
+
+.info__guild-name {
+    font-size: 1.4em;
+}
+
+.info__channel-name {
+    font-size: 1.2em;
+}
+
+.info__channel-topic {
+    margin-top: 2px;
+}
+
+.info__channel-message-count {
+    margin-top: 2px;
+}
+
+.info__channel-date-range {
+    margin-top: 2px;
+}
+
+/* === CHATLOG === */
+
+.chatlog {
+    max-width: 100%;
+}
+
+.chatlog__message-group {
+    display: flex;
+    margin: 0 10px;
+    padding: 15px 0;
+    border-top: 1px solid;
+}
+
+.chatlog__author-avatar-container {
+    flex: 0;
+    width: 40px;
+    height: 40px;
+}
+
+.chatlog__author-avatar {
+    border-radius: 50%;
+    height: 40px;
+    width: 40px;
+}
+
+.chatlog__messages {
+    flex: 1;
+    min-width: 50%;
+    margin-left: 20px;
+}
+
+.chatlog__author-name {
+    font-size: 1em;
+}
+
+.chatlog__timestamp {
+    margin-left: 5px;
+    font-size: .75em;
+}
+
+.chatlog__content {
+    padding-top: 5px;
+    font-size: .9375em;
+    word-wrap: break-word;
+}
+
+.chatlog__edited-timestamp {
+    margin-left: 5px;
+    font-size: .8em;
+}
+
+.chatlog__attachment {
+    margin: 5px 0;
+}
+
+.chatlog__attachment-thumbnail {
+    max-width: 50%;
+    max-height: 500px;
+    border-radius: 3px;
+}
+
+.chatlog__embed {
+    display: flex;
+    max-width: 520px;
+    margin-top: 5px;
+}
+
+.chatlog__embed-color-pill {
+    flex-shrink: 0;
+    width: 4px;
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px;
+}
+
+.chatlog__embed-content-container {
+    display: flex;
+    flex-direction: column;
+    padding: 8px 10px;
+    border: 1px solid;
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+}
+
+.chatlog__embed-content {
+    width: 100%;
+    display: flex;
+}
+
+.chatlog__embed-text {
+    flex: 1;
+}
+
+.chatlog__embed-author {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+.chatlog__embed-author-icon {
+    width: 20px;
+    height: 20px;
+    margin-right: 9px;
+    border-radius: 50%;
+}
+
+.chatlog__embed-author-name {
+    font-size: .875em;
+    font-weight: 600;
+}
+
+.chatlog__embed-title {
+    margin-bottom: 4px;
+    font-size: .875em;
+    font-weight: 600;
+}
+
+.chatlog__embed-description {
+    font-weight: 500;
+    font-size: 14px;
+}
+
+.chatlog__embed-fields {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.chatlog__embed-field {
+    flex: 0;
+    min-width: 100%;
+    max-width: 506px;
+    padding-top: 10px;
+}
+
+.chatlog__embed-field--inline {
+    flex: 1;
+    flex-basis: auto;
+    min-width: 150px;
+}
+
+.chatlog__embed-field-name {
+    margin-bottom: 4px;
+    font-size: .875em;
+    font-weight: 600;
+}
+
+.chatlog__embed-field-value {
+    font-size: .875em;
+    font-weight: 500;
+}
+
+.chatlog__embed-thumbnail {
+    flex: 0;
+    margin-left: 20px;
+    max-width: 80px;
+    max-height: 80px;
+    border-radius: 3px;
+}
+
+.chatlog__embed-image-container {
+    margin-top: 10px;
+}
+
+.chatlog__embed-image {    
+    max-width: 500px;
+    max-height: 400px;
+    border-radius: 3px;
+}
+
+.chatlog__embed-footer {
+    margin-top: 10px;
+}
+
+.chatlog__embed-footer-icon {
+    margin-right: 4px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    vertical-align: middle;
+}
+
+.chatlog__embed-footer-text {
+    font-weight: 600;
+    font-size: .75em;
+}
+
+.chatlog__reactions {
+    display: flex;    
+}
+
+.chatlog__reaction {
+    margin: 6px 2px 2px 2px;
+    padding: 2px 6px 2px 2px;
+    border-radius: 3px;
+}
+
+.chatlog__reaction-emoji {
+    margin-left: 3px;
+    vertical-align: middle;
+}
+
+.chatlog__reaction-count {
+    font-size: .875em;
+    vertical-align: middle;
+}
+/* === GENERAL === */
+
+body {
+    background-color: #36393e;
+    color: #ffffffb3;
+}
+
+a {
+    color: #0096cf;
+}
+
+.pre {
+    background-color: #2f3136;
+}
+
+.pre--multiline {
+    border-color: #282b30;
+    color: #839496;
+}
+
+.mention {
+    background-color: #738bd71a;
+    color: #7289da;
+}
+
+/* === INFO === */
+
+.info__guild-name {
+    color: #ffffff;
+}
+
+.info__channel-name {
+    color: #ffffff;
+}
+
+.info__channel-topic {
+    color: #ffffff;
+}
+
+/* === CHATLOG === */
+
+.chatlog__message-group {
+    border-color: #ffffff0a;
+}
+
+.chatlog__author-name {
+    color: #ffffff;
+}
+
+.chatlog__timestamp {
+    color: #ffffff33;
+}
+
+.chatlog__edited-timestamp {
+    color: #ffffff33;
+}
+
+.chatlog__embed-content-container {
+    background-color: #2e30364d;
+    border-color: #2e303699;
+}
+
+.chatlog__embed-author-name {
+    color: #ffffff;
+}
+
+.chatlog__embed-author-name-link {
+    color: #ffffff;
+}
+
+.chatlog__embed-title {
+    color: #ffffff;
+}
+
+.chatlog__embed-description {
+    color: #ffffff99;
+}
+
+.chatlog__embed-field-name {
+    color: #ffffff;
+}
+
+.chatlog__embed-field-value {
+    color: #ffffff99;
+}
+
+.chatlog__embed-footer {
+    color: #ffffff99;
+}
+
+.chatlog__reaction {
+    background-color: #ffffff0a;
+}
+
+.chatlog__reaction-count {
+    color: #ffffff4d;
+}
+    </style>
+</head>
+<body>
+    
+<div class="info">
+    <div class="info__guild-icon-container">
+        <img class="info__guild-icon" src="https://cdn.discordapp.com/embed/avatars/0.png" />
+    </div>
+    <div class="info__metadata">
+        <div class="info__guild-name">Group Project</div>
+        <div class="info__channel-name">discussion</div>
+        
+
+        <div class="info__channel-message-count">26 messages</div>
+        
+            <div class="info__channel-date-range">
+                    Between 22-Oct-18 12:00 AM and 29-Oct-18 12:00 AM
+            </div>
+    </div>
+</div>
+
+<div class="chatlog">
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/92754573143339008/c442851d8d1e35089889041bd903dba1.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="Henry#9302">Henry</span>
+                <span class="chatlog__timestamp">22-Oct-18 07:49 PM</span>
+
+                        <div class="chatlog__content">
+                            Very successful meeting today, loads of ideas thrown around I will now start to write out the minutes for today&#39;s meetings and start the JIRA sprint.
+
+                        </div>
+
+
+
+                        <div class="chatlog__content">
+                            I will also upload the last few discord chats to GitHub so we can get into uploading them weekly.
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/239013478361202688/88dd60926e0e0062cc0a3db35ae844c0.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="SM1305#4499">SM1305</span>
+                <span class="chatlog__timestamp">22-Oct-18 09:51 PM</span>
+
+                        <div class="chatlog__content">
+                            Yes, think our design research really helped to form new ideas today - looking forward to another jam session tomorrow.
+
+                        </div>
+
+
+
+                        <div class="chatlog__content">
+                            And thats a good idea. Going forward the weekly manager should upload the chat log up to the end of that sprint.
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/92754573143339008/c442851d8d1e35089889041bd903dba1.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="Henry#9302">Henry</span>
+                <span class="chatlog__timestamp">22-Oct-18 09:58 PM</span>
+
+                        <div class="chatlog__content">
+                            Yeah I definitely think that spending a lot of time together in the labs really did increase our productivity and I would suggest we try and spend at least 6 hours of our tasks working together, especially while still in the design phase.  And I agree about the weekly manager uploading the logs for the week.  Sunday evening would be a good time to do it.
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/239013478361202688/88dd60926e0e0062cc0a3db35ae844c0.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="SM1305#4499">SM1305</span>
+                <span class="chatlog__timestamp">23-Oct-18 11:43 PM</span>
+
+                        <div class="chatlog__content">
+                            From our design jam today - brief overview of what the MVP contains to discuss at this weeks meeting with lecturers:<br />•    Players can move, interact with ‘activities’ located directly in front of them<br />•    Cannons can be loaded, fired, chance of breaking on fire, recoil on fire, can be upgraded<br />•    Whale can cause wave pushing players off deck<br />•    Ship must be steered to avoid obstacle (camera pan)<br />•    If damaged, the deck floods, move slower, player can bail this water <br />•    Enemy ships, indicated with flag, player must time cannon shot<br />•    Enemy ships fire on deck, persistent damage, block path<br />•    Crows nest used to telegraph<br />•    Ship upgrades / different ships / different cannons/hull<br />•    Resources<br />•    Rewards – layered objectives<br />•    POSSIBLY negative feedback – PROBABLY positive feedback
+
+                        </div>
+
+
+
+                        <div class="chatlog__content">
+                            Ill post the photos I took of the board to the resources channel now
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/92754573143339008/c442851d8d1e35089889041bd903dba1.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="Henry#9302">Henry</span>
+                <span class="chatlog__timestamp">24-Oct-18 09:34 AM</span>
+
+                        <div class="chatlog__content">
+                            Really good design jam yesterday, we really managed to get a lot done and I feel we are getting very close to being able to start development of the project.  Thank you for posting those notes up, I will put those and my notes about the meeting into some minutes now and upload them within the next hour.  I will also post my pictures of the whiteboard up for image reference within the minutes.
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/239013478361202688/88dd60926e0e0062cc0a3db35ae844c0.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="SM1305#4499">SM1305</span>
+                <span class="chatlog__timestamp">24-Oct-18 05:47 PM</span>
+
+                        <div class="chatlog__content">
+                            I do like the current progression mechanics we&#39;ve been discussing, but in flowcharting out the gameplay from our game design, I think there may be a potential issue with the game feeling like a &#39;grind&#39; if missions need to be replayed to earn sufficient resources to upgrade.
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/239013478361202688/88dd60926e0e0062cc0a3db35ae844c0.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="SM1305#4499">SM1305</span>
+                <span class="chatlog__timestamp">26-Oct-18 04:31 PM</span>
+
+                        <div class="chatlog__content">
+                            I know we&#39;ve been casually speaking about it in person - but for our records, I&#39;ve spent a significant amount of time putting the design document together this week and I am now in excess of my task time for this week.
+
+                        </div>
+
+
+
+                        <div class="chatlog__content">
+                            I&#39;m close to finishing the document, and think I should keep working so we can request Dans feedback as soon as possible.
+
+                        </div>
+
+
+
+                        <div class="chatlog__content">
+                            The only issue with this is I have had to select which elements of the my other projects I put on hold while this tasks overruns - meaning that next week my availability for group project time will be slightly reduced.
+
+                        </div>
+
+
+
+                        <div class="chatlog__content">
+                            I&#39;ll let you know when the design document has been uploaded to the repository so you can review it before it is sent to Dan.
+
+                        </div>
+
+
+
+                        <div class="chatlog__content">
+                            I&#39;ve uploaded the design document to github. I looked online for templates and advice regarding what to include. Let me know what you think, I&#39;d like to get Dan&#39;s feedback asap!
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/92754573143339008/c442851d8d1e35089889041bd903dba1.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="Henry#9302">Henry</span>
+                <span class="chatlog__timestamp">26-Oct-18 05:03 PM</span>
+
+                        <div class="chatlog__content">
+                            Hi, Tom that is fine I completely understand.  We did speak about the Design Document requiring more time than we have allocated but we did need it completed to send to Dan for review.  I will have a look at it shortly, however I am still working on the risk assessment, which I think might run over.  But as this will be a growing document that will change as we mitigate tasks I might let it roll over into next week and spend a few more hours on it and let Dan look at what I have got.
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/239013478361202688/88dd60926e0e0062cc0a3db35ae844c0.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="SM1305#4499">SM1305</span>
+                <span class="chatlog__timestamp">26-Oct-18 05:29 PM</span>
+
+                        <div class="chatlog__content">
+                            I think that might be the best approach - no doubt Dan will give us feedback about both documents. As far as Im aware the design document will help us and &#39;investors&#39; understand a shared expectation, but the risk assessment will be critical to us successfully completing the MVP. So we should look to improve this with his feedback.
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/92754573143339008/c442851d8d1e35089889041bd903dba1.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="Henry#9302">Henry</span>
+                <span class="chatlog__timestamp">26-Oct-18 05:43 PM</span>
+
+                        <div class="chatlog__content">
+                            I have completed about half of the risk assessment document, however I have overrun my time for this week and may not have time to complete my final task of researching into Pixel Piracy as I will need to spend what free time I have over the weekend writing up the proposal for the final project.  If I find a spare 30-60 minutes I will make sure I complete this outstanding task.
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/239013478361202688/88dd60926e0e0062cc0a3db35ae844c0.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="SM1305#4499">SM1305</span>
+                <span class="chatlog__timestamp">26-Oct-18 06:13 PM</span>
+
+                        <div class="chatlog__content">
+                            Okay!
+
+                        </div>
+
+
+
+                        <div class="chatlog__content">
+                            All my tasks are now complete for this week. Do let me know what you think of the design document, Id like to email Dan today, but would like to make sure we agree the document is suitable first.
+
+                        </div>
+
+
+
+                        <div class="chatlog__content">
+                            Also - I&#39;ve created another root folder in the repository: &quot;Meeting Whiteboard and Paper Prototypes&quot;. To store all our meeting photographs. We mentioned that continuing to upload each photo individually to the discord &quot;resources&quot; channel is a poor way of keeping track of these images.<br /><br />Ive used the same naming format as the meeting minutes folder  &quot;2018.10.26&quot; for example. Otherwise I think the folder may become very confusing very quickly. Ill paste the link to this folder in the resources channel.
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/92754573143339008/c442851d8d1e35089889041bd903dba1.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="Henry#9302">Henry</span>
+                <span class="chatlog__timestamp">26-Oct-18 10:18 PM</span>
+
+                        <div class="chatlog__content">
+                            Hey sorry I have been away from PC for a little while so only just seen this.  I will not be able to read the document until Saturday evening at the earliest unfortunately so we can send it then if you like and if Dan hasn&#39;t seen it before we meet with him on Monday he can pull it up from his emails and quickly scan it giving us some &quot;live feedback&quot;
+
+                        </div>
+
+
+
+                        <div class="chatlog__content">
+                            Also the whiteboard image folder is a good idea, if you have not already moved my images in there I will upload them to that folder using the correct naming convention tomorrow.
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/92754573143339008/c442851d8d1e35089889041bd903dba1.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="Henry#9302">Henry</span>
+                <span class="chatlog__timestamp">28-Oct-18 03:01 PM</span>
+
+                        <div class="chatlog__content">
+                            Afternoon, I have read through the design document and everything looks to be ok.  Are we emailing both these documents to Dan or are we telling him where he can find them on Monday?
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/239013478361202688/88dd60926e0e0062cc0a3db35ae844c0.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="SM1305#4499">SM1305</span>
+                <span class="chatlog__timestamp">28-Oct-18 06:06 PM</span>
+
+                        <div class="chatlog__content">
+                            I assume a significant part of tomorrow&#39;s group session will be discussing the design doc &amp; risk assessment with Dan - I know its late in the sprint and doesn&#39;t leave him much time, but he may appreciate the chance to briefly review the documents ahead of the session.
+
+                        </div>
+
+
+
+                        <div class="chatlog__content">
+                            Have noticed that I haven&#39;t emailed Dan previously. Have had a hunt through all my uni emails with no luck - do you know Dan&#39;s email address?
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/92754573143339008/c442851d8d1e35089889041bd903dba1.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="Henry#9302">Henry</span>
+                <span class="chatlog__timestamp">28-Oct-18 08:37 PM</span>
+
+                        <div class="chatlog__content">
+                            No I have had a hunt too, I thought Rob copied Dan into one of our email chains but I cannot find it.  We’ll have to make sure we get it from him tomorrow.
+
+                        </div>
+
+
+
+            </div>
+        </div>
+</div>
+
+</body>
+</html>

@@ -1,16 +1,31 @@
 fileFormatVersion: 2
-guid: e2ec9ab6c3508da4685c18a1e1a3aba1
+guid: 0d39de9a9861c2848bed9f72f049b4ea
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
-    100000: //RootNode
-    100002: default
-    400000: //RootNode
-    400002: default
-    2100000: defaultMat
-    2300000: default
-    3300000: default
-    4300000: default
+    100000: Barrel
+    100002: //RootNode
+    100004: Lid
+    100006: Metal
+    100008: Metal.001
+    400000: Barrel
+    400002: //RootNode
+    400004: Lid
+    400006: Metal
+    400008: Metal.001
+    2100000: No Name
+    2300000: Barrel
+    2300002: Lid
+    2300004: Metal
+    2300006: Metal.001
+    3300000: Barrel
+    3300002: Lid
+    3300004: Metal
+    3300006: Metal.001
+    4300000: Lid
+    4300002: Metal.001
+    4300004: Barrel
+    4300006: Metal
   externalObjects: {}
   materials:
     importMaterials: 1
@@ -83,7 +98,6 @@ ModelImporter:
     legStretch: 0.05
     feetSpacing: 0
     rootMotionBoneName: 
-    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
     hasTranslationDoF: 0
     hasExtraRoot: 0
     skeletonHasParents: 1

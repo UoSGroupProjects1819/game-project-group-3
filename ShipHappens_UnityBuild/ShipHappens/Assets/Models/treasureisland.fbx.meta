@@ -1,0 +1,299 @@
+fileFormatVersion: 2
+guid: 32749da789260c84eb96ecdc68500723
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: boat_small
+    100002: chest
+    100004: Circle
+    100006: formation_rock.000
+    100008: formation_rock.001
+    100010: formation_rock.002
+    100012: formationLarge_rock
+    100014: formationLarge_rock.001
+    100016: Group 152
+    100018: Group 152.001
+    100020: Group 152.002
+    100022: Group 154
+    100024: Group 154.001
+    100026: Group 154.002
+    100028: Group 18
+    100030: Group 18.001
+    100032: Group 18.003
+    100034: Group 18.005
+    100036: Group 20
+    100038: Group 20.001
+    100040: Group 20.003
+    100042: Group 20.005
+    100044: hole
+    100046: lid
+    100048: paddle
+    100050: paddle.001
+    100052: plant
+    100054: plant.001
+    100056: plant.002
+    100058: plant.003
+    100060: plant.004
+    100062: shovel
+    100064: shovel.001
+    100066: Sphere
+    100068: //RootNode
+    400000: boat_small
+    400002: chest
+    400004: Circle
+    400006: formation_rock.000
+    400008: formation_rock.001
+    400010: formation_rock.002
+    400012: formationLarge_rock
+    400014: formationLarge_rock.001
+    400016: Group 152
+    400018: Group 152.001
+    400020: Group 152.002
+    400022: Group 154
+    400024: Group 154.001
+    400026: Group 154.002
+    400028: Group 18
+    400030: Group 18.001
+    400032: Group 18.003
+    400034: Group 18.005
+    400036: Group 20
+    400038: Group 20.001
+    400040: Group 20.003
+    400042: Group 20.005
+    400044: hole
+    400046: lid
+    400048: paddle
+    400050: paddle.001
+    400052: plant
+    400054: plant.001
+    400056: plant.002
+    400058: plant.003
+    400060: plant.004
+    400062: shovel
+    400064: shovel.001
+    400066: Sphere
+    400068: //RootNode
+    2100000: No Name
+    2100002: wood.009
+    2100004: wood.008
+    2100006: wood.007
+    2100008: stone.001
+    2100010: sand.003
+    2100012: wood.006
+    2100014: stone
+    2100016: leaves.002
+    2100018: leaves.001
+    2100020: wood.004
+    2100022: wood.003
+    2100024: leaves
+    2100026: wood.002
+    2100028: sand.002
+    2100030: wood.001
+    2100032: sand.001
+    2100034: wood.010
+    2100036: wood.011
+    2100038: leaves.004
+    2100040: wood.012
+    2100042: leaves.005
+    2100044: wood.013
+    2100046: leaves.006
+    2100048: wood.015
+    2100050: leaves.008
+    2100052: wood.017
+    2100054: leaves.010
+    2100056: leaves.011
+    2100058: leaves.012
+    2100060: wood.018
+    2100062: stone.002
+    2100064: leaves.013
+    2100066: leaves.014
+    2100068: wood.020
+    2100070: sand.005
+    2100072: wood.019
+    2100074: sand.004
+    2100076: wood.021
+    2100078: sand.006
+    2300000: boat_small
+    2300002: chest
+    2300004: Circle
+    2300006: formation_rock.000
+    2300008: formation_rock.001
+    2300010: formation_rock.002
+    2300012: formationLarge_rock
+    2300014: formationLarge_rock.001
+    2300016: Group 152
+    2300018: Group 152.001
+    2300020: Group 152.002
+    2300022: Group 154
+    2300024: Group 154.001
+    2300026: Group 154.002
+    2300028: Group 18
+    2300030: Group 18.001
+    2300032: Group 18.003
+    2300034: Group 18.005
+    2300036: Group 20
+    2300038: Group 20.001
+    2300040: Group 20.003
+    2300042: Group 20.005
+    2300044: hole
+    2300046: lid
+    2300048: paddle
+    2300050: paddle.001
+    2300052: plant
+    2300054: plant.001
+    2300056: plant.002
+    2300058: plant.003
+    2300060: plant.004
+    2300062: shovel
+    2300064: shovel.001
+    2300066: Sphere
+    3300000: boat_small
+    3300002: chest
+    3300004: Circle
+    3300006: formation_rock.000
+    3300008: formation_rock.001
+    3300010: formation_rock.002
+    3300012: formationLarge_rock
+    3300014: formationLarge_rock.001
+    3300016: Group 152
+    3300018: Group 152.001
+    3300020: Group 152.002
+    3300022: Group 154
+    3300024: Group 154.001
+    3300026: Group 154.002
+    3300028: Group 18
+    3300030: Group 18.001
+    3300032: Group 18.003
+    3300034: Group 18.005
+    3300036: Group 20
+    3300038: Group 20.001
+    3300040: Group 20.003
+    3300042: Group 20.005
+    3300044: hole
+    3300046: lid
+    3300048: paddle
+    3300050: paddle.001
+    3300052: plant
+    3300054: plant.001
+    3300056: plant.002
+    3300058: plant.003
+    3300060: plant.004
+    3300062: shovel
+    3300064: shovel.001
+    3300066: Sphere
+    4300000: Circle
+    4300002: Sphere
+    4300004: paddle
+    4300006: boat_small
+    4300008: lid
+    4300010: chest
+    4300012: hole
+    4300014: shovel
+    4300016: plant
+    4300018: Group 20
+    4300020: Group 18
+    4300022: Group 152
+    4300024: Group 154
+    4300026: formationLarge_rock
+    4300028: formation_rock.002
+    4300030: paddle.001
+    4300032: Group 152.001
+    4300034: Group 154.001
+    4300036: Group 152.002
+    4300038: Group 154.002
+    4300040: Group 18.001
+    4300042: Group 20.001
+    4300044: Group 18.003
+    4300046: Group 20.003
+    4300048: Group 18.005
+    4300050: Group 20.005
+    4300052: plant.001
+    4300054: plant.002
+    4300056: shovel.001
+    4300058: plant.003
+    4300060: plant.004
+    4300062: formation_rock.000
+    4300064: formationLarge_rock.001
+    4300066: formation_rock.001
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

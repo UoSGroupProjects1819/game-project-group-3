@@ -13,10 +13,8 @@ public class PlayerController : MonoBehaviour {
     }
 
     // Update is called once per frame
-    void Update() {
+    void FixedUpdate() {
         Movement();
-
-
     }
 
     void Movement()
@@ -28,17 +26,16 @@ public class PlayerController : MonoBehaviour {
         transform.Translate(0, 0, z);
     }
 
-    private void OnCollisionStay(Collision collision)
+    private void OnTriggerStay(Collider col)
     {
-        if (collision.collider.tag == "Mop")
+        Interactable other = col.gameObject.GetComponent<Interactable>();
+
+        if (other != null)
         {
-            Debug.Log("Found the mop");
-
+            if (Input.GetKey(KeyCode.I))
+            {
+                other.Action(this.gameObject);
+            }
         }
-    }
-
-    void Interact()
-    {
-        
     }
 }

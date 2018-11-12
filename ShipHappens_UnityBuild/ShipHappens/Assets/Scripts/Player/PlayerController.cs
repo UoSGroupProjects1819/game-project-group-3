@@ -33,6 +33,7 @@ public class PlayerController : MonoBehaviour {
         if (collision.collider.tag == "Mop")
         {
             Debug.Log("Found the mop");
+
         }
     }
 

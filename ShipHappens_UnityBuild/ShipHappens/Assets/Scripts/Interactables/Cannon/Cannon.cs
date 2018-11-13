@@ -14,7 +14,7 @@ public class Cannon : Interactable
                 Debug.Log("Player has placed Cannonball");
                 break;
             case PlayerStates.PlayerState.pEmpty:
-                Debug.Log("Player is empty at cannon");
+                Debug.Log("Player is empty at cannon");   
                 break;
                 // Perform action if the player is holding the gunpowder
             case PlayerStates.PlayerState.pGunpowder:

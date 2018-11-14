@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Scenes/alpha_Level.unity
+- path: Assets/TestScenesAndAssets/HenryTest.unity
   isLoaded: 1
   isActive: 1

@@ -4,14 +4,18 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour {
 
-    public float speed = 5;
-    private Rigidbody rb;
+
     public PlayerStates playerState;
+
+
+
+    
 
     // Use this for initialization
     void Start() {
-        rb = GetComponent<Rigidbody>();
         playerState = this.GetComponent<PlayerStates>();
+        
+       
     }
 
     private void Update()
@@ -19,18 +23,10 @@ public class PlayerController : MonoBehaviour {
         DropItem();
     }
 
-    // Update is called once per frame
-    void FixedUpdate() {
-        Movement();
-    }
 
-    void Movement()
+    void FixedUpdate()
     {
-        float x = Input.GetAxis("Horizontal") * Time.deltaTime * 150f;
-        float z = Input.GetAxis("Vertical") * Time.deltaTime * 3.0f;
-
-        transform.Rotate(0, x, 0);
-        transform.Translate(0, 0, z);
+        
     }
 
     private void OnTriggerStay(Collider col)

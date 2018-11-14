@@ -9,4 +9,6 @@ public class Interactable : MonoBehaviour
     {
         Debug.Log("Action pressed");
     }
+
+    public virtual void DropItem() {}
 }

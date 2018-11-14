@@ -7,6 +7,8 @@ public class PlayerController : MonoBehaviour {
     public float speed = 5;
     private Rigidbody rb;
 
+    public GameObject itemHeld;
+
     // Use this for initialization
     void Start() {
         rb = GetComponent<Rigidbody>();
@@ -35,6 +37,19 @@ public class PlayerController : MonoBehaviour {
             if (Input.GetKey(KeyCode.I))
             {
                 other.Action(this.gameObject);
+            }
+        }
+    }
+
+    private void DropItem()
+    {
+        if (itemHeld != null)
+        {
+            Interactable other = this.GetComponentInChildren<Interactable>();
+
+            if (other != null)
+            {
+
             }
         }
     }

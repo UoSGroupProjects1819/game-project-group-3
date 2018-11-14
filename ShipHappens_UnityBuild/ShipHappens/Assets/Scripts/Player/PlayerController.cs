@@ -6,12 +6,17 @@ public class PlayerController : MonoBehaviour {
 
     public float speed = 5;
     private Rigidbody rb;
-
-    public GameObject itemHeld;
+    public PlayerStates playerState;
 
     // Use this for initialization
     void Start() {
         rb = GetComponent<Rigidbody>();
+        playerState = this.GetComponent<PlayerStates>();
+    }
+
+    private void Update()
+    {
+        DropItem();
     }
 
     // Update is called once per frame
@@ -43,13 +48,16 @@ public class PlayerController : MonoBehaviour {
 
     private void DropItem()
     {
-        if (itemHeld != null)
+        if(playerState.itemHeld == null)
+        { return; }
+
+        if (playerState.itemHeld != null && Input.GetKey(KeyCode.U))
         {
             Interactable other = this.GetComponentInChildren<Interactable>();
 
             if (other != null)
             {
-
+                other.DropItem();
             }
         }
     }

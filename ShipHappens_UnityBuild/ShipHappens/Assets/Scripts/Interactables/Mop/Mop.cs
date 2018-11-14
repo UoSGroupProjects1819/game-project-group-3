@@ -5,6 +5,7 @@ using UnityEngine;
 public class Mop : Interactable
 {
     MopStates mopState;
+    public PlayerStates playerState;
 
     private void Start()
     {
@@ -13,11 +14,13 @@ public class Mop : Interactable
 
     public override void Action(GameObject player)
     { 
-
         if (mopState.currentState == MopStates.MopState.Dropped)
         {
             this.transform.parent = player.transform;
             mopState.currentState = MopStates.MopState.Held;
+            playerState = this.transform.GetComponentInParent<PlayerStates>();
+            playerState.itemHeld = this.gameObject;
+            playerState.playerState = PlayerStates.PlayerState.pMop;
         }
     }
 
@@ -27,6 +30,9 @@ public class Mop : Interactable
         {
             this.transform.parent = null;
             mopState.currentState = MopStates.MopState.Dropped;
+            playerState.playerState = PlayerStates.PlayerState.pEmpty;
+            playerState.itemHeld = null;
+            playerState = null;
         }
     }
 }

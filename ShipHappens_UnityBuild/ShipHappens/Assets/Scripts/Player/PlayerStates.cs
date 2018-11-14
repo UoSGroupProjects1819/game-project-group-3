@@ -8,10 +8,13 @@ public class PlayerStates : MonoBehaviour
 
     public PlayerState playerState;
 
+    public GameObject itemHeld;
+
     // Use this for initialization
     void Start ()
     {
         playerState = PlayerState.pEmpty;
 	}
+
 }
 

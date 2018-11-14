@@ -66,16 +66,16 @@ Material:
     - _Mode: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.02
-    - _RandomHeight: 0.5
+    - _RandomHeight: 1
     - _RandomSpeed: 0.5
     - _Shininess: 1.75
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
     - _UVSec: 0
-    - _WaveHeight: 0.4
+    - _WaveHeight: 1.5
     - _WaveLength: 0.5
-    - _WaveSpeed: 0.75
+    - _WaveSpeed: 2
     - _ZWrite: 1
     m_Colors:
     - _Color: {r: 0, g: 0.061265256, b: 0.6509434, a: 1}

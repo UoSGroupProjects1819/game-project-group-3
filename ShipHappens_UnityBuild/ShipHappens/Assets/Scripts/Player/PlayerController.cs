@@ -13,9 +13,7 @@ public class PlayerController : MonoBehaviour {
 
     // Use this for initialization
     void Start() {
-        playerState = this.GetComponent<PlayerStates>();
-        
-       
+        playerState = this.GetComponent<PlayerStates>();  
     }
 
     private void Update()
@@ -31,12 +29,15 @@ public class PlayerController : MonoBehaviour {
 
     private void OnTriggerStay(Collider col)
     {
+        Debug.Log("Hit");
         Interactable other = col.gameObject.GetComponent<Interactable>();
 
         if (other != null)
         {
+            Debug.Log("Hit interactable");
             if (Input.GetKey(KeyCode.I))
             {
+                Debug.Log("Action button pressed");
                 other.Action(this.gameObject);
             }
         }

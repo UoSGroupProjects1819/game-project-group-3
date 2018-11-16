@@ -40,6 +40,7 @@ GameObject:
   - component: {fileID: 23850126522582632}
   - component: {fileID: 65134220293433968}
   - component: {fileID: 114138577379790116}
+  - component: {fileID: 114408522570137396}
   m_Layer: 0
   m_Name: Cannon
   m_TagString: Untagged
@@ -182,3 +183,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b645cdc692c8a9f4d957e068afbd680a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cannonState: {fileID: 0}
+  playerStates: {fileID: 0}
+--- !u!114 &114408522570137396
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1817509743340126}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 719906f3e1e5e624da3ade103b6e8c33, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentState: 0

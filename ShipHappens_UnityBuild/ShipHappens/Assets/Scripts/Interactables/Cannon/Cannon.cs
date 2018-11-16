@@ -4,27 +4,45 @@ using UnityEngine;
 
 public class Cannon : Interactable
 {
+
+    public CannonState cannonState;
+    public PlayerStates playerStates;
+
+    public void Start()
+    {
+        cannonState = this.GetComponent<CannonState>();
+    }
+
     public override void Action(GameObject player)
     {
         // Get the interacting players current state
         switch (player.GetComponent<PlayerStates>().playerState)
         {
-            // Perform action if the player is holding the cannonball
+                // Perform action if the player is holding the cannonball
             case PlayerStates.PlayerState.pCannonball:
-                Debug.Log("Player has placed Cannonball");
+                
                 break;
-            case PlayerStates.PlayerState.pEmpty:
-                Debug.Log("Player is empty at cannon");   
-                break;
+           
                 // Perform action if the player is holding the gunpowder
             case PlayerStates.PlayerState.pGunpowder:
-                Debug.Log("Player has placed Gunpowder");
+                playerStates = player.GetComponent<PlayerStates>();
+                playerStates.playerState = PlayerStates.PlayerState.pEmpty;
+                GameObject gunpowder = player.GetComponentInChildren<Interactable>().gameObject;
+                Destroy(gunpowder);
+                //cannonState.currentState = CannonState.CannonStates.cGunpowder;
+                cannonState.UpdateState(CannonState.CannonStates.cGunpowder);
+
+                
                 break;
                 // Perform action if the player is holding the torch
             case PlayerStates.PlayerState.pTorch:
-                Debug.Log("Player has used the torch.  FIRE");
+                
                 break;
-                // If the player is in any other state then break out of the action
+                // Perfrom actions if the player is empty
+            case PlayerStates.PlayerState.pEmpty:
+
+                break;
+            // If the player is in any other state then break out of the action
             default:
                 break;
         }

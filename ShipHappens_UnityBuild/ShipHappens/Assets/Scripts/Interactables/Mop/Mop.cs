@@ -24,7 +24,8 @@ public class Mop : Interactable
             playerState = this.transform.GetComponentInParent<PlayerStates>();
             playerState.itemHeld = this.gameObject;
             playerState.playerState = PlayerStates.PlayerState.pMop;
-            rb.useGravity = false;
+            rb.isKinematic = true;
+            rb.detectCollisions = false;
         }
     }
 
@@ -37,7 +38,8 @@ public class Mop : Interactable
             playerState.playerState = PlayerStates.PlayerState.pEmpty;
             playerState.itemHeld = null;
             playerState = null;
-            rb.useGravity = true;
+            rb.isKinematic = false;
+            rb.detectCollisions = true;
         }
     }
 }

@@ -22,10 +22,10 @@ public class Mop : Interactable
             this.transform.parent = player.transform;
             mopState.currentState = MopStates.MopState.Held;
             playerState = this.transform.GetComponentInParent<PlayerStates>();
-            playerState.itemHeld = this.gameObject;
             playerState.playerState = PlayerStates.PlayerState.pMop;
-            rb.isKinematic = true;
-            rb.detectCollisions = false;
+
+            // Set values for item picked up
+            PickedUpComponents(playerState, rb, this.gameObject);
         }
     }
 
@@ -35,11 +35,8 @@ public class Mop : Interactable
         {
             this.transform.parent = null;
             mopState.currentState = MopStates.MopState.Dropped;
-            playerState.playerState = PlayerStates.PlayerState.pEmpty;
-            playerState.itemHeld = null;
-            playerState = null;
-            rb.isKinematic = false;
-            rb.detectCollisions = true;
+
+            ResetComponents(playerState, rb);
         }
     }
 }

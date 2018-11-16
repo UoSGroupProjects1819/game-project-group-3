@@ -4,11 +4,32 @@ using UnityEngine;
 
 public class Interactable : MonoBehaviour
 {
-    // Must be implemented by all interactables
-    public virtual void Action(GameObject player)
+    // Calls the Action function on all interactables
+    public virtual void Action(GameObject player) {}
+
+    // Calls the Drop function on all interactables
+    public virtual void DropItem() {}
+
+    public void PickedUpComponents(PlayerStates playerState, Rigidbody rigidbody, GameObject gameObject)
     {
-        Debug.Log("Action pressed");
+        // Set player components
+        playerState.itemHeld = gameObject;
+
+        // Set Rigidbody components
+        rigidbody.isKinematic = true;
+        rigidbody.detectCollisions = false;
     }
 
-    public virtual void DropItem() {}
+    // Set items back to original state before being picked up
+    public void ResetComponents(PlayerStates playerState, Rigidbody rigidbody)
+    {
+        // Reset playerState components
+        playerState.playerState = PlayerStates.PlayerState.pEmpty;
+        playerState.itemHeld = null;
+        playerState = null;
+
+        // Reset Rigidbody components
+        rigidbody.isKinematic = false;
+        rigidbody.detectCollisions = true;
+    }
 }

@@ -30,6 +30,8 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
+        floodPlane = GameObject.FindGameObjectWithTag("FloodWater");
+
         floodPlane.transform.position = floodStartPosition;
     }
 

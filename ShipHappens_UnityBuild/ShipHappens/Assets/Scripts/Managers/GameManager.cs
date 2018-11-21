@@ -21,10 +21,10 @@ public class GameManager : MonoBehaviour
     public List<string> activeTasks = new List<string>();
     public List<KeyValuePair<int, int>> TestList = new List<KeyValuePair<int, int>>();
 
-    [Header("[Deck Flooding]")]
-    private GameObject floodPlane;
+    [Header("[Deck Flooding]")]   
     public Vector3 floodStartPosition = new Vector3(-3.863f, 4.0f, 6.85f);
     public float floodLevel;
+    private GameObject floodPlane;
 
 
     

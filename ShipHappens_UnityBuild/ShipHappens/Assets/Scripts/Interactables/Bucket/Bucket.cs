@@ -17,7 +17,7 @@ public class Bucket : Interactable
 
     public override void Action(GameObject player)
     {
-        if (bucketState.currentState == BucketStates.BucketState.Dropped)
+        if (bucketState.currentState == BucketStates.BucketState.Dropped && playerState.playerState == PlayerStates.PlayerState.pEmpty)
         {
             this.transform.parent = player.transform.GetChild(1).transform.GetChild(0);
             this.transform.localPosition = (this as Interactable).PickPosition;

@@ -15,29 +15,34 @@ public class Cannon : Interactable
 
     public override void Action(GameObject player)
     {
+        playerStates = player.GetComponent<PlayerStates>();
         // Get the interacting players current state
         switch (player.GetComponent<PlayerStates>().playerState)
         {
                 // Perform action if the player is holding the cannonball
             case PlayerStates.PlayerState.pCannonball:
-                
+                playerStates.playerState = PlayerStates.PlayerState.pEmpty;
+                GameObject cannonball = player.GetComponentInChildren<Interactable>().gameObject;
+                Destroy(cannonball);
+                cannonState.UpdateState(CannonState.CannonStates.cCannonBall);
                 break;
            
                 // Perform action if the player is holding the gunpowder
             case PlayerStates.PlayerState.pGunpowder:
-                playerStates = player.GetComponent<PlayerStates>();
                 playerStates.playerState = PlayerStates.PlayerState.pEmpty;
                 GameObject gunpowder = player.GetComponentInChildren<Interactable>().gameObject;
                 Destroy(gunpowder);
-                //cannonState.currentState = CannonState.CannonStates.cGunpowder;
-                cannonState.UpdateState(CannonState.CannonStates.cGunpowder);
-
-                
+                cannonState.UpdateState(CannonState.CannonStates.cGunpowder);   
                 break;
+
                 // Perform action if the player is holding the torch
             case PlayerStates.PlayerState.pTorch:
-                
+                playerStates.playerState = PlayerStates.PlayerState.pEmpty;
+                GameObject torch = player.GetComponentInChildren<Interactable>().gameObject;
+                Destroy(torch);
+                // TODO: FIRE CANNON
                 break;
+                
                 // Perfrom actions if the player is empty
             case PlayerStates.PlayerState.pEmpty:
 

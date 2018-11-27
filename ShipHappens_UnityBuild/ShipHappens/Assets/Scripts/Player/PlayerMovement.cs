@@ -22,8 +22,8 @@ public class PlayerMovement : MonoBehaviour {
 	// Update is called once per frame
 	void FixedUpdate ()
     {
-        float moveHorizontal = -Input.GetAxis(horizontalInput);
-        float moveVertical = -Input.GetAxis(verticalInput);
+        float moveHorizontal = -Input.GetAxis("Horizontal");
+        float moveVertical = -Input.GetAxis("Vertical");
 
 
         Vector3 move = new Vector3(moveHorizontal * speed, 0, moveVertical * speed);

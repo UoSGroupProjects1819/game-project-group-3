@@ -6,6 +6,10 @@ TagManager:
   tags:
   - Mop
   - FloodWater
+  - PooRegion
+  - poo
+  - ShipBody
+  - FloodWater
   layers:
   - Default
   - TransparentFX

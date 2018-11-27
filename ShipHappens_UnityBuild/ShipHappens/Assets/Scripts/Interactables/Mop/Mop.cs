@@ -5,6 +5,7 @@ using UnityEngine;
 public class Mop : Interactable
 {
     MopStates mopState;
+    public Transform holdingPoint;
     public PlayerStates playerState;
 
     private Rigidbody rb;
@@ -19,7 +20,12 @@ public class Mop : Interactable
     { 
         if (mopState.currentState == MopStates.MopState.Dropped)
         {
-            this.transform.parent = player.transform;
+            this.transform.parent = player.transform.GetChild(1).transform.GetChild(0);
+            Debug.Log(this.transform.parent.name);
+            //this.transform.SetParent(holdingPoint);
+            this.transform.localPosition = (this as Interactable).PickPosition;
+            this.transform.localEulerAngles = (this as Interactable).PickRotation;
+
             mopState.currentState = MopStates.MopState.Held;
             playerState = this.transform.GetComponentInParent<PlayerStates>();
             playerState.playerState = PlayerStates.PlayerState.pMop;

@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class Interactable : MonoBehaviour
 {
+    [Header("Pickup Position")]
+    public Vector3 PickPosition;
+    public Vector3 PickRotation;
+
     // Calls the Action function on all interactables
     public virtual void Action(GameObject player) {}
 
@@ -31,5 +35,5 @@ public class Interactable : MonoBehaviour
         // Reset Rigidbody components
         rigidbody.isKinematic = false;
         rigidbody.detectCollisions = true;
-    }
+    } 
 }

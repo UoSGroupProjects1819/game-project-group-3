@@ -14,7 +14,7 @@ public class Interactable : MonoBehaviour
     // Calls the Drop function on all interactables
     public virtual void DropItem() {}
 
-    public void PickedUpComponents(PlayerStates playerState, Rigidbody rigidbody, GameObject gameObject)
+    public void PickedUpComponents(ref PlayerStates playerState, Rigidbody rigidbody, GameObject gameObject)
     {
         // Set player components
         playerState.itemHeld = gameObject;
@@ -25,7 +25,7 @@ public class Interactable : MonoBehaviour
     }
 
     // Set items back to original state before being picked up
-    public void ResetComponents(PlayerStates playerState, Rigidbody rigidbody)
+    public void ResetComponents(ref PlayerStates playerState, Rigidbody rigidbody)
     {
         // Reset playerState components
         playerState.playerState = PlayerStates.PlayerState.pEmpty;

@@ -31,7 +31,7 @@ public class Mop : Interactable
             playerState.playerState = PlayerStates.PlayerState.pMop;
 
             // Set values for item picked up
-            PickedUpComponents(playerState, rb, this.gameObject);
+            PickedUpComponents(ref playerState, rb, this.gameObject);
         }
     }
 
@@ -42,7 +42,7 @@ public class Mop : Interactable
             this.transform.parent = null;
             mopState.currentState = MopStates.MopState.Dropped;
 
-            ResetComponents(playerState, rb);
+            ResetComponents(ref playerState, rb);
         }
     }
 }

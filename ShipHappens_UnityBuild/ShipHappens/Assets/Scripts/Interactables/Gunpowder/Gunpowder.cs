@@ -19,13 +19,17 @@ public class Gunpowder : Interactable
     {
         if (powderStates.currentState == GunpowderStates.PowderState.Dropped)
         {
-            this.transform.parent = player.transform;
+            this.transform.parent = player.transform.GetChild(1).transform.GetChild(0);
+            Debug.Log(this.transform.parent.name);
+            //this.transform.SetParent(holdingPoint);
+            this.transform.localPosition = (this as Interactable).PickPosition;
+            this.transform.localEulerAngles = (this as Interactable).PickRotation;
+
             powderStates.currentState = GunpowderStates.PowderState.Held;
-            playerState = this.transform.GetComponentInParent<PlayerStates>();
-            playerState.itemHeld = this.gameObject;
+            playerState = this.transform.GetComponentInParent<PlayerStates>();           
             playerState.playerState = PlayerStates.PlayerState.pGunpowder;
-            rb.isKinematic = true;
-            rb.detectCollisions = false;
+
+            PickedUpComponents(ref playerState, rb, this.gameObject);
         }
     }
             
@@ -36,11 +40,8 @@ public class Gunpowder : Interactable
         {
             this.transform.parent = null;
             powderStates.currentState = GunpowderStates.PowderState.Dropped;
-            playerState.playerState = PlayerStates.PlayerState.pEmpty;
-            playerState.itemHeld = null;
-            playerState = null;
-            rb.isKinematic = false;
-            rb.detectCollisions = true;
+
+            ResetComponents(ref playerState, rb);
         }
     }
 }

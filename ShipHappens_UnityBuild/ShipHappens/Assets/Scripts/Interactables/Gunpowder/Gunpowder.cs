@@ -19,9 +19,8 @@ public class Gunpowder : Interactable
     {
         if (powderStates.currentState == GunpowderStates.PowderState.Dropped)
         {
+            // Set the location to the player's hand on pick up
             this.transform.parent = player.transform.GetChild(1).transform.GetChild(0);
-            Debug.Log(this.transform.parent.name);
-            //this.transform.SetParent(holdingPoint);
             this.transform.localPosition = (this as Interactable).PickPosition;
             this.transform.localEulerAngles = (this as Interactable).PickRotation;
 

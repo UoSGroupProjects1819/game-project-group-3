@@ -12,7 +12,7 @@ public class Seagull : MonoBehaviour
     public float speed;
     public float radius;
     public float maxDistance;
-    public GameObject shipCentre;
+    private GameObject shipCentre;
 
     public float distance;
 
@@ -20,7 +20,9 @@ public class Seagull : MonoBehaviour
 
     void Awake()
     {
+        shipCentre = GameObject.FindGameObjectWithTag("ShipCentre");
         seagullState = SeagullStates.entering;
+        this.transform.LookAt(shipCentre.transform);
 	}
 
     void Update()
@@ -43,6 +45,7 @@ public class Seagull : MonoBehaviour
                 }
                 break;
             case SeagullStates.exiting:
+                Debug.Log("destroyed gull");
                 Destroy(this.gameObject);
                 //remove from gamemanager thing
                 //remove from object pool

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.43992668, g: 0.48839462, b: 0.56859607, a: 1}
+  m_IndirectSpecularColor: {r: 0.43992716, g: 0.4883954, b: 0.56859726, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -446,6 +446,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f92bd04f482b464b9c366b3ec54b58b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Abutton: A_P1
   timer: 0
   lowRand: 0
   highRand: 0
@@ -453,7 +454,6 @@ MonoBehaviour:
   activeTasks: []
   floodStartPosition: {x: -3.863, y: 4, z: 6.85}
   floodLevel: 0
-  isHeadingForRocks: 0
 --- !u!4 &170366156
 Transform:
   m_ObjectHideFlags: 0
@@ -6077,7 +6077,7 @@ GameObject:
   - component: {fileID: 747985042}
   m_Layer: 0
   m_Name: seagullshipcentre
-  m_TagString: Untagged
+  m_TagString: ShipCentre
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6103,15 +6103,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 747985040}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 90ee552e29288f04fb19d2ccb1cd990b, type: 3}
+  m_Script: {fileID: 11500000, guid: 9ff256f16f3a1f44ea217991c83b993c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   shipCentre: {fileID: 747985040}
-  seagull: {fileID: 1500663229782776, guid: 8feca878864563e4c9db59ba27b59852, type: 2}
+  seagull: {fileID: 1525406625960518, guid: 8a7208e45fead31459757c0d7df4bf7c, type: 2}
   pooPrefab: {fileID: 1663358004671796, guid: b0828d3e252ae1941b71b507f6dc65a9, type: 2}
-  speed: 5
-  radius: 70
-  maxDistance: 75
+  radiusRange: 60
+  minRadius: 40
+  maxRadius: 80
+  spawnPosition: {x: 0, y: 0, z: 0}
 --- !u!1001 &765221616
 Prefab:
   m_ObjectHideFlags: 0

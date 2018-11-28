@@ -7,41 +7,31 @@ public class SpawnSeagull : MonoBehaviour
     public GameObject shipCentre;
     public GameObject seagull;
     public GameObject pooPrefab;
-    public float speed;
-    public float radius;
-    public float maxDistance;
-
-
-    //spawn around centre position
-    //rotate towards centre
-    //move forward
+    public float radiusRange;
+    public float minRadius;
+    public float maxRadius;
+    public Vector3 spawnPosition;
 
     private void Update()
     {
         if (Input.GetMouseButtonUp(0))
         {
-            HatchThatEgg();
+            SpawnGull();
         }
     }
 
-    void HatchThatEgg()
+    void SpawnGull()
     {
-        Vector3 center = shipCentre.transform.position;
-        Vector3 pos = RandomCircle(center, radius);
-        Quaternion rot = Quaternion.FromToRotation(Vector3.forward, center - pos);
-        Instantiate(seagull, pos, rot);
-    }
+        spawnPosition = new Vector3(Random.Range(-radiusRange, radiusRange), shipCentre.transform.position.y, Random.Range(-radiusRange, radiusRange));
+        float distance = Vector3.Distance(spawnPosition, shipCentre.transform.position);
 
-    Vector3 RandomCircle(Vector3 center, float radius)
-    {
-        float ang = Random.value * 360;
-        Vector3 pos;
-        pos.x = center.x - radius * Mathf.Sin(ang * Mathf.Deg2Rad);
-        pos.y = center.y;
-        pos.z = center.z - radius * Mathf.Cos(ang * Mathf.Deg2Rad);
-        return pos;
+        if (distance > minRadius && distance < maxRadius)
+        {
+            GameObject gull = Instantiate(seagull, spawnPosition, Quaternion.identity );
+        }
+        else
+        {
+            SpawnGull();
+        }
     }
-
-    //if ((randomPos.position - centrePoint.position).sqrMagnitude <= radius* radius )
-    //{ // retry }
 }

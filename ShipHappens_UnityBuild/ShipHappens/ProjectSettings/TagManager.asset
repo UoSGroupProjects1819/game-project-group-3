@@ -11,6 +11,8 @@ TagManager:
   - ShipBody
   - FloodWater
   - ShipCentre
+  - Sea
+  - HoldOn
   layers:
   - Default
   - TransparentFX

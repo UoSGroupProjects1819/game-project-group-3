@@ -23,7 +23,7 @@ public class Cannonball : Interactable
         {
             SetPosition(ref player);
             cannonballState.currentState = CannonballStates.CannonballState.Held;
-            playerState.playerState = PlayerStates.PlayerState.pTorch;
+            playerState.playerState = PlayerStates.PlayerState.pCannonball;
             PickedUpComponents(ref playerState, rb, this.gameObject);
         }
     }

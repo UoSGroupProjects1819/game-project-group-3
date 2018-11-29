@@ -300,10 +300,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e729fbbb97579694bb955281e59efb1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PickPosition: {x: 0, y: 0, z: 0}
-  PickRotation: {x: 0, y: 0, z: 0}
+  PickPosition: {x: -1.2, y: -2, z: 0}
+  PickRotation: {x: 0, y: 70, z: 0}
   playerState: {fileID: 0}
   bucketState: {fileID: 0}
+  bucket: {fileID: 0}
 --- !u!114 &114612427026054330
 MonoBehaviour:
   m_ObjectHideFlags: 1

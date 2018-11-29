@@ -16,6 +16,7 @@ public class Cannon : Interactable
     public override void Action(GameObject player)
     {
         playerStates = player.GetComponent<PlayerStates>();
+
         // Get the interacting players current state
         switch (player.GetComponent<PlayerStates>().playerState)
         {

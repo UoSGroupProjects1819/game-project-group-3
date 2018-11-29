@@ -332,7 +332,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.02, y: 0.0469477, z: 0.027093597}
-  m_Center: {x: 0, y: -0.0012253597, z: -0.0032297643}
+  m_Center: {x: 0, y: -0.0012253597, z: -0.004}
 --- !u!114 &114556242962941970
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -345,7 +345,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PickPosition: {x: 0, y: 0, z: 0}
-  PickRotation: {x: 0, y: 0, z: 0}
+  PickRotation: {x: 180, y: 0, z: 0}
   playerState: {fileID: 0}
 --- !u!114 &114641404244062996
 MonoBehaviour:

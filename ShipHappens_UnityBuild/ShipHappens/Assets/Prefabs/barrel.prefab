@@ -20,9 +20,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4074258462500762}
   - component: {fileID: 54821562403757828}
-  - component: {fileID: 136973736955592618}
   - component: {fileID: 114566629926323074}
   - component: {fileID: 114774251108606568}
+  - component: {fileID: 65673129117945256}
   m_Layer: 0
   m_Name: barrel
   m_TagString: Untagged
@@ -105,8 +105,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1367587494110952}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 10.988119, y: 0.47, z: 12.90066}
-  m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
+  m_LocalPosition: {x: 0.361, y: 12.301, z: -25.077}
+  m_LocalScale: {x: 0.19999999, y: 0.20000009, z: 0.20000009}
   m_Children:
   - {fileID: 4367457005255304}
   - {fileID: 4304404605489170}
@@ -350,6 +350,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!65 &65673129117945256
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1367587494110952}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3.9389813, y: 4.683583, z: 3.8935547}
+  m_Center: {x: 0.016524645, y: 0.0230573, z: -0.00007152554}
 --- !u!114 &114566629926323074
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -373,17 +385,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d1735a531a02774f989e0f34569a5a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PickPosition: {x: 0, y: -1, z: 0}
+  PickRotation: {x: 90, y: 0, z: 0}
   playerState: {fileID: 0}
---- !u!136 &136973736955592618
-CapsuleCollider:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1367587494110952}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 2
-  m_Height: 1
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}

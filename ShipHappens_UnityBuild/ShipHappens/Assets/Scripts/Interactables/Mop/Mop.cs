@@ -17,20 +17,15 @@ public class Mop : Interactable
     }
 
     public override void Action(GameObject player)
-    { 
-        if (mopState.currentState == MopStates.MopState.Dropped)
+    {
+        playerState = player.GetComponent<PlayerStates>();
+
+        if (mopState.currentState == MopStates.MopState.Dropped && playerState.playerState == PlayerStates.PlayerState.pEmpty)
         {
-            this.transform.parent = player.transform.GetChild(1).transform.GetChild(0);
-            Debug.Log(this.transform.parent.name);
-            //this.transform.SetParent(holdingPoint);
-            this.transform.localPosition = (this as Interactable).PickPosition;
-            this.transform.localEulerAngles = (this as Interactable).PickRotation;
-
-            mopState.currentState = MopStates.MopState.Held;
-            playerState = this.transform.GetComponentInParent<PlayerStates>();
+            
+            SetPosition(ref player);
+            mopState.currentState = MopStates.MopState.Held;          
             playerState.playerState = PlayerStates.PlayerState.pMop;
-
-            // Set values for item picked up
             PickedUpComponents(ref playerState, rb, this.gameObject);
         }
     }

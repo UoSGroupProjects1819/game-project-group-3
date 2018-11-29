@@ -7,27 +7,26 @@ public class Bucket : Interactable
     public PlayerStates playerState;
     public BucketStates bucketState;
 
+    public GameObject bucket;
+
     private Rigidbody rb;
 
 	// Use this for initialization
 	void Start () {
         bucketState = this.GetComponent<BucketStates>();
         rb = this.GetComponent<Rigidbody>();
+        bucket = this.gameObject;
 	}
 
     public override void Action(GameObject player)
     {
+        playerState = player.GetComponent<PlayerStates>();
+
         if (bucketState.currentState == BucketStates.BucketState.Dropped && playerState.playerState == PlayerStates.PlayerState.pEmpty)
         {
-            this.transform.parent = player.transform.GetChild(1).transform.GetChild(0);
-            this.transform.localPosition = (this as Interactable).PickPosition;
-            this.transform.localEulerAngles = (this as Interactable).PickRotation;
-
-            bucketState.currentState = BucketStates.BucketState.Held;
-            playerState = this.transform.GetComponentInParent<PlayerStates>();
+            SetPosition(ref player);
+            bucketState.currentState = BucketStates.BucketState.Held;           
             playerState.playerState = PlayerStates.PlayerState.pBucket;
-
-            // Set values for item picked up
             PickedUpComponents(ref playerState, rb, this.gameObject);
         }
     }

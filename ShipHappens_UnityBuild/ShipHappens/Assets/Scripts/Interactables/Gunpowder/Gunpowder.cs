@@ -17,17 +17,13 @@ public class Gunpowder : Interactable
 
     public override void Action(GameObject player)
     {
-        if (powderStates.currentState == GunpowderStates.PowderState.Dropped)
+        playerState = player.GetComponent<PlayerStates>();
+
+        if (powderStates.currentState == GunpowderStates.PowderState.Dropped && playerState.playerState == PlayerStates.PlayerState.pEmpty)
         {
-            // Set the location to the player's hand on pick up
-            this.transform.parent = player.transform.GetChild(1).transform.GetChild(0);
-            this.transform.localPosition = (this as Interactable).PickPosition;
-            this.transform.localEulerAngles = (this as Interactable).PickRotation;
-
-            powderStates.currentState = GunpowderStates.PowderState.Held;
-            playerState = this.transform.GetComponentInParent<PlayerStates>();           
+            SetPosition(ref player);
+            powderStates.currentState = GunpowderStates.PowderState.Held;         
             playerState.playerState = PlayerStates.PlayerState.pGunpowder;
-
             PickedUpComponents(ref playerState, rb, this.gameObject);
         }
     }

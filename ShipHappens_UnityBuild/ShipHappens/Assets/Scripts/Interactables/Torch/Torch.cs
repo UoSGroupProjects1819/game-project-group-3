@@ -17,19 +17,13 @@ public class Torch : Interactable
 
     public override void Action(GameObject player)
     {
-        if (torchState.currentState == TorchStates.TorchState.Dropped)
+        playerState = player.GetComponent<PlayerStates>();
+
+        if (torchState.currentState == TorchStates.TorchState.Dropped && playerState.playerState == PlayerStates.PlayerState.pEmpty)
         {
-            this.transform.parent = player.transform.GetChild(1).transform.GetChild(0);
-            Debug.Log(this.transform.parent.name);
-            //this.transform.SetParent(holdingPoint);
-            this.transform.localPosition = (this as Interactable).PickPosition;
-            this.transform.localEulerAngles = (this as Interactable).PickRotation;
-
+            SetPosition(ref player);
             torchState.currentState = TorchStates.TorchState.Held;
-            playerState = this.transform.GetComponentInParent<PlayerStates>();
             playerState.playerState = PlayerStates.PlayerState.pTorch;
-
-            // Set values for item picked up
             PickedUpComponents(ref playerState, rb, this.gameObject);
         }
     }

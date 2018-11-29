@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Interactable : MonoBehaviour
 {
+     
+
     [Header("Pickup Position")]
     public Vector3 PickPosition;
     public Vector3 PickRotation;
@@ -13,6 +15,13 @@ public class Interactable : MonoBehaviour
 
     // Calls the Drop function on all interactables
     public virtual void DropItem() {}
+
+    public void SetPosition(ref GameObject player)
+    {
+        transform.parent = player.transform.GetChild(1).transform.GetChild(0);
+        transform.localPosition = PickPosition;
+        transform.localEulerAngles = PickRotation;
+    }
 
     public void PickedUpComponents(ref PlayerStates playerState, Rigidbody rigidbody, GameObject gameObject)
     {

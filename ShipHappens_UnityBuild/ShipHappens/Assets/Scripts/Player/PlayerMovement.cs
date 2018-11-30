@@ -34,13 +34,4 @@ public class PlayerMovement : MonoBehaviour {
             transform.forward = -move;
         }
     }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.tag == "Sea")
-        {
-            //move particle system here.
-            //play particle system
-        }
-    }
 }

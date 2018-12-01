@@ -9,23 +9,35 @@ public class WoodTimer : MonoBehaviour
     public float fillCountdown = 1f;
     public float fillSpeed;
 
-    public bool onCooldown;
+    public GameObject currentPlayer;
+    public GameObject repairWood;
 
-    private void Start()
-    {
-        countdownImg.fillAmount = 0f;
-    }
+    public bool onCooldown;
+    public bool hasDispensed;
 
     void Update()
     {
         if (onCooldown)
         {
+
             fillCountdown = fillCountdown - fillSpeed * Time.deltaTime;
             countdownImg.fillAmount = fillCountdown;
+
+            if (hasDispensed == false)
+            {
+                GameObject woodObj = Instantiate(repairWood, currentPlayer.transform.position, currentPlayer.transform.rotation);
+
+                var pState = currentPlayer.GetComponent<PlayerStates>();
+                pState.playerState = PlayerStates.PlayerState.pWood;
+
+                hasDispensed = true;
+            }
 
             if (fillCountdown <= 0)
             {
                 onCooldown = false;
+                hasDispensed = false;
+                fillCountdown = 1;
             }
         }
     }

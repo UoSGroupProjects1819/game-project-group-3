@@ -616,7 +616,10 @@ MonoBehaviour:
   countdownImg: {fileID: 595417948}
   fillCountdown: 1
   fillSpeed: 0.03
+  currentPlayer: {fileID: 0}
+  repairWood: {fileID: 0}
   onCooldown: 0
+  hasDispensed: 0
 --- !u!114 &166505381
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -696,7 +699,7 @@ GameObject:
   - component: {fileID: 192384396}
   m_Layer: 0
   m_Name: Hold
-  m_TagString: Untagged
+  m_TagString: ShipHold
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -49,11 +49,6 @@ public class PlayerController : MonoBehaviour {
     }
 
 
-    void FixedUpdate()
-    {
-
-    }
-
     private void OnTriggerStay(Collider col)
     {
         Debug.Log("Hit");
@@ -66,6 +61,42 @@ public class PlayerController : MonoBehaviour {
             {
                 Debug.Log("Action button pressed");
                 other.Action(this.gameObject);
+            }
+        }
+
+        //if (other.tag == "HoldOn")
+        //{
+        //    if (Input.GetKey(KeyCode.I) || Input.GetButtonDown(Abutton))
+        //    {
+        //        Debug.Log("Action button pressed");
+        //        other.Action(this.gameObject);
+        //    }
+        //}
+
+        if (other.tag == "ShipHold")
+        {
+            if (Input.GetAxisRaw(DpadVertical) > 0 || (Input.GetKey(KeyCode.K)))
+            {
+                Debug.Log("DpadWood");
+
+                var woodscript = other.GetComponent<WoodTimer>();
+                if (woodscript.onCooldown == false && playerState.playerState == PlayerStates.PlayerState.pEmpty)
+                {
+                    woodscript.onCooldown = true;
+                    woodscript.currentPlayer = this.gameObject;
+                }
+
+
+            }
+
+            if (Input.GetAxisRaw(DpadHorizontal) > 0 || (Input.GetKey(KeyCode.J)))
+            {
+                Debug.Log("DpadBarrel");
+            }
+
+            if (Input.GetAxisRaw(DpadHorizontal) < 0 || (Input.GetKey(KeyCode.L)))
+            {
+                Debug.Log("DpadCannonBall");
             }
         }
     }

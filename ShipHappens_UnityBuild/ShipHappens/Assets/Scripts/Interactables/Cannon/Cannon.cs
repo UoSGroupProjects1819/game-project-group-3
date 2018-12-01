@@ -13,6 +13,8 @@ public class Cannon : Interactable
     public void Start()
     {
         cannonState = this.GetComponent<CannonState>();
+        cannonFire = transform.GetChild(1).GetComponent<ParticleSystem>();
+        Debug.Log(cannonFire.name);
     }
 
     public override void Action(GameObject player)
@@ -44,7 +46,6 @@ public class Cannon : Interactable
                 if (cannonState.currentState == CannonState.CannonStates.cFullyLoaded)
                 {
                     cannonState.currentState = CannonState.CannonStates.cEmpty;
-                    Instantiate(cannonFire, this.transform.GetChild(0).GetChild(0).position, this.transform.GetChild(0).GetChild(0).rotation, this.transform.GetChild(0).GetChild(0));
                     cannonFire.Play();
                 }
                 else

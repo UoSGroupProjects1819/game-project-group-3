@@ -11,7 +11,7 @@ public class ChestParticles : MonoBehaviour
 
     private void Start()
     {
-        rewardSprite.enabled = false;
+        //rewardSprite.enabled = false;
     }
 
     public void ChestParticlePlay()
@@ -21,7 +21,7 @@ public class ChestParticles : MonoBehaviour
 
     public void RewardParticlePlay()
     {
-        rewardSprite.enabled = true;
+        //rewardSprite.enabled = true;
         rewardPS.Play();
     }
 }

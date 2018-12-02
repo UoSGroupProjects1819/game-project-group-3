@@ -9,6 +9,9 @@ public class Bucket : Interactable
 
     public GameObject bucket;
 
+    public string Abutton = "A_P1";
+    public string Bbutton = "B_P1";
+
     private Rigidbody rb;
 
 	// Use this for initialization
@@ -28,6 +31,17 @@ public class Bucket : Interactable
             bucketState.currentState = BucketStates.BucketState.Held;           
             playerState.playerState = PlayerStates.PlayerState.pBucket;
             PickedUpComponents(ref playerState, rb, this.gameObject);
+        }
+    }
+
+    private void Update()
+    {
+        if (bucketState.currentState == BucketStates.BucketState.Held && rb.velocity.magnitude <= 0.1f)
+        {
+            if (Input.GetButtonDown(Abutton))
+            {
+                //floodLevel -= value * time.deltaTime;
+            }
         }
     }
 

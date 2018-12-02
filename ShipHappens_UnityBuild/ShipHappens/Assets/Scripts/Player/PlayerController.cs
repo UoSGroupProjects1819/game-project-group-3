@@ -79,7 +79,7 @@ public class PlayerController : MonoBehaviour {
             {
                 Debug.Log("DpadWood");
 
-                var woodscript = other.GetComponent<WoodTimer>();
+                WoodTimer woodscript = other.GetComponent<WoodTimer>();
                 if (woodscript.onCooldown == false && playerState.playerState == PlayerStates.PlayerState.pEmpty)
                 {
                     woodscript.onCooldown = true;

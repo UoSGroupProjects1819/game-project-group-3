@@ -7,6 +7,7 @@ public class Mop : Interactable
     MopStates mopState;
     public Transform holdingPoint;
     public PlayerStates playerState;
+    public PlayerController playerController;
 
     private Rigidbody rb;
 
@@ -19,15 +20,23 @@ public class Mop : Interactable
     public override void Action(GameObject player)
     {
         playerState = player.GetComponent<PlayerStates>();
+        playerController = player.GetComponent<PlayerController>();
 
         if (mopState.currentState == MopStates.MopState.Dropped && playerState.playerState == PlayerStates.PlayerState.pEmpty)
-        {
-            
+        {            
             SetPosition(ref player);
             mopState.currentState = MopStates.MopState.Held;          
             playerState.playerState = PlayerStates.PlayerState.pMop;
+            playerController.mop = this;
             PickedUpComponents(ref playerState, rb, this.gameObject);
         }
+    }
+
+    public void Cleaning(GameObject hazardToClean)
+    {
+        // PLAY ANIMATION
+
+        Destroy(hazardToClean);
     }
 
     public override void DropItem()
@@ -35,8 +44,8 @@ public class Mop : Interactable
         if (mopState.currentState == MopStates.MopState.Held)
         {
             this.transform.parent = null;
-            mopState.currentState = MopStates.MopState.Dropped;
-
+            playerController.mop = null;
+            mopState.currentState = MopStates.MopState.Dropped;       
             ResetComponents(ref playerState, rb);
         }
     }

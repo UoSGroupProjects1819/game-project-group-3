@@ -6,6 +6,7 @@ public class PlayerController : MonoBehaviour {
 
 
     public PlayerStates playerState;
+    public Mop mop;
 
     [Header("[Mapped Controls]")]
     public string Abutton = "A_P1";
@@ -55,12 +56,27 @@ public class PlayerController : MonoBehaviour {
         Interactable other = col.gameObject.GetComponent<Interactable>();
 
         if (other != null)
-        {
-            Debug.Log("Hit interactable");
+        {          
             if (Input.GetKey(KeyCode.I) || Input.GetButtonDown(Abutton))
             {
                 Debug.Log("Action button pressed");
                 other.Action(this.gameObject);
+            }
+        }
+
+        if (col.gameObject.tag == "poo")
+        {
+            GameObject poo = col.gameObject;
+            if(playerState.playerState == PlayerStates.PlayerState.pMop)
+            {
+                if (Input.GetKey(KeyCode.I) || Input.GetButtonDown(Abutton))
+                {
+                    //Destroy(poo);
+
+                    // Find out why this isn't working
+                    mop.Cleaning(poo);
+                }
+
             }
         }
 
@@ -73,32 +89,32 @@ public class PlayerController : MonoBehaviour {
         //    }
         //}
 
-        if (other.tag == "ShipHold")
-        {
-            if (Input.GetAxisRaw(DpadVertical) > 0 || (Input.GetKey(KeyCode.K)))
-            {
-                Debug.Log("DpadWood");
+    //    if (other.tag == "ShipHold")
+    //    {
+    //        if (Input.GetAxisRaw(DpadVertical) > 0 || (Input.GetKey(KeyCode.K)))
+    //        {
+    //            Debug.Log("DpadWood");
 
-                WoodTimer woodscript = other.GetComponent<WoodTimer>();
-                if (woodscript.onCooldown == false && playerState.playerState == PlayerStates.PlayerState.pEmpty)
-                {
-                    woodscript.onCooldown = true;
-                    woodscript.currentPlayer = this.gameObject;
-                }
+    //            WoodTimer woodscript = other.GetComponent<WoodTimer>();
+    //            if (woodscript.onCooldown == false && playerState.playerState == PlayerStates.PlayerState.pEmpty)
+    //            {
+    //                woodscript.onCooldown = true;
+    //                woodscript.currentPlayer = this.gameObject;
+    //            }
 
 
-            }
+    //        }
 
-            if (Input.GetAxisRaw(DpadHorizontal) > 0 || (Input.GetKey(KeyCode.J)))
-            {
-                Debug.Log("DpadBarrel");
-            }
+    //        if (Input.GetAxisRaw(DpadHorizontal) > 0 || (Input.GetKey(KeyCode.J)))
+    //        {
+    //            Debug.Log("DpadBarrel");
+    //        }
 
-            if (Input.GetAxisRaw(DpadHorizontal) < 0 || (Input.GetKey(KeyCode.L)))
-            {
-                Debug.Log("DpadCannonBall");
-            }
-        }
+    //        if (Input.GetAxisRaw(DpadHorizontal) < 0 || (Input.GetKey(KeyCode.L)))
+    //        {
+    //            Debug.Log("DpadCannonBall");
+    //        }
+    //    }
     }
 
     private void DropItem()

@@ -59,12 +59,15 @@ public class PooLanding : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        rb.useGravity = false;
-        rb.constraints = RigidbodyConstraints.FreezeAll;
-        col.isTrigger = true;
-        //StartCoroutine("PooGrowth");
-        pooPrefab.transform.localScale = FinalScale;
-        pooPrefab.transform.SetParent(collision.gameObject.transform);
+        if (collision.gameObject.tag == "ShipDeck")
+        {
+            rb.useGravity = false;
+            rb.constraints = RigidbodyConstraints.FreezeAll;
+            col.isTrigger = true;
+            //StartCoroutine("PooGrowth");
+            pooPrefab.transform.localScale = FinalScale;
+            pooPrefab.transform.SetParent(collision.gameObject.transform);
+        }
     }
 
     //IEnumerator PooGrowth()

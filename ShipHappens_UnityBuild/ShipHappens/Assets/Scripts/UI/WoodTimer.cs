@@ -27,7 +27,13 @@ public class WoodTimer : MonoBehaviour
             {
                 GameObject woodObj = Instantiate(repairWood, currentPlayer.transform.position, currentPlayer.transform.rotation);
 
-                var pState = currentPlayer.GetComponent<PlayerStates>();
+                PlayerStates pState = currentPlayer.GetComponent<PlayerStates>();
+                //PlayerController pControler = currentPlayer.GetComponent<PlayerController>();
+
+                Mop mop = woodObj.GetComponent<Mop>();
+
+                mop.Action(currentPlayer);
+
                 pState.playerState = PlayerStates.PlayerState.pWood;
 
                 hasDispensed = true;

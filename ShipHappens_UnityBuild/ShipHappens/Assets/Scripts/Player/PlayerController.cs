@@ -80,7 +80,7 @@ public class PlayerController : MonoBehaviour {
             }
         }
 
-        //if (other.tag == "HoldOn")
+        //if (col.gameObject.tag == "HoldOn")
         //{
         //    if (Input.GetKey(KeyCode.I) || Input.GetButtonDown(Abutton))
         //    {
@@ -89,32 +89,30 @@ public class PlayerController : MonoBehaviour {
         //    }
         //}
 
-    //    if (other.tag == "ShipHold")
-    //    {
-    //        if (Input.GetAxisRaw(DpadVertical) > 0 || (Input.GetKey(KeyCode.K)))
-    //        {
-    //            Debug.Log("DpadWood");
+        if (col.gameObject.tag == "ShipHold")
+        {
+            if (Input.GetAxisRaw(DpadVertical) > 0 || (Input.GetKey(KeyCode.K)))
+            {
+                Debug.Log("DpadWood");
 
-    //            WoodTimer woodscript = other.GetComponent<WoodTimer>();
-    //            if (woodscript.onCooldown == false && playerState.playerState == PlayerStates.PlayerState.pEmpty)
-    //            {
-    //                woodscript.onCooldown = true;
-    //                woodscript.currentPlayer = this.gameObject;
-    //            }
+                WoodTimer woodscript = other.GetComponent<WoodTimer>();
+                if (woodscript.onCooldown == false && playerState.playerState == PlayerStates.PlayerState.pEmpty)
+                {
+                    woodscript.onCooldown = true;
+                    woodscript.currentPlayer = this.gameObject;
+                }
+            }
 
+            if (Input.GetAxisRaw(DpadHorizontal) > 0 || (Input.GetKey(KeyCode.J)))
+            {
+                Debug.Log("DpadBarrel");
+            }
 
-    //        }
-
-    //        if (Input.GetAxisRaw(DpadHorizontal) > 0 || (Input.GetKey(KeyCode.J)))
-    //        {
-    //            Debug.Log("DpadBarrel");
-    //        }
-
-    //        if (Input.GetAxisRaw(DpadHorizontal) < 0 || (Input.GetKey(KeyCode.L)))
-    //        {
-    //            Debug.Log("DpadCannonBall");
-    //        }
-    //    }
+            if (Input.GetAxisRaw(DpadHorizontal) < 0 || (Input.GetKey(KeyCode.L)))
+            {
+                Debug.Log("DpadCannonBall");
+            }
+        }
     }
 
     private void DropItem()

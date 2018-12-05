@@ -17,6 +17,8 @@ public class DpadMenu : MonoBehaviour
 
 	void Start ()
     {
+        canvasGroup.alpha = 0;
+
         dpadSolid = dpad.color;
         dpadSolid.a = 0.95f;
 

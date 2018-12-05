@@ -26,6 +26,7 @@ TagManager:
   - 
   - PostProcessing
   - Ship
+  - Player
   - 
   - 
   - 
@@ -45,9 +46,8 @@ TagManager:
   - 
   - 
   - 
-  - 
-  - 
-  - 
+  - CameraShipDeck
+  - CameraShipDeckItems
   m_SortingLayers:
   - name: Default
     uniqueID: 0

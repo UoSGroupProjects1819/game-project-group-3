@@ -34,7 +34,7 @@ public class PooLanding : MonoBehaviour
 
         //Physics.IgnoreCollision(player.GetComponent<CapsuleCollider>(), GetComponent<SphereCollider>());
 
-        Physics.IgnoreLayerCollision(0, 10);
+        Physics.IgnoreLayerCollision(29, 10);
     }
 
     void Awake()
@@ -51,7 +51,7 @@ public class PooLanding : MonoBehaviour
         {
             RaycastHit hit;
             Debug.DrawRay(pooPrefab.transform.position, pooPrefab.transform.up * -1, Color.white);
-            if (Physics.Raycast(pooPrefab.transform.position, pooPrefab.transform.up * -1, out hit, 2, 1 << 9))
+            if (Physics.Raycast(pooPrefab.transform.position, pooPrefab.transform.up * -1, out hit, 2, 1 << 29))
             {
                 Debug.DrawRay(pooPrefab.transform.position, pooPrefab.transform.up, Color.red);
                 pooPrefab.transform.up = -hit.normal;

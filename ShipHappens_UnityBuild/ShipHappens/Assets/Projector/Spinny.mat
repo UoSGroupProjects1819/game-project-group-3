@@ -6,10 +6,10 @@ Material:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: ProjectorMaterial
-  m_Shader: {fileID: 4800000, guid: ee7f8a5cfe4359c4cb76cd823b1ba6fc, type: 3}
-  m_ShaderKeywords: 
-  m_LightmapFlags: 5
+  m_Name: Spinny
+  m_Shader: {fileID: 4800000, guid: 3bca90c0c7675fa47bf8396127f36620, type: 3}
+  m_ShaderKeywords: ETC1_EXTERNAL_ALPHA _ALPHAPREMULTIPLY_ON
+  m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
@@ -19,15 +19,15 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - Texture1:
-        m_Texture: {fileID: 2800000, guid: 221e402e7e15d6a47adb396b3aa0cfb0, type: 3}
+        m_Texture: {fileID: 2800000, guid: cfbbbb56f51da6948b15c057611ac0d4, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - Texture2:
-        m_Texture: {fileID: 2800000, guid: 221e402e7e15d6a47adb396b3aa0cfb0, type: 3}
+        m_Texture: {fileID: 2800000, guid: cfbbbb56f51da6948b15c057611ac0d4, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - TransitionTexture:
-        m_Texture: {fileID: 2800000, guid: f786dff937abdc04a8afecb10a159048, type: 3}
+        m_Texture: {fileID: 2800000, guid: 9ac5bb2d21326f24cacea4f7201c1b94, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BumpMap:
@@ -50,12 +50,8 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - _FalloffTex:
-        m_Texture: {fileID: 2800000, guid: 23740055e2b119e40a939138ab8070f8, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 8c5dba9d0e6c94a4492f3e7cb072dae2, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
@@ -71,31 +67,32 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _ShadowTex:
-        m_Texture: {fileID: 2800000, guid: cfbbbb56f51da6948b15c057611ac0d4, type: 3}
+        m_Texture: {fileID: 2800000, guid: 852ae92a6c0ede749b3054826927ecaf, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - DissolveAmount: 0
-    - Glossiness1: 0.5
+    - DissolveAmount: 1
+    - Glossiness1: 0.416
     - Metallic1: 0
     - _Attenuation: 1
     - _BumpScale: 1
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
-    - _DstBlend: 0
-    - _EmissionScaleUI: 0
-    - _Falloff: 1
+    - _DstBlend: 10
+    - _GlossMapScale: 1
     - _Glossiness: 0.5
+    - _GlossyReflections: 1
     - _Metallic: 0
-    - _Mode: 0
+    - _Mode: 3
     - _OcclusionStrength: 1
     - _Parallax: 0.02
+    - _SmoothnessTextureChannel: 0
+    - _SpecularHighlights: 1
     - _SrcBlend: 1
     - _UVSec: 0
-    - _ZWrite: 1
+    - _ZWrite: 0
     m_Colors:
     - Color1: {r: 1, g: 1, b: 1, a: 1}
-    - Color2: {r: 1, g: 1, b: 1, a: 0}
-    - _Color: {r: 0.9303621, g: 1, b: 0, a: 1}
+    - Color2: {r: 1, g: 1, b: 1, a: 1}
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _EmissionColorUI: {r: 1, g: 1, b: 1, a: 1}

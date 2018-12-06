@@ -6,7 +6,7 @@ Material:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: ProjectorMaterial
+  m_Name: ProjectorMaterial 1
   m_Shader: {fileID: 4800000, guid: ee7f8a5cfe4359c4cb76cd823b1ba6fc, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 5
@@ -71,7 +71,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _ShadowTex:
-        m_Texture: {fileID: 2800000, guid: cfbbbb56f51da6948b15c057611ac0d4, type: 3}
+        m_Texture: {fileID: 2800000, guid: 852ae92a6c0ede749b3054826927ecaf, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
@@ -96,6 +96,6 @@ Material:
     m_Colors:
     - Color1: {r: 1, g: 1, b: 1, a: 1}
     - Color2: {r: 1, g: 1, b: 1, a: 0}
-    - _Color: {r: 0.9303621, g: 1, b: 0, a: 1}
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _EmissionColorUI: {r: 1, g: 1, b: 1, a: 1}

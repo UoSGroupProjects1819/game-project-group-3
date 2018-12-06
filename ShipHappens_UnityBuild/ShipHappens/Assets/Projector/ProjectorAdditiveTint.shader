@@ -46,8 +46,10 @@ Shader "Projector/AdditiveTint" {
 				// Apply alpha mask
 				fixed4 texCookie = tex2Dproj (_ShadowTex, UNITY_PROJ_COORD(i.uvShadow));
 				fixed4 outColor = _Color * texCookie.a;
+
 				// Attenuation
 				float depth = i.uvShadow.z; // [-1 (near), 1 (far)]
+
 				return outColor * clamp(1.0 - abs(depth) + _Attenuation, 0.0, 1.0);
 			}
 			ENDCG

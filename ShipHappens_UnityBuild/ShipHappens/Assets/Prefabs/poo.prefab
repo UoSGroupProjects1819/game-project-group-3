@@ -116,10 +116,11 @@ MonoBehaviour:
   rb: {fileID: 54549414258443572}
   col: {fileID: 135704162472121334}
   FinalScale: {x: 4, y: 1, z: 4}
-  OverflowScale: {x: 0.07, y: 0.02, z: 0.07}
+  OverflowScale: {x: 0.065, y: 0.01, z: 0.065}
   ScalingFactor: 10
   TimeScale: 20
   isLanded: 0
+  player: {fileID: 1884339876276318, guid: 9d29de1723a6b744d9a0451097ea174b, type: 2}
 --- !u!135 &135704162472121334
 SphereCollider:
   m_ObjectHideFlags: 1

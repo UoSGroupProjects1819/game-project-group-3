@@ -11,7 +11,8 @@ public class PooLanding : MonoBehaviour
     public Collider col;
     private GameObject belowPoo;
 
-    private int layerMask = 1 << 9;
+    //private int shipLayer = 9;
+    //private LayerMask layerMask = 1 << 9;
 
     private Vector3 InitialScale;
     public Vector3 FinalScale;
@@ -21,6 +22,20 @@ public class PooLanding : MonoBehaviour
     public float TimeScale = 0.5f;
 
     public bool isLanded = false;
+
+    public GameObject player;
+
+    void Start()
+    {
+        //for (int i = 0; i < players.Length; i++)
+        //{
+        //    Physics.IgnoreCollision(GetComponent<Collider>(), players[i].GetComponent<Collider>());
+        //}
+
+        //Physics.IgnoreCollision(player.GetComponent<CapsuleCollider>(), GetComponent<SphereCollider>());
+
+        Physics.IgnoreLayerCollision(0, 10);
+    }
 
     void Awake()
     {
@@ -35,16 +50,15 @@ public class PooLanding : MonoBehaviour
         if (isLanded == false)
         {
             RaycastHit hit;
-            Debug.DrawRay(pooPrefab.transform.position, pooPrefab.transform.up * 1, Color.white);
-            if (Physics.Raycast(pooPrefab.transform.position, pooPrefab.transform.up, out hit, 1, layerMask))
+            Debug.DrawRay(pooPrefab.transform.position, pooPrefab.transform.up * -1, Color.white);
+            if (Physics.Raycast(pooPrefab.transform.position, pooPrefab.transform.up * -1, out hit, 2, 1 << 9))
             {
-                Debug.Log("layermask check");
-                Debug.DrawRay(pooPrefab.transform.position, -pooPrefab.transform.up * 1, Color.red);
+                Debug.DrawRay(pooPrefab.transform.position, pooPrefab.transform.up, Color.red);
                 pooPrefab.transform.up = -hit.normal;
                 isLanded = true;
             }
 
-            if (Physics.Raycast(pooPrefab.transform.position, pooPrefab.transform.up, out hit, 1))
+            if (Physics.Raycast(pooPrefab.transform.position, pooPrefab.transform.up * -1, out hit, 1))
             {
                 if (hit.transform.tag == "poo")
                 {

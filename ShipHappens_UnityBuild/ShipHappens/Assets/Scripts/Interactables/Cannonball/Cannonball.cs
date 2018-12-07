@@ -9,7 +9,22 @@ public class Cannonball : Interactable
     public PlayerStates playerState;
     private Rigidbody rb;
 
-    private void Start()
+    public static GameObject cannonballPrefab;
+
+    private bool spawning = false;
+
+    public void Spawn(GameObject player)
+    {
+        playerState = player.GetComponent<PlayerStates>();
+
+        SetPosition(ref player);
+        cannonballState.currentState = CannonballStates.CannonballState.Held;
+        playerState.playerState = PlayerStates.PlayerState.pCannonball;
+        PickedUpComponents(ref playerState, rb, this.gameObject);
+
+    }
+
+    private void Awake()
     {
         cannonballState = this.GetComponent<CannonballStates>();
         rb = this.GetComponent<Rigidbody>();

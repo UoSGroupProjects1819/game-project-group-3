@@ -11,6 +11,12 @@ public class DpadMenu : MonoBehaviour
     public int menuCount;
     public bool inMenu;
 
+    PlayerController playerController;
+
+    Cannonball cannonball;
+
+    public GameObject cannonballPrefab;
+
     Color dpadSolid;
     Color dpadFaint;
     Color dpadCol;
@@ -75,6 +81,22 @@ public class DpadMenu : MonoBehaviour
         {
             canvasGroup.alpha += Time.deltaTime / time;
             yield return null;
+        }
+    }
+
+    public void CollectedWhenPressed(PlayerController player, PlayerController.Direction direction)
+    {
+        switch (direction)
+        {
+            case PlayerController.Direction.up:
+                GameObject playerObj = player.gameObject;
+
+                GameObject newBall = Instantiate(cannonballPrefab);
+                newBall.GetComponent<Cannonball>().Spawn(playerObj);
+                
+                //cannonball = new Cannonball(playerObj, newBall);
+
+                break;
         }
     }
 }

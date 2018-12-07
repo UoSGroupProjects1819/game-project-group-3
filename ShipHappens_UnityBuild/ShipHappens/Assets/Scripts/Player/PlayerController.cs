@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour {
 
+    public enum Direction { up, left, right };
+
+    Direction direction;
+
 
     public PlayerStates playerState;
     public Mop mop;
@@ -91,16 +95,22 @@ public class PlayerController : MonoBehaviour {
 
         if (col.gameObject.tag == "ShipHold")
         {
+            DpadMenu menu = col.gameObject.GetComponent<DpadMenu>();
+
             if (Input.GetAxisRaw(DpadVertical) > 0 || (Input.GetKey(KeyCode.K)))
             {
                 Debug.Log("DpadWood");
 
-                WoodTimer woodscript = other.GetComponent<WoodTimer>();
-                if (woodscript.onCooldown == false && playerState.playerState == PlayerStates.PlayerState.pEmpty)
-                {
-                    woodscript.onCooldown = true;
-                    woodscript.currentPlayer = this.gameObject;
-                }
+                direction = Direction.up;
+
+                menu.CollectedWhenPressed(this, direction);
+
+                //WoodTimer woodscript = other.GetComponent<WoodTimer>();
+                //if (woodscript.onCooldown == false && playerState.playerState == PlayerStates.PlayerState.pEmpty)
+                //{
+                //    woodscript.onCooldown = true;
+                //    woodscript.currentPlayer = this.gameObject;
+                //}
             }
 
             if (Input.GetAxisRaw(DpadHorizontal) > 0 || (Input.GetKey(KeyCode.J)))

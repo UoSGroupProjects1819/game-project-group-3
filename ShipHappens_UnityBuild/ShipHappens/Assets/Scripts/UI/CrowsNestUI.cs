@@ -40,12 +40,10 @@ public class CrowsNestUI : MonoBehaviour
         else
             bottomAnim.SetBool("PlayBottom", false);
 
-
         if (playLeft)
             bottomAnim.SetBool("PlayLeft", true);
         else
             bottomAnim.SetBool("PlayLeft", false);
-
 
         if (playRight)
             bottomAnim.SetBool("PlayRight", true);
@@ -72,4 +70,19 @@ public class CrowsNestUI : MonoBehaviour
                 break;
         }
     }
+
+    //void StopBottomBubble()
+    //{
+    //    bottomAnim.SetBool("PlayBottom", false);
+    //}
+
+    //public void StopLeftBubble()
+    //{
+    //    bottomAnim.SetBool("PlayLeft", false);
+    //}
+
+    //void StopRightBubble()
+    //{
+    //    bottomAnim.SetBool("PlayRight", false);
+    //}
 }

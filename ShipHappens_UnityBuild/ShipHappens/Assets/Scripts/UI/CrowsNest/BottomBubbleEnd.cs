@@ -18,6 +18,5 @@ public class BottomBubbleEnd : MonoBehaviour
     {
         CNui.playBottom = false;
         bottomAnimator.SetBool("PlayBottom", false);
-        Debug.Log("YO DUDE");
     }
 }

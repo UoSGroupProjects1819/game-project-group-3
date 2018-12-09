@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour
     
     public PlayerStates playerState;
     public Mop mop;
+    public Wood wood;
 
     [Header("[Mapped Controls]")]
     public string Abutton = "A_P1";
@@ -77,12 +78,22 @@ public class PlayerController : MonoBehaviour
             {
                 if (Input.GetKey(KeyCode.I) || Input.GetButtonDown(Abutton))
                 {
-                    //Destroy(poo);
-
-                    // Find out why this isn't working
                     mop.Cleaning(poo);
                 }
 
+            }
+        }
+
+        if (col.gameObject.tag == "Hole")
+        {
+            Debug.Log("Hit a Hole!");
+            GameObject hole = col.gameObject;
+            if (playerState.playerState == PlayerStates.PlayerState.pWood)
+            {
+                if (Input.GetKey(KeyCode.I) || Input.GetButtonDown(Abutton))
+                {
+                    wood.RepairDeck(hole);
+                }
             }
         }
 

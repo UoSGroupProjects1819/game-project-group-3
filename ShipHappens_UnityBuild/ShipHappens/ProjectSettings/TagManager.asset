@@ -16,6 +16,7 @@ TagManager:
   - ShipHold
   - ShipDeck
   - Edge
+  - Hole
   layers:
   - Default
   - TransparentFX

@@ -21,7 +21,7 @@ public class Bucket : Interactable
 
     void Start()
     {
-        floodWaterStartPos = floodWater.transform;
+        //floodWaterStartPos = floodWater.transform;
         bucketState = this.GetComponent<BucketStates>();
         rb = this.GetComponent<Rigidbody>();
         bucket = this.gameObject;

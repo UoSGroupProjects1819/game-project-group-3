@@ -22,6 +22,8 @@ public class cannonUI : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
     {
+        Reset();
+
 		switch(cannonState.currentState)
         {
             case CannonState.CannonStates.cEmpty:
@@ -49,7 +51,7 @@ public class cannonUI : MonoBehaviour
         }
 	}
 
-    private void Reset()
+    public void Reset()
     {
         torchBackground.enabled = false;
         cannonballBackground.enabled = true;

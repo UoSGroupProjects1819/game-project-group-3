@@ -10,6 +10,8 @@ public class Cannon : Interactable
 
     public ParticleSystem cannonFire;
 
+    public cannonUI cannonUI;
+
     public void Start()
     {
         cannonState = this.GetComponent<CannonState>();
@@ -46,7 +48,7 @@ public class Cannon : Interactable
                 if (cannonState.currentState == CannonState.CannonStates.cFullyLoaded)
                 {
                     cannonState.currentState = CannonState.CannonStates.cEmpty;
-                    cannonFire.Play();
+                    cannonFire.Play();               
                 }
                 else
                 {

@@ -7,10 +7,7 @@ public class Rocks : MonoBehaviour
     public enum RockStates { entering, active, exiting };
     public RockStates rockStates;
 
-    void Start ()
-    {
-		
-	}
+    public float timer;
 
     void Update()
     {
@@ -23,10 +20,13 @@ public class Rocks : MonoBehaviour
                 rockStates = RockStates.active;
                 break;
             case RockStates.active:
-                //await user steering wheel
-                    //if greater than threshold time passes, screenshake, damage ship
-
-                    //if user uses wheel
+                timer -= Time.deltaTime;
+                if (timer < 0)
+                {
+                    //wait for steering wheel, if not input
+                    //damage ship
+                    //screenshake
+                }
                 break;
             case RockStates.exiting:
                 //remove from game manager

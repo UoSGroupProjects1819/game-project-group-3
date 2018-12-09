@@ -15,6 +15,7 @@ TagManager:
   - HoldOn
   - ShipHold
   - ShipDeck
+  - Edge
   layers:
   - Default
   - TransparentFX

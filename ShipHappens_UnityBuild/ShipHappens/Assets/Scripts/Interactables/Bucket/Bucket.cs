@@ -8,18 +8,24 @@ public class Bucket : Interactable
     public BucketStates bucketState;
 
     public GameObject bucket;
+    private Rigidbody rb;
 
     public string Abutton = "A_P1";
     public string Bbutton = "B_P1";
 
-    private Rigidbody rb;
+    public GameObject floodWater;
+    private Transform floodWaterStartPos;
+    public float speed;
+    public ParticleSystem bucketPS;
 
-	// Use this for initialization
-	void Start () {
+
+    void Start()
+    {
+        floodWaterStartPos = floodWater.transform;
         bucketState = this.GetComponent<BucketStates>();
         rb = this.GetComponent<Rigidbody>();
         bucket = this.gameObject;
-	}
+    }
 
     public override void Action(GameObject player)
     {
@@ -28,20 +34,35 @@ public class Bucket : Interactable
         if (bucketState.currentState == BucketStates.BucketState.Dropped && playerState.playerState == PlayerStates.PlayerState.pEmpty)
         {
             SetPosition(ref player);
-            bucketState.currentState = BucketStates.BucketState.Held;           
+            bucketState.currentState = BucketStates.BucketState.Held;
             playerState.playerState = PlayerStates.PlayerState.pBucket;
             PickedUpComponents(ref playerState, rb, this.gameObject);
         }
     }
 
+    //private void OnTriggerStay(Collider col)
+    //{
+    //    if (col.gameObject.tag == "Edge" && bucketState.currentState == BucketStates.BucketState.Held && rb.velocity.magnitude <= 0.1f && floodWater.transform.position.y > floodWaterStartPos.position.y)
+    //    {
+    //        Debug.Log("bail 1st check");
+
+    //        if (Input.GetButtonDown(Abutton) || Input.GetKey(KeyCode.B))
+    //        {
+    //            Debug.Log("bailing!");
+    //            bucketPS.Play();
+    //            float step = speed * Time.deltaTime;
+    //            floodWater.transform.position = Vector3.MoveTowards(floodWater.transform.position, floodWaterStartPos.position, step);
+    //        }
+    //    }
+    //}
+
     private void Update()
     {
-        if (bucketState.currentState == BucketStates.BucketState.Held && rb.velocity.magnitude <= 0.1f)
+        if (Input.GetButtonDown(Abutton) || Input.GetKey(KeyCode.B))
         {
-            if (Input.GetButtonDown(Abutton))
-            {
-                //floodLevel -= value * time.deltaTime;
-            }
+            bucketPS.Play();
+            float step = speed * Time.deltaTime;
+            floodWater.transform.position = Vector3.MoveTowards(floodWater.transform.position, floodWaterStartPos.position, step);
         }
     }
 
@@ -55,5 +76,4 @@ public class Bucket : Interactable
             ResetComponents(ref playerState, rb);
         }
     }
-
 }

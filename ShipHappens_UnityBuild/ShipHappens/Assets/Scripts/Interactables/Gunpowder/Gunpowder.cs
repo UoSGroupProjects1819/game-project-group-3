@@ -8,8 +8,21 @@ public class Gunpowder : Interactable
     public PlayerStates playerState;
     private Rigidbody rb;
 
-    // Use this for initialization
-    void Start ()
+    public static GameObject gunPowderPrefab;
+
+    private bool spawning = false;
+
+    public void Spawn(GameObject player)
+    {
+        playerState = player.GetComponent<PlayerStates>();
+
+        SetPosition(ref player);
+        powderStates.currentState = GunpowderStates.PowderState.Held;
+        playerState.playerState = PlayerStates.PlayerState.pGunpowder;
+        PickedUpComponents(ref playerState, rb, this.gameObject);
+    }
+
+    void Awake ()
     {
         powderStates = this.GetComponent<GunpowderStates>();
         rb = this.GetComponent<Rigidbody>();

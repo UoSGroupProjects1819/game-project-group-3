@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class Cannonball : Interactable
 {
-
     CannonballStates cannonballState;
     public PlayerStates playerState;
     private Rigidbody rb;
 
     public static GameObject cannonballPrefab;
+    public static GameObject gunpowderPrefab;
 
     private bool spawning = false;
 
@@ -21,7 +21,6 @@ public class Cannonball : Interactable
         cannonballState.currentState = CannonballStates.CannonballState.Held;
         playerState.playerState = PlayerStates.PlayerState.pCannonball;
         PickedUpComponents(ref playerState, rb, this.gameObject);
-
     }
 
     private void Awake()

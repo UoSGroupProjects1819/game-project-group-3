@@ -14,22 +14,21 @@ public class DpadMenu : MonoBehaviour
     PlayerController playerController;
 
     Cannonball cannonball;
-
+    public DpadCannonballTimer cballBool;
     public GameObject cannonballPrefab;
 
-    Color dpadSolid;
-    Color dpadFaint;
-    Color dpadCol;
+    Gunpowder gunpowder;
+    public DpadBarrelTimer barrelBool;
+    public GameObject barrelPrefab;
 
-	void Start ()
+    //Wood wood;
+    //public DpadWoodTimer woodBool;
+    //public GameObject woodPrefab;
+
+
+    void Start ()
     {
         canvasGroup.alpha = 0;
-
-        dpadSolid = dpad.color;
-        dpadSolid.a = 0.95f;
-
-        dpadFaint = dpad.color;
-        dpadFaint.a = 0.0f;
     }
 	
     private void OnTriggerEnter(Collider other)
@@ -60,8 +59,6 @@ public class DpadMenu : MonoBehaviour
             inMenu = false;
             StartCoroutine("FadeOut");
         }
-
-        Debug.Log("dpad alpha value: " + dpad.color.a);
     }
 
     IEnumerator FadeOut()
@@ -88,14 +85,28 @@ public class DpadMenu : MonoBehaviour
     {
         switch (direction)
         {
-            case PlayerController.Direction.up:
-                GameObject playerObj = player.gameObject;
+            case PlayerController.Direction.left:
+                cballBool.onCooldown = true;
 
+                GameObject ballPlayerObj = player.gameObject;
                 GameObject newBall = Instantiate(cannonballPrefab);
-                newBall.GetComponent<Cannonball>().Spawn(playerObj);
-                
-                //cannonball = new Cannonball(playerObj, newBall);
+                newBall.GetComponent<Cannonball>().Spawn(ballPlayerObj);
+                break;
 
+            case PlayerController.Direction.right:
+                barrelBool.onCooldown = true;
+
+                GameObject barrelPlayerObj = player.gameObject;
+                GameObject newBarrel = Instantiate(barrelPrefab);
+                newBarrel.GetComponent<Gunpowder>().Spawn(barrelPlayerObj);
+                break;
+
+            case PlayerController.Direction.up:
+                //woodBool.onCooldown = true;
+
+                //GameObject woodPlayerObj = player.gameObject;
+                //GameObject newWood = Instantiate(woodPrefab);
+                //newWood.GetComponent<Wood>().Spawn(woodPlayerObj);
                 break;
         }
     }

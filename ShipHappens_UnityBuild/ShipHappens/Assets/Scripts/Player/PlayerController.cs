@@ -1,14 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class PlayerController : MonoBehaviour {
+public class PlayerController : MonoBehaviour
+{
 
     public enum Direction { up, left, right };
-
     Direction direction;
-
-
+    
     public PlayerStates playerState;
     public Mop mop;
 
@@ -18,12 +18,14 @@ public class PlayerController : MonoBehaviour {
     public string DpadHorizontal = "Dpad_Left/Right_P1";
     public string DpadVertical = "Dpad_Up/Down_P1";
 
+    public DpadBarrelTimer barrelTimer;
+    public DpadWoodTimer woodTimer;
+    public DpadCannonballTimer cballTimer;
 
 
-    // Use this for initialization
     void Start()
     {
-        playerState = this.GetComponent<PlayerStates>();  
+        playerState = this.GetComponent<PlayerStates>();
     }
 
     private void Update()
@@ -97,29 +99,27 @@ public class PlayerController : MonoBehaviour {
         {
             DpadMenu menu = col.gameObject.GetComponent<DpadMenu>();
 
-            if (Input.GetAxisRaw(DpadVertical) > 0 || (Input.GetKey(KeyCode.K)))
+            if (Input.GetAxisRaw(DpadVertical) > 0 || (Input.GetKey(KeyCode.K)) && woodTimer.onCooldown == false && playerState.playerState == PlayerStates.PlayerState.pEmpty)
             {
                 Debug.Log("DpadWood");
 
                 direction = Direction.up;
-
                 menu.CollectedWhenPressed(this, direction);
-
-                //WoodTimer woodscript = other.GetComponent<WoodTimer>();
-                //if (woodscript.onCooldown == false && playerState.playerState == PlayerStates.PlayerState.pEmpty)
-                //{
-                //    woodscript.onCooldown = true;
-                //    woodscript.currentPlayer = this.gameObject;
-                //}
             }
 
-            if (Input.GetAxisRaw(DpadHorizontal) > 0 || (Input.GetKey(KeyCode.J)))
+            if (Input.GetAxisRaw(DpadHorizontal) > 0 || (Input.GetKey(KeyCode.L)) && barrelTimer.onCooldown == false && playerState.playerState == PlayerStates.PlayerState.pEmpty)
             {
+                direction = Direction.right;
+                menu.CollectedWhenPressed(this, direction);
+
                 Debug.Log("DpadBarrel");
             }
 
-            if (Input.GetAxisRaw(DpadHorizontal) < 0 || (Input.GetKey(KeyCode.L)))
+            if (Input.GetAxisRaw(DpadHorizontal) < 0 || (Input.GetKey(KeyCode.J)) && cballTimer.onCooldown == false && playerState.playerState == PlayerStates.PlayerState.pEmpty)
             {
+                direction = Direction.left;
+                menu.CollectedWhenPressed(this, direction);
+
                 Debug.Log("DpadCannonBall");
             }
         }

@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class cannonUI : MonoBehaviour
 {
-    public Image cannonball, gunpowder, torch, cannonballBackground, gunpowderBackground;
+    public Image cannonball, gunpowder, torch, cannonballBackground, gunpowderBackground, torchBackground;
     public Sprite cannonballSprite, gunpowderSprite;
 
     public CannonState cannonState;
@@ -37,9 +37,13 @@ public class cannonUI : MonoBehaviour
                 gunpowderBackground.GetComponent<Image>().color = Color.green;
                 break;
             case CannonState.CannonStates.cFullyLoaded:
+                torchBackground.enabled = true;
+                cannonballBackground.enabled = false;
+                gunpowderBackground.enabled = false;
                 torch.enabled = true;
                 cannonball.enabled = false;
                 gunpowder.enabled = false;
+                torchBackground.GetComponent<Image>().color = Color.red;
                 break;
 
         }
@@ -47,11 +51,15 @@ public class cannonUI : MonoBehaviour
 
     private void Reset()
     {
+        torchBackground.enabled = false;
+        cannonballBackground.enabled = true;
+        gunpowderBackground.enabled = true;
+
         torch.enabled = false;
         cannonball.enabled = true;
         gunpowder.enabled = true;
 
-        cannonball.GetComponent<Image>().sprite = cannonballSprite;
-        gunpowder.GetComponent<Image>().sprite = gunpowderSprite;
+        cannonballBackground.GetComponent<Image>().color = Color.red;
+        gunpowderBackground.GetComponent<Image>().color = Color.red;
     }
 }

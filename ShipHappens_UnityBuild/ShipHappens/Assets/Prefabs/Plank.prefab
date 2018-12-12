@@ -137,7 +137,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d5e38a7fca2da84d89d69417cb82fc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PickPosition: {x: 0, y: -1.5, z: 0}
+  PickPosition: {x: 0.8, y: 2, z: 0}
   PickRotation: {x: 0, y: 90, z: 90}
   holdingPoint: {fileID: 0}
   playerState: {fileID: 0}

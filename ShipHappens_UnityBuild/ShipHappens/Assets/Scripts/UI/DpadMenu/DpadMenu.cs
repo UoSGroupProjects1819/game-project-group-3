@@ -21,9 +21,9 @@ public class DpadMenu : MonoBehaviour
     public DpadBarrelTimer barrelBool;
     public GameObject barrelPrefab;
 
-    //Wood wood;
-    //public DpadWoodTimer woodBool;
-    //public GameObject woodPrefab;
+    Wood wood;
+    public DpadWoodTimer woodBool;
+    public GameObject woodPrefab;
 
 
     void Start ()
@@ -102,11 +102,14 @@ public class DpadMenu : MonoBehaviour
                 break;
 
             case PlayerController.Direction.up:
-                //woodBool.onCooldown = true;
+                woodBool.onCooldown = true;
 
-                //GameObject woodPlayerObj = player.gameObject;
-                //GameObject newWood = Instantiate(woodPrefab);
-                //newWood.GetComponent<Wood>().Spawn(woodPlayerObj);
+                GameObject woodPlayerObj = player.gameObject;
+                GameObject newWood = Instantiate(woodPrefab);
+                newWood.GetComponent<Wood>().Spawn(woodPlayerObj);
+
+                WoodStates woodStates = newWood.GetComponent<WoodStates>();
+                woodStates.currentState = WoodStates.WoodState.Held;
                 break;
         }
     }

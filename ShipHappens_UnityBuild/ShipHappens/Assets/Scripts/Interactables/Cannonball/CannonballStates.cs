@@ -9,7 +9,7 @@ public class CannonballStates : MonoBehaviour
 
     public CannonballState currentState;
 
-    private void Start()
+    private void Awake()
     {
         currentState = CannonballState.Dropped;
     }

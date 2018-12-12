@@ -9,12 +9,7 @@ public class GunpowderStates : MonoBehaviour {
     public PowderState currentState;
 
 	// Use this for initialization
-	void Start () {
+	void Awake () {
         currentState = PowderState.Dropped;
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
 	}
 }

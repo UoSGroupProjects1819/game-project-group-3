@@ -14,10 +14,22 @@ public class Wood : Interactable
 
 
     // Use this for initialization
-    void Start ()
+    void Awake ()
     {
         woodStates = this.GetComponent<WoodStates>();
         rb = this.GetComponent<Rigidbody>();
+    }
+
+    public void Spawn(GameObject player)
+    {
+        Debug.Log(woodStates);
+        playerState = player.GetComponent<PlayerStates>();
+        playerController = player.GetComponent<PlayerController>();
+
+        SetPosition(ref player);
+        woodStates.currentState = WoodStates.WoodState.Held;
+        playerState.playerState = PlayerStates.PlayerState.pWood;
+        PickedUpComponents(ref playerState, rb, this.gameObject); 
     }
 
     public override void Action(GameObject player)
@@ -41,6 +53,7 @@ public class Wood : Interactable
         {
             this.transform.parent = null;
             playerController.wood = null;
+            playerController = null;
             woodStates.currentState = WoodStates.WoodState.Dropped;
             ResetComponents(ref playerState, rb);
         }
@@ -55,6 +68,7 @@ public class Wood : Interactable
         playerState.playerState = PlayerStates.PlayerState.pEmpty;
         playerState.itemHeld = null;
         playerController.wood = null;
+        playerController = null;
     }
 
 }

@@ -8,7 +8,7 @@ public class WoodStates : MonoBehaviour {
 
     public WoodState currentState;
 
-    private void Start()
+    private void Awake()
     {
         currentState = WoodState.Dropped;
     }

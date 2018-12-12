@@ -26,8 +26,13 @@ public class GameManager : MonoBehaviour
     public float floodLevel;
     private GameObject floodPlane;
 
+    [Header("[Hold Timers]")]
+    public DpadBarrelTimer barrelTimer;
+    public DpadWoodTimer woodTimer;
+    public DpadCannonballTimer cballTimer;
 
-    
+
+
 
 
     //singleton instance

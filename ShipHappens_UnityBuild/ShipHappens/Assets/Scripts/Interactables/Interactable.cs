@@ -18,7 +18,7 @@ public class Interactable : MonoBehaviour
 
     public void SetPosition(ref GameObject player)
     {
-        transform.parent = player.transform.GetChild(1).transform.GetChild(0);
+        transform.parent = player.transform.GetChild(0).transform.GetChild(0).transform.GetChild(0);
         transform.localPosition = PickPosition;
         transform.localEulerAngles = PickRotation;
     }

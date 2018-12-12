@@ -248,7 +248,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1817509743340126}
   m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: -0.7071068}
-  m_LocalPosition: {x: 10.938631, y: 7.9279394, z: -1.1094403}
+  m_LocalPosition: {x: 10.8, y: 7.9418592, z: 18.18}
   m_LocalScale: {x: 0.70000046, y: 0.7, z: 0.70000046}
   m_Children:
   - {fileID: 4233494236301574}
@@ -425,6 +425,7 @@ MonoBehaviour:
   playerStates: {fileID: 0}
   cannonFire: {fileID: 198684554761131606, guid: 0abf403fd0ef3dc429620c98a2fa1108,
     type: 2}
+  cannonUI: {fileID: 0}
 --- !u!114 &114205489204480582
 MonoBehaviour:
   m_ObjectHideFlags: 1

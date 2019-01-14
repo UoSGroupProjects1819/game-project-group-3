@@ -16,7 +16,6 @@ public class Cannon : Interactable
     {
         cannonState = this.GetComponent<CannonState>();
         cannonFire = transform.GetChild(1).GetComponent<ParticleSystem>();
-        Debug.Log(cannonFire.name);
     }
 
     public override void Action(GameObject player)
@@ -28,23 +27,35 @@ public class Cannon : Interactable
         {
                 // Perform action if the player is holding the cannonball
             case PlayerStates.PlayerState.pCannonball:
-                Debug.LogWarning("PLAYER HAS LOADED CANNONBALL!");
-                playerStates.playerState = PlayerStates.PlayerState.pEmpty;
-                GameObject cannonball = player.GetComponentInChildren<Interactable>().gameObject;
-                Destroy(cannonball);
+
+                // Check if cannonball is already loaded
+                if (cannonState.currentState == CannonState.CannonStates.cCannonBall)
+                {
+                    Debug.LogWarning("Cannonball already loaded");
+                    return;
+                }
+
+                OnAction(playerStates);
                 cannonState.UpdateState(CannonState.CannonStates.cCannonBall);
                 break;
            
                 // Perform action if the player is holding the gunpowder
             case PlayerStates.PlayerState.pGunpowder:
-                playerStates.playerState = PlayerStates.PlayerState.pEmpty;
-                GameObject gunpowder = player.GetComponentInChildren<Interactable>().gameObject;
-                Destroy(gunpowder);
+
+                // Check if gunpowder is already loaded
+                if (cannonState.currentState == CannonState.CannonStates.cGunpowder)
+                {
+                    Debug.LogWarning("Gunpowder already loaded");
+                    return;
+                }
+
+                OnAction(playerStates);
                 cannonState.UpdateState(CannonState.CannonStates.cGunpowder);   
                 break;
 
                 // Perform action if the player is holding the torch
             case PlayerStates.PlayerState.pTorch:
+
                 if (cannonState.currentState == CannonState.CannonStates.cFullyLoaded)
                 {
                     cannonState.currentState = CannonState.CannonStates.cEmpty;
@@ -58,12 +69,25 @@ public class Cannon : Interactable
                 
                 // Perfrom actions if the player is empty
             case PlayerStates.PlayerState.pEmpty:
+
                 Debug.LogWarning("Player isn't holding anything!");
                 break;
             // If the player is in any other state then break out of the action
             default:
+
                 Debug.LogWarning("That doesn't go in here!");
                 break;
         }
+    }
+
+    /// <summary>
+    /// Reset the player's current state and remove the object that is loaded into the cannon
+    /// </summary>
+    /// <param name="player"></param>
+    private void OnAction(PlayerStates player)
+    {
+        player.playerState = PlayerStates.PlayerState.pEmpty;
+        GameObject interactable = player.GetComponentInChildren<Interactable>().gameObject;
+        Destroy(interactable);
     }
 }

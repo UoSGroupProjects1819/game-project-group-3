@@ -11,7 +11,9 @@ public class SplashParticles : MonoBehaviour
     {
         if (other.tag == "Sea")
         {
-            playerPS.transform.position = player.transform.position;
+            Vector3 playerPos = new Vector3(player.transform.position.x, 2.5f, player.transform.position.z);
+            playerPS.transform.position = playerPos;
+
             playerPS.Play();
         }
     }

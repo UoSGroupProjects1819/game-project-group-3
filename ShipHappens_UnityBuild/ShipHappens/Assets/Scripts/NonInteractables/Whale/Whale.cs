@@ -39,7 +39,8 @@ public class Whale : MonoBehaviour
         }
     }
 
-    public void PlayWhaleParticles()
+
+    public void PlayWhaleParticles() //remember during testing - if players array is not correct size, for loop will not complete and whale will get stuck in active state
     {
         screenShake.mediumShake = true;
         screenShake.shouldShake = true;

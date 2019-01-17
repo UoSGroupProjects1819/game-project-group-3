@@ -7,8 +7,6 @@ public class Wheel : MonoBehaviour
     public enum WheelStates { Idle, Steering };
     public WheelStates wheelStates;
 
-    public GameObject player;
-
     void Update()
     {
         if (player != null)

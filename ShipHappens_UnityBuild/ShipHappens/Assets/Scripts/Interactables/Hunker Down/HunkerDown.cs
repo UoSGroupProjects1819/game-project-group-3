@@ -4,18 +4,36 @@ using UnityEngine;
 
 public class HunkerDown : Interactable
 {
-    public PlayerStates playerState;
-
-
-    void Start ()
+    public override void Action(GameObject player)
     {
-		
-	}
-	
-	void Update ()
+        PlayerStates playerState = player.GetComponent<PlayerStates>();
+
+        if (playerState.playerState == PlayerStates.PlayerState.pEmpty)
+        {
+            player.transform.parent = this.transform;
+            playerState.playerState = PlayerStates.PlayerState.pHoldingOn;
+            playerState.itemHeld = this.gameObject;
+            player.GetComponent<PlayerMovement>().canMove = false;
+        }
+    }
+
+    public override void DropItem()
     {
-		//if player within trigger && pEmpty
-            //action button will change player state to pHoldingOn
-        //if 'u' or unequip button, player will return to pEmpty
-	}
+        base.DropItem();
+    }
+
+    public void ReleaseMast(GameObject player)
+    {
+        PlayerStates playerState = player.GetComponent<PlayerStates>();
+
+        player.transform.parent = null;
+        playerState.playerState = PlayerStates.PlayerState.pEmpty;
+        playerState.itemHeld = null;
+        player.GetComponent<PlayerMovement>().canMove = true;
+    }
 }
+
+
+// Need to handle all players
+// Array
+// Handle which players drop off

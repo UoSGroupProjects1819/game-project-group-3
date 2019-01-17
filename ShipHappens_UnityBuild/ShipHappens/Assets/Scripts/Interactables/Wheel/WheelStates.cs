@@ -2,14 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WheelStates : MonoBehaviour {
+public class WheelStates : MonoBehaviour
+{
 
-    public enum WheelState { InUse, Unattended }
+    public enum WheelState { active, inactive }
 
     public WheelState currentState;
 
     void Start()
     {
-        currentState = WheelState.Unattended;
+        currentState = WheelState.inactive;
     }
 }

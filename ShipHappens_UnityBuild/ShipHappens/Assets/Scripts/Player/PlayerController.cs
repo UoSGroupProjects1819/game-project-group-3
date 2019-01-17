@@ -140,6 +140,16 @@ public class PlayerController : MonoBehaviour
         if(playerState.itemHeld == null)
         { return; }
 
+        if (playerState.playerState == PlayerStates.PlayerState.pHoldingOn && Input.GetKey(KeyCode.U))
+        {
+            HunkerDown other = this.GetComponentInParent<HunkerDown>();
+
+            if (other != null)
+            {
+                other.ReleaseMast(this.gameObject);
+            }
+        }
+
         if (playerState.itemHeld != null && Input.GetKey(KeyCode.U) || Input.GetButtonDown(Bbutton))
         {
             Interactable other = this.GetComponentInChildren<Interactable>();

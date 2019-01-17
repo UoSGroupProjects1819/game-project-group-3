@@ -3,43 +3,33 @@ guid: 4d18064d22ae7ac4fa74cfd38fb020a5
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
-    100000: cannon_left
-    100002: cannon_right
-    100004: //RootNode
-    100006: sail_middle
-    100008: ship_dark
-    100010: ship_mast
-    100012: steering
-    400000: cannon_left
-    400002: cannon_right
-    400004: //RootNode
-    400006: sail_middle
-    400008: ship_dark
-    400010: ship_mast
-    400012: steering
+    100000: //RootNode
+    100002: sail_middle
+    100004: ship_dark
+    100006: ship_mast
+    100008: steering
+    400000: //RootNode
+    400002: sail_middle
+    400004: ship_dark
+    400006: ship_mast
+    400008: steering
     2100000: wood
     2100002: iron
-    2100004: woodDark
-    2100006: window
+    2100004: window
+    2100006: woodDark
     2100008: _defaultMat
-    2300000: cannon_left
-    2300002: cannon_right
-    2300004: sail_middle
-    2300006: ship_dark
-    2300008: ship_mast
-    2300010: steering
-    3300000: cannon_left
-    3300002: cannon_right
-    3300004: sail_middle
-    3300006: ship_dark
-    3300008: ship_mast
-    3300010: steering
+    2300000: sail_middle
+    2300002: ship_dark
+    2300004: ship_mast
+    2300006: steering
+    3300000: sail_middle
+    3300002: ship_dark
+    3300004: ship_mast
+    3300006: steering
     4300000: ship_mast
     4300002: ship_dark
-    4300004: cannon_right
-    4300006: sail_middle
-    4300008: cannon_left
-    4300010: steering
+    4300004: sail_middle
+    4300006: steering
   externalObjects: {}
   materials:
     importMaterials: 1

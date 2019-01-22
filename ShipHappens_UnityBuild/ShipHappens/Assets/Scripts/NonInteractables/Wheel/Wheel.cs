@@ -9,10 +9,10 @@ public class Wheel : MonoBehaviour
 
     void Update()
     {
-        if (player != null)
-        {
-            //do not reassign player
-        }
+        //if (player != null)
+        //{
+        //    //do not reassign player
+        //}
 
 
         switch (wheelStates)

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    FloodController floodController;
 
     // keep track of # of active events & type of active events
     // timer to trigger events randomly
@@ -32,9 +33,7 @@ public class GameManager : MonoBehaviour
     public DpadCannonballTimer cballTimer;
 
 
-
-
-
+    #region singleton
     //singleton instance
     public static GameManager Instance { get; private set; }
 
@@ -52,6 +51,8 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
         }
 	}
+    #endregion
+
 
     void Start()
     {
@@ -60,7 +61,6 @@ public class GameManager : MonoBehaviour
         floodPlane.transform.position = floodStartPosition;
 
         TestList.Insert(0, new KeyValuePair<int, int>(1, 1));
-
     }
 
     void Update ()

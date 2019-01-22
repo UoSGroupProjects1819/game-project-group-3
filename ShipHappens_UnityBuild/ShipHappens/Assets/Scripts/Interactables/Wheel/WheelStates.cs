@@ -5,12 +5,20 @@ using UnityEngine;
 public class WheelStates : MonoBehaviour
 {
 
-    public enum WheelState { active, inactive }
-
-    public WheelState currentState;
+    public enum WheelState { Idle, Steering };
+    public WheelState wheelStates;
 
     void Start()
     {
-        currentState = WheelState.inactive;
+        wheelStates = WheelState.Idle;
     }
+
+    void Update()
+    {
+        switch (wheelStates)
+        {
+            case1: 
+        }
+    }
+
 }

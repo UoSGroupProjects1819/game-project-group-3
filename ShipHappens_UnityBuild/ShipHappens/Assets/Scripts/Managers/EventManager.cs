@@ -4,15 +4,12 @@ using UnityEngine;
 
 public class EventManager : MonoBehaviour
 {
-    public float timer;
-
-    [Header("[Task Reference]")]
-    public static string highestActivityName;
-    public static int highestActivityAmount;
+    // Dictionary to hold active tasks.  Key - String = Activity name.  Value - Int = Amount of Active Events
     public static Dictionary<string, int> activeTasks = new Dictionary<string, int>();
 
     public static void AddTask(string name)
     {
+        //Checks if task already exists, if it doesn't it adds a new Key into the dictionary
         if (activeTasks.ContainsKey(name))
         {
             activeTasks[name]++;
@@ -27,6 +24,7 @@ public class EventManager : MonoBehaviour
     {
         if (activeTasks.ContainsKey(name))
         {
+            // Decrement the amount of tasks active, without allowing the amount to go below 0
             if (activeTasks[name] <= 1)
             {
                 activeTasks[name] = 0;
@@ -42,10 +40,10 @@ public class EventManager : MonoBehaviour
         }
     }
 
-    public static void FindMostActive()
+    public static string FindMostActive()
     {
-        highestActivityName = null;
-        highestActivityAmount = 0;
+        string highestActivityName = null;
+        int highestActivityAmount = 0;
 
         foreach (KeyValuePair<string, int> task in activeTasks)
         {
@@ -56,5 +54,6 @@ public class EventManager : MonoBehaviour
         }
 
         Debug.Log("Highest Activity is: " + highestActivityName);
+        return highestActivityName;
     }
 }

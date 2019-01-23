@@ -10,18 +10,9 @@ public class Rocks : MonoBehaviour
     public float timer = 15;
     public float initialTime = 15;
 
+    public ScreenShake screenShake;
+    public Wheel wheel;
 
-    public Camera cam;
-    ScreenShake screenShake;
-
-    public GameObject wheelObj;
-    Wheel wheel;
-
-    private void Start()
-    {
-        screenShake = cam.GetComponent<ScreenShake>();
-        wheel = wheelObj.GetComponent<Wheel>();
-    }
 
     void Update()
     {

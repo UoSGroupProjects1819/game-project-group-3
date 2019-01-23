@@ -9,7 +9,7 @@ public class Wheel : Interactable
 
     public bool isInteractable = false;
 
-    Rocks rocks;
+    public Rocks rocks;
     public GameObject shipWheel;
     public float wheelSpeed = 5;
 

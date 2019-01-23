@@ -4,15 +4,22 @@ using UnityEngine;
 
 public class Wheel : Interactable
 {
-    public enum WheelStates { Idle, Entering, Active, Exiting };
+    public enum WheelStates { Idle, Active, Exiting };
     public WheelStates wheelStates;
 
+    public bool isInteractable = false;
+
     Rocks rocks;
+    public GameObject shipWheel;
+    public float wheelSpeed = 5;
 
     public GameObject currPlayer;
 
-    public GameObject shipWheel;
-    public float wheelSpeed;
+    public float timer = 4;
+    public float initialTime = 4;
+
+
+  
 
     void Update()
     {
@@ -21,12 +28,15 @@ public class Wheel : Interactable
             case WheelStates.Idle:
                 break;
 
-            case WheelStates.Entering:
-                wheelStates = WheelStates.Active;
-                break;
-
             case WheelStates.Active:
-                int x = Random.Range(1, 2);
+                timer -= Time.deltaTime; //if player completes timer, rock state exiting, wheel state exiting
+                if (timer <= 0)
+                {
+                    rocks.rockStates = Rocks.RockStates.Exiting;
+                    wheelStates = WheelStates.Exiting;
+                }
+
+                int x = Random.Range(1, 2); //spins wheel in random dir
                 if (x > 1)
                 {
                     shipWheel.transform.Rotate(Vector3.right * wheelSpeed * Time.deltaTime);
@@ -35,21 +45,17 @@ public class Wheel : Interactable
                 {
                     shipWheel.transform.Rotate(Vector3.right * -wheelSpeed * Time.deltaTime);
                 }
+                                
 
-                //do time countdown, 
-                    //if timer reaches end, stop hazard
-                    rocks.rockStates = Rocks.RockStates.exiting;
-
-                if (currPlayer.GetComponent<Rigidbody>().velocity.x > 0 || currPlayer.GetComponent<Rigidbody>().velocity.z > 0)
+                if (currPlayer.GetComponent<Rigidbody>().velocity.x > 0.2 || currPlayer.GetComponent<Rigidbody>().velocity.z > 0.2) //if player moves during timer, timer resets + action is cancelled + wheel states exiting
                 {
-                    //reset timer
-
-                    ReleaseWheel(currPlayer);
+                    wheelStates = WheelStates.Exiting;
                 }
-
                 break;
 
             case WheelStates.Exiting:
+                timer = initialTime;
+                ReleaseWheel(currPlayer);
                 wheelStates = WheelStates.Idle;
                 break;
         }
@@ -57,28 +63,29 @@ public class Wheel : Interactable
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Player" && rocks.rockStates == Rocks.RockStates.active)
+        if (other.tag == "Player" && rocks.rockStates == Rocks.RockStates.Active)
         {
             currPlayer = other.gameObject;
         }
     }
 
-
-
-    //  NEED TO ONLY  PERFORM ACTION ETC IF ROCK HAZARD IS ACTIVE.
-
-
-
     public override void Action(GameObject player)
     {
-        PlayerStates playerState = player.GetComponent<PlayerStates>();
-
-        if (playerState.playerState == PlayerStates.PlayerState.pEmpty)
+        if (isInteractable == false)
         {
-            playerState.playerState = PlayerStates.PlayerState.pWheel;
-            player.transform.LookAt(shipWheel.transform);
+            return;
+        }
+        else
+        {
+            PlayerStates playerState = player.GetComponent<PlayerStates>();
 
-            wheelStates = WheelStates.Entering;
+            if (playerState.playerState == PlayerStates.PlayerState.pEmpty)
+            {
+                playerState.playerState = PlayerStates.PlayerState.pWheel;
+                player.transform.LookAt(shipWheel.transform);
+
+                wheelStates = WheelStates.Active;
+            }
         }
     }
 
@@ -90,9 +97,15 @@ public class Wheel : Interactable
 
     public void ReleaseWheel (GameObject player)
     {
-        PlayerStates playerState = player.GetComponent<PlayerStates>();
+        if (isInteractable == false)
+        {
+            return;
+        }
+        else
+        {
+            PlayerStates playerState = player.GetComponent<PlayerStates>();
 
-        playerState.playerState = PlayerStates.PlayerState.pEmpty;
-        wheelStates = WheelStates.Exiting;
+            playerState.playerState = PlayerStates.PlayerState.pEmpty;
+        }
     }
 }

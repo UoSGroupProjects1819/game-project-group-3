@@ -4,32 +4,64 @@ using UnityEngine;
 
 public class Rocks : MonoBehaviour
 {
-    public enum RockStates { entering, active, exiting };
+    public enum RockStates { Idle, Entering, Active, Exiting };
     public RockStates rockStates;
 
-    public float timer;
+    public float timer = 15;
+    public float initialTime = 15;
+
+
+    public Camera cam;
+    ScreenShake screenShake;
+
+    public GameObject wheelObj;
+    Wheel wheel;
+
+    private void Start()
+    {
+        screenShake = cam.GetComponent<ScreenShake>();
+        wheel = wheelObj.GetComponent<Wheel>();
+    }
 
     void Update()
     {
         switch (rockStates)
         {
-            case RockStates.entering:
+            case RockStates.Idle:
+                //do nothing until directed by manager
+                break;
+
+            case RockStates.Entering:
                 //add count to game manager
                 //UI update
+                wheel.isInteractable = true; //enable player-wheel interaction
                 //Play audio
-                rockStates = RockStates.active;
+                //...wait for seconds?
+
+                timer = initialTime;
+                rockStates = RockStates.Active;
                 break;
-            case RockStates.active:
+
+            case RockStates.Active:
                 timer -= Time.deltaTime;
-                if (timer < 0)
+                if (timer <= 0) //wait for steering wheel, if not input
                 {
-                    //wait for steering wheel, if not input
+                    screenShake.lightShake = true; //shake screen
+                    screenShake.shouldShake = true;
+  
                     //damage ship
-                    //screenshake
+                        //water level manager ++
+
+                    rockStates = RockStates.Exiting;
                 }
                 break;
-            case RockStates.exiting:
+
+            case RockStates.Exiting:
                 //remove from game manager
+
+                wheel.isInteractable = false; //disable player-wheel interaction
+                rockStates = RockStates.Idle;
+                wheel.wheelStates = Wheel.WheelStates.Idle;
                 break;
         }
     }

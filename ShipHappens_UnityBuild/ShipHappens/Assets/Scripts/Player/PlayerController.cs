@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour
     Direction direction;
     
     public PlayerStates playerState;
+    private PlayerStates.PlayerState tempState;
     public Mop mop;
     public Wood wood;
 
@@ -20,6 +21,8 @@ public class PlayerController : MonoBehaviour
     public string DpadVertical = "Dpad_Up/Down_P1";
 
     public GameManager gameManager;
+
+    public bool edge = false;
 
 
     void Start()
@@ -54,7 +57,6 @@ public class PlayerController : MonoBehaviour
         }
 #endregion
     }
-
 
     private void OnTriggerStay(Collider col)
     {
@@ -96,6 +98,11 @@ public class PlayerController : MonoBehaviour
             }
         }
 
+        if (col.tag == "Edge")
+        {
+            edge = true;
+        }
+
         //if (col.gameObject.tag == "HoldOn")
         //{
         //    if (Input.GetKey(KeyCode.I) || Input.GetButtonDown(Abutton))
@@ -132,6 +139,14 @@ public class PlayerController : MonoBehaviour
 
                 Debug.Log("DpadCannonBall");
             }
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.tag == "Edge")
+        {
+            edge = false;
         }
     }
 

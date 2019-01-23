@@ -7,6 +7,8 @@ public class Bucket : Interactable
     public PlayerStates playerState;
     public BucketStates bucketState;
 
+    PlayerController playerController;
+
     public GameObject bucket;
     private Rigidbody rb;
 
@@ -17,6 +19,7 @@ public class Bucket : Interactable
     private Transform floodWaterStartPos;
     public float speed;
     public ParticleSystem bucketPS;
+
 
 
     void Start()
@@ -30,6 +33,7 @@ public class Bucket : Interactable
     public override void Action(GameObject player)
     {
         playerState = player.GetComponent<PlayerStates>();
+        playerController = player.GetComponent<PlayerController>();
 
         if (bucketState.currentState == BucketStates.BucketState.Dropped && playerState.playerState == PlayerStates.PlayerState.pEmpty)
         {
@@ -37,6 +41,18 @@ public class Bucket : Interactable
             bucketState.currentState = BucketStates.BucketState.Held;
             playerState.playerState = PlayerStates.PlayerState.pBucket;
             PickedUpComponents(ref playerState, rb, this.gameObject);
+        }
+
+        // Collect Water
+        if (bucketState.currentState == BucketStates.BucketState.Held && playerState.playerState == PlayerStates.PlayerState.pBucket)
+        {
+
+        }
+
+        // Bail Water
+        if (bucketState.currentState == BucketStates.BucketState.Full && )
+        {
+
         }
     }
 

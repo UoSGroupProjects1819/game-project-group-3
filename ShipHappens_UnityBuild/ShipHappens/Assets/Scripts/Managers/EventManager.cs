@@ -21,7 +21,7 @@ public class EventManager : MonoBehaviour
     }
 
     public static void RemoveTask(string name)
-    {
+    { 
         if (activeTasks.ContainsKey(name))
         {
             // Decrement the amount of tasks active, without allowing the amount to go below 0

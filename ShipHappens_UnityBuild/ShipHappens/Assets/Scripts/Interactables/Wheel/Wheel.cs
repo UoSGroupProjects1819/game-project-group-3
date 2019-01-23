@@ -13,13 +13,12 @@ public class Wheel : Interactable
     public GameObject shipWheel;
     public float wheelSpeed = 5;
 
-    public GameObject currPlayer;
+    public GameObject currPlayer = null;
 
     public float timer = 4;
     public float initialTime = 4;
 
-
-  
+      
 
     void Update()
     {
@@ -61,14 +60,6 @@ public class Wheel : Interactable
         }
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.tag == "Player" && rocks.rockStates == Rocks.RockStates.Active)
-        {
-            currPlayer = other.gameObject;
-        }
-    }
-
     public override void Action(GameObject player)
     {
         if (isInteractable == false)
@@ -77,6 +68,8 @@ public class Wheel : Interactable
         }
         else
         {
+            currPlayer = player;
+
             PlayerStates playerState = player.GetComponent<PlayerStates>();
 
             if (playerState.playerState == PlayerStates.PlayerState.pEmpty)
@@ -103,6 +96,8 @@ public class Wheel : Interactable
         }
         else
         {
+            currPlayer = null;
+
             PlayerStates playerState = player.GetComponent<PlayerStates>();
 
             playerState.playerState = PlayerStates.PlayerState.pEmpty;

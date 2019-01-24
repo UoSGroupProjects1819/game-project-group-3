@@ -8,7 +8,7 @@ public class FloodController : MonoBehaviour
     private Vector3 startPosition = new Vector3(-3.863f, 4.0f, 3.35f);
     private Vector3 maxHeight = new Vector3(-3.863f, 12.25f, 3.35f);
 
-    public int numberOfHoles;
+    public static int numberOfHoles;
     public float floodRate;
     public float floodRateModifier;
 

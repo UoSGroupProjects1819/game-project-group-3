@@ -35,6 +35,7 @@ public class Bucket : Interactable
         playerState = player.GetComponent<PlayerStates>();
         playerController = player.GetComponent<PlayerController>();
 
+        // Pick Bucket Up
         if (bucketState.currentState == BucketStates.BucketState.Dropped && playerState.playerState == PlayerStates.PlayerState.pEmpty)
         {
             SetPosition(ref player);
@@ -46,13 +47,17 @@ public class Bucket : Interactable
         // Collect Water
         if (bucketState.currentState == BucketStates.BucketState.Held && playerState.playerState == PlayerStates.PlayerState.pBucket)
         {
-
+            Debug.Log("Collect Water");
+            bucketState.currentState = BucketStates.BucketState.Full;
+            // Play animations etc
         }
 
         // Bail Water
-        if (bucketState.currentState == BucketStates.BucketState.Full && )
+        if (bucketState.currentState == BucketStates.BucketState.Full && playerState.playerState == PlayerStates.PlayerState.pBucket)
         {
-
+            Debug.Log("Bailed the water");
+            bucketState.currentState = BucketStates.BucketState.Held;
+            // Play animations etc
         }
     }
 
@@ -84,7 +89,7 @@ public class Bucket : Interactable
 
     public override void DropItem()
     {
-        if (bucketState.currentState == BucketStates.BucketState.Held)
+        if (bucketState.currentState == BucketStates.BucketState.Held || bucketState.currentState == BucketStates.BucketState.Full)
         {
             this.transform.parent = null;
             bucketState.currentState = BucketStates.BucketState.Dropped;

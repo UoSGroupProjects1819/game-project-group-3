@@ -98,19 +98,25 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        if (col.tag == "Edge")
+        if (col.tag == "Edge" && playerState.playerState == PlayerStates.PlayerState.pBucket)
         {
-            edge = true;
+            Bucket bucket = GetComponentInChildren<Bucket>();
+
+            if (Input.GetKeyDown(KeyCode.I) || Input.GetButtonDown(Abutton))
+            {
+                Debug.Log("Hey2");
+                bucket.Action(this.gameObject);
+            }
         }
 
-        //if (col.gameObject.tag == "HoldOn")
-        //{
-        //    if (Input.GetKey(KeyCode.I) || Input.GetButtonDown(Abutton))
-        //    {
-        //        Debug.Log("Action button pressed");
-        //        other.Action(this.gameObject);
-        //    }
-        //}
+        /*if (col.gameObject.tag == "HoldOn")
+        {
+            if (Input.GetKey(KeyCode.I) || Input.GetButtonDown(Abutton))
+            {
+                Debug.Log("Action button pressed");
+                other.Action(this.gameObject);
+            }
+        }*/
 
         if (col.gameObject.tag == "ShipHold")
         {
@@ -144,9 +150,9 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.tag == "Edge")
+        if (other.tag == "Edge" && playerState.playerState == PlayerStates.PlayerState.pEdge)
         {
-            edge = false;
+            playerState.playerState = PlayerStates.PlayerState.pBucket;
         }
     }
 

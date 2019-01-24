@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EventManager : MonoBehaviour
+public static class EventManager
 {
     // Dictionary to hold active tasks.  Key - String = Activity name.  Value - Int = Amount of Active Events
     public static Dictionary<string, int> activeTasks = new Dictionary<string, int>();
@@ -55,5 +55,27 @@ public class EventManager : MonoBehaviour
 
         Debug.Log("Highest Activity is: " + highestActivityName);
         return highestActivityName;
+    }
+
+    public static bool IsActive(string name)
+    {
+        if (activeTasks.ContainsKey(name))
+        {
+            if (activeTasks[name] >= 1)
+            { return true; }
+            else
+            { return false; }
+        }
+        else
+        { return false; }
+    }
+
+    public static int ActiveAmount(string name)
+    {
+        if (activeTasks.ContainsKey(name))
+        { return activeTasks[name]; }
+        else
+        { return 0; }
+        
     }
 }

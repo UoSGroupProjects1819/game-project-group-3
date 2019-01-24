@@ -8,9 +8,6 @@ public class BottomBubbleEnd : MonoBehaviour
     private Animator bottomAnimator;
     public CrowsNestUI CNui;
 
-    public ScreenShake shake;
-    public GameObject water;
-
     void Start ()
     {
         bottomAnimator = GetComponent<Animator>();
@@ -21,5 +18,6 @@ public class BottomBubbleEnd : MonoBehaviour
     {
         CNui.playBottom = false;
         bottomAnimator.SetBool("PlayBottom", false);
+        CNui.is1active = false;
     }
 }

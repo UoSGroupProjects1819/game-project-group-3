@@ -18,5 +18,6 @@ public class RightBubbleEnd : MonoBehaviour
     {
         CNui.playRight = false;
         rightAnimator.SetBool("PlayRight", false);
+        CNui.is3active = false;
     }
 }

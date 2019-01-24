@@ -10,6 +10,7 @@ public class Rocks : MonoBehaviour
     public float timer = 15;
     public float initialTime = 15;
 
+    public CrowsNestUI CNui;
     public ScreenShake screenShake;
     public Wheel wheel;
 
@@ -19,15 +20,18 @@ public class Rocks : MonoBehaviour
         switch (rockStates)
         {
             case RockStates.Idle:
-                //do nothing until directed by manager
+                //////////////////////////////////////do nothing until directed by manager
                 break;
 
             case RockStates.Entering:
-                //add count to game manager
-                //UI update
-                wheel.isInteractable = true; //enable player-wheel interaction
-                //Play audio
-                //...wait for seconds?
+                /////////////////////////////////////add count to game manager
+
+                //update UI manager
+                CNui.nextAvailableBubbleContents = CNui.ImgRocks;
+                CNui.playNextAvailableBubble = true;
+
+                //update wheel event
+                wheel.isInteractable = true;
 
                 timer = initialTime;
                 rockStates = RockStates.Active;

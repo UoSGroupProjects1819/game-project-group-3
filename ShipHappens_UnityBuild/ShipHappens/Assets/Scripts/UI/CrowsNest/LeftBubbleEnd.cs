@@ -18,5 +18,6 @@ public class LeftBubbleEnd : MonoBehaviour
     {
         CNui.playLeft = false;
         leftAnimator.SetBool("PlayLeft", false);
+        CNui.is2active = false;
     }
 }

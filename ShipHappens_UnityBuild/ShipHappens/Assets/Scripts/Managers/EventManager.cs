@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EventManager : MonoBehaviour
+public static class EventManager
 {
     // Dictionary to hold active tasks.  Key - String = Activity name.  Value - Int = Amount of Active Events
     public static Dictionary<string, int> activeTasks = new Dictionary<string, int>();

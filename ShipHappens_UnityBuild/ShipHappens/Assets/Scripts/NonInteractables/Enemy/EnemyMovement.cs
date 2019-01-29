@@ -21,22 +21,22 @@ public class EnemyMovement : MonoBehaviour
         {
             if (isTopSide)
             {
-                transform.Translate(Vector3.forward * speed *Time.deltaTime);
+                transform.Translate(-Vector3.forward * speed *Time.deltaTime);
             }
             else if (!isTopSide)
             {
-                transform.Translate(-Vector3.forward * speed * Time.deltaTime);
+                transform.Translate(Vector3.forward * speed * Time.deltaTime);
             }
         }
         else if (!isLeftSide)
         {
             if (isTopSide)
             {
-                transform.Translate(Vector3.forward * speed * Time.deltaTime);
+                transform.Translate(-Vector3.forward * speed * Time.deltaTime);
             }
             else if (!isTopSide)
             {
-                transform.Translate(-Vector3.forward * speed * Time.deltaTime);
+                transform.Translate(Vector3.forward * speed * Time.deltaTime);
             }
         }
     }

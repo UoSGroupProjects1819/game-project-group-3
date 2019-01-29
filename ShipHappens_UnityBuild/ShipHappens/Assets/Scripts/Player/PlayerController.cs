@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour
     Direction direction;
     
     public PlayerStates playerState;
+    private PlayerStates.PlayerState tempState;
     public Mop mop;
     public Wood wood;
 
@@ -20,6 +21,8 @@ public class PlayerController : MonoBehaviour
     public string DpadVertical = "Dpad_Up/Down_P1";
 
     public GameManager gameManager;
+
+    public bool edge = false;
 
 
     void Start()
@@ -54,7 +57,6 @@ public class PlayerController : MonoBehaviour
         }
 #endregion
     }
-
 
     private void OnTriggerStay(Collider col)
     {
@@ -96,14 +98,25 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        //if (col.gameObject.tag == "HoldOn")
-        //{
-        //    if (Input.GetKey(KeyCode.I) || Input.GetButtonDown(Abutton))
-        //    {
-        //        Debug.Log("Action button pressed");
-        //        other.Action(this.gameObject);
-        //    }
-        //}
+        if (col.tag == "Edge" && playerState.playerState == PlayerStates.PlayerState.pBucket)
+        {
+            Bucket bucket = GetComponentInChildren<Bucket>();
+
+            if (Input.GetKeyDown(KeyCode.I) || Input.GetButtonDown(Abutton))
+            {
+                Debug.Log("Hey2");
+                bucket.Action(this.gameObject);
+            }
+        }
+
+        /*if (col.gameObject.tag == "HoldOn")
+        {
+            if (Input.GetKey(KeyCode.I) || Input.GetButtonDown(Abutton))
+            {
+                Debug.Log("Action button pressed");
+                other.Action(this.gameObject);
+            }
+        }*/
 
         if (col.gameObject.tag == "ShipHold")
         {
@@ -135,10 +148,28 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.tag == "Edge" && playerState.playerState == PlayerStates.PlayerState.pEdge)
+        {
+            playerState.playerState = PlayerStates.PlayerState.pBucket;
+        }
+    }
+
     private void DropItem()
     {
         if(playerState.itemHeld == null)
         { return; }
+
+        if (playerState.playerState == PlayerStates.PlayerState.pHoldingOn && Input.GetKey(KeyCode.U))
+        {
+            HunkerDown other = this.GetComponentInParent<HunkerDown>();
+
+            if (other != null)
+            {
+                other.ReleaseMast(this.gameObject);
+            }
+        }
 
         if (playerState.itemHeld != null && Input.GetKey(KeyCode.U) || Input.GetButtonDown(Bbutton))
         {

@@ -56,6 +56,7 @@ public class Whale : MonoBehaviour
             if (players[i].GetComponent<PlayerStates>().playerState == PlayerStates.PlayerState.pHoldingOn)
             {
                 //you are holding on, you are safe
+                continue;
             }
             else
             {

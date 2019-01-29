@@ -5,17 +5,35 @@ using UnityEngine;
 public class FloodController : MonoBehaviour
 {
     public GameObject floodPlane;
-    public float targetHeight;
-    public float currentHeight;
-    public float floodSpeed;
+    private Vector3 startPosition = new Vector3(-3.863f, 4.0f, 3.35f);
+    private Vector3 maxHeight = new Vector3(-3.863f, 12.25f, 3.35f);
 
-	void Start ()
+    public static int numberOfHoles;
+    public float floodRate;
+    public float floodRateModifier;
+
+    private void Start()
     {
-		
-	}
-	
-	void Update ()
+        floodPlane.transform.position = startPosition;
+    }
+
+    void Update ()
     {
-		
-	}
+        floodRate = numberOfHoles * floodRateModifier;
+        floodPlane.transform.position = new Vector3(startPosition.x, startPosition.y + floodRate, startPosition.z);
+
+
+
+
+        //clamp min, max y-axis values
+        if (floodPlane.transform.position.y < 4.0f)
+        {
+            floodPlane.transform.position = startPosition;
+        }
+        if (floodPlane.transform.position.y > 12.2f)
+        {
+            floodPlane.transform.position = maxHeight;
+        }
+    }
 }
+ 

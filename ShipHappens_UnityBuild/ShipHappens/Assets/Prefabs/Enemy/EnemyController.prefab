@@ -109,7 +109,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ff2d8c2f9ef4544e9aadf5dfeec4459, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pirateFlag: {fileID: 0}
+  pirateFlag: {fileID: 5110032060858043367, guid: 437ce49ba22dbc14a8e08bdfb71bdf28,
+    type: 3}
   shipSpawners:
   - {fileID: 9131460281255330948}
   - {fileID: 9131460281725200225}

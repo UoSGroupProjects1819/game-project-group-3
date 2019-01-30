@@ -17,6 +17,7 @@ TagManager:
   - ShipDeck
   - Edge
   - Hole
+  - PirateFlag
   layers:
   - Default
   - TransparentFX

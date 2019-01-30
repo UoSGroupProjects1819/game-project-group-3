@@ -2,10 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CannonState : MonoBehaviour {
+public class CannonState : MonoBehaviour
+{
 
     public enum CannonStates { cEmpty, cGunpowder, cCannonBall, cFullyLoaded };
     public CannonStates currentState;
+
+    public GameObject target;
 
     // Use this for initialization
     void Start () {
@@ -43,11 +46,33 @@ public class CannonState : MonoBehaviour {
             // If the cannon is ready to be fired, run code when player has the torch
             case CannonStates.cFullyLoaded:
                 currentState = CannonStates.cFullyLoaded;
+
+                if (target != null)
+                {
+                    Destroy(target);
+                    target = null;
+                }
                 break;
             // Fallback case incase of an error
             default:
                 break;
         }
     }
-	
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.tag == "PirateFlag")
+        {
+            target = other.gameObject;
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.tag == "PirateFlag")
+        {
+            target = null;
+        }
+    }
+
 }

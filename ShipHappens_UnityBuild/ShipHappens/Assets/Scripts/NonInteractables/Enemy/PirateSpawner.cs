@@ -41,7 +41,6 @@ public class PirateSpawner : MonoBehaviour
         Debug.Log("is colliding");
         if (other.gameObject.tag == "PirateFlag")
         {
-            Debug.Log("is pirate");
             Destroy(other.gameObject);
         }
     }

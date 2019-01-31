@@ -5401,6 +5401,7 @@ MonoBehaviour:
   playerStates: {fileID: 0}
   cannonFire: {fileID: 198684554761131606, guid: 0abf403fd0ef3dc429620c98a2fa1108,
     type: 3}
+  target: {fileID: 0}
   cannonUI: {fileID: 0}
 --- !u!114 &114408522570137396
 MonoBehaviour:
@@ -5415,7 +5416,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentState: 0
-  target: {fileID: 0}
 --- !u!65 &709805924
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5427,8 +5427,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 7.46, y: 17.23, z: 8.04}
-  m_Center: {x: 0, y: 0.34, z: -15.3}
+  m_Size: {x: 7.4600005, y: 21.77732, z: 22.442966}
+  m_Center: {x: -6.9225116e-14, y: 6.337442, z: -25.694021}
 --- !u!95 &709805930
 Animator:
   serializedVersion: 3

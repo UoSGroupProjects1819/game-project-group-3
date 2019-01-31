@@ -904,16 +904,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 114887634530895370, guid: 3fb15632e3988064088f996a3ae4087b,
-        type: 3}
-      propertyPath: playerState
-      value: 7
-      objectReference: {fileID: 0}
     - target: {fileID: 114753918150958520, guid: 3fb15632e3988064088f996a3ae4087b,
         type: 3}
       propertyPath: playerPS
       value: 
       objectReference: {fileID: 927276683}
+    - target: {fileID: 114887634530895370, guid: 3fb15632e3988064088f996a3ae4087b,
+        type: 3}
+      propertyPath: playerState
+      value: 7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3fb15632e3988064088f996a3ae4087b, type: 3}
 --- !u!4 &1291105638 stripped
@@ -1050,10 +1050,6 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 4294967295
       objectReference: {fileID: 0}
-    - target: {fileID: 1712205212970574, guid: 046986ab40a96a54b82409c42e762d3b, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4645694278088332, guid: 046986ab40a96a54b82409c42e762d3b, type: 3}
       propertyPath: m_LocalPosition.x
       value: 20.58
@@ -1093,6 +1089,10 @@ PrefabInstance:
     - target: {fileID: 4645694278088332, guid: 046986ab40a96a54b82409c42e762d3b, type: 3}
       propertyPath: m_LocalScale.z
       value: 0.7000007
+      objectReference: {fileID: 0}
+    - target: {fileID: 1712205212970574, guid: 046986ab40a96a54b82409c42e762d3b, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1194652631339824, guid: 046986ab40a96a54b82409c42e762d3b, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -1181,10 +1181,6 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 4294967295
       objectReference: {fileID: 0}
-    - target: {fileID: 1712205212970574, guid: 046986ab40a96a54b82409c42e762d3b, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4645694278088332, guid: 046986ab40a96a54b82409c42e762d3b, type: 3}
       propertyPath: m_LocalPosition.x
       value: -28.16
@@ -1228,6 +1224,10 @@ PrefabInstance:
     - target: {fileID: 4645694278088332, guid: 046986ab40a96a54b82409c42e762d3b, type: 3}
       propertyPath: m_LocalScale.z
       value: 0.7000007
+      objectReference: {fileID: 0}
+    - target: {fileID: 1712205212970574, guid: 046986ab40a96a54b82409c42e762d3b, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1194652631339824, guid: 046986ab40a96a54b82409c42e762d3b, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -1385,12 +1385,12 @@ PrefabInstance:
     - target: {fileID: 7404120346457874521, guid: 05fa7690e89c7294880d85055c34234b,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 33
+      value: 41.9
       objectReference: {fileID: 0}
     - target: {fileID: 7404120346457874521, guid: 05fa7690e89c7294880d85055c34234b,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -19.1
+      value: -16.6
       objectReference: {fileID: 0}
     - target: {fileID: 7404120346457874521, guid: 05fa7690e89c7294880d85055c34234b,
         type: 3}
@@ -1805,5 +1805,45 @@ PrefabInstance:
       propertyPath: pirateFlag
       value: 
       objectReference: {fileID: 1686291351}
+    - target: {fileID: 9131460281255330948, guid: 91a54340a48258942b2025d52400d84a,
+        type: 3}
+      propertyPath: m_Name
+      value: ShipSpawnerBL
+      objectReference: {fileID: 0}
+    - target: {fileID: 9131460281255330949, guid: 91a54340a48258942b2025d52400d84a,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 9131460281725200225, guid: 91a54340a48258942b2025d52400d84a,
+        type: 3}
+      propertyPath: m_Name
+      value: ShipSpawnerBR
+      objectReference: {fileID: 0}
+    - target: {fileID: 9131460281725200226, guid: 91a54340a48258942b2025d52400d84a,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -37
+      objectReference: {fileID: 0}
+    - target: {fileID: 9131460280266795275, guid: 91a54340a48258942b2025d52400d84a,
+        type: 3}
+      propertyPath: m_Name
+      value: ShipSpawnerTL
+      objectReference: {fileID: 0}
+    - target: {fileID: 9131460280266795380, guid: 91a54340a48258942b2025d52400d84a,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 9131460280782836563, guid: 91a54340a48258942b2025d52400d84a,
+        type: 3}
+      propertyPath: m_Name
+      value: ShipSpawnerTR
+      objectReference: {fileID: 0}
+    - target: {fileID: 9131460280782836572, guid: 91a54340a48258942b2025d52400d84a,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -37
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 91a54340a48258942b2025d52400d84a, type: 3}

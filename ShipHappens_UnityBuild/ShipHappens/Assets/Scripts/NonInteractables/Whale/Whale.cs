@@ -11,7 +11,7 @@ public class Whale : MonoBehaviour
     public ParticleSystem whalePS;
     public Animator anim;
     public Camera cam;
-    ScreenShake screenShake;
+    public ScreenShake screenShake;
 
     public GameObject[] players;
 

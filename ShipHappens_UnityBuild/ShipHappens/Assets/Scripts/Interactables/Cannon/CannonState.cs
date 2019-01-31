@@ -10,10 +10,22 @@ public class CannonState : MonoBehaviour
 
     public GameObject target;
 
+    Animator anim;
+
     // Use this for initialization
     void Start () {
         currentState = CannonStates.cEmpty;
+        anim = GetComponent<Animator>();
 	}
+
+    private void Update()
+    {
+        if (currentState == CannonStates.cFullyLoaded && target != null)
+        {
+            anim.SetBool("InRange", true);
+            Debug.Log(anim.GetBool("InRange"));
+        }
+    }
 
     // Check what state the cannon is in to perform certain actions
     public void UpdateState(CannonStates cannonState)
@@ -46,12 +58,6 @@ public class CannonState : MonoBehaviour
             // If the cannon is ready to be fired, run code when player has the torch
             case CannonStates.cFullyLoaded:
                 currentState = CannonStates.cFullyLoaded;
-
-                if (target != null)
-                {
-                    Destroy(target);
-                    target = null;
-                }
                 break;
             // Fallback case incase of an error
             default:
@@ -71,6 +77,7 @@ public class CannonState : MonoBehaviour
     {
         if (other.tag == "PirateFlag")
         {
+            anim.SetBool("InRange", false);
             target = null;
         }
     }

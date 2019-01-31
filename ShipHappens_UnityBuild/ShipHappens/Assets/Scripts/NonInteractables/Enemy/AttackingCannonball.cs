@@ -27,7 +27,7 @@ public class AttackingCannonball : MonoBehaviour
         {
             RaycastHit hit;
             Debug.DrawRay(cannonballPrefab.transform.position, cannonballPrefab.transform.up * -1, Color.white);
-            if (Physics.Raycast(cannonballPrefab.transform.position, cannonballPrefab.transform.up * -1, out hit, 2, 1 << 29))
+            if (Physics.Raycast(cannonballPrefab.transform.position, cannonballPrefab.transform.up * -1, out hit, 2))
             {
                 Debug.DrawRay(cannonballPrefab.transform.position, cannonballPrefab.transform.up, Color.red);
                 cannonballPrefab.transform.up = -hit.normal;

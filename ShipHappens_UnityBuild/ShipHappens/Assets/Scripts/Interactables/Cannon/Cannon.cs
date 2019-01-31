@@ -10,12 +10,26 @@ public class Cannon : Interactable
 
     public ParticleSystem cannonFire;
 
+    Animator anim;
+
+
+    public GameObject target;
+
     public cannonUI cannonUI;
 
     public void Start()
     {
         cannonState = this.GetComponent<CannonState>();
-        cannonFire = transform.GetChild(1).GetComponent<ParticleSystem>();
+        cannonFire = GetComponentInChildren<ParticleSystem>();
+        anim = GetComponent<Animator>();
+    }
+
+    private void Update()
+    {
+        if (cannonState.currentState == CannonState.CannonStates.cFullyLoaded && target != null)
+        {
+            anim.SetBool("InRange", true);
+        }
     }
 
     public override void Action(GameObject player)
@@ -56,11 +70,22 @@ public class Cannon : Interactable
                 // Perform action if the player is holding the torch
             case PlayerStates.PlayerState.pTorch:
 
-                if (cannonState.currentState == CannonState.CannonStates.cFullyLoaded)
+                // Hits enemy
+                if (cannonState.currentState == CannonState.CannonStates.cFullyLoaded && anim.GetBool("InRange") == true)
                 {
                     cannonState.currentState = CannonState.CannonStates.cEmpty;
-                    cannonFire.Play();               
+                    Destroy(target);
+                    target = null;
+                    anim.SetBool("InRange", false);
+                    cannonFire.Play();
                 }
+                // Fires cannonball into the ocean
+                else if (cannonState.currentState == CannonState.CannonStates.cFullyLoaded)
+                {
+                    cannonState.currentState = CannonState.CannonStates.cEmpty;
+                    cannonFire.Play();
+                }
+                // Cannon isn't loaded
                 else
                 {
                     Debug.LogWarning("The cannon is NOT fully loaded");
@@ -89,5 +114,22 @@ public class Cannon : Interactable
         player.playerState = PlayerStates.PlayerState.pEmpty;
         GameObject interactable = player.GetComponentInChildren<Interactable>().gameObject;
         Destroy(interactable);
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.tag == "PirateFlag")
+        {
+            target = other.gameObject;
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.tag == "PirateFlag")
+        {
+            anim.SetBool("InRange", false);
+            target = null;
+        }
     }
 }

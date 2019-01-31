@@ -8,23 +8,15 @@ public class CannonState : MonoBehaviour
     public enum CannonStates { cEmpty, cGunpowder, cCannonBall, cFullyLoaded };
     public CannonStates currentState;
 
-    public GameObject target;
-
-    Animator anim;
 
     // Use this for initialization
     void Start () {
         currentState = CannonStates.cEmpty;
-        anim = GetComponent<Animator>();
 	}
 
     private void Update()
     {
-        if (currentState == CannonStates.cFullyLoaded && target != null)
-        {
-            anim.SetBool("InRange", true);
-            Debug.Log(anim.GetBool("InRange"));
-        }
+        
     }
 
     // Check what state the cannon is in to perform certain actions
@@ -65,21 +57,6 @@ public class CannonState : MonoBehaviour
         }
     }
 
-    private void OnTriggerStay(Collider other)
-    {
-        if (other.tag == "PirateFlag")
-        {
-            target = other.gameObject;
-        }
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.tag == "PirateFlag")
-        {
-            anim.SetBool("InRange", false);
-            target = null;
-        }
-    }
+    
 
 }

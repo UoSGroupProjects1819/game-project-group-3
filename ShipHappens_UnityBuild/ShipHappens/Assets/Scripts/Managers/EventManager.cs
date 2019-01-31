@@ -7,6 +7,9 @@ public static class EventManager
     // Dictionary to hold active tasks.  Key - String = Activity name.  Value - Int = Amount of Active Events
     public static Dictionary<string, int> activeTasks = new Dictionary<string, int>();
 
+    public static List<Event> nextEvent = new List<Event>();
+
+    #region Dictionary Functions
     public static void AddTask(string name)
     {
         //Checks if task already exists, if it doesn't it adds a new Key into the dictionary
@@ -75,7 +78,23 @@ public static class EventManager
         if (activeTasks.ContainsKey(name))
         { return activeTasks[name]; }
         else
-        { return 0; }
-        
+        { return 0; }     
     }
+    #endregion
+    #region List Functions
+    public static void AddEvent(params Event[] events)
+    {
+        foreach (Event e in events)
+        {
+            nextEvent.Add(e);
+        }
+    }
+
+    public static void PickNextEvent()
+    {
+        int i = Random.Range(0, nextEvent.Count + 1);
+
+        nextEvent[i].Spawn();
+    }
+    #endregion
 }

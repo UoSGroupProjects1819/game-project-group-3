@@ -21,13 +21,15 @@ public class FloodController : MonoBehaviour
     {
         floodRate = numberOfHoles * floodRateModifier;
 
-        floodPlane.transform.position = new Vector3(startPosition.x, startPosition.y + floodRate, startPosition.z);
+        //floodPlane.transform.position = new Vector3(startPosition.x, startPosition.y + floodRate, startPosition.z);
 
+        ClampFloodLevel();
+    }
 
-
-
+    void ClampFloodLevel()
+    {
         //clamp min, max y-axis values
-        if (floodPlane.transform.position.y < 4.0f)
+        if (floodPlane.transform.position.y <= 3.95f)
         {
             floodPlane.transform.position = startPosition;
         }

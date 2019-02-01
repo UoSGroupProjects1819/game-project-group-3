@@ -12,12 +12,19 @@ public class SpawnSeagull : MonoBehaviour
     public float maxRadius;
     public Vector3 spawnPosition;
 
+    public GameObject floodPlane;
+
+    public GameObject bottomRampLeft, bottomRampRight, topRampLeft, topRampRight;
+    public GameObject leftSide, rightSide;
+
     private void Update()
     {
         if (Input.GetMouseButtonUp(0))
         {
             SpawnGull();
         }
+
+        CheckWaterOnDeck();
     }
 
     void SpawnGull()
@@ -32,6 +39,38 @@ public class SpawnSeagull : MonoBehaviour
         else
         {
             SpawnGull();
+        }
+    }
+
+    void CheckWaterOnDeck()
+    {
+        if (floodPlane.transform.position.y > 10.5f)
+        {
+            //remove ramps
+            bottomRampLeft.SetActive(false);
+            bottomRampRight.SetActive(false);
+            topRampLeft.SetActive(false);
+            topRampRight.SetActive(false);
+        }
+        else
+        {
+            bottomRampLeft.SetActive(true);
+            bottomRampRight.SetActive(true);
+            topRampLeft.SetActive(true);
+            topRampRight.SetActive(true);
+        }
+
+        if (floodPlane.transform.position.y > 8.5f)
+        {
+            //remove mids
+            leftSide.SetActive(false);
+            rightSide.SetActive(false);
+        }
+        else
+        {
+            //all active
+            leftSide.SetActive(true);
+            rightSide.SetActive(true);
         }
     }
 }

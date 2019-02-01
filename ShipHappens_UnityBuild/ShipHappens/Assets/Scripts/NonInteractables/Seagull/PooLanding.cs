@@ -25,8 +25,12 @@ public class PooLanding : MonoBehaviour
 
     public GameObject player;
 
+    private GameObject floodPlane;
+
     void Start()
     {
+        floodPlane = GameObject.Find("FloodWater");
+
         //for (int i = 0; i < players.Length; i++)
         //{
         //    Physics.IgnoreCollision(GetComponent<Collider>(), players[i].GetComponent<Collider>());
@@ -43,6 +47,12 @@ public class PooLanding : MonoBehaviour
         col = pooPrefab.GetComponent<SphereCollider>();
 
         InitialScale = transform.localScale;
+    }
+
+    private void Update()
+    {
+        if (transform.position.y < floodPlane.transform.position.y - 0.65f)
+            Destroy(this.gameObject);
     }
 
     void FixedUpdate()
@@ -78,24 +88,8 @@ public class PooLanding : MonoBehaviour
             rb.useGravity = false;
             rb.constraints = RigidbodyConstraints.FreezeAll;
             col.isTrigger = true;
-            //StartCoroutine("PooGrowth");
             pooPrefab.transform.localScale = FinalScale;
             pooPrefab.transform.SetParent(collision.gameObject.transform);
         }
     }
-
-    //IEnumerator PooGrowth()
-    //{
-    //    float progress = 0;
-
-    //    while (progress <= 1)
-    //    {
-    //        pooPrefab.transform.localScale = Vector3.Lerp(InitialScale, FinalScale, progress);
-    //        progress += Time.deltaTime * TimeScale;
-    //        while (progress <= 1)
-    //        yield return null;
-    //    }
-    //    transform.localScale = FinalScale;
-    //}
-
 }

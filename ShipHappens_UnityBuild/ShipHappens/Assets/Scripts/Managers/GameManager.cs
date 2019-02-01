@@ -54,32 +54,32 @@ public class GameManager : MonoBehaviour
     #endregion
 
 
-    void Start()
-    {
-        floodPlane = GameObject.FindGameObjectWithTag("FloodWater");
+    //void Start()
+    //{
+    //    floodPlane = GameObject.FindGameObjectWithTag("FloodWater");
 
-        floodPlane.transform.position = floodStartPosition;
+    //    floodPlane.transform.position = floodStartPosition;
 
-        TestList.Insert(0, new KeyValuePair<int, int>(1, 1));
-    }
+    //    TestList.Insert(0, new KeyValuePair<int, int>(1, 1));
+    //}
 
-    void Update ()
-    {
-        //Timer();
+    //void Update()
+    //{
+    //    Timer();
 
-        UpdateFlood();
-	}
+    //    UpdateFlood();
+    //}
 
-    //set flood height
-    void UpdateFlood()
-    {
-        if (floodPlane.transform.position.y < 4)
-        {
-            floodPlane.transform.position = floodStartPosition;
-        }
+    ////set flood height
+    //void UpdateFlood()
+    //{
+    //    if (floodPlane.transform.position.y < 4)
+    //    {
+    //        floodPlane.transform.position = floodStartPosition;
+    //    }
 
-        floodPlane.transform.position = new Vector3(floodStartPosition.x, floodLevel + 4f, floodStartPosition.z);
-    }
+    //    floodPlane.transform.position = new Vector3(floodStartPosition.x, floodLevel + 4f, floodStartPosition.z);
+    //}
 
     //void Timer()
     //{
@@ -92,8 +92,8 @@ public class GameManager : MonoBehaviour
     //    List<KeyValuePair<GameObject, int>> KVlist = new List<KeyValuePair<GameObject, int>>();
 
 
-        
-        
+
+
 
     //    if (timer < 0)
     //    {

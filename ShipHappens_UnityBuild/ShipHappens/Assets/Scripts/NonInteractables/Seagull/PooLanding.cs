@@ -77,6 +77,11 @@ public class PooLanding : MonoBehaviour
                     belowPoo.transform.localScale = OverflowScale;
                     isLanded = true;
                 }
+
+                if (hit.transform.tag == "hole")
+                {
+                    Destroy(this.gameObject);
+                }
             }
         }
     }

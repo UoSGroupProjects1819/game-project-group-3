@@ -14,7 +14,7 @@ public class SpawnSeagull : MonoBehaviour
 
     public GameObject floodPlane;
 
-    public GameObject bottomRampLeft, bottomRampRight, topRampLeft, topRampRight;
+    public GameObject bottomRampLeft, bottomRampRight, topRampLeft, topRampRight, midLsmall, midLsmallHigh, midRsmall, midRsmallHigh;
     public GameObject leftSide, rightSide;
 
     private void Update()
@@ -65,12 +65,20 @@ public class SpawnSeagull : MonoBehaviour
             //remove mids
             leftSide.SetActive(false);
             rightSide.SetActive(false);
+            midLsmall.SetActive(false);
+            midLsmallHigh.SetActive(false);
+            midRsmall.SetActive(false);
+            midRsmallHigh.SetActive(false);
         }
         else
         {
             //all active
             leftSide.SetActive(true);
             rightSide.SetActive(true);
+            midLsmall.SetActive(true);
+            midLsmallHigh.SetActive(true);
+            midRsmall.SetActive(true);
+            midRsmallHigh.SetActive(true);
         }
     }
 }

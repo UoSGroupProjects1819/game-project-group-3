@@ -18,6 +18,9 @@ TagManager:
   - Edge
   - Hole
   - PirateFlag
+  - FirePit
+  - Cannon
+  - WheelArea
   layers:
   - Default
   - TransparentFX

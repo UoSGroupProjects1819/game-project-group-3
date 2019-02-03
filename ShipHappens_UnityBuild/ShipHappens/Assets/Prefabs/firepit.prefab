@@ -4862,7 +4862,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4452287269543490}
-  - component: {fileID: 755356100}
+  - component: {fileID: 1260016301352322875}
   m_Layer: 0
   m_Name: firepit
   m_TagString: Untagged
@@ -4886,8 +4886,8 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &755356100
-BoxCollider:
+--- !u!135 &1260016301352322875
+SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -4897,5 +4897,5 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2.2, y: 1, z: 1}
-  m_Center: {x: 0, y: -0.24, z: 0}
+  m_Radius: 1.0577016
+  m_Center: {x: 0.0037765503, y: 0, z: -0.028854847}

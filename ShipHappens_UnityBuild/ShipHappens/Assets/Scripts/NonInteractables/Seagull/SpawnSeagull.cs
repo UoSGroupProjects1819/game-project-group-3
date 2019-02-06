@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpawnSeagull : MonoBehaviour
+public class SpawnSeagull : Event
 {
     public GameObject shipCentre;
     public GameObject seagull;
@@ -21,13 +21,13 @@ public class SpawnSeagull : MonoBehaviour
     {
         if (Input.GetMouseButtonUp(0))
         {
-            SpawnGull();
+            Spawn();
         }
 
         CheckWaterOnDeck();
     }
 
-    void SpawnGull()
+    public override void Spawn()
     {
         spawnPosition = new Vector3(Random.Range(-radiusRange, radiusRange), shipCentre.transform.position.y, Random.Range(-radiusRange, radiusRange));
         float distance = Vector3.Distance(spawnPosition, shipCentre.transform.position);
@@ -38,7 +38,7 @@ public class SpawnSeagull : MonoBehaviour
         }
         else
         {
-            SpawnGull();
+            Spawn();
         }
     }
 

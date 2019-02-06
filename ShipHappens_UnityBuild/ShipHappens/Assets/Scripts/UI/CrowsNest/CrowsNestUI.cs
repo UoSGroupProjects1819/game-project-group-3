@@ -29,6 +29,11 @@ public class CrowsNestUI : MonoBehaviour
     public Image bottomBubble, bottomBubbleContents;
     public Image rightBubble, rightBubbleContents;
 
+    [Header("[Hold Timers]")]
+    public DpadBarrelTimer barrelTimer;
+    public DpadWoodTimer woodTimer;
+    public DpadCannonballTimer cballTimer;
+
     [Header("BubbleContents")]
     public Image ImgChest;
     public Image ImgRocks;
@@ -49,6 +54,9 @@ public class CrowsNestUI : MonoBehaviour
     public Image ImgWood;
     public Image ImgBarrel;
     public Image ImgCannonBall;
+
+    
+
 
 
     /*

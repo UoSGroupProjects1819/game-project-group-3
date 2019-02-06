@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Whale : MonoBehaviour
+public class Whale : Event
 {
     public enum WhaleStates { entering, active, exiting };
     public WhaleStates whaleStates;
@@ -18,7 +18,13 @@ public class Whale : MonoBehaviour
 	void Start ()
     {
         screenShake = cam.GetComponent<ScreenShake>();
-	}
+    }
+
+    public override void Spawn()
+    {
+        whale.SetActive(true);
+        whaleStates = WhaleStates.entering;
+    }
 
     void Update()
     {
@@ -35,6 +41,7 @@ public class Whale : MonoBehaviour
                 break;
             case WhaleStates.exiting:
                 anim.SetBool("PlaySplash", false);
+                whale.SetActive(false);
                 break;
         }
     }

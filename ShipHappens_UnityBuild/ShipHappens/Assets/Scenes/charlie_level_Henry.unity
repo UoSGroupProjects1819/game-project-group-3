@@ -112,6 +112,25 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &28017866 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1899193109598160, guid: f1db7e219e25f9e40ab18bbae41def6b,
+    type: 3}
+  m_PrefabInstance: {fileID: 1174372936}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &28017869
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 28017866}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf244c40dc1d3a04d81d73a5e69aab3a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nextEvent: []
 --- !u!1 &29777971
 GameObject:
   m_ObjectHideFlags: 0
@@ -792,6 +811,21 @@ PrefabInstance:
       propertyPath: midLsmall
       value: 
       objectReference: {fileID: 635694858}
+    - target: {fileID: 114051535277632916, guid: 585c6690eff4d3949b44254720f21b6c,
+        type: 3}
+      propertyPath: barrelTimer
+      value: 
+      objectReference: {fileID: 486403885}
+    - target: {fileID: 114051535277632916, guid: 585c6690eff4d3949b44254720f21b6c,
+        type: 3}
+      propertyPath: woodTimer
+      value: 
+      objectReference: {fileID: 486403886}
+    - target: {fileID: 114051535277632916, guid: 585c6690eff4d3949b44254720f21b6c,
+        type: 3}
+      propertyPath: cballTimer
+      value: 
+      objectReference: {fileID: 486403884}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 585c6690eff4d3949b44254720f21b6c, type: 3}
 --- !u!4 &1117603850 stripped
@@ -1005,20 +1039,22 @@ MonoBehaviour:
   m_GameObject: {fileID: 1329773197}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0f92bd04f482b464b9c366b3ec54b58b, type: 3}
+  m_Script: {fileID: 11500000, guid: cf244c40dc1d3a04d81d73a5e69aab3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Abutton: A_P1
-  timer: 0
-  lowRand: 0
-  highRand: 0
-  NonInteractablePrefabs: []
-  activeTasks: []
-  floodStartPosition: {x: -3.863, y: 4, z: 6.85}
-  floodLevel: 0
-  barrelTimer: {fileID: 486403885}
-  woodTimer: {fileID: 486403886}
-  cballTimer: {fileID: 486403884}
+  nextEvent:
+  - name: Seagull
+    weight: 0
+    spawner: {fileID: 0}
+  - name: Enemy
+    weight: 0
+    spawner: {fileID: 0}
+  - name: Rocks
+    weight: 0
+    spawner: {fileID: 0}
+  - name: Whale
+    weight: 0
+    spawner: {fileID: 0}
 --- !u!4 &1329773199
 Transform:
   m_ObjectHideFlags: 0
@@ -1835,6 +1871,25 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fba44513fe5b0c24182384846dcecb18, type: 3}
+--- !u!1 &2081160623 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1639365085017408, guid: 585c6690eff4d3949b44254720f21b6c,
+    type: 3}
+  m_PrefabInstance: {fileID: 1034869352}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2081160624
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2081160623}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf244c40dc1d3a04d81d73a5e69aab3a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nextEvent: []
 --- !u!4 &2118965939 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4380002800021572, guid: 585c6690eff4d3949b44254720f21b6c,
@@ -1861,7 +1916,7 @@ PrefabInstance:
     - target: {fileID: 24991729129709250, guid: 19783359f76d6da45825e60302c486ad,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1
+      value: -9.6
       objectReference: {fileID: 0}
     - target: {fileID: 24991729129709250, guid: 19783359f76d6da45825e60302c486ad,
         type: 3}

@@ -2,15 +2,116 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public static class EventManager
+[System.Serializable]
+public struct EventDetails
 {
-    // Dictionary to hold active tasks.  Key - String = Activity name.  Value - Int = Amount of Active Events
-    public static Dictionary<string, int> activeTasks = new Dictionary<string, int>();
+    public string name;
+    public int weight;
+    public float modifier;
+    public Event spawner;
+    
+}
 
-    public static List<Event> nextEvent = new List<Event>();
+public class EventManager : MonoBehaviour
+{
+    SpawnSeagull spawnSeagull;
+    PirateSpawner pirateSpawner;
+    Rocks rocks;
+
+    // Dictionary to hold active tasks.  Key - String = Activity name.  Value - Int = Amount of Active Events
+    private Dictionary<string, int> activeTasks = new Dictionary<string, int>();
+
+    public List<EventDetails> nextEvent = new List<EventDetails>();
+
+    private float initialTimer = 5;
+    public float timer = 1;
+
+    private void Update()
+    {
+        CountDown();
+    }
+
+    void CountDown()
+    {
+        timer -= Time.deltaTime;
+
+        if (timer <= 0)
+        {
+            PickEvent();
+            timer = initialTimer;
+        }
+
+        
+    }
+
+    void PickEvent()
+    {
+        Debug.Log("Pick Event");
+        // Do Event stuff
+        int maxAmount = 0;
+        foreach (var evt in nextEvent)
+        {
+            maxAmount += evt.weight;
+        }
+
+        float rand = Random.Range(0, maxAmount);
+        int i = 0;
+
+        foreach (var evt in nextEvent)
+        {
+            if (IsActive("Whale"))
+            {
+                PickEvent();
+                return;
+            }
+
+            if (IsActive("Rock"))
+            {
+                PickEvent();
+                return;
+            }
+
+            i += evt.weight;
+            if (i > rand)
+            {
+                Debug.Log("Event " + evt.name + " Picked");
+                //evt.spawner.Spawn();
+                return;  
+            }
+        }
+    }
+
+
+    // List of events with weights:
+    // sea gulls - 45
+    // cannon - 25
+    // rock - 15
+    // whale - 15
+
+    // gulls, cannon, whale - max: 75
+
+    /*
+     * 
+     * for (Event evt in Events) {
+     *      if (evt.active == false)
+     *          activable_events.Add(evt, total)
+     *          total += evt.weight
+     *          
+     * }
+     * 
+     * rand = Random.Range(0, total)
+     * 
+     * for ( ActiveEvent evt in activable_events) {
+     *      if ( rand < 
+     * }
+     * 
+     * 
+     */
+
+
 
     #region Dictionary Functions
-    public static void AddTask(string name)
+    private void AddTask(string name)
     {
         //Checks if task already exists, if it doesn't it adds a new Key into the dictionary
         if (activeTasks.ContainsKey(name))
@@ -23,7 +124,7 @@ public static class EventManager
         }
     }
 
-    public static void RemoveTask(string name)
+    private void RemoveTask(string name)
     { 
         if (activeTasks.ContainsKey(name))
         {
@@ -43,7 +144,7 @@ public static class EventManager
         }
     }
 
-    public static string FindMostActive()
+    private string FindMostActive()
     {
         string highestActivityName = null;
         int highestActivityAmount = 0;
@@ -60,7 +161,7 @@ public static class EventManager
         return highestActivityName;
     }
 
-    public static bool IsActive(string name)
+    private bool IsActive(string name)
     {
         if (activeTasks.ContainsKey(name))
         {
@@ -73,7 +174,7 @@ public static class EventManager
         { return false; }
     }
 
-    public static int ActiveAmount(string name)
+    private int ActiveAmount(string name)
     {
         if (activeTasks.ContainsKey(name))
         { return activeTasks[name]; }
@@ -82,19 +183,19 @@ public static class EventManager
     }
     #endregion
     #region List Functions
-    public static void AddEvent(params Event[] events)
-    {
-        foreach (Event e in events)
-        {
-            nextEvent.Add(e);
-        }
-    }
+    //private void AddEvent(params Event[] events)
+    //{
+    //    foreach (Event e in events)
+    //    {
+    //        nextEvent.Add(e);
+    //    }
+    //}
 
-    public static void PickNextEvent()
-    {
-        int i = Random.Range(0, nextEvent.Count + 1);
+    //private void PickNextEvent()
+    //{
+    //    int i = Random.Range(0, nextEvent.Count + 1);
 
-        nextEvent[i].Spawn();
-    }
+    //    nextEvent[i].Spawn();
+    //}
     #endregion
 }

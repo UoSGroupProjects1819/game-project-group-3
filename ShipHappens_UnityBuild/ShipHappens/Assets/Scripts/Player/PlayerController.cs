@@ -20,14 +20,14 @@ public class PlayerController : MonoBehaviour
     public string DpadHorizontal = "Dpad_Left/Right_P1";
     public string DpadVertical = "Dpad_Up/Down_P1";
 
-    public GameManager gameManager;
+    public CrowsNestUI UIManager;
 
     public bool edge = false;
 
 
     void Start()
     {
-        gameManager = FindObjectOfType<GameManager>();
+        UIManager = FindObjectOfType<CrowsNestUI>();
         playerState = this.GetComponent<PlayerStates>();
     }
 
@@ -122,7 +122,7 @@ public class PlayerController : MonoBehaviour
         {
             DpadMenu menu = col.gameObject.GetComponent<DpadMenu>();
 
-            if (Input.GetAxisRaw(DpadVertical) > 0 || (Input.GetKey(KeyCode.K)) && gameManager.woodTimer.onCooldown == false && playerState.playerState == PlayerStates.PlayerState.pEmpty)
+            if (Input.GetAxisRaw(DpadVertical) > 0 || (Input.GetKey(KeyCode.K)) && UIManager.woodTimer.onCooldown == false && playerState.playerState == PlayerStates.PlayerState.pEmpty)
             {
                 Debug.Log("DpadWood");
 
@@ -130,7 +130,7 @@ public class PlayerController : MonoBehaviour
                 menu.CollectedWhenPressed(this, direction);
             }
 
-            if (Input.GetAxisRaw(DpadHorizontal) > 0 || (Input.GetKey(KeyCode.L)) && gameManager.barrelTimer.onCooldown == false && playerState.playerState == PlayerStates.PlayerState.pEmpty)
+            if (Input.GetAxisRaw(DpadHorizontal) > 0 || (Input.GetKey(KeyCode.L)) && UIManager.barrelTimer.onCooldown == false && playerState.playerState == PlayerStates.PlayerState.pEmpty)
             {
                 direction = Direction.right;
                 menu.CollectedWhenPressed(this, direction);
@@ -138,7 +138,7 @@ public class PlayerController : MonoBehaviour
                 Debug.Log("DpadBarrel");
             }
 
-            if (Input.GetAxisRaw(DpadHorizontal) < 0 || (Input.GetKey(KeyCode.J)) && gameManager.cballTimer.onCooldown == false && playerState.playerState == PlayerStates.PlayerState.pEmpty)
+            if (Input.GetAxisRaw(DpadHorizontal) < 0 || (Input.GetKey(KeyCode.J)) && UIManager.cballTimer.onCooldown == false && playerState.playerState == PlayerStates.PlayerState.pEmpty)
             {
                 direction = Direction.left;
                 menu.CollectedWhenPressed(this, direction);

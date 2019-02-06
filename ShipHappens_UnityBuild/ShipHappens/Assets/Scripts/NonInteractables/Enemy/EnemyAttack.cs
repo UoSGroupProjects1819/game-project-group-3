@@ -37,7 +37,7 @@ public class EnemyAttack : MonoBehaviour
     {
             randomSpawnPos.x = Random.Range(-27, 18);
             randomSpawnPos.y = 65;
-            randomSpawnPos.z = Random.Range(-18, 36);
+            randomSpawnPos.z = Random.Range(-15.5f, 36);
 
             RaycastHit hit;
             Debug.DrawRay(randomSpawnPos, Vector3.up * -70, Color.white);

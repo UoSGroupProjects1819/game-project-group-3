@@ -8,8 +8,7 @@ public struct EventDetails
     public string name;
     public int weight;
     public float modifier;
-    public Event spawner;
-    
+    public Event spawner;   
 }
 
 public class EventManager : MonoBehaviour
@@ -39,9 +38,7 @@ public class EventManager : MonoBehaviour
         {
             PickEvent();
             timer = initialTimer;
-        }
-
-        
+        }   
     }
 
     void PickEvent()
@@ -58,17 +55,23 @@ public class EventManager : MonoBehaviour
 
         foreach (var evt in nextEvent)
         {
-            //if (IsActive("Whale"))
-            //{
-            //    PickEvent();
-            //    return;
-            //}
+            if (IsActive("Whale"))
+            {
+                PickEvent();
+                return;
+            }
 
-            //if (IsActive("Rock"))
-            //{
-            //    PickEvent();
-            //    return;
-            //}
+            if (IsActive("Rock"))
+            {
+                PickEvent();
+                return;
+            }
+
+            if (ActiveAmount("Enemy") > 4)
+            {
+                PickEvent();
+                return;
+            }
 
             i += evt.weight;
             if (i >= rand)
@@ -76,11 +79,6 @@ public class EventManager : MonoBehaviour
                 Debug.Log("Event " + evt.name + " Picked");
                 evt.spawner.Spawn();
                 AddTask(evt.name);
-
-                foreach (KeyValuePair<string, int> task in activeTasks)
-                {
-                    Debug.Log(task.Key + " has " + task.Value + " tasks.");
-                }
                 return;  
             }
         }
@@ -129,7 +127,7 @@ public class EventManager : MonoBehaviour
         }
     }
 
-    private void RemoveTask(string name)
+    public void RemoveTask(string name)
     { 
         if (activeTasks.ContainsKey(name))
         {
@@ -186,21 +184,5 @@ public class EventManager : MonoBehaviour
         else
         { return 0; }     
     }
-    #endregion
-    #region List Functions
-    //private void AddEvent(params Event[] events)
-    //{
-    //    foreach (Event e in events)
-    //    {
-    //        nextEvent.Add(e);
-    //    }
-    //}
-
-    //private void PickNextEvent()
-    //{
-    //    int i = Random.Range(0, nextEvent.Count + 1);
-
-    //    nextEvent[i].Spawn();
-    //}
     #endregion
 }

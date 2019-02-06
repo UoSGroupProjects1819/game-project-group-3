@@ -19,7 +19,7 @@ public class EventManager : MonoBehaviour
     Rocks rocks;
 
     // Dictionary to hold active tasks.  Key - String = Activity name.  Value - Int = Amount of Active Events
-    private Dictionary<string, int> activeTasks = new Dictionary<string, int>();
+    public Dictionary<string, int> activeTasks = new Dictionary<string, int>();
 
     public List<EventDetails> nextEvent = new List<EventDetails>();
 
@@ -74,7 +74,13 @@ public class EventManager : MonoBehaviour
             if (i >= rand)
             {
                 Debug.Log("Event " + evt.name + " Picked");
-                //evt.spawner.Spawn();
+                evt.spawner.Spawn();
+                AddTask(evt.name);
+
+                foreach (KeyValuePair<string, int> task in activeTasks)
+                {
+                    Debug.Log(task.Key + " has " + task.Value + " tasks.");
+                }
                 return;  
             }
         }

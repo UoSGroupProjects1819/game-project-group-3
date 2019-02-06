@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PirateSpawner : MonoBehaviour
+public class PirateSpawner : Event
 {
     public GameObject pirateFlag;
     public GameObject[] shipSpawners;
@@ -15,12 +15,12 @@ public class PirateSpawner : MonoBehaviour
     {
         if (Input.GetButton("Fire1"))
         {
-            SpawnPirate();
+            Spawn();
         }
     }
 
 
-    void SpawnPirate()
+    public override void Spawn()
     {
         int random = Random.Range(0, 4);
 

@@ -60,7 +60,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: ef8d30c2552f8064cb9b66adf4f580e8, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -122,4 +122,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   holePrefab: {fileID: 1813765403530404, guid: f1be82c1e25980b4a9cedda318d0e134, type: 3}
-  parentPrefab: {fileID: 363003489, guid: e7685e7e475b9464ab0ccf63b8499065, type: 3}

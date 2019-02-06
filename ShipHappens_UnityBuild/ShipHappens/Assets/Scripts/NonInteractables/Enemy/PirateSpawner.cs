@@ -6,6 +6,8 @@ public class PirateSpawner : Event
 {
     public GameObject pirateFlag;
     public GameObject[] shipSpawners;
+    public EnemyAttack enemyAttack;
+
     //public GameObject shipCentre;
 
     //public bool isBow = false;
@@ -38,9 +40,9 @@ public class PirateSpawner : Event
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("is colliding");
         if (other.gameObject.tag == "PirateFlag")
         {
+            enemyAttack.SpawnAttackPrefab();
             Destroy(other.gameObject);
         }
     }

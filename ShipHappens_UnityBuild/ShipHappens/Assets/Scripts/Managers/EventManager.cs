@@ -46,7 +46,6 @@ public class EventManager : MonoBehaviour
 
     void PickEvent()
     {
-        Debug.Log("Pick Event");
         // Do Event stuff
         int maxAmount = 0;
         foreach (var evt in nextEvent)
@@ -59,20 +58,20 @@ public class EventManager : MonoBehaviour
 
         foreach (var evt in nextEvent)
         {
-            if (IsActive("Whale"))
-            {
-                PickEvent();
-                return;
-            }
+            //if (IsActive("Whale"))
+            //{
+            //    PickEvent();
+            //    return;
+            //}
 
-            if (IsActive("Rock"))
-            {
-                PickEvent();
-                return;
-            }
+            //if (IsActive("Rock"))
+            //{
+            //    PickEvent();
+            //    return;
+            //}
 
             i += evt.weight;
-            if (i > rand)
+            if (i >= rand)
             {
                 Debug.Log("Event " + evt.name + " Picked");
                 //evt.spawner.Spawn();

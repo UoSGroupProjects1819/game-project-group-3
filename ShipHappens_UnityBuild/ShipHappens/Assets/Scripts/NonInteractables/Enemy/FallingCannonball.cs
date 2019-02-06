@@ -13,7 +13,8 @@ public class FallingCannonball : MonoBehaviour
             //when hit deck swap model to hole
             Instantiate(holePrefab, transform.position, transform.rotation);
             holePrefab.GetComponent<HoleRadius>().holeStates = HoleRadius.HoleStates.Impact;
-            DestroyImmediate(this.gameObject);
+            Destroy(this.transform.parent.gameObject);
+            Destroy(this.gameObject);
         }
 
         if (collision.gameObject.tag == "Player")

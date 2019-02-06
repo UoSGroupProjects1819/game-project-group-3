@@ -14,55 +14,30 @@ public class EnemyAttack : MonoBehaviour
 
     public float shrinkProjectorStartSize = 8.33f;
 
-    public bool goodSpawn = false;
-
-    private void Start()
-    {
-        //Vector3 spawnAreaCoords = spawnArea.GetComponent<Renderer>().bounds.size;
-        //Debug.Log("X: " + spawnAreaCoords.x);
-        //Debug.Log("Y: " + spawnAreaCoords.y);
-        //Debug.Log("Z: " + spawnAreaCoords.z);
-    }
+    bool spawned = false;
 
     private void Update()
     {
         if (Input.GetMouseButtonUp(1))
         {
-            TestPosition();
-        }
+            do
+            {
+                if (TestPosition())
+                {
+                    Instantiate(prefab, randomSpawnPos, Quaternion.Euler(90, 0, 0));
+                    spawned = true;
+                }
+            } while (spawned == false);
 
-        //shrink projector as cannonball y-axis drops
-        shrinkingProjector.orthographicSize = cannonballPrefab.transform.position.y - 8;
-
-        //Mathf.Clamp(shrinkingProjector.orthographicSize, 0, 9);
-        if (shrinkingProjector.orthographicSize > 8.33f)
-            shrinkingProjector.orthographicSize = 8.33f;
-
-        if (goodSpawn && cannonballPrefab.activeInHierarchy == false)
-        {
-            //Destroy(shrinkingProjector);
-            //Destroy(this.gameObject);
-            DestroyImmediate(shrinkingProjector);
-            DestroyImmediate(this.gameObject);
+            spawned = false;
         }
     }
 
-    //void RandomSpawnPosition()
-    //{
-    //    randomSpawnPos.y = 65;
-    //    randomSpawnPos.x = Random.Range(-27, 18);
-    //    randomSpawnPos.z = Random.Range(-18, 36);
-    //}
-
-    void TestPosition()
+    bool TestPosition()
     {
-        while (!goodSpawn)
-        {
             randomSpawnPos.x = Random.Range(-27, 18);
             randomSpawnPos.y = 65;
             randomSpawnPos.z = Random.Range(-18, 36);
-
-            Debug.Log(randomSpawnPos.x);
 
             RaycastHit hit;
             Debug.DrawRay(randomSpawnPos, Vector3.up * -70, Color.white);
@@ -70,14 +45,9 @@ public class EnemyAttack : MonoBehaviour
             {
                 if (hit.transform.tag == "ShipDeck")
                 {
-                    Vector3 raisedPos = randomSpawnPos;
-                    raisedPos.y = 65f;
-                    Instantiate(prefab, raisedPos, Quaternion.Euler(90, 0, 0));
-                    Instantiate(shrinkingProjector, raisedPos, Quaternion.Euler(90, 0, 0));
-                    Instantiate(cannonballPrefab, raisedPos, Quaternion.identity);
-                    goodSpawn = true;
+                    return true;
                 }
             }
-        }
+            return false;
     }
 }

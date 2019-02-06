@@ -532,6 +532,10 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 4294967295
       objectReference: {fileID: 0}
+    - target: {fileID: 1414497102469216, guid: 585c6690eff4d3949b44254720f21b6c, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: 1197293789017458, guid: 585c6690eff4d3949b44254720f21b6c, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 0
@@ -587,10 +591,6 @@ PrefabInstance:
     - target: {fileID: 1630102633520124, guid: 585c6690eff4d3949b44254720f21b6c, type: 3}
       propertyPath: m_IsActive
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1414497102469216, guid: 585c6690eff4d3949b44254720f21b6c, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 1450400936870222, guid: 585c6690eff4d3949b44254720f21b6c, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -901,11 +901,11 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1267863779}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.47357318, y: 0.064634345, z: 0.124194674}
-  m_Center: {x: -0.00008955111, y: -0.10223072, z: 0.013396355}
+  m_Size: {x: 0.47357318, y: 0.064634345, z: 0.26917976}
+  m_Center: {x: -0.00008955111, y: -0.10223075, z: 0.085888915}
 --- !u!1001 &1277348523
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1042,11 +1042,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4775905988168786, guid: 81cad89171338f4418e6f9f07abafa7e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.36
+      value: 0.94
       objectReference: {fileID: 0}
     - target: {fileID: 4775905988168786, guid: 81cad89171338f4418e6f9f07abafa7e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 26.74
+      value: 16.77
       objectReference: {fileID: 0}
     - target: {fileID: 4775905988168786, guid: 81cad89171338f4418e6f9f07abafa7e, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1919,6 +1919,12 @@ PrefabInstance:
       propertyPath: shrinkingProjector
       value: 
       objectReference: {fileID: 3964374965364312125, guid: 9245257f1952cff47ac9272f68315774,
+        type: 3}
+    - target: {fileID: 24991729129709251, guid: 19783359f76d6da45825e60302c486ad,
+        type: 3}
+      propertyPath: prefab
+      value: 
+      objectReference: {fileID: 6641387408932580507, guid: b4e4dfff81fe3c642bdef0cde98af3b9,
         type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 19783359f76d6da45825e60302c486ad, type: 3}

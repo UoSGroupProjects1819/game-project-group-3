@@ -19,11 +19,23 @@ public class FloodController : MonoBehaviour
 
     void Update ()
     {
-        floodRate = numberOfHoles * floodRateModifier;
+        floodRate = numberOfHoles * (floodRateModifier / 100);
 
-        floodPlane.transform.position = new Vector3(startPosition.x, startPosition.y + floodRate, startPosition.z);
+        floodPlane.transform.position = new Vector3(startPosition.x, startPosition.y += floodRate, startPosition.z);
 
         ClampFloodLevel();
+
+        /*
+        //Debug.Log("number of holes: " + numberOfHoles);
+
+        floodRate = numberOfHoles * floodRateModifier;
+
+        Vector3 nextFloodPosition = new Vector3(startPosition.x, startPosition.y + floodRate, startPosition.z);
+
+
+
+        floodPlane.transform.position = Vector3.Lerp(floodPlane.transform.position, nextFloodPosition, Time.deltaTime);
+        */
     }
 
     void ClampFloodLevel()

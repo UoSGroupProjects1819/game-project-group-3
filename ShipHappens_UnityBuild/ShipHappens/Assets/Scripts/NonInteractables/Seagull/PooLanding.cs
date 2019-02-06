@@ -78,7 +78,7 @@ public class PooLanding : MonoBehaviour
                     isLanded = true;
                 }
 
-                if (hit.transform.tag == "hole")
+                if (hit.transform.tag == "Hole")
                 {
                     Destroy(this.gameObject);
                 }

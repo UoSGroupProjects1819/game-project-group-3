@@ -15,6 +15,11 @@ public class Rocks : MonoBehaviour
     public Wheel wheel;
 
 
+    void Spawn()
+    {
+        rockStates = RockStates.Entering;
+    }
+
     void Update()
     {
         switch (rockStates)

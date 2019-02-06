@@ -284,6 +284,12 @@ MonoBehaviour:
   lightShake: 0
   mediumShake: 0
   heavyShake: 0
+--- !u!1 &304513687 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1197293789017458, guid: 585c6690eff4d3949b44254720f21b6c,
+    type: 3}
+  m_PrefabInstance: {fileID: 1034869352}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &336334702
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -569,7 +575,8 @@ PrefabInstance:
       propertyPath: rightSide
       value: 
       objectReference: {fileID: 1889178585}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1454390662, guid: 585c6690eff4d3949b44254720f21b6c, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 585c6690eff4d3949b44254720f21b6c, type: 3}
 --- !u!4 &1117603850 stripped
 Transform:
@@ -734,6 +741,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1329773199}
   - component: {fileID: 1329773198}
+  - component: {fileID: 1329773200}
   m_Layer: 0
   m_Name: Game Manager
   m_TagString: Untagged
@@ -785,6 +793,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1329773200
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1329773197}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3639398140bf4a74db8ac69097167d29, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  floodPlane: {fileID: 304513687}
+  floodRate: 0
+  floodRateModifier: 0.5
 --- !u!1001 &1344820784
 PrefabInstance:
   m_ObjectHideFlags: 0

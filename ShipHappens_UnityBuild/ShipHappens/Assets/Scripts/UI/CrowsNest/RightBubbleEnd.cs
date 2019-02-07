@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class RightBubbleEnd : MonoBehaviour
 {
-    private Animator rightAnimator;
+    public Animator rightAnimator;
     public CrowsNestUI CNui;
 
     void Start()

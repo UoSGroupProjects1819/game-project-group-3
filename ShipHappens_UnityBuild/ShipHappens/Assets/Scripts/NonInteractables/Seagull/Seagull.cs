@@ -15,8 +15,8 @@ public class Seagull : MonoBehaviour
     private GameObject shipCentre;
 
     public float distance;
-
     private Vector3 lastPos;
+
 
     void Awake()
     {
@@ -31,8 +31,6 @@ public class Seagull : MonoBehaviour
         {
             case SeagullStates.entering:
                 //add count to game manager
-                //UI update
-                //Play audio
                 seagullState = SeagullStates.active;
                 break;
             case SeagullStates.active:
@@ -45,7 +43,6 @@ public class Seagull : MonoBehaviour
                 }
                 break;
             case SeagullStates.exiting:
-                Debug.Log("destroyed gull");
                 Destroy(this.gameObject);
                 //remove from gamemanager thing
                 //remove from object pool

@@ -7,6 +7,7 @@ public class PirateSpawner : Event
     public GameObject pirateFlag;
     public GameObject[] shipSpawners;
     public EnemyAttack enemyAttack;
+    public CrowsNestUI CNui;
 
     //public GameObject shipCentre;
 
@@ -24,6 +25,10 @@ public class PirateSpawner : Event
 
     public override void Spawn()
     {
+        CNui.nextAvailableBubbleContents = CNui.ImgEnemy;
+        CNui.playNextAvailableBubble = true;
+
+
         int random = Random.Range(0, 4);
 
         //if (shipSpawners[random].transform.position.z > shipCentre.transform.position.z) //+ is to rear

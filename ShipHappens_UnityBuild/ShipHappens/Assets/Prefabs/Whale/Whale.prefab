@@ -19,7 +19,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7404120346457874521
 Transform:
   m_ObjectHideFlags: 0
@@ -27,13 +27,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1427555234}
-  m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
+  m_LocalRotation: {x: -0.7069834, y: 0, z: 0, w: 0.7072302}
   m_LocalPosition: {x: 33, y: -19.1, z: -10}
   m_LocalScale: {x: 120, y: 120, z: 120}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -89.98, y: 0, z: 0}
 --- !u!33 &987960934993316321
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -110,14 +110,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5cd67c9b996652e429a7bc13a6dd49c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  coolDown: 0
-  weight: 0
   whaleStates: 0
   whale: {fileID: 1427555234}
-  whalePS: {fileID: 6763591847308011107, guid: a2e65f849e6d9bf42b63c7e7aab1f34d, type: 3}
+  whalePS: {fileID: 0}
   anim: {fileID: 1427555238}
   cam: {fileID: 0}
   screenShake: {fileID: 0}
+  CNui: {fileID: 0}
   players:
-  - {fileID: 0}
   - {fileID: 0}

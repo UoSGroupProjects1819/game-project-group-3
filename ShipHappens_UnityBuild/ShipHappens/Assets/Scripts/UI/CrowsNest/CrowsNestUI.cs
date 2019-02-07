@@ -121,21 +121,27 @@ public class CrowsNestUI : MonoBehaviour
                 }
                 else //use bubble 3 (right)
                 {
-                    nextAvailableBubble = rightBubble;
-                    nextAvailableBubbleContents = rightBubbleContents;
+                    //nextAvailableBubble = rightBubble;
+                    //nextAvailableBubbleContents = rightBubbleContents;
+                    rightBubble = nextAvailableBubble;
+                    rightBubbleContents = nextAvailableBubbleContents;
                 }
             }
             else //use bubble 2 (left)
             {
-                nextAvailableBubble = leftBubble;
-                nextAvailableBubbleContents = leftBubbleContents;
+                //nextAvailableBubble = leftBubble;
+                //nextAvailableBubbleContents = leftBubbleContents;
+                leftBubble = nextAvailableBubble;
+                leftBubbleContents = nextAvailableBubbleContents;
             }
 
         }
         else //use bubble 1 (bottom)
         {
-            nextAvailableBubble = bottomBubble;
-            nextAvailableBubbleContents = bottomBubbleContents;
+            //nextAvailableBubble = bottomBubble;
+            //nextAvailableBubbleContents = bottomBubbleContents;
+            bottomBubble = nextAvailableBubble;
+            bottomBubbleContents = nextAvailableBubbleContents;
         }
     }
 
@@ -149,18 +155,20 @@ public class CrowsNestUI : MonoBehaviour
             if (nextAvailableBubble == bottomBubble)
             {
                 playBottom = true;
-                playNextAvailableBubble = false;
+                //playNextAvailableBubble = false;
             }
             if (nextAvailableBubble == leftBubble)
             {
                 playLeft = true;
-                playNextAvailableBubble = false;
+                //playNextAvailableBubble = false;
             }
             if (nextAvailableBubble == rightBubble)
             {
                 playRight = true;
-                playNextAvailableBubble = false;
+                //playNextAvailableBubble = false;
             }
+
+            playNextAvailableBubble = false;
         }
         else
             return;

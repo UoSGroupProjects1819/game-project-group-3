@@ -17,9 +17,12 @@ public class SpawnSeagull : Event
     public GameObject bottomRampLeft, bottomRampRight, topRampLeft, topRampRight, midLsmall, midLsmallHigh, midRsmall, midRsmallHigh;
     public GameObject leftSide, rightSide;
 
+    public CrowsNestUI CNui;
+
+
     private void Update()
     {
-        if (Input.GetMouseButtonUp(0))
+        if (Input.GetKey(KeyCode.S))
         {
             Spawn();
         }
@@ -29,6 +32,10 @@ public class SpawnSeagull : Event
 
     public override void Spawn()
     {
+        CNui.nextAvailableBubbleContents = CNui.ImgSeagull;
+        CNui.playNextAvailableBubble = true;
+
+
         spawnPosition = new Vector3(Random.Range(-radiusRange, radiusRange), shipCentre.transform.position.y, Random.Range(-radiusRange, radiusRange));
         float distance = Vector3.Distance(spawnPosition, shipCentre.transform.position);
 

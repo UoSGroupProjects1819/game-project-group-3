@@ -13,6 +13,8 @@ public class Whale : Event
     public Camera cam;
     public ScreenShake screenShake;
 
+    public CrowsNestUI CNui;
+
     public GameObject[] players;
 
 	void Start ()
@@ -22,6 +24,9 @@ public class Whale : Event
 
     public override void Spawn()
     {
+        CNui.nextAvailableBubbleContents = CNui.ImgWhale;
+        CNui.playNextAvailableBubble = true;
+
         whale.SetActive(true);
         whaleStates = WhaleStates.entering;
     }

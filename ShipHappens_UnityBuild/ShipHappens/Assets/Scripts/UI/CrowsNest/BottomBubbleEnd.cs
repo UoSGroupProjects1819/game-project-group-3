@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class BottomBubbleEnd : MonoBehaviour
 {
-    private Animator bottomAnimator;
+    public Animator bottomAnimator;
     public CrowsNestUI CNui;
 
     void Start ()

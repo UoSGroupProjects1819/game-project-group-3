@@ -57,9 +57,7 @@ public class CrowsNestUI : MonoBehaviour
     public Sprite ImgBarrel;
     public Sprite ImgCannonBall;
 
-    
-
-
+   
 
     /*
     script checks which bubbles are active, sets the lowest number bubble = nextActiveBubble.
@@ -109,8 +107,6 @@ public class CrowsNestUI : MonoBehaviour
             rightAnim.SetBool("PlayRight", true);
             is3active = true;
         }
-
-        bottomBubbleContents = ImgBarrel;
     }
 
     /// <summary>
@@ -132,7 +128,7 @@ public class CrowsNestUI : MonoBehaviour
                     nextAvailableBubble = rightBubble;
                     //nextAvailableBubbleContents.sprite = rightBubbleContents;
                     //nextAvailableBubble = rightBubble;
-                    rightBubbleContents = nextAvailableBubbleContents;
+                    //rightBubbleContents = nextAvailableBubbleContents;
                 }
             }
             else //use bubble 2 (left)
@@ -140,16 +136,17 @@ public class CrowsNestUI : MonoBehaviour
                 nextAvailableBubble = leftBubble;
                 //nextAvailableBubbleContents.sprite = leftBubbleContents;
                 //nextAvailableBubble = leftBubble;
-                leftBubbleContents = nextAvailableBubbleContents;
+                //leftBubbleContents = nextAvailableBubbleContents;
             }
 
         }
         else //use bubble 1 (bottom)
         {
+            //bottomBubbleContents = nextAvailableBubbleContents;
             nextAvailableBubble = bottomBubble;
             //nextAvailableBubbleContents.sprite = bottomBubbleContents;
             //nextAvailableBubble = bottomBubble;
-            bottomBubbleContents = nextAvailableBubbleContents;
+
         }
     }
 
@@ -162,16 +159,19 @@ public class CrowsNestUI : MonoBehaviour
         {
             if (nextAvailableBubble == bottomBubble)
             {
+                bottomBubbleContents = nextAvailableBubbleContents;
                 playBottom = true;
                 //playNextAvailableBubble = false;
             }
             if (nextAvailableBubble == leftBubble)
             {
+                leftBubbleContents = nextAvailableBubbleContents;
                 playLeft = true;
                 //playNextAvailableBubble = false;
             }
             if (nextAvailableBubble == rightBubble)
             {
+                rightBubbleContents = nextAvailableBubbleContents;
                 playRight = true;
                 //playNextAvailableBubble = false;
             }

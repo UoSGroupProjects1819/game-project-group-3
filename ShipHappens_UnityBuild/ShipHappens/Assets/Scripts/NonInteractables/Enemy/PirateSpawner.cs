@@ -16,7 +16,7 @@ public class PirateSpawner : Event
 
     private void Update()
     {
-        if (Input.GetButton("Fire1"))
+        if (Input.GetKeyUp(KeyCode.B))
         {
             Spawn();
         }

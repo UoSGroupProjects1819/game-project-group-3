@@ -20,7 +20,7 @@ public class FallingCannonball : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             PlayerStates playerStates = collision.gameObject.GetComponent<PlayerStates>();
-            playerStates.playerState = PlayerStates.PlayerState.pRespawn;
+            playerStates.playerState = PlayerStates.PlayerState.pDead;
         }
     }
 }

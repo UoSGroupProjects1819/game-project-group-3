@@ -33,14 +33,19 @@ public class Respawner : MonoBehaviour
                 StartCoroutine(DelayRespawn());
                 break;
 
+            case PlayerStates.PlayerState.pDead:
+                timer = initialTimer;
+                player.SetActive(false);
+                playerStates.playerState = PlayerStates.PlayerState.pRespawn;
+                break;
+
             case PlayerStates.PlayerState.pRespawn:
                 clockbase.enabled = true;
                 clock.enabled = true;
                 text.enabled = true;
-                player.SetActive(false);
                 
                 timer -= Time.deltaTime;
-                text.text = timer.ToString();
+                text.text = timer.ToString("F0");
                 clock.fillAmount = timer / initialTimer;
 
                 if (timer <= 0)
@@ -49,34 +54,29 @@ public class Respawner : MonoBehaviour
                     clock.enabled = false;
                     text.enabled = false;
                     RespawnPlayer();
-                    playerStates.playerState = PlayerStates.PlayerState.pEmpty;
                 }
                 break;
         }
-
-
-
-        //if (playerStates.playerState == PlayerStates.PlayerState.pWhaled)
-        //{
-
-        //}
-
-        //if (playerStates.playerState == PlayerStates.PlayerState.pRespawn)
-        //{
-
-        //}
     }
 
     IEnumerator DelayRespawn()
     {
         yield return new WaitForSeconds(1f);
+
+        Rigidbody rb = player.GetComponent<Rigidbody>();
+        rb.velocity = Vector3.zero;
+        rb.constraints = RigidbodyConstraints.FreezeAll;
+        rb.constraints = RigidbodyConstraints.None;
+        rb.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
+
         playerStates.playerState = PlayerStates.PlayerState.pRespawn;
     }
 
     void RespawnPlayer()
     {
-        player.SetActive(true);
+        playerStates.playerState = PlayerStates.PlayerState.pEmpty;
         player.transform.position = spawnPoint.transform.position;
         player.transform.rotation = spawnPoint.transform.rotation;
+        player.SetActive(true);
     }
 }

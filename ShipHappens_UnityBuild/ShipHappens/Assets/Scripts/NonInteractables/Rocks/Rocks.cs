@@ -25,7 +25,7 @@ public class Rocks : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyUp(KeyCode.R))
+        if (Input.GetKeyUp(KeyCode.N))
         {
             Spawn();
         }

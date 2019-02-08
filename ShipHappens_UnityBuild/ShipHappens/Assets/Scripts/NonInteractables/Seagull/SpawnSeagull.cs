@@ -22,7 +22,7 @@ public class SpawnSeagull : Event
 
     private void Update()
     {
-        if (Input.GetKeyUp(KeyCode.S))
+        if (Input.GetKeyUp(KeyCode.V))
         {
             Spawn();
         }

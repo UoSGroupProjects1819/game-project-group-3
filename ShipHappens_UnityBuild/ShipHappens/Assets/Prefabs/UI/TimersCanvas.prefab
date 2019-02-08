@@ -91,7 +91,7 @@ MonoBehaviour:
   player: {fileID: 0}
   spawnPoint: {fileID: 0}
   timer: 0
-  initialTimer: 7
+  initialTimer: 3
   clockbase: {fileID: 30548240}
   clock: {fileID: 65639478}
   text: {fileID: 483111767}
@@ -347,7 +347,7 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 70
+    m_FontSize: 35
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 2
@@ -779,7 +779,7 @@ MonoBehaviour:
   player: {fileID: 0}
   spawnPoint: {fileID: 0}
   timer: 0
-  initialTimer: 7
+  initialTimer: 11
   clockbase: {fileID: 1640976086}
   clock: {fileID: 1190607272}
   text: {fileID: 1744877673}
@@ -850,7 +850,7 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 70
+    m_FontSize: 35
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 2

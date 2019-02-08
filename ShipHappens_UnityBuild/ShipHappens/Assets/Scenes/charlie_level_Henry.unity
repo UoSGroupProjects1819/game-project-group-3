@@ -550,30 +550,10 @@ PrefabInstance:
       propertyPath: spawnPoint
       value: 
       objectReference: {fileID: 1185064589}
-    - target: {fileID: 30548242, guid: 5909c434129e53b4387a10b7ca64a92f, type: 3}
-      propertyPath: initialTimer
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 1640976085, guid: 5909c434129e53b4387a10b7ca64a92f, type: 3}
-      propertyPath: player
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 1640976085, guid: 5909c434129e53b4387a10b7ca64a92f, type: 3}
       propertyPath: spawnPoint
       value: 
       objectReference: {fileID: 1412474179}
-    - target: {fileID: 1640976085, guid: 5909c434129e53b4387a10b7ca64a92f, type: 3}
-      propertyPath: initialTimer
-      value: 11
-      objectReference: {fileID: 0}
-    - target: {fileID: 483111767, guid: 5909c434129e53b4387a10b7ca64a92f, type: 3}
-      propertyPath: m_FontData.m_FontSize
-      value: 35
-      objectReference: {fileID: 0}
-    - target: {fileID: 1744877673, guid: 5909c434129e53b4387a10b7ca64a92f, type: 3}
-      propertyPath: m_FontData.m_FontSize
-      value: 35
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5909c434129e53b4387a10b7ca64a92f, type: 3}
 --- !u!4 &531517481 stripped

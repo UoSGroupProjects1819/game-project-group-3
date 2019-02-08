@@ -77,6 +77,7 @@ public class Respawner : MonoBehaviour
         playerStates.playerState = PlayerStates.PlayerState.pEmpty;
         player.transform.position = spawnPoint.transform.position;
         player.transform.rotation = spawnPoint.transform.rotation;
+        player.GetComponent<PlayerMovement>().enabled = true;
         player.SetActive(true);
     }
 }

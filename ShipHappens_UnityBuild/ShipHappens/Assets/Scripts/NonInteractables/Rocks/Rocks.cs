@@ -75,6 +75,7 @@ public class Rocks : MonoBehaviour
                 rockSlider.gameObject.SetActive(false);
                 rockStates = RockStates.Idle;
                 wheel.wheelStates = Wheel.WheelStates.Exiting;
+                wheel.isInteractable = true;
                 break;
         }
     }

@@ -69,7 +69,7 @@ public class Respawner : MonoBehaviour
 
     IEnumerator DelayRespawn()
     {
-        yield return new WaitForSeconds(0.55f);
+        yield return new WaitForSeconds(1f);
         playerStates.playerState = PlayerStates.PlayerState.pRespawn;
     }
 

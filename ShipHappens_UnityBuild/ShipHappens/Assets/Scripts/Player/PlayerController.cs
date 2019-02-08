@@ -69,6 +69,11 @@ public class PlayerController : MonoBehaviour
                 Debug.Log("Action button pressed");
                 other.Action(this.gameObject);
             }
+
+            if (Input.GetKey(KeyCode.U) || Input.GetButtonDown(Bbutton))
+            {
+                other.DropItem();
+            }
         }
 
         if (col.gameObject.tag == "poo")

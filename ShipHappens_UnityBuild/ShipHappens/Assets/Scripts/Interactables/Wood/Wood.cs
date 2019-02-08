@@ -29,6 +29,7 @@ public class Wood : Interactable
         SetPosition(ref player);
         woodStates.currentState = WoodStates.WoodState.Held;
         playerState.playerState = PlayerStates.PlayerState.pWood;
+        playerController.wood = this;
         PickedUpComponents(ref playerState, rb, this.gameObject); 
     }
 
@@ -66,6 +67,7 @@ public class Wood : Interactable
         Destroy(hole);
         Destroy(this.gameObject);
         playerState.playerState = PlayerStates.PlayerState.pEmpty;
+        playerController.wood = null;
         playerState.itemHeld = null;
         playerController.wood = null;
         playerController = null;

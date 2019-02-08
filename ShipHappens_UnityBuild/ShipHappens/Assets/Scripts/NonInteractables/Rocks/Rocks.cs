@@ -73,9 +73,8 @@ public class Rocks : MonoBehaviour
             case RockStates.Exiting:
                 //remove from game manager
                 rockSlider.gameObject.SetActive(false);
-                wheel.isInteractable = false; //disable player-wheel interaction
                 rockStates = RockStates.Idle;
-                wheel.wheelStates = Wheel.WheelStates.Idle;
+                wheel.wheelStates = Wheel.WheelStates.Exiting;
                 break;
         }
     }

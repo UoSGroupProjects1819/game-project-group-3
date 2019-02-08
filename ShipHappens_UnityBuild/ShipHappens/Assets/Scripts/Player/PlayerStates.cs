@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerStates : MonoBehaviour
 {
-    public enum PlayerState { pCannonball, pGunpowder, pMop, pBucket, pWood, pTorch, pEmpty, pHoldingOn, pWheel, pEdge};
+    public enum PlayerState { pCannonball, pGunpowder, pMop, pBucket, pWood, pTorch, pEmpty, pHoldingOn, pWheel, pEdge, pRespawn, pWhaled};
 
     public PlayerState playerState;
 

@@ -61,9 +61,10 @@ public class Whale : Event
 
         for (int i = 0; i < players.Length; i++)
         {
-            float randomForceXZ = Random.Range(10, 15);
-            float randomForceY = Random.Range(12, 17);
-            float randomTorque = Random.Range(100, 666);
+            float randomForceX = Random.Range(-20, 20);
+            float randomForceY = Random.Range(60, 75);
+            float randomForceZ = Random.Range(20, 75);
+            float randomTorque = Random.Range(250, 666);
 
             if (players[i].GetComponent<PlayerStates>().playerState == PlayerStates.PlayerState.pHoldingOn)
             {
@@ -74,11 +75,18 @@ public class Whale : Event
             {
                 //you are not holding on, you gonna dieeeee
                 players[i].GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
-                players[i].GetComponent<Rigidbody>().AddForceAtPosition(new Vector3(randomForceXZ, randomForceY, randomForceXZ), players[i].transform.position, ForceMode.Impulse);
+                players[i].GetComponent<PlayerMovement>().enabled = false;
+                players[i].GetComponent<Rigidbody>().AddForceAtPosition(new Vector3(randomForceX, randomForceY, randomForceZ), players[i].transform.position, ForceMode.Impulse);
                 players[i].GetComponent<Rigidbody>().AddRelativeTorque(new Vector3(500, 225, 600));
+                players[i].GetComponent<PlayerStates>().playerState = PlayerStates.PlayerState.pWhaled;
             }
         }
 
         whaleStates = WhaleStates.exiting;
+    }
+
+    void RespawnPlayer()
+    {
+
     }
 }

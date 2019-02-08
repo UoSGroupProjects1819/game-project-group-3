@@ -15,19 +15,21 @@ public class CrowsNestUI : MonoBehaviour
     public bool is3active;
     [Header("Next Bubble")]
     public Image nextAvailableBubble;
-    public Image nextAvailableBubbleContents;
-    [Header("Next Bubble")]
+    public Sprite nextAvailableBubbleContents;
+    //public Sprite nextAvailableBubbleContents;
     public bool playNextAvailableBubble;
 
-    [Header("Animators")]
     private Animator leftAnim;
     private Animator rightAnim;
     private Animator bottomAnim;
 
     [Header("Bubbles")]
-    public Image leftBubble, leftBubbleContents;
-    public Image bottomBubble, bottomBubbleContents;
-    public Image rightBubble, rightBubbleContents;
+    public Image leftBubble, leftBubbleContent;
+    public Sprite leftBubbleContents;
+    public Image bottomBubble, bottomBubbleContent;
+    public Sprite bottomBubbleContents;
+    public Image rightBubble, rightBubbleContent;
+    public Sprite rightBubbleContents;
 
     [Header("[Hold Timers]")]
     public DpadBarrelTimer barrelTimer;
@@ -35,25 +37,25 @@ public class CrowsNestUI : MonoBehaviour
     public DpadCannonballTimer cballTimer;
 
     [Header("BubbleContents")]
-    public Image ImgChest;
-    public Image ImgRocks;
-    public Image ImgSeagull;
-    public Image ImgWhale;
-    public Image ImgEnemy;
+    public Sprite ImgChest;
+    public Sprite ImgRocks;
+    public Sprite ImgSeagull;
+    public Sprite ImgWhale;
+    public Sprite ImgEnemy;
 
     [Header("Tutorial Bubble Contents")]
-    public Image ImgPoo;
-    public Image ImgCannon;
-    public Image ImgFire;
-    public Image ImgHole;
-    public Image ImgMop;
-    public Image ImgDpad;
-    public Image ImgWheel;
-    public Image ImgBucket;
-    public Image ImgTorch;
-    public Image ImgWood;
-    public Image ImgBarrel;
-    public Image ImgCannonBall;
+    public Sprite ImgPoo;
+    public Sprite ImgCannon;
+    public Sprite ImgFire;
+    public Sprite ImgHole;
+    public Sprite ImgMop;
+    public Sprite ImgDpad;
+    public Sprite ImgWheel;
+    public Sprite ImgBucket;
+    public Sprite ImgTorch;
+    public Sprite ImgWood;
+    public Sprite ImgBarrel;
+    public Sprite ImgCannonBall;
 
     
 
@@ -76,6 +78,10 @@ public class CrowsNestUI : MonoBehaviour
         leftAnim = leftBubble.GetComponent<Animator>();
         rightAnim = rightBubble.GetComponent<Animator>();
         bottomAnim = bottomBubble.GetComponent<Animator>();
+
+        leftBubbleContents = leftBubbleContent.GetComponent<Image>().sprite;
+        bottomBubbleContents = bottomBubbleContent.GetComponent<Image>().sprite;
+        rightBubbleContents = rightBubbleContent.GetComponent<Image>().sprite;
     }
 
     void Update ()
@@ -103,6 +109,8 @@ public class CrowsNestUI : MonoBehaviour
             rightAnim.SetBool("PlayRight", true);
             is3active = true;
         }
+
+        bottomBubbleContents = ImgBarrel;
     }
 
     /// <summary>
@@ -121,26 +129,26 @@ public class CrowsNestUI : MonoBehaviour
                 }
                 else //use bubble 3 (right)
                 {
+                    nextAvailableBubble = rightBubble;
+                    //nextAvailableBubbleContents.sprite = rightBubbleContents;
                     //nextAvailableBubble = rightBubble;
-                    //nextAvailableBubbleContents = rightBubbleContents;
-                    rightBubble = nextAvailableBubble;
                     rightBubbleContents = nextAvailableBubbleContents;
                 }
             }
             else //use bubble 2 (left)
             {
+                nextAvailableBubble = leftBubble;
+                //nextAvailableBubbleContents.sprite = leftBubbleContents;
                 //nextAvailableBubble = leftBubble;
-                //nextAvailableBubbleContents = leftBubbleContents;
-                leftBubble = nextAvailableBubble;
                 leftBubbleContents = nextAvailableBubbleContents;
             }
 
         }
         else //use bubble 1 (bottom)
         {
+            nextAvailableBubble = bottomBubble;
+            //nextAvailableBubbleContents.sprite = bottomBubbleContents;
             //nextAvailableBubble = bottomBubble;
-            //nextAvailableBubbleContents = bottomBubbleContents;
-            bottomBubble = nextAvailableBubble;
             bottomBubbleContents = nextAvailableBubbleContents;
         }
     }

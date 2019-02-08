@@ -19,7 +19,8 @@ public class FallingCannonball : MonoBehaviour
 
         if (collision.gameObject.tag == "Player")
         {
-            //kill player, respawn player
+            PlayerStates playerStates = collision.gameObject.GetComponent<PlayerStates>();
+            playerStates.playerState = PlayerStates.PlayerState.pRespawn;
         }
     }
 }

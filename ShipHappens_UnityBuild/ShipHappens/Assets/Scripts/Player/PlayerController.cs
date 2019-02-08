@@ -35,7 +35,6 @@ public class PlayerController : MonoBehaviour
     {
         DropItem();
 
-
 /////////////////////////////////////////////////////////////////////////////////////////////////////////weak D-pad test
 #region Dpad TEST
         if (Input.GetAxisRaw(DpadVertical) > 0)

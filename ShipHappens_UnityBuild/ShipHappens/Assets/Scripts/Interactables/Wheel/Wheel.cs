@@ -11,7 +11,7 @@ public class Wheel : Interactable
 
     public Rocks rocks;
     public GameObject shipWheel;
-    public float wheelSpeed = 5;
+    //public float wheelSpeed = 5;
 
     public GameObject currPlayer = null;
 
@@ -35,16 +35,16 @@ public class Wheel : Interactable
                     wheelStates = WheelStates.Exiting;
                 }
 
-                int x = Random.Range(1, 2); //spins wheel in random dir
-                if (x > 1)
-                {
-                    shipWheel.transform.Rotate(Vector3.right * wheelSpeed * Time.deltaTime);
-                }
-                else
-                {
-                    shipWheel.transform.Rotate(Vector3.right * -wheelSpeed * Time.deltaTime);
-                }
-                                
+                //int x = Random.Range(1, 2); //spins wheel in random dir
+                //if (x > 1)
+                //{
+                //    shipWheel.transform.Rotate(Vector3.up * wheelSpeed * Time.deltaTime);
+                //}
+                //else
+                //{
+                //    shipWheel.transform.Rotate(Vector3.up * -wheelSpeed * Time.deltaTime);
+                //}
+
 
                 if (currPlayer.GetComponent<Rigidbody>().velocity.x > 0.2 || currPlayer.GetComponent<Rigidbody>().velocity.z > 0.2) //if player moves during timer, timer resets + action is cancelled + wheel states exiting
                 {
@@ -55,6 +55,7 @@ public class Wheel : Interactable
             case WheelStates.Exiting:
                 timer = initialTime;
                 ReleaseWheel(currPlayer);
+                isInteractable = false;
                 wheelStates = WheelStates.Idle;
                 break;
         }
@@ -75,7 +76,7 @@ public class Wheel : Interactable
             if (playerState.playerState == PlayerStates.PlayerState.pEmpty)
             {
                 playerState.playerState = PlayerStates.PlayerState.pWheel;
-                player.transform.LookAt(shipWheel.transform);
+                player.transform.LookAt(shipWheel.transform, Vector3.up);
 
                 wheelStates = WheelStates.Active;
             }
@@ -96,11 +97,10 @@ public class Wheel : Interactable
         }
         else
         {
-            currPlayer = null;
-
             PlayerStates playerState = player.GetComponent<PlayerStates>();
-
             playerState.playerState = PlayerStates.PlayerState.pEmpty;
+
+            currPlayer = null;            
         }
     }
 }

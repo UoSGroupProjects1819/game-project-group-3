@@ -53,7 +53,7 @@ public class Bucket : Interactable
         }
 
         // Bail Water
-        if (bucketState.currentState == BucketStates.BucketState.Full && playerState.playerState == PlayerStates.PlayerState.pBucket)
+        if (bucketState.currentState == BucketStates.BucketState.Full && playerState.playerState == PlayerStates.PlayerState.pEdge)
         {
             Debug.Log("Bailed the water");
             bucketState.currentState = BucketStates.BucketState.Held;

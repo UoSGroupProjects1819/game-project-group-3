@@ -44,6 +44,7 @@ public class Seagull : MonoBehaviour
                 break;
             case SeagullStates.exiting:
                 Destroy(this.gameObject);
+                EventManager.GetInstance().RemoveTask("Seagull");
                 //remove from gamemanager thing
                 //remove from object pool
                 break;

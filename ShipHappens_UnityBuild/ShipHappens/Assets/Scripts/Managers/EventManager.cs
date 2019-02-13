@@ -6,6 +6,7 @@ using UnityEngine;
 public struct EventDetails
 {
     public string name;
+    public int maxAllowedActive;
     public int weight;
     public float modifier;
     public Event spawner;   
@@ -13,6 +14,7 @@ public struct EventDetails
 
 public class EventManager : MonoBehaviour
 {
+    private static EventManager Instance;
     SpawnSeagull spawnSeagull;
     PirateSpawner pirateSpawner;
     Rocks rocks;
@@ -24,6 +26,23 @@ public class EventManager : MonoBehaviour
 
     private float initialTimer = 5;
     public float timer = 1;
+
+    public static EventManager GetInstance()
+    {
+        return Instance;
+    }
+
+    private void Start()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(this);
+        }
+    }
 
     private void Update()
     {
@@ -44,8 +63,20 @@ public class EventManager : MonoBehaviour
     void PickEvent()
     {
         // Do Event stuff
-        int maxAmount = 0;
+
+        List<EventDetails> availableEvents = new List<EventDetails>();
+
         foreach (var evt in nextEvent)
+        {
+            var currentEvent = evt.name;
+
+            if (ActiveAmount(currentEvent) < evt.maxAllowedActive)
+            {
+                availableEvents.Add(evt);
+            }
+        }
+        int maxAmount = 0;
+        foreach (var evt in availableEvents)
         {
             maxAmount += evt.weight;
         }
@@ -53,28 +84,10 @@ public class EventManager : MonoBehaviour
         float rand = Random.Range(0, maxAmount);
         int i = 0;
 
-        foreach (var evt in nextEvent)
+        foreach (var evt in availableEvents)
         {
-            if (IsActive("Whale"))
-            {
-                PickEvent();
-                return;
-            }
-
-            if (IsActive("Rock"))
-            {
-                PickEvent();
-                return;
-            }
-
-            if (ActiveAmount("Enemy") > 4)
-            {
-                PickEvent();
-                return;
-            }
-
             i += evt.weight;
-            if (i >= rand)
+            if (rand <= i)
             {
                 Debug.Log("Event " + evt.name + " Picked");
                 evt.spawner.Spawn();
@@ -128,7 +141,8 @@ public class EventManager : MonoBehaviour
     }
 
     public void RemoveTask(string name)
-    { 
+    {
+        Debug.Log("Removing task: " + name);
         if (activeTasks.ContainsKey(name))
         {
             // Decrement the amount of tasks active, without allowing the amount to go below 0
@@ -168,13 +182,12 @@ public class EventManager : MonoBehaviour
     {
         if (activeTasks.ContainsKey(name))
         {
-            if (activeTasks[name] >= 1)
-            { return true; }
-            else
-            { return false; }
+            return activeTasks[name] >= 1;
         }
         else
-        { return false; }
+        {
+            return false;
+        }
     }
 
     private int ActiveAmount(string name)

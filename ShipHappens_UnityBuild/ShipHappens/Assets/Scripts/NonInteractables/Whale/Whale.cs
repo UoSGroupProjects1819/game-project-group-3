@@ -47,6 +47,7 @@ public class Whale : Event
             case WhaleStates.exiting:
                 anim.SetBool("PlaySplash", false);
                 whale.SetActive(false);
+                EventManager.GetInstance().RemoveTask("Whale");
                 break;
         }
     }

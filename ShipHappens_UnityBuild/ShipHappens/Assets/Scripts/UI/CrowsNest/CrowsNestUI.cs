@@ -146,7 +146,6 @@ public class CrowsNestUI : MonoBehaviour
             nextAvailableBubble = bottomBubble;
             //nextAvailableBubbleContents.sprite = bottomBubbleContents;
             //nextAvailableBubble = bottomBubble;
-
         }
     }
 

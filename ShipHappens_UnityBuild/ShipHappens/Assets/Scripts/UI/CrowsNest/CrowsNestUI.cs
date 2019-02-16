@@ -25,11 +25,11 @@ public class CrowsNestUI : MonoBehaviour
 
     [Header("Bubbles")]
     public Image leftBubble, leftBubbleContent;
-    public Sprite leftBubbleContents;
+    public Image leftBubbleContents;
     public Image bottomBubble, bottomBubbleContent;
-    public Sprite bottomBubbleContents;
+    public Image bottomBubbleContents;
     public Image rightBubble, rightBubbleContent;
-    public Sprite rightBubbleContents;
+    public Image rightBubbleContents;
 
     [Header("[Hold Timers]")]
     public DpadBarrelTimer barrelTimer;
@@ -77,9 +77,9 @@ public class CrowsNestUI : MonoBehaviour
         rightAnim = rightBubble.GetComponent<Animator>();
         bottomAnim = bottomBubble.GetComponent<Animator>();
 
-        leftBubbleContents = leftBubbleContent.GetComponent<Image>().sprite;
-        bottomBubbleContents = bottomBubbleContent.GetComponent<Image>().sprite;
-        rightBubbleContents = rightBubbleContent.GetComponent<Image>().sprite;
+        leftBubbleContents = leftBubbleContent.GetComponent<Image>();
+        bottomBubbleContents = bottomBubbleContent.GetComponent<Image>();
+        rightBubbleContents = rightBubbleContent.GetComponent<Image>();
     }
 
     void Update ()
@@ -158,19 +158,19 @@ public class CrowsNestUI : MonoBehaviour
         {
             if (nextAvailableBubble == bottomBubble)
             {
-                bottomBubbleContents = nextAvailableBubbleContents;
+                bottomBubbleContents.sprite = nextAvailableBubbleContents;
                 playBottom = true;
                 //playNextAvailableBubble = false;
             }
             if (nextAvailableBubble == leftBubble)
             {
-                leftBubbleContents = nextAvailableBubbleContents;
+                leftBubbleContents.sprite = nextAvailableBubbleContents;
                 playLeft = true;
                 //playNextAvailableBubble = false;
             }
             if (nextAvailableBubble == rightBubble)
             {
-                rightBubbleContents = nextAvailableBubbleContents;
+                rightBubbleContents.sprite = nextAvailableBubbleContents;
                 playRight = true;
                 //playNextAvailableBubble = false;
             }

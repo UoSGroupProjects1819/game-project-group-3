@@ -16,15 +16,15 @@ public class Bucket : Interactable
     public string Bbutton = "B_P1";
 
     public GameObject floodWater;
-    private Transform floodWaterStartPos;
-    public float speed;
+    private FloodController floodController;
+
     public ParticleSystem bucketPS;
 
 
 
     void Start()
     {
-        //floodWaterStartPos = floodWater.transform;
+        floodController = floodWater.GetComponent<FloodController>();
         bucketState = this.GetComponent<BucketStates>();
         rb = this.GetComponent<Rigidbody>();
         bucket = this.gameObject;
@@ -58,34 +58,19 @@ public class Bucket : Interactable
             Debug.Log("Bailed the water");
             bucketState.currentState = BucketStates.BucketState.Held;
             // Play animations etc
+            floodController.BailWater();
         }
     }
 
-    //private void OnTriggerStay(Collider col)
+    //private void Update()
     //{
-    //    if (col.gameObject.tag == "Edge" && bucketState.currentState == BucketStates.BucketState.Held && rb.velocity.magnitude <= 0.1f && floodWater.transform.position.y > floodWaterStartPos.position.y)
+    //    if (Input.GetButtonDown(Abutton) || Input.GetKey(KeyCode.B))
     //    {
-    //        Debug.Log("bail 1st check");
-
-    //        if (Input.GetButtonDown(Abutton) || Input.GetKey(KeyCode.B))
-    //        {
-    //            Debug.Log("bailing!");
-    //            bucketPS.Play();
-    //            float step = speed * Time.deltaTime;
-    //            floodWater.transform.position = Vector3.MoveTowards(floodWater.transform.position, floodWaterStartPos.position, step);
-    //        }
+    //        bucketPS.Play();
+    //        float step = speed * Time.deltaTime;
+    //        floodWater.transform.position = Vector3.MoveTowards(floodWater.transform.position, floodWaterStartPos.position, step);
     //    }
     //}
-
-    private void Update()
-    {
-        if (Input.GetButtonDown(Abutton) || Input.GetKey(KeyCode.B))
-        {
-            bucketPS.Play();
-            float step = speed * Time.deltaTime;
-            floodWater.transform.position = Vector3.MoveTowards(floodWater.transform.position, floodWaterStartPos.position, step);
-        }
-    }
 
     public override void DropItem()
     {

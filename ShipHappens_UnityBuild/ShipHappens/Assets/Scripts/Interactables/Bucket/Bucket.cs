@@ -20,11 +20,9 @@ public class Bucket : Interactable
 
     public ParticleSystem bucketPS;
 
-
-
     void Start()
     {
-        floodController = floodWater.GetComponent<FloodController>();
+        floodController = FindObjectOfType<FloodController>();
         bucketState = this.GetComponent<BucketStates>();
         rb = this.GetComponent<Rigidbody>();
         bucket = this.gameObject;
@@ -42,35 +40,17 @@ public class Bucket : Interactable
             bucketState.currentState = BucketStates.BucketState.Held;
             playerState.playerState = PlayerStates.PlayerState.pBucket;
             PickedUpComponents(ref playerState, rb, this.gameObject);
-        }
-
-        // Collect Water
-        if (bucketState.currentState == BucketStates.BucketState.Held && playerState.playerState == PlayerStates.PlayerState.pBucket)
-        {
-            Debug.Log("Collect Water");
-            bucketState.currentState = BucketStates.BucketState.Full;
-            // Play animations etc
-        }
-
-        // Bail Water
-        if (bucketState.currentState == BucketStates.BucketState.Full && playerState.playerState == PlayerStates.PlayerState.pEdge)
-        {
-            Debug.Log("Bailed the water");
-            bucketState.currentState = BucketStates.BucketState.Held;
-            // Play animations etc
-            floodController.BailWater();
+            return;
         }
     }
 
-    //private void Update()
-    //{
-    //    if (Input.GetButtonDown(Abutton) || Input.GetKey(KeyCode.B))
-    //    {
-    //        bucketPS.Play();
-    //        float step = speed * Time.deltaTime;
-    //        floodWater.transform.position = Vector3.MoveTowards(floodWater.transform.position, floodWaterStartPos.position, step);
-    //    }
-    //}
+    public void BailWater()
+    {
+        Debug.Log("Bailed the water");
+        bucketState.currentState = BucketStates.BucketState.Held;
+        floodController.BailWater();
+    }
+
 
     public override void DropItem()
     {

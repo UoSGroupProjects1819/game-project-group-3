@@ -8,11 +8,12 @@ public class PlayerController : MonoBehaviour
 
     public enum Direction { up, left, right };
     Direction direction;
-    
+
     public PlayerStates playerState;
     private PlayerStates.PlayerState tempState;
     public Mop mop;
     public Wood wood;
+    public BucketStates bucketStates;
 
     [Header("[Mapped Controls]")]
     public string Abutton = "A_P1";
@@ -29,14 +30,15 @@ public class PlayerController : MonoBehaviour
     {
         UIManager = FindObjectOfType<CrowsNestUI>();
         playerState = this.GetComponent<PlayerStates>();
+        bucketStates = FindObjectOfType<BucketStates>();
     }
 
     private void Update()
     {
         DropItem();
 
-/////////////////////////////////////////////////////////////////////////////////////////////////////////weak D-pad test
-#region Dpad TEST
+        //weak D-pad test
+        #region Dpad TEST
         if (Input.GetAxisRaw(DpadVertical) > 0)
         {
             Debug.Log("up dpad");
@@ -54,7 +56,7 @@ public class PlayerController : MonoBehaviour
         {
             Debug.Log("left dpad");
         }
-#endregion
+        #endregion
     }
 
     private void OnTriggerStay(Collider col)
@@ -63,7 +65,7 @@ public class PlayerController : MonoBehaviour
         Interactable other = col.gameObject.GetComponent<Interactable>();
 
         if (other != null)
-        {          
+        {
             if (Input.GetKeyUp(KeyCode.I) || Input.GetButtonDown(Abutton))
             {
                 other.Action(this.gameObject);
@@ -78,7 +80,7 @@ public class PlayerController : MonoBehaviour
         if (col.gameObject.tag == "poo")
         {
             GameObject poo = col.gameObject;
-            if(playerState.playerState == PlayerStates.PlayerState.pMop)
+            if (playerState.playerState == PlayerStates.PlayerState.pMop)
             {
                 if (Input.GetKey(KeyCode.I) || Input.GetButtonDown(Abutton))
                 {
@@ -105,10 +107,9 @@ public class PlayerController : MonoBehaviour
         {
             Bucket bucket = GetComponentInChildren<Bucket>();
 
-            if (Input.GetKeyDown(KeyCode.I) || Input.GetButtonDown(Abutton))
+            if (Input.GetKeyUp(KeyCode.I) || Input.GetButtonDown(Abutton) && bucketStates.currentState == BucketStates.BucketState.Full)
             {
-                Debug.Log("Hey2");
-                bucket.Action(this.gameObject);
+                bucket.BailWater();
             }
         }
 
@@ -159,6 +160,11 @@ public class PlayerController : MonoBehaviour
         {
             playerState.playerState = PlayerStates.PlayerState.pBucket;
         }
+    }
+
+    private void Action()
+    {
+
     }
 
     private void DropItem()

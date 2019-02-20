@@ -10,11 +10,18 @@ public class Interactable : MonoBehaviour
     public Vector3 PickPosition;
     public Vector3 PickRotation;
 
+    private Vector3 scale;
+
     // Calls the Action function on all interactables
     public virtual void Action(GameObject player) {}
 
     // Calls the Drop function on all interactables
     public virtual void DropItem() {}
+
+    private void Start()
+    {
+        scale = this.transform.lossyScale;
+    }
 
     public void SetPosition(ref GameObject player)
     {

@@ -64,9 +64,8 @@ public class PlayerController : MonoBehaviour
 
         if (other != null)
         {          
-            if (Input.GetKey(KeyCode.I) || Input.GetButtonDown(Abutton))
+            if (Input.GetKeyUp(KeyCode.I) || Input.GetButtonDown(Abutton))
             {
-                Debug.Log("Action button pressed");
                 other.Action(this.gameObject);
             }
 
@@ -113,14 +112,16 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        /*if (col.gameObject.tag == "HoldOn")
+        HunkerDown hunkerDown = col.gameObject.GetComponent<HunkerDown>();
+
+        if (hunkerDown != null)
         {
             if (Input.GetKey(KeyCode.I) || Input.GetButtonDown(Abutton))
             {
-                Debug.Log("Action button pressed");
-                other.Action(this.gameObject);
+                Debug.Log("Holding");
+                hunkerDown.Action(this.gameObject);
             }
-        }*/
+        }
 
         if (col.gameObject.tag == "ShipHold")
         {

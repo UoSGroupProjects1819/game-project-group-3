@@ -16,15 +16,13 @@ public class Bucket : Interactable
     public string Bbutton = "B_P1";
 
     public GameObject floodWater;
-    private Transform floodWaterStartPos;
-    public float speed;
+    private FloodController floodController;
+
     public ParticleSystem bucketPS;
-
-
 
     void Start()
     {
-        //floodWaterStartPos = floodWater.transform;
+        floodController = floodWater.GetComponent<FloodController>();
         bucketState = this.GetComponent<BucketStates>();
         rb = this.GetComponent<Rigidbody>();
         bucket = this.gameObject;
@@ -53,7 +51,6 @@ public class Bucket : Interactable
         // Play animations etc
     }
 
-    
 
     public override void DropItem()
     {

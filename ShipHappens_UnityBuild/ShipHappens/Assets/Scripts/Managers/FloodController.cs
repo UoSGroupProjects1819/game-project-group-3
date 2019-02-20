@@ -22,7 +22,7 @@ public class FloodController : MonoBehaviour
 
     void Update ()
     {
-        floodRate = numberOfHoles * (floodRateModifier * 0.001f) * Time.deltaTime;
+        floodRate = numberOfHoles * (floodRateModifier * 0.001f * Time.deltaTime);
 
         floodPlane.transform.position = new Vector3(startPosition.x, startPosition.y += floodRate, startPosition.z);
 
@@ -37,7 +37,7 @@ public class FloodController : MonoBehaviour
         //currentLevel = floodPlane.transform.position.y;
         //float newLevel = currentLevel - bailAmount;
 
-        floodRate = floodRate - bailAmount;
+        floodPlane.transform.position = new Vector3(startPosition.x, startPosition.y - bailAmount, startPosition.z);
     }
 
     void ClampFloodLevel()

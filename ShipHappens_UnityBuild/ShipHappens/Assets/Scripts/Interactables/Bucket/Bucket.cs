@@ -22,7 +22,7 @@ public class Bucket : Interactable
 
     void Start()
     {
-        floodController = floodWater.GetComponent<FloodController>();
+        floodController = FindObjectOfType<FloodController>();
         bucketState = this.GetComponent<BucketStates>();
         rb = this.GetComponent<Rigidbody>();
         bucket = this.gameObject;
@@ -48,7 +48,7 @@ public class Bucket : Interactable
     {
         Debug.Log("Bailed the water");
         bucketState.currentState = BucketStates.BucketState.Held;
-        // Play animations etc
+        floodController.BailWater();
     }
 
 

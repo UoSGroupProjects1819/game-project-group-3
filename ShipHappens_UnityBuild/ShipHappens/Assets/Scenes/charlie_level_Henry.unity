@@ -6162,6 +6162,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.75
       objectReference: {fileID: 0}
+    - target: {fileID: 114117528306759770, guid: 8ea515953aa2e9b4b874020026bfcfa9,
+        type: 3}
+      propertyPath: floodWater
+      value: 
+      objectReference: {fileID: 304513687}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8ea515953aa2e9b4b874020026bfcfa9, type: 3}
 --- !u!1001 &1277348523
@@ -6420,7 +6425,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   floodPlane: {fileID: 304513687}
   floodRate: 0
-  floodRateModifier: 0.5
+  floodRateModifier: 20
+  currentLevel: 0
+  bailAmount: 10
 --- !u!1001 &1344820784
 PrefabInstance:
   m_ObjectHideFlags: 0

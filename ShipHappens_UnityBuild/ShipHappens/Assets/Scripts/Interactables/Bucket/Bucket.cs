@@ -42,50 +42,18 @@ public class Bucket : Interactable
             bucketState.currentState = BucketStates.BucketState.Held;
             playerState.playerState = PlayerStates.PlayerState.pBucket;
             PickedUpComponents(ref playerState, rb, this.gameObject);
-        }
-
-        // Collect Water
-        if (bucketState.currentState == BucketStates.BucketState.Held && playerState.playerState == PlayerStates.PlayerState.pBucket)
-        {
-            Debug.Log("Collect Water");
-            bucketState.currentState = BucketStates.BucketState.Full;
-            // Play animations etc
-        }
-
-        // Bail Water
-        if (bucketState.currentState == BucketStates.BucketState.Full && playerState.playerState == PlayerStates.PlayerState.pEdge)
-        {
-            Debug.Log("Bailed the water");
-            bucketState.currentState = BucketStates.BucketState.Held;
-            // Play animations etc
+            return;
         }
     }
 
-    //private void OnTriggerStay(Collider col)
-    //{
-    //    if (col.gameObject.tag == "Edge" && bucketState.currentState == BucketStates.BucketState.Held && rb.velocity.magnitude <= 0.1f && floodWater.transform.position.y > floodWaterStartPos.position.y)
-    //    {
-    //        Debug.Log("bail 1st check");
-
-    //        if (Input.GetButtonDown(Abutton) || Input.GetKey(KeyCode.B))
-    //        {
-    //            Debug.Log("bailing!");
-    //            bucketPS.Play();
-    //            float step = speed * Time.deltaTime;
-    //            floodWater.transform.position = Vector3.MoveTowards(floodWater.transform.position, floodWaterStartPos.position, step);
-    //        }
-    //    }
-    //}
-
-    private void Update()
+    public void BailWater()
     {
-        if (Input.GetButtonDown(Abutton) || Input.GetKey(KeyCode.B))
-        {
-            bucketPS.Play();
-            float step = speed * Time.deltaTime;
-            floodWater.transform.position = Vector3.MoveTowards(floodWater.transform.position, floodWaterStartPos.position, step);
-        }
+        Debug.Log("Bailed the water");
+        bucketState.currentState = BucketStates.BucketState.Held;
+        // Play animations etc
     }
+
+    
 
     public override void DropItem()
     {

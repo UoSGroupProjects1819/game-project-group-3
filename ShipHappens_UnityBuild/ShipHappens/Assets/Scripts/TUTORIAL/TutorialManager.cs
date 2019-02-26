@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class TutorialManager : MonoBehaviour
 {
@@ -10,8 +11,10 @@ public class TutorialManager : MonoBehaviour
     public GameObject[] players;
 
     //CROWS NEST
+    public bool playBubble;
     public CrowsNestUI crowsNest;
     public Animator CNanim;
+    public Image TutorialBubble;
     public Sprite crowsNestImg;
 
     //DPAD MENU
@@ -52,7 +55,7 @@ public class TutorialManager : MonoBehaviour
 
     void Start()
     {
-
+        crowsNestImg = TutorialBubble.sprite;
 
     }
 
@@ -60,6 +63,7 @@ public class TutorialManager : MonoBehaviour
     void Update()
     {
         TutorialSteps();
+        MethodPlayBubble();
     }
 
     void TutorialSteps()
@@ -67,15 +71,20 @@ public class TutorialManager : MonoBehaviour
         switch (stage)
         {
             case 0:
+                Debug.Log("case: " + stage);
                 crowsNestImg = enemyImg;
-                CNanim.SetBool("PlayTutorialBubble", true);
+
                 if (CNanim.GetBool("PlayTutorialBubble") == false)
                 {
                     stage = 1;
                 }
+
+                CNanim.SetBool("PlayTutorialBubble", true);
+
                 break;
 
             case 1:
+                Debug.Log("case: " + stage);
                 crowsNestImg = shipHoldImg;
                 shipHoldAnim.SetBool("PlayTutorialHold", true);
                 CNanim.SetBool("PlayTutorialBubble", true);
@@ -83,6 +92,7 @@ public class TutorialManager : MonoBehaviour
                 break;
 
             case 2:
+                Debug.Log("case: " + stage);
                 if (dpadMenu.alpha > 0.33f)
                 {
                     shipHoldAnim.SetBool("PlayTutorialHold", false);
@@ -106,6 +116,7 @@ public class TutorialManager : MonoBehaviour
                 break;
 
             case 3:
+                Debug.Log("case: " + stage);
 
                 break;
         }
@@ -114,5 +125,15 @@ public class TutorialManager : MonoBehaviour
     public void StopTutorialBubble()
     {
         CNanim.SetBool("PlayTutorialBubble", false);
+    }
+
+    void MethodPlayBubble()
+    {
+        Debug.Log("method play bubble");
+
+        if (playBubble)
+        {
+            CNanim.SetBool("PlayTutorialBubble", true);
+        }
     }
 }

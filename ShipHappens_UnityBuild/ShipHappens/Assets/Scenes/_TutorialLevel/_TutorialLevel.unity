@@ -5590,9 +5590,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stage: 0
+  players: []
+  playBubble: 0
   crowsNest: {fileID: 0}
   CNanim: {fileID: 1102516137}
+  TutorialBubble: {fileID: 0}
   crowsNestImg: {fileID: 0}
+  dpadMenu: {fileID: 0}
   pulseCircle: {fileID: 0}
   cannonTopLeft: {fileID: 0}
   cannonImg: {fileID: 0}
@@ -5899,7 +5903,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1456924955277678, guid: 585c6690eff4d3949b44254720f21b6c, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1456924955277678, guid: 585c6690eff4d3949b44254720f21b6c, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -5944,8 +5948,16 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1310646195957444, guid: 585c6690eff4d3949b44254720f21b6c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1119643519536592, guid: 585c6690eff4d3949b44254720f21b6c, type: 3}
       propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1119643519536592, guid: 585c6690eff4d3949b44254720f21b6c, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1946728840516390, guid: 585c6690eff4d3949b44254720f21b6c, type: 3}
@@ -6117,9 +6129,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stage: 0
+  players: []
+  playBubble: 0
   crowsNest: {fileID: 0}
   CNanim: {fileID: 0}
+  TutorialBubble: {fileID: 280632941}
   crowsNestImg: {fileID: 0}
+  dpadMenu: {fileID: 0}
   pulseCircle: {fileID: 0}
   cannonTopLeft: {fileID: 0}
   cannonImg: {fileID: 0}

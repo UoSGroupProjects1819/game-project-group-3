@@ -5595,6 +5595,7 @@ MonoBehaviour:
   crowsNest: {fileID: 0}
   CNanim: {fileID: 1102516137}
   TutorialBubble: {fileID: 0}
+  tutorialBubbleInterior: {fileID: 0}
   crowsNestImg: {fileID: 0}
   dpadMenu: {fileID: 0}
   pulseCircle: {fileID: 0}
@@ -6134,6 +6135,7 @@ MonoBehaviour:
   crowsNest: {fileID: 0}
   CNanim: {fileID: 0}
   TutorialBubble: {fileID: 280632941}
+  tutorialBubbleInterior: {fileID: 280632941}
   crowsNestImg: {fileID: 0}
   dpadMenu: {fileID: 0}
   pulseCircle: {fileID: 0}
@@ -6152,7 +6154,7 @@ MonoBehaviour:
   woodImg: {fileID: 0}
   woodCircle: {fileID: 0}
   enemyShip: {fileID: 0}
-  enemyImg: {fileID: 0}
+  enemyImg: {fileID: 21300000, guid: d3f2182ee1652d54db75ac40b95b927a, type: 3}
 --- !u!4 &1117603850 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4645694278088332, guid: 046986ab40a96a54b82409c42e762d3b,

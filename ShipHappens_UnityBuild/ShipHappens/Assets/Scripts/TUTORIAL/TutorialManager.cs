@@ -15,6 +15,7 @@ public class TutorialManager : MonoBehaviour
     public CrowsNestUI crowsNest;
     public Animator CNanim;
     public Image TutorialBubble;
+    public Image tutorialBubbleInterior;
     public Sprite crowsNestImg;
 
     //DPAD MENU
@@ -55,8 +56,7 @@ public class TutorialManager : MonoBehaviour
 
     void Start()
     {
-        crowsNestImg = TutorialBubble.sprite;
-
+        crowsNestImg = tutorialBubbleInterior.sprite;
     }
 
 

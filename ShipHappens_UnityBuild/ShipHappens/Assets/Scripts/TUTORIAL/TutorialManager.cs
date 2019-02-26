@@ -16,7 +16,6 @@ public class TutorialManager : MonoBehaviour
     public Animator CNanim;
     public Image TutorialBubble;
     public Image tutorialBubbleInterior;
-    public Sprite crowsNestImg;
 
     //DPAD MENU
     public CanvasGroup dpadMenu;
@@ -54,12 +53,6 @@ public class TutorialManager : MonoBehaviour
     public Sprite enemyImg;
 
 
-    void Start()
-    {
-        crowsNestImg = tutorialBubbleInterior.sprite;
-    }
-
-
     void Update()
     {
         TutorialSteps();
@@ -72,12 +65,12 @@ public class TutorialManager : MonoBehaviour
         {
             case 0:
                 Debug.Log("case: " + stage);
-                crowsNestImg = enemyImg;
+                tutorialBubbleInterior.sprite = enemyImg;
 
-                if (CNanim.GetBool("PlayTutorialBubble") == false)
-                {
-                    stage = 1;
-                }
+                //if (CNanim.GetBool("PlayTutorialBubble") == false)
+                //{
+                //    stage = 1;
+                //}
 
                 CNanim.SetBool("PlayTutorialBubble", true);
 
@@ -85,7 +78,7 @@ public class TutorialManager : MonoBehaviour
 
             case 1:
                 Debug.Log("case: " + stage);
-                crowsNestImg = shipHoldImg;
+                tutorialBubbleInterior.sprite = shipHoldImg;
                 shipHoldAnim.SetBool("PlayTutorialHold", true);
                 CNanim.SetBool("PlayTutorialBubble", true);
                 stage = 2;
@@ -96,7 +89,7 @@ public class TutorialManager : MonoBehaviour
                 if (dpadMenu.alpha > 0.33f)
                 {
                     shipHoldAnim.SetBool("PlayTutorialHold", false);
-                    crowsNestImg = cannonballImg;
+                    tutorialBubbleInterior.sprite = cannonballImg;
                     CNanim.SetBool("PlayTutorialBubble", true);
                     cannonballCircle.gameObject.SetActive(true);
                     cannonballCircle.Play();

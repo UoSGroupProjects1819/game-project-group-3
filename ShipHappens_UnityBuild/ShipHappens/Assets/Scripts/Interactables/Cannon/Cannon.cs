@@ -34,10 +34,11 @@ public class Cannon : Interactable
 
     public override void Action(GameObject player)
     {
-        playerStates = player.GetComponent<PlayerStates>();
+        if(playerStates == null)
+            playerStates = player.GetComponent<PlayerStates>();
 
         // Get the interacting players current state
-        switch (player.GetComponent<PlayerStates>().playerState)
+        switch (playerStates.playerState)
         {
                 // Perform action if the player is holding the cannonball
             case PlayerStates.PlayerState.pCannonball:
@@ -49,10 +50,22 @@ public class Cannon : Interactable
                     return;
                 }
 
-                OnAction(playerStates);
-                cannonState.UpdateState(CannonState.CannonStates.cCannonBall);
+                playerStates.actioning = true;
+                playerStates.Timer();
+
+                if (playerStates.actioning == true)
+                    Action(player);
+
+                else if (playerStates.taskComplete == true)
+                {
+                    Debug.Log("Loaddddddingggg");
+                    OnAction(playerStates);
+                    cannonState.UpdateState(CannonState.CannonStates.cCannonBall);
+                    break;
+                }
+
                 break;
-           
+                
                 // Perform action if the player is holding the gunpowder
             case PlayerStates.PlayerState.pGunpowder:
 

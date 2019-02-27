@@ -7,15 +7,20 @@ public class Cannon : Interactable
 
     public CannonState cannonState;
     public PlayerStates playerStates;
+    public PlayerController controller;
 
     public ParticleSystem cannonFire;
 
     Animator anim;
 
+    public bool finishedAction;
 
     public GameObject target;
 
     public cannonUI cannonUI;
+
+    public const float maxTimer = 5f;
+    public float timer;
 
     public void Start()
     {
@@ -30,6 +35,15 @@ public class Cannon : Interactable
         {
             anim.SetBool("InRange", true);
         }
+
+        if (cannonState.currentState == CannonState.CannonStates.cPreloaded)
+        {
+            timer -= Time.deltaTime;
+
+            if (timer <= 0)
+            {
+            }
+        }
     }
 
     public override void Action(GameObject player)
@@ -37,7 +51,7 @@ public class Cannon : Interactable
         playerStates = player.GetComponent<PlayerStates>();
 
         // Get the interacting players current state
-        switch (player.GetComponent<PlayerStates>().playerState)
+        switch (playerStates.playerState)
         {
                 // Perform action if the player is holding the cannonball
             case PlayerStates.PlayerState.pCannonball:
@@ -48,9 +62,23 @@ public class Cannon : Interactable
                     Debug.LogWarning("Cannonball already loaded");
                     return;
                 }
+       
+                // Timer
+                cannonState.previousState = cannonState.currentState;   // Store the previous state of the cannon
+                timer = maxTimer;
 
-                OnAction(playerStates);
-                cannonState.UpdateState(CannonState.CannonStates.cCannonBall);
+                // MAKE THIS BETTER!
+                controller = player.GetComponent<PlayerController>();
+
+                controller.interacting = true;
+                cannonState.currentState = CannonState.CannonStates.cPreloaded;
+
+                if(finishedAction == true)
+                {
+                    OnAction(playerStates);
+                    cannonState.UpdateState(CannonState.CannonStates.cCannonBall);
+                    break;
+                }           
                 break;
            
                 // Perform action if the player is holding the gunpowder
@@ -130,6 +158,22 @@ public class Cannon : Interactable
         {
             anim.SetBool("InRange", false);
             target = null;
+        }
+
+        if (controller != null)
+        {
+            if (other.tag == "Player" && controller.interacting == true)
+            {
+                Debug.Log("Stopping Interacting");
+
+
+                cannonState.currentState = cannonState.previousState;
+                timer = maxTimer;
+
+                // Reset components - Make function
+                controller = null;
+                playerStates = null;
+            }
         }
     }
 }

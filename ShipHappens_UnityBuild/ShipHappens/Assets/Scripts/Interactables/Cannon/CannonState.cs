@@ -5,9 +5,9 @@ using UnityEngine;
 public class CannonState : MonoBehaviour
 {
 
-    public enum CannonStates { cEmpty, cGunpowder, cCannonBall, cFullyLoaded };
-    public CannonStates currentState;
+    public enum CannonStates { cEmpty, cGunpowder, cCannonBall, cFullyLoaded, cPreloaded };
 
+    public CannonStates currentState, previousState;
 
     // Use this for initialization
     void Start () {

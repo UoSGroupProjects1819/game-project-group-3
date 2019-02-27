@@ -25,6 +25,8 @@ public class PlayerController : MonoBehaviour
 
     public bool edge = false;
 
+    public bool interacting = false;
+
 
     void Start()
     {
@@ -71,7 +73,7 @@ public class PlayerController : MonoBehaviour
                 other.Action(this.gameObject);
             }
 
-            if (Input.GetKey(KeyCode.U) || Input.GetButtonDown(Bbutton))
+            if (Input.GetKeyUp(KeyCode.U) || Input.GetButtonDown(Bbutton))
             {
                 other.DropItem();
             }

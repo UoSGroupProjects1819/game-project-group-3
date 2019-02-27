@@ -21,6 +21,10 @@ public class PlayerController : MonoBehaviour
     public string DpadHorizontal = "Dpad_Left/Right_P1";
     public string DpadVertical = "Dpad_Up/Down_P1";
 
+    public bool upIsPressed;
+    public bool leftIsPressed;
+    public bool rightIsPressed;
+
     public CrowsNestUI UIManager;
 
     public bool edge = false;
@@ -41,23 +45,26 @@ public class PlayerController : MonoBehaviour
 
         //weak D-pad test
         #region Dpad TEST
-        if (Input.GetAxisRaw(DpadVertical) > 0)
-        {
-            Debug.Log("up dpad");
-        }
-        else if (Input.GetAxisRaw(DpadVertical) < 0)
-        {
-            Debug.Log("down dpad");
-        }
+        //if (Input.GetAxisRaw(DpadVertical) > 0 && !upIsPressed)
+        //{
+        //    upIsPressed = true;
+        //    Debug.Log("up dpad");
+        //}
+        //else if (Input.GetAxisRaw(DpadVertical) < 0)
+        //{
+        //    Debug.Log("down dpad");
+        //}
 
-        if (Input.GetAxisRaw(DpadHorizontal) > 0)
-        {
-            Debug.Log("right dpad");
-        }
-        else if (Input.GetAxisRaw(DpadHorizontal) < 0)
-        {
-            Debug.Log("left dpad");
-        }
+        //if (Input.GetAxisRaw(DpadHorizontal) > 0 && !rightIsPressed)
+        //{
+        //    rightIsPressed = true;
+        //    Debug.Log("right dpad");
+        //}
+        //else if (Input.GetAxisRaw(DpadHorizontal) < 0 && !leftIsPressed)
+        //{
+        //    leftIsPressed = true;
+        //    Debug.Log("left dpad");
+        //}
         #endregion
     }
 
@@ -68,12 +75,12 @@ public class PlayerController : MonoBehaviour
 
         if (other != null)
         {
-            if (Input.GetKeyUp(KeyCode.I) || Input.GetButtonDown(Abutton))
+            if (Input.GetKeyUp(KeyCode.I) || Input.GetButtonUp(Abutton))
             {
                 other.Action(this.gameObject);
             }
 
-            if (Input.GetKeyUp(KeyCode.U) || Input.GetButtonDown(Bbutton))
+            if (Input.GetKeyUp(KeyCode.U) || Input.GetButtonUp(Bbutton))
             {
                 other.DropItem();
             }
@@ -126,32 +133,43 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        if (col.gameObject.tag == "ShipHold")
         {
             DpadMenu menu = col.gameObject.GetComponent<DpadMenu>();
 
-            if (Input.GetAxisRaw(DpadVertical) > 0 || (Input.GetKey(KeyCode.K)) && UIManager.woodTimer.onCooldown == false && playerState.playerState == PlayerStates.PlayerState.pEmpty)
+            if (Input.GetAxisRaw(DpadVertical) > 0 && upIsPressed == false|| (Input.GetKey(KeyCode.K)) && UIManager.woodTimer.onCooldown == false && playerState.playerState == PlayerStates.PlayerState.pEmpty)
             {
+                upIsPressed = true;
+                leftIsPressed = false;
+                rightIsPressed = false;
                 Debug.Log("DpadWood");
 
                 direction = Direction.up;
                 menu.CollectedWhenPressed(this, direction);
+                return;
             }
 
-            if (Input.GetAxisRaw(DpadHorizontal) > 0 || (Input.GetKey(KeyCode.L)) && UIManager.barrelTimer.onCooldown == false && playerState.playerState == PlayerStates.PlayerState.pEmpty)
+            if (Input.GetAxisRaw(DpadHorizontal) > 0 && rightIsPressed == false|| (Input.GetKey(KeyCode.L)) && UIManager.barrelTimer.onCooldown == false && playerState.playerState == PlayerStates.PlayerState.pEmpty)
             {
+                rightIsPressed = true;
+                leftIsPressed = false;
+                upIsPressed = false;
                 direction = Direction.right;
                 menu.CollectedWhenPressed(this, direction);
 
                 Debug.Log("DpadBarrel");
+                return;
             }
 
-            if (Input.GetAxisRaw(DpadHorizontal) < 0 || (Input.GetKey(KeyCode.J)) && UIManager.cballTimer.onCooldown == false && playerState.playerState == PlayerStates.PlayerState.pEmpty)
+            if (Input.GetAxisRaw(DpadHorizontal) < 0 &&  leftIsPressed == false || (Input.GetKey(KeyCode.J)) && UIManager.cballTimer.onCooldown == false && playerState.playerState == PlayerStates.PlayerState.pEmpty)
             {
+                leftIsPressed = true;
+                rightIsPressed = false;
+                upIsPressed = false;
                 direction = Direction.left;
                 menu.CollectedWhenPressed(this, direction);
 
                 Debug.Log("DpadCannonBall");
+                return;
             }
         }
     }

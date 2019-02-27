@@ -19,7 +19,7 @@ public class Cannon : Interactable
 
     public cannonUI cannonUI;
 
-    public const float maxTimer = 5f;
+    public const float CANNONBALL_TIMER = 5f, GUNPOWDER_TIMER = 5f;
     public float timer;
 
     public void Start()
@@ -66,13 +66,17 @@ public class Cannon : Interactable
                     Debug.LogWarning("Cannonball already loaded");
                     return;
                 }
-       
-                // Timer
-                cannonState.previousState = cannonState.currentState;   // Store the previous state of the cannon
-                timer = maxTimer;               
 
-                controller.interacting = true;
-                cannonState.currentState = CannonState.CannonStates.cPreLoaded;       
+                // Timer
+                //cannonState.previousState = cannonState.currentState;   // Store the previous state of the cannon
+                //timer = CANNONBALL_TIMER;               
+
+                //controller.interacting = true;
+                //cannonState.currentState = CannonState.CannonStates.cPreLoaded; 
+
+                // REMOVE AFTER TESTING
+                OnAction(playerStates);
+                cannonState.UpdateState(CannonState.CannonStates.cCannonBall);
                 break;
                 
                 // Perform action if the player is holding the gunpowder
@@ -171,7 +175,7 @@ public class Cannon : Interactable
             if (other.tag == "Player" && controller.interacting == true)
             {
                 cannonState.currentState = cannonState.previousState;
-                timer = maxTimer;
+                timer = 1000;
 
                 // Reset components - Make function
                 controller = null;

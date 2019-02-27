@@ -21,6 +21,8 @@ TagManager:
   - FirePit
   - Cannon
   - WheelArea
+  - TutorialFirstEnemyStopper
+  - tm
   layers:
   - Default
   - TransparentFX

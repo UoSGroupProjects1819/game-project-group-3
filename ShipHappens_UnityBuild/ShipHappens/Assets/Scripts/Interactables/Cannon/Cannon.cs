@@ -36,20 +36,23 @@ public class Cannon : Interactable
             anim.SetBool("InRange", true);
         }
 
-        if (cannonState.currentState == CannonState.CannonStates.cPreloaded)
+        if (cannonState.currentState == CannonState.CannonStates.cPreLoaded)
         {
-            timer -= Time.deltaTime;
-
-            if (timer <= 0)
-            {
-            }
+            Timer();
         }
     }
 
     public override void Action(GameObject player)
     {
-        if(playerStates == null)
+        // Safety Checks
+        if (playerStates == null)
+        {
             playerStates = player.GetComponent<PlayerStates>();
+        }
+        if (controller == null)
+        {
+            controller = player.GetComponent<PlayerController>();
+        }
 
         // Get the interacting players current state
         switch (playerStates.playerState)
@@ -66,20 +69,10 @@ public class Cannon : Interactable
        
                 // Timer
                 cannonState.previousState = cannonState.currentState;   // Store the previous state of the cannon
-                timer = maxTimer;
-
-                // MAKE THIS BETTER!
-                controller = player.GetComponent<PlayerController>();
+                timer = maxTimer;               
 
                 controller.interacting = true;
-                cannonState.currentState = CannonState.CannonStates.cPreloaded;
-
-                if(finishedAction == true)
-                {
-                    OnAction(playerStates);
-                    cannonState.UpdateState(CannonState.CannonStates.cCannonBall);
-                    break;
-                }           
+                cannonState.currentState = CannonState.CannonStates.cPreLoaded;       
                 break;
                 
                 // Perform action if the player is holding the gunpowder
@@ -145,6 +138,18 @@ public class Cannon : Interactable
         Destroy(interactable);
     }
 
+    private void Timer()
+    {
+        timer -= Time.deltaTime;
+
+        if (timer <= 0)
+        {
+            OnAction(playerStates);
+            controller.interacting = false;
+            cannonState.UpdateState(CannonState.CannonStates.cCannonBall);
+        }
+    }
+
     private void OnTriggerStay(Collider other)
     {
         if (other.tag == "PirateFlag")
@@ -165,9 +170,6 @@ public class Cannon : Interactable
         {
             if (other.tag == "Player" && controller.interacting == true)
             {
-                Debug.Log("Stopping Interacting");
-
-
                 cannonState.currentState = cannonState.previousState;
                 timer = maxTimer;
 

@@ -93,7 +93,10 @@ public class Cannon : Interactable
                 }
 
                 // Timer
-                cannonState.previousState = cannonState.currentState;   // Store the previous state of the cannon
+                if (cannonState.previousState == CannonState.CannonStates.cIdle)
+                {
+                    cannonState.previousState = cannonState.currentState;   // Store the previous state of the cannon
+                }
                 timer = GUNPOWDER_TIMER;
                 taskName = "Gunpowder";
 

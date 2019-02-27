@@ -5225,6 +5225,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: TimersCanvas
       objectReference: {fileID: 0}
+    - target: {fileID: 319719429180057030, guid: 5909c434129e53b4387a10b7ca64a92f,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 124372617, guid: 5909c434129e53b4387a10b7ca64a92f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -5312,12 +5317,12 @@ PrefabInstance:
     - target: {fileID: 8313907517901567204, guid: 5909c434129e53b4387a10b7ca64a92f,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5112076222195735112, guid: 5909c434129e53b4387a10b7ca64a92f,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1491205856, guid: 5909c434129e53b4387a10b7ca64a92f, type: 3}
       propertyPath: mainCam
@@ -5325,27 +5330,27 @@ PrefabInstance:
       objectReference: {fileID: 298738235}
     - target: {fileID: 1484223359, guid: 5909c434129e53b4387a10b7ca64a92f, type: 3}
       propertyPath: m_AnchorMin.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1484223359, guid: 5909c434129e53b4387a10b7ca64a92f, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1484223359, guid: 5909c434129e53b4387a10b7ca64a92f, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 996504852, guid: 5909c434129e53b4387a10b7ca64a92f, type: 3}
       propertyPath: m_AnchorMin.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 996504852, guid: 5909c434129e53b4387a10b7ca64a92f, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 996504852, guid: 5909c434129e53b4387a10b7ca64a92f, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6687647120614194171, guid: 5909c434129e53b4387a10b7ca64a92f,
         type: 3}
@@ -5592,6 +5597,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: LEVEL_SHIP_WIP
       objectReference: {fileID: 0}
+    - target: {fileID: 1815396536127460, guid: 585c6690eff4d3949b44254720f21b6c, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 114093728264921568, guid: 585c6690eff4d3949b44254720f21b6c,
         type: 3}
       propertyPath: bottomRampLeft
@@ -5831,10 +5840,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 13400000, guid: 0d242643350e5e14691c81a12c53af63,
         type: 2}
-    - target: {fileID: 1815396536127460, guid: 585c6690eff4d3949b44254720f21b6c, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 1310646195957444, guid: 585c6690eff4d3949b44254720f21b6c, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 0
@@ -7618,6 +7623,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: EnemyController
       objectReference: {fileID: 0}
+    - target: {fileID: 9131460281255330948, guid: 91a54340a48258942b2025d52400d84a,
+        type: 3}
+      propertyPath: m_Name
+      value: ShipSpawnerBL
+      objectReference: {fileID: 0}
+    - target: {fileID: 9131460281725200225, guid: 91a54340a48258942b2025d52400d84a,
+        type: 3}
+      propertyPath: m_Name
+      value: ShipSpawnerBR
+      objectReference: {fileID: 0}
+    - target: {fileID: 9131460280782836563, guid: 91a54340a48258942b2025d52400d84a,
+        type: 3}
+      propertyPath: m_Name
+      value: ShipSpawnerTR
+      objectReference: {fileID: 0}
+    - target: {fileID: 9131460280266795275, guid: 91a54340a48258942b2025d52400d84a,
+        type: 3}
+      propertyPath: m_Name
+      value: ShipSpawnerTL
+      objectReference: {fileID: 0}
     - target: {fileID: 9131460280964224187, guid: 91a54340a48258942b2025d52400d84a,
         type: 3}
       propertyPath: pirateFlag
@@ -7699,40 +7724,20 @@ PrefabInstance:
       propertyPath: m_Size.x
       value: 150
       objectReference: {fileID: 0}
-    - target: {fileID: 9131460281255330948, guid: 91a54340a48258942b2025d52400d84a,
-        type: 3}
-      propertyPath: m_Name
-      value: ShipSpawnerBL
-      objectReference: {fileID: 0}
     - target: {fileID: 9131460281255330949, guid: 91a54340a48258942b2025d52400d84a,
         type: 3}
       propertyPath: m_LocalPosition.x
       value: 40
-      objectReference: {fileID: 0}
-    - target: {fileID: 9131460281725200225, guid: 91a54340a48258942b2025d52400d84a,
-        type: 3}
-      propertyPath: m_Name
-      value: ShipSpawnerBR
       objectReference: {fileID: 0}
     - target: {fileID: 9131460281725200226, guid: 91a54340a48258942b2025d52400d84a,
         type: 3}
       propertyPath: m_LocalPosition.x
       value: -37
       objectReference: {fileID: 0}
-    - target: {fileID: 9131460280266795275, guid: 91a54340a48258942b2025d52400d84a,
-        type: 3}
-      propertyPath: m_Name
-      value: ShipSpawnerTL
-      objectReference: {fileID: 0}
     - target: {fileID: 9131460280266795380, guid: 91a54340a48258942b2025d52400d84a,
         type: 3}
       propertyPath: m_LocalPosition.x
       value: 40
-      objectReference: {fileID: 0}
-    - target: {fileID: 9131460280782836563, guid: 91a54340a48258942b2025d52400d84a,
-        type: 3}
-      propertyPath: m_Name
-      value: ShipSpawnerTR
       objectReference: {fileID: 0}
     - target: {fileID: 9131460280782836572, guid: 91a54340a48258942b2025d52400d84a,
         type: 3}

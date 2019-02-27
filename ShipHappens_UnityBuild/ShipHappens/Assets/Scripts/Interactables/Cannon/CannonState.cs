@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CannonState : MonoBehaviour
 {
-    public enum CannonStates { cEmpty, cGunpowder, cCannonBall, cFullyLoaded, cPreLoaded };
+    public enum CannonStates { cEmpty, cGunpowder, cCannonBall, cFullyLoaded, cPreLoaded, cIdle };
     public CannonStates currentState, previousState;
 
     // Use this for initialization

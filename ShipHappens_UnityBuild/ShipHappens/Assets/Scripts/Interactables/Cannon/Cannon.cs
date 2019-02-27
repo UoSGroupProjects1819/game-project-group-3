@@ -19,6 +19,8 @@ public class Cannon : Interactable
 
     public cannonUI cannonUI;
 
+    private string taskName;
+
     public const float CANNONBALL_TIMER = 5f, GUNPOWDER_TIMER = 5f;
     public float timer;
 
@@ -38,7 +40,7 @@ public class Cannon : Interactable
 
         if (cannonState.currentState == CannonState.CannonStates.cPreLoaded)
         {
-            Timer();
+            Timer(taskName);
         }
     }
 
@@ -68,15 +70,16 @@ public class Cannon : Interactable
                 }
 
                 // Timer
-                //cannonState.previousState = cannonState.currentState;   // Store the previous state of the cannon
-                //timer = CANNONBALL_TIMER;               
+                if (cannonState.previousState == CannonState.CannonStates.cIdle)
+                {
+                    cannonState.previousState = cannonState.currentState;
+                }
 
-                //controller.interacting = true;
-                //cannonState.currentState = CannonState.CannonStates.cPreLoaded; 
+                timer = CANNONBALL_TIMER;
+                taskName = "Cannonball";
 
-                // REMOVE AFTER TESTING
-                OnAction(playerStates);
-                cannonState.UpdateState(CannonState.CannonStates.cCannonBall);
+                controller.interacting = true;
+                cannonState.currentState = CannonState.CannonStates.cPreLoaded;
                 break;
                 
                 // Perform action if the player is holding the gunpowder
@@ -89,8 +92,13 @@ public class Cannon : Interactable
                     return;
                 }
 
-                OnAction(playerStates);
-                cannonState.UpdateState(CannonState.CannonStates.cGunpowder);   
+                // Timer
+                cannonState.previousState = cannonState.currentState;   // Store the previous state of the cannon
+                timer = GUNPOWDER_TIMER;
+                taskName = "Gunpowder";
+
+                controller.interacting = true;
+                cannonState.currentState = CannonState.CannonStates.cPreLoaded;
                 break;
 
                 // Perform action if the player is holding the torch
@@ -142,7 +150,7 @@ public class Cannon : Interactable
         Destroy(interactable);
     }
 
-    private void Timer()
+    private void Timer(string task)
     {
         timer -= Time.deltaTime;
 
@@ -150,7 +158,21 @@ public class Cannon : Interactable
         {
             OnAction(playerStates);
             controller.interacting = false;
-            cannonState.UpdateState(CannonState.CannonStates.cCannonBall);
+
+            controller = null;
+            playerStates = null;
+
+            cannonState.currentState = cannonState.previousState;
+            cannonState.previousState = CannonState.CannonStates.cIdle;
+
+            if (task == "Cannonball")
+            {
+                cannonState.UpdateState(CannonState.CannonStates.cCannonBall);
+            }
+            else if (task == "Gunpowder")
+            {
+                cannonState.UpdateState(CannonState.CannonStates.cGunpowder);
+            }
         }
     }
 
@@ -175,6 +197,7 @@ public class Cannon : Interactable
             if (other.tag == "Player" && controller.interacting == true)
             {
                 cannonState.currentState = cannonState.previousState;
+                cannonState.previousState = CannonState.CannonStates.cIdle;
                 timer = 1000;
 
                 // Reset components - Make function

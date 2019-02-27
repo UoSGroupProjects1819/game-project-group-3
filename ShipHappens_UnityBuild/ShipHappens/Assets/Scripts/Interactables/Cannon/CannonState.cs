@@ -4,20 +4,13 @@ using UnityEngine;
 
 public class CannonState : MonoBehaviour
 {
-
-    public enum CannonStates { cEmpty, cGunpowder, cCannonBall, cFullyLoaded, cPreloaded };
-
+    public enum CannonStates { cEmpty, cGunpowder, cCannonBall, cFullyLoaded, cPreLoaded };
     public CannonStates currentState, previousState;
 
     // Use this for initialization
     void Start () {
         currentState = CannonStates.cEmpty;
 	}
-
-    private void Update()
-    {
-        
-    }
 
     // Check what state the cannon is in to perform certain actions
     public void UpdateState(CannonStates cannonState)
@@ -51,12 +44,20 @@ public class CannonState : MonoBehaviour
             case CannonStates.cFullyLoaded:
                 currentState = CannonStates.cFullyLoaded;
                 break;
+
+            // What to do when loading cannon
+            case CannonStates.cPreLoaded:
+                break;
             // Fallback case incase of an error
             default:
                 break;
         }
     }
 
-    
+    public void ActivityTimer(GameObject player)
+    {
+        PlayerMovement movement = player.GetComponent<PlayerMovement>();
 
+        movement.canMove = false;      
+    }
 }

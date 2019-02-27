@@ -52,4 +52,11 @@ public class Cannonball : Interactable
             ResetComponents(ref playerState, rb);
         }
     }
+
+    public IEnumerator Timer()
+    {
+        float timer = 5;
+
+        yield return timer;
+    }
 }

@@ -48,7 +48,8 @@ public class Cannon : Interactable
 
     public override void Action(GameObject player)
     {
-        playerStates = player.GetComponent<PlayerStates>();
+        if(playerStates == null)
+            playerStates = player.GetComponent<PlayerStates>();
 
         // Get the interacting players current state
         switch (playerStates.playerState)
@@ -80,7 +81,7 @@ public class Cannon : Interactable
                     break;
                 }           
                 break;
-           
+                
                 // Perform action if the player is holding the gunpowder
             case PlayerStates.PlayerState.pGunpowder:
 

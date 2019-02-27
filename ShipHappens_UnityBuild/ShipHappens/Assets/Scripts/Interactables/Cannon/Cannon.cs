@@ -95,8 +95,9 @@ public class Cannon : Interactable
                 // Timer
                 if (cannonState.previousState == CannonState.CannonStates.cIdle)
                 {
-                    cannonState.previousState = cannonState.currentState;   // Store the previous state of the cannon
+                    cannonState.previousState = cannonState.currentState;
                 }
+
                 timer = GUNPOWDER_TIMER;
                 taskName = "Gunpowder";
 
@@ -176,6 +177,8 @@ public class Cannon : Interactable
             {
                 cannonState.UpdateState(CannonState.CannonStates.cGunpowder);
             }
+
+            taskName = null;
         }
     }
 
@@ -206,6 +209,7 @@ public class Cannon : Interactable
                 // Reset components - Make function
                 controller = null;
                 playerStates = null;
+                taskName = null;
             }
         }
     }

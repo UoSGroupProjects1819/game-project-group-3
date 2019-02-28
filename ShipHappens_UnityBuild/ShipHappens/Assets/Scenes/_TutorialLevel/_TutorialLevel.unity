@@ -5566,17 +5566,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pirate_Captain_Works_222
       objectReference: {fileID: 0}
+    - target: {fileID: 1799803009416302, guid: 3fb15632e3988064088f996a3ae4087b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4003606656207092, guid: 3fb15632e3988064088f996a3ae4087b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -16.24
+      value: -4.5
       objectReference: {fileID: 0}
     - target: {fileID: 4003606656207092, guid: 3fb15632e3988064088f996a3ae4087b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 8.29
+      value: 11.6
       objectReference: {fileID: 0}
     - target: {fileID: 4003606656207092, guid: 3fb15632e3988064088f996a3ae4087b, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 2.3
+      value: 34.1
       objectReference: {fileID: 0}
     - target: {fileID: 4003606656207092, guid: 3fb15632e3988064088f996a3ae4087b, type: 3}
       propertyPath: m_LocalRotation.x

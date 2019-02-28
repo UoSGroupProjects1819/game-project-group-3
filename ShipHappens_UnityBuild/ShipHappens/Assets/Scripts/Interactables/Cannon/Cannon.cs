@@ -21,7 +21,7 @@ public class Cannon : Interactable
 
     private string taskName;
 
-    public const float CANNONBALL_TIMER = 5f, GUNPOWDER_TIMER = 5f;
+    public const float CANNONBALL_TIMER = 0f, GUNPOWDER_TIMER = 0f;
     public float timer;
 
     public void Start()

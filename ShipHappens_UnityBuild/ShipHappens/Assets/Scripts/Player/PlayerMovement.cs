@@ -26,8 +26,8 @@ public class PlayerMovement : MonoBehaviour {
     {
         if (canMove)
         {
-            float moveHorizontal = -Input.GetAxis("Horizontal");
-            float moveVertical = -Input.GetAxis("Vertical");
+            float moveHorizontal = -Input.GetAxis(horizontalInput);
+            float moveVertical = -Input.GetAxis(verticalInput);
 
 
             Vector3 move = new Vector3(moveHorizontal * speed, 0, moveVertical * speed);

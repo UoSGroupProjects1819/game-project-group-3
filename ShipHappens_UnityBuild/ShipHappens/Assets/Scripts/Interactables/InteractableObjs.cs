@@ -14,24 +14,28 @@ public class InteractableObjs : MonoBehaviour
 
     // Timer variables
     private PlayerStates playerStates;
-    private new Rigidbody rigidbody;
+    private Rigidbody body;
 
     // Timer for each class to override, call base.TimerCountdown(taskName, timeToCompleteTask, ref player, ref interactable) before writing new code after
     protected virtual void TimerCountdown(string taskName, float timeToCompleteTask, ref GameObject player, ref GameObject interactable)
     {
         // Performance checks
         if (playerStates == null) { playerStates = player.GetComponent<PlayerStates>(); }
-        if (rigidbody == null) { rigidbody = interactable.GetComponent<Rigidbody>(); }
+        if (body == null) { body = interactable.GetComponent<Rigidbody>(); }
 
         float taskTime = timeToCompleteTask;
     }
 
     public virtual void Interact() { }
     public virtual void Interact(ref GameObject player) { }
+    public virtual void Interact(ref PlayerStates playerStates) { }
+    public virtual void Interact(ref GameObject player, ref PlayerStates playerStates) { }
 
     public virtual void DropItem() { }
     public virtual void DropItem(ref GameObject player) { }
-
+    public virtual void DropItem(ref PlayerStates playerStates) { }
+    public virtual void DropItem(ref GameObject player, ref PlayerStates playerStates) { }
+    
     // Set the objects position in the player's hand.  Position is assigned in the inspector of the object.
     public void SetPosition(ref GameObject player)
     {
@@ -41,9 +45,9 @@ public class InteractableObjs : MonoBehaviour
     }
 
     // Set the components correctly when picking up an item
-    public void SetPickedUpObjectComponents(ref PlayerStates state, ref Rigidbody rb, GameObject gameObject)
+    public void SetPickedUpObjectComponents(ref PlayerStates state, ref Rigidbody rb, GameObject itemToHold)
     {
-        state.itemHeld = gameObject;
+        state.itemHeld = itemToHold;
 
         rb.isKinematic = true;
         rb.detectCollisions = false;

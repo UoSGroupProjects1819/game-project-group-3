@@ -35,6 +35,7 @@ public class InteractableObjs : MonoBehaviour
     public virtual void Interact(ref GameObject player) { }
 
     public virtual void DropItem() { }
+    public virtual void DropItem(ref GameObject player) { }
 
     // Set the objects position in the player's hand.  Position is assigned in the inspector of the object.
     public void SetPosition(ref GameObject player)

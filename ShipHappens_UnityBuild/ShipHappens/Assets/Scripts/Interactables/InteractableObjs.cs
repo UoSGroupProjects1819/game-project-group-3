@@ -4,13 +4,7 @@ using UnityEngine;
 
 public class InteractableObjs : MonoBehaviour
 {
-    // Completion timer
-    // Count down timer
-    // pick up drop off
-    // action
-    // set position
     // States 
-    // Check usability of timer completed 
 
     protected float taskCountdown;
 
@@ -18,6 +12,7 @@ public class InteractableObjs : MonoBehaviour
     public Vector3 PickPosition;
     public Vector3 PickRotation;
 
+    // Timer variables
     private PlayerStates playerStates;
     private new Rigidbody rigidbody;
 
@@ -25,8 +20,8 @@ public class InteractableObjs : MonoBehaviour
     protected virtual void TimerCountdown(string taskName, float timeToCompleteTask, ref GameObject player, ref GameObject interactable)
     {
         // Performance checks
-        if (playerStates != null) { playerStates = player.GetComponent<PlayerStates>(); }
-        if (rigidbody != null) { rigidbody = interactable.GetComponent<Rigidbody>(); }
+        if (playerStates == null) { playerStates = player.GetComponent<PlayerStates>(); }
+        if (rigidbody == null) { rigidbody = interactable.GetComponent<Rigidbody>(); }
 
         float taskTime = timeToCompleteTask;
     }
@@ -65,4 +60,6 @@ public class InteractableObjs : MonoBehaviour
         rb.isKinematic = false;
         rb.detectCollisions = true;
     }
+
+
 }

@@ -50,8 +50,6 @@ public class CannonballObj : InteractableObjs
             cannonballStates.currentState = CannonballStates.CannonballState.Dropped;
 
             ResetComponents(ref playerState, ref rigid);
-
-            if (playerState != null) { playerState = null; }
         }
     }
 }

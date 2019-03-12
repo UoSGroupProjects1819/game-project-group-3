@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
-
     public enum Direction { up, left, right };
     Direction direction;
 
@@ -70,19 +69,13 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerStay(Collider col)
     {
-        Debug.Log("Hit");
-        Interactable other = col.gameObject.GetComponent<Interactable>();
+        InteractableObjs other = col.gameObject.GetComponent<InteractableObjs>();
 
         if (other != null)
         {
             if (Input.GetKeyUp(KeyCode.I) || Input.GetButtonUp(Abutton))
             {
-                other.Action(this.gameObject);
-            }
-
-            if (Input.GetKeyUp(KeyCode.U) || Input.GetButtonUp(Bbutton))
-            {
-                other.DropItem();
+                other.Interact(gameObject);
             }
         }
 
@@ -95,7 +88,6 @@ public class PlayerController : MonoBehaviour
                 {
                     mop.Cleaning(poo);
                 }
-
             }
         }
 
@@ -182,15 +174,9 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void Action()
-    {
-
-    }
-
     private void DropItem()
     {
-        if(playerState.itemHeld == null)
-        { return; }
+        if (playerState.itemHeld == null) { return; }
 
         if (playerState.playerState == PlayerStates.PlayerState.pHoldingOn && Input.GetKey(KeyCode.U))
         {
@@ -204,7 +190,7 @@ public class PlayerController : MonoBehaviour
 
         if (playerState.itemHeld != null && Input.GetKey(KeyCode.U) || Input.GetButtonDown(Bbutton))
         {
-            Interactable other = this.GetComponentInChildren<Interactable>();
+            InteractableObjs other = this.GetComponentInChildren<InteractableObjs>();
 
             if (other != null)
             {

@@ -4,13 +4,15 @@ using UnityEngine;
 
 public class CannonballObj : InteractableObjs
 {
-    private CannonballStates states;
+    private CannonballStates cannonballStates;
     private Rigidbody rigid;
+
+    public PlayerStates playerState;
 
     // Initial set up
     private void Awake()
     {
-        states = GetComponent<CannonballStates>();
+        cannonballStates = GetComponent<CannonballStates>();
         rigid = GetComponent<Rigidbody>();
     }
 
@@ -20,33 +22,36 @@ public class CannonballObj : InteractableObjs
         SetPosition(ref player);
 
         playerStates.playerState = PlayerStates.PlayerState.pCannonball;
-        states.currentState = CannonballStates.CannonballState.Held;
+        cannonballStates.currentState = CannonballStates.CannonballState.Held;
 
         SetPickedUpObjectComponents(ref playerStates, ref rigid, gameObject);
     }
 
-    public override void Interact(ref GameObject player, ref PlayerStates playerState)
+    public override void Interact(GameObject player)
     {
-        if (states.currentState == CannonballStates.CannonballState.Dropped &&
+        if(playerState == null) { playerState = player.GetComponent<PlayerStates>(); }
+
+        if (cannonballStates.currentState == CannonballStates.CannonballState.Dropped &&
             playerState.playerState == PlayerStates.PlayerState.pEmpty)
         {
             SetPosition(ref player);
-            states.currentState = CannonballStates.CannonballState.Held;
+            cannonballStates.currentState = CannonballStates.CannonballState.Held;
             playerState.playerState = PlayerStates.PlayerState.pCannonball;
             SetPickedUpObjectComponents(ref playerState, ref rigid, gameObject);
         }
     }
 
-    public override void DropItem(ref PlayerStates playerStates)
+    public override void DropItem()
     {
         // Check the cannonball is held
-        if (states.currentState == CannonballStates.CannonballState.Held)
+        if (cannonballStates.currentState == CannonballStates.CannonballState.Held)
         {
             this.transform.parent = null;
-            states.currentState = CannonballStates.CannonballState.Dropped;
+            cannonballStates.currentState = CannonballStates.CannonballState.Dropped;
 
-            ResetComponents(ref playerStates, ref rigid);
+            ResetComponents(ref playerState, ref rigid);
+
+            if (playerState != null) { playerState = null; }
         }
     }
-
 }

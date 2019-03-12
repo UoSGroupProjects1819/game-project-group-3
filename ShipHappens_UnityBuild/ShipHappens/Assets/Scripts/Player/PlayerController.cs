@@ -10,7 +10,7 @@ public class PlayerController : MonoBehaviour
 
     public PlayerStates playerState;
     private PlayerStates.PlayerState tempState;
-    public Mop mop;
+    public MopObj mop;
     public Wood wood;
     public BucketStates bucketStates;
 

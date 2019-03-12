@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class SpawnSeagull : Event
 {
+    public MultiObjectPool objectPooler;
+
     public GameObject shipCentre;
     public GameObject seagull;
     public GameObject pooPrefab;
@@ -41,7 +43,9 @@ public class SpawnSeagull : Event
 
         if (distance > minRadius && distance < maxRadius)
         {
-            GameObject gull = Instantiate(seagull, spawnPosition, Quaternion.identity );
+            GameObject gull = objectPooler.SpawnFromPool("Seagull", spawnPosition, Quaternion.LookRotation(shipCentre.transform.position));
+            gull.GetComponent<Seagull>().seagullState = Seagull.SeagullStates.entering;
+            //GameObject gull = Instantiate(seagull, spawnPosition, Quaternion.identity);
         }
         else
         {

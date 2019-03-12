@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class MultiObjectPool : MonoBehaviour
 {
-    [System.Serializable]
+    [System.Serializable]//(shows class in inspector)
     public class Pool
     {
         public string poolName;
         public GameObject poolPrefab;
-        public int poolSize;
+        public int maxPoolSize;
     }
 
     #region Singleton
@@ -45,7 +45,7 @@ public class MultiObjectPool : MonoBehaviour
         {
             Queue<GameObject> objectPool = new Queue<GameObject>();
 
-            for (int i = 0; i < ipool.poolSize; i++)
+            for (int i = 0; i < ipool.maxPoolSize; i++)
             {
                 GameObject ipoolObj = Instantiate(ipool.poolPrefab);
                 ipoolObj.SetActive(false);

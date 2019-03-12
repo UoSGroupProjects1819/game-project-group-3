@@ -16,23 +16,6 @@ public class EnemyAttack : MonoBehaviour
 
     bool spawned = false;
 
-    //private void Update()
-    //{
-    //    if (Input.GetMouseButtonUp(1))
-    //    {
-    //        do
-    //        {
-    //            if (TestPosition())
-    //            {
-    //                Instantiate(prefab, randomSpawnPos, Quaternion.Euler(90, 0, 0));
-    //                spawned = true;
-    //            }
-    //        } while (spawned == false);
-
-    //        spawned = false;
-    //    }
-    //}
-
     public void SpawnAttackPrefab()
     {
         do

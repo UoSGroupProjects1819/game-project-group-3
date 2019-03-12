@@ -91,6 +91,8 @@ public class DpadMenu : MonoBehaviour
                 GameObject ballPlayerObj = player.gameObject;
                 GameObject newBall = Instantiate(cannonballPrefab);
                 newBall.GetComponent<Cannonball>().Spawn(ballPlayerObj);
+
+                // newBall.GetComponent<CannonballObj>().EnableCannonball();
                 break;
 
             case PlayerController.Direction.right:

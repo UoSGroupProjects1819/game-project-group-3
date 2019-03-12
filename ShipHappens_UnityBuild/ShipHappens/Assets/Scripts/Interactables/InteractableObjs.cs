@@ -3,11 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class InteractableObjs : MonoBehaviour
-{
-    // States 
-
-    protected float taskCountdown;
-
+{ 
     [Header("Pickup Position")]
     public Vector3 PickPosition;
     public Vector3 PickRotation;
@@ -15,26 +11,21 @@ public class InteractableObjs : MonoBehaviour
     // Timer variables
     private PlayerStates playerStates;
     private Rigidbody body;
+    protected float taskCountdown;
 
     // Timer for each class to override, call base.TimerCountdown(taskName, timeToCompleteTask, ref player, ref interactable) before writing new code after
     protected virtual void TimerCountdown(string taskName, float timeToCompleteTask, ref GameObject player, ref GameObject interactable)
     {
-        // Performance checks
+        // Performance checks.  Ensure that these are nulled off by children at the end
         if (playerStates == null) { playerStates = player.GetComponent<PlayerStates>(); }
         if (body == null) { body = interactable.GetComponent<Rigidbody>(); }
 
         float taskTime = timeToCompleteTask;
     }
 
-    public virtual void Interact() { }
-    public virtual void Interact(ref GameObject player) { }
-    public virtual void Interact(ref PlayerStates playerStates) { }
-    public virtual void Interact(ref GameObject player, ref PlayerStates playerStates) { }
-
+    // Actionable functions
+    public virtual void Interact(GameObject player) { }
     public virtual void DropItem() { }
-    public virtual void DropItem(ref GameObject player) { }
-    public virtual void DropItem(ref PlayerStates playerStates) { }
-    public virtual void DropItem(ref GameObject player, ref PlayerStates playerStates) { }
     
     // Set the objects position in the player's hand.  Position is assigned in the inspector of the object.
     public void SetPosition(ref GameObject player)
@@ -45,25 +36,24 @@ public class InteractableObjs : MonoBehaviour
     }
 
     // Set the components correctly when picking up an item
-    public void SetPickedUpObjectComponents(ref PlayerStates state, ref Rigidbody rb, GameObject itemToHold)
+    public void SetPickedUpObjectComponents(ref PlayerStates playerState, ref Rigidbody rb, GameObject itemToHold)
     {
-        state.itemHeld = itemToHold;
+        playerState.itemHeld = itemToHold;
 
         rb.isKinematic = true;
         rb.detectCollisions = false;
     }
 
     // When an object is dropped reset the player and objects components
-    public void ResetComponents(ref PlayerStates state, ref Rigidbody rb)
+    public void ResetComponents(ref PlayerStates playerState, ref Rigidbody rb)
     {
         // Player components
-        state.playerState = PlayerStates.PlayerState.pEmpty;
-        state.itemHeld = null;
+        playerState.playerState = PlayerStates.PlayerState.pEmpty;
+        playerState.itemHeld = null;
+        playerState = null;
 
         // Object components
         rb.isKinematic = false;
         rb.detectCollisions = true;
     }
-
-
 }

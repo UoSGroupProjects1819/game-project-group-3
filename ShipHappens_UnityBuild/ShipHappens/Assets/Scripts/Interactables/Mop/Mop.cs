@@ -27,7 +27,7 @@ public class Mop : Interactable
             SetPosition(ref player);
             mopState.currentState = MopStates.MopState.Held;          
             playerState.playerState = PlayerStates.PlayerState.pMop;
-            playerController.mop = this;
+            //playerController.mop = this;
             PickedUpComponents(ref playerState, rb, this.gameObject);
         }
     }

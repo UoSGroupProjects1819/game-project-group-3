@@ -22,4 +22,9 @@ public class IShouldPoo : MonoBehaviour
             }
         }
     }
+
+    private void OnDisable()
+    {
+        countCheck = 0;
+    }
 }

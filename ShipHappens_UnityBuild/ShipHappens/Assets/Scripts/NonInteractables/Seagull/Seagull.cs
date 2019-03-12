@@ -7,6 +7,8 @@ public class Seagull : MonoBehaviour
     public enum SeagullStates { entering, active, exiting };
     public SeagullStates seagullState;
 
+    public MultiObjectPool objectPooler;
+
     public GameObject seagull;
     public GameObject pooPrefab;
     public float speed;
@@ -44,6 +46,7 @@ public class Seagull : MonoBehaviour
                 break;
             case SeagullStates.exiting:
                 //Destroy(this.gameObject);
+                this.gameObject.SetActive(false);
                 EventManager.GetInstance().RemoveTask("Seagull");
                 //remove from gamemanager thing
                 //remove from object pool

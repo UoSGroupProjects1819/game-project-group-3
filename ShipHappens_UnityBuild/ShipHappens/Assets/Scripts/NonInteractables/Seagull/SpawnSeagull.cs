@@ -43,7 +43,7 @@ public class SpawnSeagull : Event
 
         if (distance > minRadius && distance < maxRadius)
         {
-            GameObject gull = objectPooler.SpawnFromPool("Seagull", spawnPosition, Quaternion.LookRotation(shipCentre.transform.position));
+            GameObject gull = objectPooler.SpawnFromPool("Seagull", spawnPosition, Quaternion.LookRotation(new Vector3(-spawnPosition.x, 0, -spawnPosition.z)));
             gull.GetComponent<Seagull>().seagullState = Seagull.SeagullStates.entering;
             //GameObject gull = Instantiate(seagull, spawnPosition, Quaternion.identity);
         }

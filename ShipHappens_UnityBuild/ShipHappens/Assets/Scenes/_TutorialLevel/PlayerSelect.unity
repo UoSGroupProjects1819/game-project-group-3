@@ -348,7 +348,7 @@ MonoBehaviour:
   cam: {fileID: 554672638}
   offset: {x: 0.3, y: 0.75, z: -1.25}
   camSmoothTime: 1
-  camRotSpeed: 1
+  camRotSpeed: 10
   targets:
   - {fileID: 616741638}
   - {fileID: 1593890611}

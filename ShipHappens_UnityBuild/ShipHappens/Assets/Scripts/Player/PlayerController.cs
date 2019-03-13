@@ -86,7 +86,7 @@ public class PlayerController : MonoBehaviour
             {
                 if (Input.GetKey(KeyCode.I) || Input.GetButtonDown(Abutton))
                 {
-                    mop.Cleaning(poo);
+                    //mop.Cleaning(poo);
                 }
             }
         }

@@ -58,13 +58,13 @@ public class PlayerSelection : MonoBehaviour
         switch (targets.Count)
         {
             case 2:
-                offset.z = -2.5f;
+                offset.z = -1.25f;
                 break;
             case 3:
-                offset.z = -3.5f;
+                offset.z = -2f;
                 break;
             case 4:
-                offset.z = -4.5f;
+                offset.z = -2.5f;
                 break;
         }
     }

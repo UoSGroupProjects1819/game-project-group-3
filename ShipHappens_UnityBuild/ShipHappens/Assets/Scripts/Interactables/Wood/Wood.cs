@@ -2,16 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Wood : Interactable
+public class Wood : InteractableObjs
 {
     WoodStates woodStates;
-    public Transform holdingPoint;
-    public PlayerStates playerState;
-    public PlayerController playerController;
+    PlayerStates playerState;
+    PlayerController playerController;
 
     private Rigidbody rb;
-
-
 
     // Use this for initialization
     void Awake ()
@@ -30,10 +27,10 @@ public class Wood : Interactable
         woodStates.currentState = WoodStates.WoodState.Held;
         playerState.playerState = PlayerStates.PlayerState.pWood;
         playerController.wood = this;
-        PickedUpComponents(ref playerState, rb, this.gameObject); 
+        SetPickedUpObjectComponents(ref playerState, ref rb, this.gameObject); 
     }
 
-    public override void Action(GameObject player)
+    public override void Interact(GameObject player)
     {
         playerState = player.GetComponent<PlayerStates>();
         playerController = player.GetComponent<PlayerController>();
@@ -44,7 +41,7 @@ public class Wood : Interactable
             woodStates.currentState = WoodStates.WoodState.Held;
             playerState.playerState = PlayerStates.PlayerState.pWood;
             playerController.wood = this;
-            PickedUpComponents(ref playerState, rb, this.gameObject);
+            SetPickedUpObjectComponents(ref playerState, ref rb, this.gameObject);
         }
     }
 
@@ -56,7 +53,7 @@ public class Wood : Interactable
             playerController.wood = null;
             playerController = null;
             woodStates.currentState = WoodStates.WoodState.Dropped;
-            ResetComponents(ref playerState, rb);
+            ResetComponents(ref playerState, ref rb);
         }
     }
 

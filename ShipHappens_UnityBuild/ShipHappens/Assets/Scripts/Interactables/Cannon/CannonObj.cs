@@ -8,7 +8,6 @@ public class CannonObj : InteractableObjs
     // Cannon References
     private CannonState cannonState;
     private ParticleSystem cannonFire;
-    public cannonUI cannonUI;
 
     // Player References
     private PlayerStates playerStates;
@@ -50,8 +49,8 @@ public class CannonObj : InteractableObjs
     public override void Interact(GameObject player)
     {
         // Performance safety checks
-        if(playerStates == null) { playerStates = GetComponent<PlayerStates>(); }
-        if(playerController == null) { playerController = GetComponent<PlayerController>(); }
+        if(playerStates == null) { playerStates = player.GetComponent<PlayerStates>(); }
+        if(playerController == null) { playerController = player.GetComponent<PlayerController>(); }
 
         switch (playerStates.playerState)
         {
@@ -113,7 +112,7 @@ public class CannonObj : InteractableObjs
     private void CompleteAction(PlayerStates player)
     {
         player.playerState = PlayerStates.PlayerState.pEmpty;
-        GameObject interactable = GetComponentInChildren<InteractableObjs>().gameObject;
+        GameObject interactable = player.GetComponentInChildren<InteractableObjs>().gameObject;
         Destroy(interactable); // TODO NEEDS TO BE ADJUSTED FOR OBJECTPOOLING
     }
 

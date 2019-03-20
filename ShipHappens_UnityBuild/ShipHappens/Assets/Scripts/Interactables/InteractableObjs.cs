@@ -9,7 +9,7 @@ public class InteractableObjs : MonoBehaviour
     public Vector3 PickRotation;
 
     // Timer variables
-    private PlayerStates playerStates;
+    private PlayerStates pState;
     private Rigidbody body;
     protected float taskCountdown;
 
@@ -17,7 +17,7 @@ public class InteractableObjs : MonoBehaviour
     protected virtual void TimerCountdown(string taskName, float timeToCompleteTask, ref GameObject player, ref GameObject interactable)
     {
         // Performance checks.  Ensure that these are nulled off by children at the end
-        if (playerStates == null) { playerStates = player.GetComponent<PlayerStates>(); }
+        if (pState == null) { pState = player.GetComponent<PlayerStates>(); }
         if (body == null) { body = interactable.GetComponent<Rigidbody>(); }
 
         float taskTime = timeToCompleteTask;

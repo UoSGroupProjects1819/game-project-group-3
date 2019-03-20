@@ -89,8 +89,9 @@ public class DpadMenu : MonoBehaviour
                 cballBool.onCooldown = true;
 
                 GameObject ballPlayerObj = player.gameObject;
+                PlayerStates playerStates = player.GetComponent<PlayerStates>();
                 GameObject newBall = Instantiate(cannonballPrefab);
-                newBall.GetComponent<Cannonball>().Spawn(ballPlayerObj);
+                newBall.GetComponent<CannonballObj>().EnableCannonball(ref playerStates, ref ballPlayerObj);
 
                 // newBall.GetComponent<CannonballObj>().EnableCannonball();
                 break;

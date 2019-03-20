@@ -5295,9 +5295,9 @@ GameObject:
   - component: {fileID: 4645694278088332}
   - component: {fileID: 33184392244928962}
   - component: {fileID: 23850126522582632}
-  - component: {fileID: 65134220293433968}
-  - component: {fileID: 114138577379790116}
+  - component: {fileID: 480021769}
   - component: {fileID: 114408522570137396}
+  - component: {fileID: 65134220293433968}
   - component: {fileID: 709805924}
   - component: {fileID: 709805930}
   m_Layer: 0
@@ -5370,20 +5370,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!65 &65134220293433968
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1817509743340126}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 4.3447227, y: 4.542234, z: 6.8935847}
-  m_Center: {x: 0.000000019478156, y: 2.271117, z: -0.27500004}
---- !u!114 &114138577379790116
+--- !u!114 &480021769
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -5392,17 +5379,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1817509743340126}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b645cdc692c8a9f4d957e068afbd680a, type: 3}
+  m_Script: {fileID: 11500000, guid: a9599afc084e9664e98881d81239441c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   PickPosition: {x: 0, y: 0, z: 0}
   PickRotation: {x: 0, y: 0, z: 0}
-  cannonState: {fileID: 0}
-  playerStates: {fileID: 0}
-  cannonFire: {fileID: 198684554761131606, guid: 0abf403fd0ef3dc429620c98a2fa1108,
-    type: 3}
-  target: {fileID: 0}
-  cannonUI: {fileID: 0}
+  timer: 0
 --- !u!114 &114408522570137396
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5416,6 +5398,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentState: 0
+  previousState: 0
+--- !u!65 &65134220293433968
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1817509743340126}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 4.3447227, y: 4.542234, z: 6.8935847}
+  m_Center: {x: 0.000000019478156, y: 2.271117, z: -0.27500004}
 --- !u!65 &709805924
 BoxCollider:
   m_ObjectHideFlags: 0

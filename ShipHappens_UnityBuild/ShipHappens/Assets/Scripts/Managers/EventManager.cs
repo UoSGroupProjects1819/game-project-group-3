@@ -97,35 +97,6 @@ public class EventManager : MonoBehaviour
         }
     }
 
-
-    // List of events with weights:
-    // sea gulls - 45
-    // cannon - 25
-    // rock - 15
-    // whale - 15
-
-    // gulls, cannon, whale - max: 75
-
-    /*
-     * 
-     * for (Event evt in Events) {
-     *      if (evt.active == false)
-     *          activable_events.Add(evt, total)
-     *          total += evt.weight
-     *          
-     * }
-     * 
-     * rand = Random.Range(0, total)
-     * 
-     * for ( ActiveEvent evt in activable_events) {
-     *      if ( rand < 
-     * }
-     * 
-     * 
-     */
-
-
-
     #region Dictionary Functions
     private void AddTask(string name)
     {

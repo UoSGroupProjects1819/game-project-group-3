@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour
 
     public PlayerStates playerState;
     private PlayerStates.PlayerState tempState;
+    private PlayerInput playerInput;
     public MopObj mop;
     public Wood wood;
     public BucketStates bucketStates;
@@ -41,6 +42,11 @@ public class PlayerController : MonoBehaviour
     private void Update()
     {
         DropItem();
+
+        if (playerInput.ButtonIsDown(PlayerInput.Button.A))
+        {
+            Debug.Log("B Button pressed");
+        }
 
         //weak D-pad test
         #region Dpad TEST

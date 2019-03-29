@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class PlayerInput : MonoBehaviour
 {
-    private Player player;
-
     private string horizontalAxis, verticalAxis;
     private string aButton, bButton;
     private string horizontalDPad, verticalDPad;
@@ -20,11 +18,12 @@ public class PlayerInput : MonoBehaviour
 
     private void Start()
     {
+        // Static variable that will count the amount of players in the game, allows an easy way to add more players to the game
         numOfPlayers++;
         playerNumber = numOfPlayers;
 
+        // Assign the players input settings with their player number
         SetControllerNumber(playerNumber);
-        Debug.Log(horizontalAxis);
     }
 
     // Check if either button has been pressed
@@ -53,12 +52,6 @@ public class PlayerInput : MonoBehaviour
 
     private void FixedUpdate()
     {
-
-        //if (Input.GetButtonDown(aButton))
-        //{
-        //    Debug.Log("A pressed in input");
-        //}
-
         if (playerNumber > 0)
         {
             horizontalMovement = Input.GetAxis(horizontalAxis);

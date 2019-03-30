@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: WhaleSplash
+  m_Name: WhaleToMainGame
   serializedVersion: 6
   m_Legacy: 0
   m_Compressed: 0
@@ -825,7 +825,7 @@ AnimationClip:
     intParameter: 0
     messageOptions: 0
   - time: 4.2833333
-    functionName: LoadTutorialLevel
+    functionName: LoadGameLevel
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0

@@ -46,6 +46,16 @@ public class LevelManager : MonoBehaviour
         //triggers whale animation, whale animation has trigger which fades to white and loads next level
     }
 
+    public void LoadTutorialLevel()
+    {
+        FadeToLevel(2);
+    }
+
+    public void LoadMainGameLevel()
+    {
+        FadeToLevel(4);
+    }
+
     public void CharacterSelectionCompleteTutorial()
     {
         //pull camera back to make room for whale

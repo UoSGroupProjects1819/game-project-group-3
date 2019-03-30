@@ -6,13 +6,10 @@ using UnityEngine.SceneManagement;
 public class LevelManager : MonoBehaviour
 {
     public Animator animator;
-    public Animator whaleAnim;
+    public Animator whaleTutorialAnim;
+    public Animator whaleMainGameAnim;
     public Animator camAnim;
     private int levelToLoad;
-
-    public bool nextIsTutorial = false;
-    public bool nextIsGame = false;
-
 
 
     public void FadeToLevel (int levelIndex)
@@ -26,23 +23,37 @@ public class LevelManager : MonoBehaviour
         SceneManager.LoadScene(levelToLoad);
     }
 
-    public void WhaleTriggerMainMenu()
+    public void WhaleTriggerMainMenuTutorial()
     {
-        whaleAnim.SetTrigger("PlayWhaleSplash");
+        whaleTutorialAnim.SetTrigger("PlayWhaleSplash");
     }
+
+    public void WhaleTriggerMainMenuGame()
+    {
+        whaleMainGameAnim.SetTrigger("PlayWhaleSplash");
+    }
+
 
     public void SelectTutorial()
     {
-        nextIsGame = false;
-        nextIsTutorial = true;
-        FadeToLevel(1);
+        WhaleTriggerMainMenuTutorial();
+        //triggers whale animation, whale animation has trigger which fades to white and loads next level
     }
 
     public void SelectGame()
     {
-        nextIsTutorial = false;
-        nextIsGame = true;
-        FadeToLevel(1);
+        WhaleTriggerMainMenuGame();
+        //triggers whale animation, whale animation has trigger which fades to white and loads next level
+    }
+
+    public void LoadTutorialLevel()
+    {
+        FadeToLevel(2);
+    }
+
+    public void LoadMainGameLevel()
+    {
+        FadeToLevel(4);
     }
 
     public void CharacterSelectionCompleteTutorial()

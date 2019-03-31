@@ -15,6 +15,9 @@ public class FloodController : MonoBehaviour
     public float currentLevel;
     public float bailAmount;
 
+    public bool isGameOver;
+    public DistanceTimerBar distanceTimerBar;
+
     private void Start()
     {
         floodPlane.transform.position = startPosition;
@@ -50,6 +53,8 @@ public class FloodController : MonoBehaviour
         if (floodPlane.transform.position.y > 12.2f)
         {
             floodPlane.transform.position = maxHeight;
+            isGameOver = true;
+            distanceTimerBar.isGameOver = true;
         }
     }
 }

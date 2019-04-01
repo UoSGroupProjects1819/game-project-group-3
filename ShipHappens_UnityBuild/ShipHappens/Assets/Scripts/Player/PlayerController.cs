@@ -86,7 +86,7 @@ public class PlayerController : MonoBehaviour
             {
                 if (Input.GetKey(KeyCode.I) || playerInput.ButtonIsDown(PlayerInput.Button.A))
                 {
-                    //mop.Cleaning(poo);
+                    mop.CleanPoo(poo);
                 }
             }
         }
@@ -106,9 +106,9 @@ public class PlayerController : MonoBehaviour
 
         if (col.tag == "Edge" && playerState.playerState == PlayerStates.PlayerState.pBucket)
         {
-            Bucket bucket = GetComponentInChildren<Bucket>();
+            BucketObj bucket = GetComponentInChildren<BucketObj>();
 
-            if (Input.GetKeyUp(KeyCode.I) || playerInput.ButtonIsDown(PlayerInput.Button.A) && bucketStates.currentState == BucketStates.BucketState.Full)
+            if (Input.GetKeyUp(KeyCode.I) || playerInput.ButtonIsDown(PlayerInput.Button.A) && bucketStates.currentState == BucketStates.BucketState.Held)
             {
                 bucket.BailWater();
             }

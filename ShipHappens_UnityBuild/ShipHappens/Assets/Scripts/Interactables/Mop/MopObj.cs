@@ -41,12 +41,8 @@ public class MopObj : InteractableObjs
         }
     }
 
-    public void CleanPoo()
+    public void CleanPoo(GameObject hazardToClean)
     {
-        // DO SHIT
-        /*
-         because of object pooling it needs to do....
-         this.gameObject.SetActive(false);
-        */
+        hazardToClean.SetActive(false);
     }
 }

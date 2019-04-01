@@ -54,7 +54,7 @@ public class Bucket : Interactable
 
     public override void DropItem()
     {
-        if (bucketState.currentState == BucketStates.BucketState.Held || bucketState.currentState == BucketStates.BucketState.Full)
+        if (bucketState.currentState == BucketStates.BucketState.Held)
         {
             this.transform.parent = null;
             bucketState.currentState = BucketStates.BucketState.Dropped;

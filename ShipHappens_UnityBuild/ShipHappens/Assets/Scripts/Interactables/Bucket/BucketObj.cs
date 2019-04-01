@@ -8,7 +8,7 @@ public class BucketObj : InteractableObjs
     private PlayerStates playerStates;
     private BucketStates bucketStates;
     private PlayerController playerController;
-    private FloodController floodController;
+    [SerializeField] private FloodController floodController;
     private Rigidbody rigid;
 
     private void Awake()

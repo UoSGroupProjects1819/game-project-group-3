@@ -24,7 +24,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (canMove)
         {
-            Vector3 move = new Vector3(playerInput.HorizontalMovement * speed, 0, playerInput.VerticalMovement * speed);
+            Vector3 move = new Vector3(-playerInput.HorizontalMovement * speed, 0, playerInput.VerticalMovement * speed);
             rb.MovePosition(this.transform.position + move * Time.deltaTime);
 
             if (move != Vector3.zero)

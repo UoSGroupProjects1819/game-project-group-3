@@ -37,7 +37,7 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        if (playerInput.ButtonIsDown(PlayerInput.Button.A))
+        if (playerInput.ButtonIsDown(PlayerInput.Button.B))
         {
             DropItem();
         }
@@ -176,6 +176,7 @@ public class PlayerController : MonoBehaviour
 
     private void DropItem()
     {
+        Debug.Log("Drop mehhhhh");
         if (playerState.itemHeld == null) { return; }
 
         if (playerState.playerState == PlayerStates.PlayerState.pHoldingOn && Input.GetKey(KeyCode.U))
@@ -188,12 +189,13 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        if (playerState.itemHeld != null && Input.GetKey(KeyCode.U) || playerInput.ButtonIsDown(PlayerInput.Button.B))
+        if (playerState.itemHeld != null)
         {
             InteractableObjs other = this.GetComponentInChildren<InteractableObjs>();
 
             if (other != null)
             {
+                Debug.Log("Drop meh");
                 other.DropItem();
             }
         }

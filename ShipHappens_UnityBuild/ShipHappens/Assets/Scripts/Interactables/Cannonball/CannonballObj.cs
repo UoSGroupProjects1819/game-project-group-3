@@ -23,6 +23,7 @@ public class CannonballObj : InteractableObjs
 
         playerStates.playerState = PlayerStates.PlayerState.pCannonball;
         cannonballStates.currentState = CannonballStates.CannonballState.Held;
+        playerState = playerStates;
 
         SetPickedUpObjectComponents(ref playerStates, ref rigid, gameObject);
     }

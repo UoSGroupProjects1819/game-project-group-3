@@ -6,10 +6,6 @@ public class FlagMovement : MonoBehaviour
 {
     public float speed;
 
-    private void OnDisable()
-    {
-        EventManager.GetInstance().RemoveTask("Enemy");
-    }
     //private void OnDestroy()
     //{
     //    EventManager.GetInstance().RemoveTask("Enemy");

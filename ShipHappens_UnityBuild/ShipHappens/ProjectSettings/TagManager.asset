@@ -23,6 +23,7 @@ TagManager:
   - WheelArea
   - TutorialFirstEnemyStopper
   - tm
+  - GameManager
   layers:
   - Default
   - TransparentFX

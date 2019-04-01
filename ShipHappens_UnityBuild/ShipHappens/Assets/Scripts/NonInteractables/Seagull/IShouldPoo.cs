@@ -9,6 +9,11 @@ public class IShouldPoo : MonoBehaviour
     public GameObject pooPrefab;
     public int countCheck = 0;
 
+    private void Awake()
+    {
+        objectPooler = FindObjectOfType<MultiObjectPool>();
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         countCheck++;

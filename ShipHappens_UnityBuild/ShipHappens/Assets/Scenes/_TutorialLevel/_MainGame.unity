@@ -5738,6 +5738,11 @@ PrefabInstance:
       propertyPath: CNui
       value: 
       objectReference: {fileID: 1025971054}
+    - target: {fileID: 114093728264921568, guid: 585c6690eff4d3949b44254720f21b6c,
+        type: 3}
+      propertyPath: objectPooler
+      value: 
+      objectReference: {fileID: 1329773201}
     - target: {fileID: 114627571917256750, guid: 585c6690eff4d3949b44254720f21b6c,
         type: 3}
       propertyPath: m_Color.r
@@ -5984,6 +5989,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 471277595, guid: 585c6690eff4d3949b44254720f21b6c, type: 3}
+      propertyPath: objectPooler
+      value: 
+      objectReference: {fileID: 1329773201}
     m_RemovedComponents:
     - {fileID: 1454390662, guid: 585c6690eff4d3949b44254720f21b6c, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 585c6690eff4d3949b44254720f21b6c, type: 3}
@@ -6449,7 +6458,7 @@ GameObject:
   - component: {fileID: 1329773201}
   m_Layer: 0
   m_Name: Game Manager
-  m_TagString: Untagged
+  m_TagString: GameManager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7903,6 +7912,11 @@ PrefabInstance:
       propertyPath: CNui
       value: 
       objectReference: {fileID: 1025971054}
+    - target: {fileID: 9131460280964224187, guid: 91a54340a48258942b2025d52400d84a,
+        type: 3}
+      propertyPath: objectPooler
+      value: 
+      objectReference: {fileID: 1329773201}
     - target: {fileID: 9131460281255330948, guid: 91a54340a48258942b2025d52400d84a,
         type: 3}
       propertyPath: m_Name

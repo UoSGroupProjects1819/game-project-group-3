@@ -956,14 +956,15 @@ GameObject:
   m_Component:
   - component: {fileID: 4003606656207092}
   - component: {fileID: 114704154759562806}
+  - component: {fileID: 1915511846}
   - component: {fileID: 114401330511982340}
   - component: {fileID: 114887634530895370}
+  - component: {fileID: 114753918150958520}
   - component: {fileID: 65329064490290502}
   - component: {fileID: 136534102893554394}
   - component: {fileID: 54790308242266002}
-  - component: {fileID: 114753918150958520}
   m_Layer: 0
-  m_Name: Pirate_Captain_Works
+  m_Name: Pirate Player
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -978,7 +979,7 @@ Transform:
   m_GameObject: {fileID: 1799803009416302}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 6.8836966, y: 7.9418583, z: 9.27507}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_LocalScale: {x: 0.11612, y: 0.11612, z: 0.11612}
   m_Children:
   - {fileID: 4370586262368206}
   - {fileID: 224487624402755426}
@@ -1001,12 +1002,26 @@ MonoBehaviour:
   playerState: {fileID: 0}
   mop: {fileID: 0}
   wood: {fileID: 0}
-  Abutton: A_P1
-  Bbutton: B_P1
-  DpadHorizontal: Dpad_Left/Right_P1
-  DpadVertical: Dpad_Up/Down_P1
-  gameManager: {fileID: 0}
+  bucketStates: {fileID: 0}
+  upIsPressed: 0
+  leftIsPressed: 0
+  rightIsPressed: 0
+  UIManager: {fileID: 0}
   edge: 0
+  interacting: 0
+--- !u!114 &1915511846
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1799803009416302}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ece80308379824e4bb558cc1f7b0ecbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerNumber: 0
 --- !u!114 &114401330511982340
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1019,8 +1034,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1498e6a21a3a5c94fae1db4e225ee3c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  horizontalInput: Horizontal_P1
-  verticalInput: Vertical_P1
   speed: 15
   canMove: 1
 --- !u!114 &114887634530895370
@@ -1037,6 +1050,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerState: 6
   itemHeld: {fileID: 0}
+  timer: 0
+  actioning: 0
+  taskComplete: 0
+--- !u!114 &114753918150958520
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1799803009416302}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f309a70f935d37458a68b80615b43ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 1799803009416302}
+  playerPS: {fileID: 0}
 --- !u!65 &65329064490290502
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1080,20 +1110,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 80
   m_CollisionDetection: 0
---- !u!114 &114753918150958520
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1799803009416302}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1f309a70f935d37458a68b80615b43ef, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: {fileID: 1799803009416302}
-  playerPS: {fileID: 0}
 --- !u!1 &1812095857316382
 GameObject:
   m_ObjectHideFlags: 0

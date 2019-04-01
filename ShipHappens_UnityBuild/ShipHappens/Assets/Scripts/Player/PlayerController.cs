@@ -11,15 +11,10 @@ public class PlayerController : MonoBehaviour
     public PlayerStates playerState;
     private PlayerStates.PlayerState tempState;
     private PlayerInput playerInput;
-    public MopObj mop;
-    public Wood wood;
-    public BucketStates bucketStates;
 
-    [Header("[Mapped Controls]")]
-    public string Abutton = "A_P1";
-    public string Bbutton = "B_P1";
-    public string DpadHorizontal = "Dpad_Left/Right_P1";
-    public string DpadVertical = "Dpad_Up/Down_P1";
+    [HideInInspector] public MopObj mop;
+    [HideInInspector] public Wood wood;
+    [HideInInspector] public BucketStates bucketStates;
 
     public bool upIsPressed;
     public bool leftIsPressed;
@@ -37,15 +32,14 @@ public class PlayerController : MonoBehaviour
         UIManager = FindObjectOfType<CrowsNestUI>();
         playerState = this.GetComponent<PlayerStates>();
         bucketStates = FindObjectOfType<BucketStates>();
+        playerInput = GetComponent<PlayerInput>();
     }
 
     private void Update()
     {
-        DropItem();
-
         if (playerInput.ButtonIsDown(PlayerInput.Button.A))
         {
-            Debug.Log("B Button pressed");
+            DropItem();
         }
 
         //weak D-pad test
@@ -79,7 +73,7 @@ public class PlayerController : MonoBehaviour
 
         if (other != null)
         {
-            if (Input.GetKeyUp(KeyCode.I) || Input.GetButtonUp(Abutton))
+            if (Input.GetKeyUp(KeyCode.I) || playerInput.ButtonIsDown(PlayerInput.Button.A))
             {
                 other.Interact(gameObject);
             }
@@ -90,7 +84,7 @@ public class PlayerController : MonoBehaviour
             GameObject poo = col.gameObject;
             if (playerState.playerState == PlayerStates.PlayerState.pMop)
             {
-                if (Input.GetKey(KeyCode.I) || Input.GetButtonDown(Abutton))
+                if (Input.GetKey(KeyCode.I) || playerInput.ButtonIsDown(PlayerInput.Button.A))
                 {
                     //mop.Cleaning(poo);
                 }
@@ -103,7 +97,7 @@ public class PlayerController : MonoBehaviour
             GameObject hole = col.gameObject;
             if (playerState.playerState == PlayerStates.PlayerState.pWood)
             {
-                if (Input.GetKey(KeyCode.I) || Input.GetButtonDown(Abutton))
+                if (Input.GetKey(KeyCode.I) || playerInput.ButtonIsDown(PlayerInput.Button.A))
                 {
                     wood.RepairDeck(hole);
                 }
@@ -114,7 +108,7 @@ public class PlayerController : MonoBehaviour
         {
             Bucket bucket = GetComponentInChildren<Bucket>();
 
-            if (Input.GetKeyUp(KeyCode.I) || Input.GetButtonDown(Abutton) && bucketStates.currentState == BucketStates.BucketState.Full)
+            if (Input.GetKeyUp(KeyCode.I) || playerInput.ButtonIsDown(PlayerInput.Button.A) && bucketStates.currentState == BucketStates.BucketState.Full)
             {
                 bucket.BailWater();
             }
@@ -124,7 +118,7 @@ public class PlayerController : MonoBehaviour
 
         if (hunkerDown != null)
         {
-            if (Input.GetKey(KeyCode.I) || Input.GetButtonDown(Abutton))
+            if (Input.GetKey(KeyCode.I) || playerInput.ButtonIsDown(PlayerInput.Button.A))
             {
                 Debug.Log("Holding");
                 hunkerDown.Action(this.gameObject);
@@ -134,7 +128,7 @@ public class PlayerController : MonoBehaviour
         {
             DpadMenu menu = col.gameObject.GetComponent<DpadMenu>();
 
-            if (Input.GetAxisRaw(DpadVertical) > 0 && upIsPressed == false|| (Input.GetKey(KeyCode.K)) && UIManager.woodTimer.onCooldown == false && playerState.playerState == PlayerStates.PlayerState.pEmpty)
+            if (Input.GetAxisRaw(playerInput.GetVerticalDPad()) > 0 && upIsPressed == false|| (Input.GetKey(KeyCode.K)) && UIManager.woodTimer.onCooldown == false && playerState.playerState == PlayerStates.PlayerState.pEmpty)
             {
                 upIsPressed = true;
                 leftIsPressed = false;
@@ -146,7 +140,7 @@ public class PlayerController : MonoBehaviour
                 return;
             }
 
-            if (Input.GetAxisRaw(DpadHorizontal) > 0 && rightIsPressed == false|| (Input.GetKey(KeyCode.L)) && UIManager.barrelTimer.onCooldown == false && playerState.playerState == PlayerStates.PlayerState.pEmpty)
+            if (Input.GetAxisRaw(playerInput.GetHorizontalDPad()) > 0 && rightIsPressed == false|| (Input.GetKey(KeyCode.L)) && UIManager.barrelTimer.onCooldown == false && playerState.playerState == PlayerStates.PlayerState.pEmpty)
             {
                 rightIsPressed = true;
                 leftIsPressed = false;
@@ -158,7 +152,7 @@ public class PlayerController : MonoBehaviour
                 return;
             }
 
-            if (Input.GetAxisRaw(DpadHorizontal) < 0 &&  leftIsPressed == false || (Input.GetKey(KeyCode.J)) && UIManager.cballTimer.onCooldown == false && playerState.playerState == PlayerStates.PlayerState.pEmpty)
+            if (Input.GetAxisRaw(playerInput.GetHorizontalDPad()) < 0 &&  leftIsPressed == false || (Input.GetKey(KeyCode.J)) && UIManager.cballTimer.onCooldown == false && playerState.playerState == PlayerStates.PlayerState.pEmpty)
             {
                 leftIsPressed = true;
                 rightIsPressed = false;
@@ -194,7 +188,7 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        if (playerState.itemHeld != null && Input.GetKey(KeyCode.U) || Input.GetButtonDown(Bbutton))
+        if (playerState.itemHeld != null && Input.GetKey(KeyCode.U) || playerInput.ButtonIsDown(PlayerInput.Button.B))
         {
             InteractableObjs other = this.GetComponentInChildren<InteractableObjs>();
 

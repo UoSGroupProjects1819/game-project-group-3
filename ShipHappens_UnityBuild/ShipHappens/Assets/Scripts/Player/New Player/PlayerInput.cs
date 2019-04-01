@@ -4,17 +4,19 @@ using UnityEngine;
 
 public class PlayerInput : MonoBehaviour
 {
-    public string horizontalAxis, verticalAxis;
-    public string aButton, bButton;
-    public string horizontalDPad, verticalDPad;
     public int playerNumber;
-
     static int numOfPlayers = 0;
 
-    public float horizontalMovement { get; set; }
-    public float verticalMovement { get; set; }
+    private string horizontalAxis, verticalAxis;
+    public float HorizontalMovement { get; set; }
+    public float VerticalMovement { get; set; }
 
+    private string aButton, bButton;
     public enum Button { A, B }
+
+    private string horizontalDPad, verticalDPad;
+    public string GetHorizontalDPad() { return horizontalDPad; }
+    public string GetVerticalDPad() { return verticalDPad; }
 
     private void Start()
     {
@@ -54,8 +56,8 @@ public class PlayerInput : MonoBehaviour
     {
         if (playerNumber > 0)
         {
-            horizontalMovement = Input.GetAxis(horizontalAxis);
-            verticalMovement = Input.GetAxis(verticalAxis);
+            HorizontalMovement = Input.GetAxis(horizontalAxis);
+            VerticalMovement = Input.GetAxis(verticalAxis);
         }
     }
 }

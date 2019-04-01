@@ -13,6 +13,8 @@ public class Player : MonoBehaviour
 
     private bool upIsPressed, leftIsPressed, rightIsPressed;
     private bool edge = false;
+
+    private InteractableObjs interactable = null;
     private bool isInteracting = false;
 
     private void OnValidate()
@@ -24,9 +26,34 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
+        // Action / Pick up Item
+        if(playerInput.ButtonIsDown(PlayerInput.Button.A))
+        {
+            Action();
+        }
+
+        // Cancel / Drop Item
         if (playerInput.ButtonIsDown(PlayerInput.Button.B))
         {
-            Debug.Log("Player Dropped item!");
+            
         }
+    }
+
+    private void Action()
+    {
+        if (interactable != null)
+        {
+            interactable.Interact(gameObject);
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        interactable = other.GetComponent<InteractableObjs>();
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        interactable = null;
     }
 }

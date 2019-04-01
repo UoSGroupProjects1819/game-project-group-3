@@ -33,6 +33,10 @@ public class LevelManager : MonoBehaviour
         whaleMainGameAnim.SetTrigger("PlayWhaleSplash");
     }
 
+    public void LoadTitleMenu()
+    {
+        FadeToLevel(0);
+    }
 
     public void SelectTutorial()
     {

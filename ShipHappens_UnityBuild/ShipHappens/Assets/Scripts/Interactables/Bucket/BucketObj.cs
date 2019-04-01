@@ -11,11 +11,16 @@ public class BucketObj : InteractableObjs
     [SerializeField] private FloodController floodController;
     private Rigidbody rigid;
 
+    [SerializeField] private float timer;
+    private const float BAIL_TIMER = 5f;
+    private bool bailing = false;
+
     private void Awake()
     {
         floodController = FindObjectOfType<FloodController>();
         bucketStates = GetComponent<BucketStates>();
         rigid = GetComponent<Rigidbody>();
+        timer = BAIL_TIMER;
     }
     #endregion
 
@@ -32,11 +37,19 @@ public class BucketObj : InteractableObjs
             playerStates.playerState = PlayerStates.PlayerState.pBucket;
             SetPickedUpObjectComponents(ref playerStates, ref rigid, gameObject);
         }
+    }
 
-        // Bail Water
-        if (bucketStates.currentState == BucketStates.BucketState.Held && playerStates.playerState == PlayerStates.PlayerState.pEdge)
+    private void Update()
+    {
+        if (bucketStates.currentState == BucketStates.BucketState.Bailing)
         {
+            Debug.Log("Update");
             BailWater();
+        }
+
+        if(bucketStates.currentState == BucketStates.BucketState.Held)
+        {
+            timer = BAIL_TIMER;
         }
     }
 
@@ -52,6 +65,13 @@ public class BucketObj : InteractableObjs
 
     public void BailWater()
     {
-        floodController.BailWater();
+        timer -= Time.deltaTime;
+        Debug.Log("Bail Timer");
+        if (timer <= 0)
+        {
+            floodController.BailWater();
+            bucketStates.currentState = BucketStates.BucketState.Held;
+            timer = BAIL_TIMER;
+        }
     }
 }

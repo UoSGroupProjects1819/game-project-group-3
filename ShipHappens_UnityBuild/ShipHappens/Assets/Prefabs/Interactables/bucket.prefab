@@ -166,9 +166,8 @@ GameObject:
   - component: {fileID: 54645049495763330}
   - component: {fileID: 65378309851386520}
   - component: {fileID: 114612427026054330}
-  - component: {fileID: 114117528306759770}
-  - component: {fileID: 123300686}
   - component: {fileID: 123300687}
+  - component: {fileID: 123300686}
   m_Layer: 0
   m_Name: bucket
   m_TagString: Untagged
@@ -236,27 +235,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentState: 0
---- !u!114 &114117528306759770
+--- !u!114 &123300687
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1845392620882758}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e729fbbb97579694bb955281e59efb1c, type: 3}
+  m_Script: {fileID: 11500000, guid: a54c82faa3d3280409e7ea28dd8e9785, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PickPosition: {x: -1.2, y: -2, z: 0}
-  PickRotation: {x: 0, y: 70, z: 0}
-  playerState: {fileID: 0}
-  bucketState: {fileID: 0}
-  bucket: {fileID: 0}
-  Abutton: A_P1
-  Bbutton: B_P1
-  floodWater: {fileID: 0}
-  bucketPS: {fileID: 0}
+  PickPosition: {x: 0, y: 0, z: 0}
+  PickRotation: {x: 0, y: 0, z: 0}
 --- !u!95 &123300686
 Animator:
   serializedVersion: 3
@@ -276,20 +268,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &123300687
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1845392620882758}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a54c82faa3d3280409e7ea28dd8e9785, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  PickPosition: {x: 0, y: 0, z: 0}
-  PickRotation: {x: 0, y: 0, z: 0}
 --- !u!1 &1861020637407712
 GameObject:
   m_ObjectHideFlags: 0

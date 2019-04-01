@@ -40,6 +40,7 @@ public class FloodController : MonoBehaviour
         //currentLevel = floodPlane.transform.position.y;
         //float newLevel = currentLevel - bailAmount;
 
+        Debug.Log("I HAVE ARRIVED");
         floodPlane.transform.position = new Vector3(startPosition.x, startPosition.y - bailAmount, startPosition.z);
     }
 

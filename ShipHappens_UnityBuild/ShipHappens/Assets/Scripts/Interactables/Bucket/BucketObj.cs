@@ -8,14 +8,19 @@ public class BucketObj : InteractableObjs
     private PlayerStates playerStates;
     private BucketStates bucketStates;
     private PlayerController playerController;
-    private FloodController floodController;
+    [SerializeField] private FloodController floodController;
     private Rigidbody rigid;
+
+    [SerializeField] private float timer;
+    private const float BAIL_TIMER = 5f;
+    private bool bailing = false;
 
     private void Awake()
     {
         floodController = FindObjectOfType<FloodController>();
         bucketStates = GetComponent<BucketStates>();
         rigid = GetComponent<Rigidbody>();
+        timer = BAIL_TIMER;
     }
     #endregion
 
@@ -34,9 +39,23 @@ public class BucketObj : InteractableObjs
         }
     }
 
+    private void Update()
+    {
+        if (bucketStates.currentState == BucketStates.BucketState.Bailing)
+        {
+            Debug.Log("Update");
+            BailWater();
+        }
+
+        if(bucketStates.currentState == BucketStates.BucketState.Held)
+        {
+            timer = BAIL_TIMER;
+        }
+    }
+
     public override void DropItem()
     {
-        if (bucketStates.currentState == BucketStates.BucketState.Held || bucketStates.currentState == BucketStates.BucketState.Full)
+        if (bucketStates.currentState == BucketStates.BucketState.Held)
         {
             transform.parent = null;
             bucketStates.currentState = BucketStates.BucketState.Dropped;
@@ -46,7 +65,13 @@ public class BucketObj : InteractableObjs
 
     public void BailWater()
     {
-        bucketStates.currentState = BucketStates.BucketState.Held;
-        floodController.BailWater();
+        timer -= Time.deltaTime;
+        Debug.Log("Bail Timer");
+        if (timer <= 0)
+        {
+            floodController.BailWater();
+            bucketStates.currentState = BucketStates.BucketState.Held;
+            timer = BAIL_TIMER;
+        }
     }
 }

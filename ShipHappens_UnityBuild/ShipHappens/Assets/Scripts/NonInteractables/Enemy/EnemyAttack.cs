@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class EnemyAttack : MonoBehaviour
 {
+    public MultiObjectPool objectPooler;
     public GameObject spawnArea;
     private Vector3 spawnAreaCoords;
     private Vector3 randomSpawnPos;
@@ -22,7 +23,8 @@ public class EnemyAttack : MonoBehaviour
         {
             if (TestPosition())
             {
-                Instantiate(prefab, randomSpawnPos, Quaternion.Euler(90, 0, 0));
+                //Instantiate(prefab, randomSpawnPos, Quaternion.Euler(90, 0, 0));
+                objectPooler.SpawnFromPool("EnemyAttack", randomSpawnPos, Quaternion.Euler(90, 0, 0));
                 spawned = true;
             }
         } while (spawned == false);

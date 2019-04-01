@@ -19,7 +19,7 @@ public class IShouldPoo : MonoBehaviour
 
             if (countCheck > 3 && countCheck < 5) //change count if range extended
             {
-                objectPooler.SpawnFromPool("Seagull", seagull.transform.position, seagull.transform.rotation);
+                objectPooler.SpawnFromPool("Poo", seagull.transform.position, seagull.transform.rotation);
                 //Instantiate(pooPrefab, seagull.transform.position, seagull.transform.rotation);
             }
         }

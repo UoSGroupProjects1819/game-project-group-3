@@ -86,7 +86,7 @@ public class PlayerController : MonoBehaviour
             {
                 if (Input.GetKey(KeyCode.I) || playerInput.ButtonIsDown(PlayerInput.Button.A))
                 {
-                    //mop.Cleaning(poo);
+                    mop.CleanPoo(poo);
                 }
             }
         }
@@ -106,11 +106,12 @@ public class PlayerController : MonoBehaviour
 
         if (col.tag == "Edge" && playerState.playerState == PlayerStates.PlayerState.pBucket)
         {
-            Bucket bucket = GetComponentInChildren<Bucket>();
+            //playerState.playerState = PlayerStates.PlayerState.pEdge;
 
-            if (Input.GetKeyUp(KeyCode.I) || playerInput.ButtonIsDown(PlayerInput.Button.A) && bucketStates.currentState == BucketStates.BucketState.Full)
+            if (playerInput.ButtonIsDown(PlayerInput.Button.A) && bucketStates.currentState == BucketStates.BucketState.Held)
             {
-                bucket.BailWater();
+                Debug.Log("Begin Bailing");
+                bucketStates.currentState = BucketStates.BucketState.Bailing;
             }
         }
 
@@ -168,9 +169,9 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.tag == "Edge" && playerState.playerState == PlayerStates.PlayerState.pEdge)
+        if (other.tag == "Edge" && playerState.playerState == PlayerStates.PlayerState.pBucket)
         {
-            playerState.playerState = PlayerStates.PlayerState.pBucket;
+            bucketStates.currentState = BucketStates.BucketState.Held;        
         }
     }
 

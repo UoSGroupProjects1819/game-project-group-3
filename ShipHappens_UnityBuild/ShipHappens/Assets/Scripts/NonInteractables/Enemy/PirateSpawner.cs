@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class PirateSpawner : Event
 {
+    public MultiObjectPool objectPooler;
+
     public GameObject pirateFlag;
     public GameObject[] shipSpawners;
     public EnemyAttack enemyAttack;
     public CrowsNestUI CNui;
-
 
 
     private void Update()
@@ -28,7 +29,8 @@ public class PirateSpawner : Event
 
         int random = Random.Range(0, 4);
 
-        Instantiate(pirateFlag, shipSpawners[random].transform.position, shipSpawners[random].transform.rotation);
+        //Instantiate(pirateFlag, shipSpawners[random].transform.position, shipSpawners[random].transform.rotation);
+        objectPooler.SpawnFromPool("Enemy", shipSpawners[random].transform.position, shipSpawners[random].transform.rotation);
     }
 
 
@@ -37,7 +39,8 @@ public class PirateSpawner : Event
         if (other.gameObject.tag == "PirateFlag")
         {
             enemyAttack.SpawnAttackPrefab();
-            Destroy(other.gameObject);
+            //Destroy(other.gameObject);
+            other.gameObject.SetActive(false);
         }
     }
 }

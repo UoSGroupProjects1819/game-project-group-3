@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class FallingCannonball : MonoBehaviour
 {
+    public MultiObjectPool objectPooler;
     public GameObject holePrefab;
 
     private void OnCollisionEnter(Collision collision)
@@ -11,10 +12,13 @@ public class FallingCannonball : MonoBehaviour
         if (collision.gameObject.tag == "ShipDeck")
         {
             //when hit deck swap model to hole
-            Instantiate(holePrefab, transform.position, transform.rotation);
+            //Instantiate(holePrefab, transform.position, transform.rotation);
+            objectPooler.SpawnFromPool("Holes", transform.position, transform.rotation);
             holePrefab.GetComponent<HoleRadius>().holeStates = HoleRadius.HoleStates.Impact;
-            Destroy(this.transform.parent.gameObject);
-            Destroy(this.gameObject);
+            //Destroy(this.transform.parent.gameObject);
+            this.transform.parent.gameObject.SetActive(false);
+            //Destroy(this.gameObject);
+            this.gameObject.SetActive(false);
         }
 
         if (collision.gameObject.tag == "Player")

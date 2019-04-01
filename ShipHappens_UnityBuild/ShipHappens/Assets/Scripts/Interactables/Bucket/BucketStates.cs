@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BucketStates : MonoBehaviour {
 
-    public enum BucketState { Dropped, Held, Full }
+    public enum BucketState { Dropped, Held, Bailing }
 
     public BucketState currentState;
 

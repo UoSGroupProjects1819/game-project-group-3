@@ -43,7 +43,7 @@ public class MopObj : InteractableObjs
 
     public void CleanPoo()
     {
-        // DO SHIT
+        // DO STUFF
         /*
          because of object pooling it needs to do....
          this.gameObject.SetActive(false);

@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class DpadMenu : MonoBehaviour
 {
+    public MultiObjectPool objectPooler;
+
     public CanvasGroup canvasGroup;
     public RawImage dpad;
 
@@ -90,17 +92,19 @@ public class DpadMenu : MonoBehaviour
 
                 GameObject ballPlayerObj = player.gameObject;
                 PlayerStates playerStates = player.GetComponent<PlayerStates>();
-                GameObject newBall = Instantiate(cannonballPrefab);
+                //GameObject newBall = Instantiate(cannonballPrefab);
+                GameObject newBall = objectPooler.SpawnFromPool("Cannonballs", transform.position, transform.rotation);
                 newBall.GetComponent<CannonballObj>().EnableCannonball(ref playerStates, ref ballPlayerObj);
 
-                // newBall.GetComponent<CannonballObj>().EnableCannonball();
+                //newBall.GetComponent<CannonballObj>().EnableCannonball();
                 break;
 
             case PlayerController.Direction.right:
                 barrelBool.onCooldown = true;
 
                 GameObject barrelPlayerObj = player.gameObject;
-                GameObject newBarrel = Instantiate(barrelPrefab);
+                //GameObject newBarrel = Instantiate(barrelPrefab);
+                GameObject newBarrel = objectPooler.SpawnFromPool("Gunpowder", transform.position, transform.rotation);
                 newBarrel.GetComponent<Gunpowder>().Spawn(barrelPlayerObj);
                 break;
 
@@ -108,7 +112,8 @@ public class DpadMenu : MonoBehaviour
                 woodBool.onCooldown = true;
 
                 GameObject woodPlayerObj = player.gameObject;
-                GameObject newWood = Instantiate(woodPrefab);
+                //GameObject newWood = Instantiate(woodPrefab);
+                GameObject newWood = objectPooler.SpawnFromPool("Planks", transform.position, transform.rotation);
                 newWood.GetComponent<Wood>().Spawn(woodPlayerObj);
 
                 WoodStates woodStates = newWood.GetComponent<WoodStates>();

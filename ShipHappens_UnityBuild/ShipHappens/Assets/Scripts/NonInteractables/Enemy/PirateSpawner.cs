@@ -41,6 +41,7 @@ public class PirateSpawner : Event
             enemyAttack.SpawnAttackPrefab();
             //Destroy(other.gameObject);
             other.gameObject.SetActive(false);
+            EventManager.GetInstance().RemoveTask("Enemy");
         }
     }
 }

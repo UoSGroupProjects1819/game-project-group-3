@@ -23,6 +23,7 @@ public class Seagull : MonoBehaviour
     void Awake()
     {
         shipCentre = GameObject.FindGameObjectWithTag("ShipCentre");
+        objectPooler = FindObjectOfType<MultiObjectPool>();
         seagullState = SeagullStates.entering;
         this.transform.LookAt(shipCentre.transform);
 	}

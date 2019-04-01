@@ -52,7 +52,8 @@ public class PooLanding : MonoBehaviour
     private void Update()
     {
         if (transform.position.y < floodPlane.transform.position.y - 0.65f)
-            Destroy(this.gameObject);
+            //Destroy(this.gameObject);
+            this.gameObject.SetActive(false);
     }
 
     void FixedUpdate()

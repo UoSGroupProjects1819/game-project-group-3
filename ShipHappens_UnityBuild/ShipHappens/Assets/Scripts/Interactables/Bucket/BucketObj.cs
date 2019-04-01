@@ -32,11 +32,17 @@ public class BucketObj : InteractableObjs
             playerStates.playerState = PlayerStates.PlayerState.pBucket;
             SetPickedUpObjectComponents(ref playerStates, ref rigid, gameObject);
         }
+
+        // Bail Water
+        if (bucketStates.currentState == BucketStates.BucketState.Held && playerStates.playerState == PlayerStates.PlayerState.pEdge)
+        {
+            BailWater();
+        }
     }
 
     public override void DropItem()
     {
-        if (bucketStates.currentState == BucketStates.BucketState.Held || bucketStates.currentState == BucketStates.BucketState.Full)
+        if (bucketStates.currentState == BucketStates.BucketState.Held)
         {
             transform.parent = null;
             bucketStates.currentState = BucketStates.BucketState.Dropped;
@@ -46,7 +52,6 @@ public class BucketObj : InteractableObjs
 
     public void BailWater()
     {
-        bucketStates.currentState = BucketStates.BucketState.Held;
         floodController.BailWater();
     }
 }

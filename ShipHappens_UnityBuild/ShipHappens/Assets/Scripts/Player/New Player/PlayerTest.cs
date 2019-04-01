@@ -16,12 +16,12 @@ public class PlayerTest : MonoBehaviour
     {
         if(playerInput.ButtonIsDown(PlayerInput.Button.A))
         {
-            Debug.Log("A is pressed");
+            Debug.Log(playerInput.playerNumber + " A is pressed");
         }
 
         if(playerInput.ButtonIsDown(PlayerInput.Button.B))
         {
-            Debug.Log("B is pressed");
+            Debug.Log(playerInput.playerNumber + " B is pressed");
         }
     }
 }

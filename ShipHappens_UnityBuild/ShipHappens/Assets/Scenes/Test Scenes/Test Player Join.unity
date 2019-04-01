@@ -287,9 +287,6 @@ GameObject:
   - component: {fileID: 451209058}
   - component: {fileID: 451209057}
   - component: {fileID: 451209056}
-  - component: {fileID: 451209055}
-  - component: {fileID: 451209054}
-  - component: {fileID: 451209053}
   m_Layer: 0
   m_Name: Player Test
   m_TagString: Untagged
@@ -297,54 +294,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &451209053
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 451209052}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e479f1e70124e1f49a53fa64b1f8f1ef, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerState: 0
-  itemHeld: {fileID: 0}
-  timer: 0
-  actioning: 0
-  taskComplete: 0
---- !u!114 &451209054
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 451209052}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1498e6a21a3a5c94fae1db4e225ee3c9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  horizontalInput: Horizontal_P1
-  verticalInput: Vertical_P1
-  speed: 5
-  canMove: 1
---- !u!114 &451209055
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 451209052}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c49560a1905e9934ea0d45d8a02b0a05, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerStates: {fileID: 451209053}
-  playerInput: {fileID: 451209057}
-  playerMovement: {fileID: 451209054}
 --- !u!114 &451209056
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -369,6 +318,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ece80308379824e4bb558cc1f7b0ecbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  horizontalAxis: 
+  verticalAxis: 
+  aButton: 
+  bButton: 
+  horizontalDPad: 
+  verticalDPad: 
   playerNumber: 0
 --- !u!4 &451209058
 Transform:
@@ -395,9 +350,6 @@ GameObject:
   - component: {fileID: 1398547788}
   - component: {fileID: 1398547787}
   - component: {fileID: 1398547789}
-  - component: {fileID: 1398547791}
-  - component: {fileID: 1398547790}
-  - component: {fileID: 1398547792}
   m_Layer: 0
   m_Name: Player Test
   m_TagString: Untagged
@@ -417,6 +369,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ece80308379824e4bb558cc1f7b0ecbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  horizontalAxis: 
+  verticalAxis: 
+  aButton: 
+  bButton: 
+  horizontalDPad: 
+  verticalDPad: 
   playerNumber: 0
 --- !u!4 &1398547788
 Transform:
@@ -444,54 +402,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37e69296bc9eb554ba77809bea9797f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1398547790
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1398547786}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1498e6a21a3a5c94fae1db4e225ee3c9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  horizontalInput: Horizontal_P1
-  verticalInput: Vertical_P1
-  speed: 5
-  canMove: 1
---- !u!114 &1398547791
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1398547786}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c49560a1905e9934ea0d45d8a02b0a05, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerStates: {fileID: 1398547792}
-  playerInput: {fileID: 1398547787}
-  playerMovement: {fileID: 1398547790}
---- !u!114 &1398547792
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1398547786}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e479f1e70124e1f49a53fa64b1f8f1ef, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerState: 0
-  itemHeld: {fileID: 0}
-  timer: 0
-  actioning: 0
-  taskComplete: 0
 --- !u!1 &1894838129
 GameObject:
   m_ObjectHideFlags: 0

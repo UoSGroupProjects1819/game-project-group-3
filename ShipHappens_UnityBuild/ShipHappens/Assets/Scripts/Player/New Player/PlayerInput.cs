@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class PlayerInput : MonoBehaviour
 {
-    private string horizontalAxis, verticalAxis;
-    private string aButton, bButton;
-    private string horizontalDPad, verticalDPad;
+    public string horizontalAxis, verticalAxis;
+    public string aButton, bButton;
+    public string horizontalDPad, verticalDPad;
     public int playerNumber;
 
     static int numOfPlayers = 0;

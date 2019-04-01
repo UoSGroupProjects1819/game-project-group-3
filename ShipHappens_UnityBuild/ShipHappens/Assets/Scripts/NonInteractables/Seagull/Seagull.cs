@@ -49,7 +49,6 @@ public class Seagull : MonoBehaviour
                 this.gameObject.SetActive(false);
                 EventManager.GetInstance().RemoveTask("Seagull");
                 //remove from gamemanager thing
-                //remove from object pool
                 break;
         }
     }

@@ -7,6 +7,11 @@ public class FallingCannonball : MonoBehaviour
     public MultiObjectPool objectPooler;
     public GameObject holePrefab;
 
+    private void Awake()
+    {
+        objectPooler = FindObjectOfType<MultiObjectPool>();
+    }
+
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.tag == "ShipDeck")

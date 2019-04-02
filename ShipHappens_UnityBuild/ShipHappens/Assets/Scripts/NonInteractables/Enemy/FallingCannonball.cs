@@ -30,6 +30,7 @@ public class FallingCannonball : MonoBehaviour
         {
             PlayerStates playerStates = collision.gameObject.GetComponent<PlayerStates>();
             playerStates.itemHeld.SetActive(false);
+            playerStates.itemHeld = null;
             playerStates.playerState = PlayerStates.PlayerState.pDead;
         }
     }

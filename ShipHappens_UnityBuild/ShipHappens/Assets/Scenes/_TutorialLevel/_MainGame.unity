@@ -6218,21 +6218,69 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 0
       objectReference: {fileID: 0}
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
     - target: {fileID: 114903582636299894, guid: 585c6690eff4d3949b44254720f21b6c,
         type: 3}
+<<<<<<< HEAD
+      propertyPath: p1Controller
+      value: 
+      objectReference: {fileID: 58095091}
+    - target: {fileID: 114903582636299894, guid: 585c6690eff4d3949b44254720f21b6c,
+        type: 3}
+      propertyPath: p2Controller
+      value: 
+      objectReference: {fileID: 342147198}
+    - target: {fileID: 114903582636299894, guid: 585c6690eff4d3949b44254720f21b6c,
+        type: 3}
+=======
+>>>>>>> c80a3a9acd0e3bcd9a4d8dc5e06efbc873cfac57
       propertyPath: fillSpeed
       value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 114418156778595132, guid: 585c6690eff4d3949b44254720f21b6c,
         type: 3}
+<<<<<<< HEAD
+      propertyPath: p1Controller
+      value: 
+      objectReference: {fileID: 58095091}
+    - target: {fileID: 114418156778595132, guid: 585c6690eff4d3949b44254720f21b6c,
+        type: 3}
+      propertyPath: p2Controller
+      value: 
+      objectReference: {fileID: 342147198}
+    - target: {fileID: 114418156778595132, guid: 585c6690eff4d3949b44254720f21b6c,
+        type: 3}
+=======
+>>>>>>> c80a3a9acd0e3bcd9a4d8dc5e06efbc873cfac57
       propertyPath: fillSpeed
       value: 0.4
       objectReference: {fileID: 0}
     - target: {fileID: 114401021217630524, guid: 585c6690eff4d3949b44254720f21b6c,
         type: 3}
+<<<<<<< HEAD
+      propertyPath: p1Controller
+      value: 
+      objectReference: {fileID: 58095091}
+    - target: {fileID: 114401021217630524, guid: 585c6690eff4d3949b44254720f21b6c,
+        type: 3}
+      propertyPath: p2Controller
+      value: 
+      objectReference: {fileID: 342147198}
+    - target: {fileID: 114401021217630524, guid: 585c6690eff4d3949b44254720f21b6c,
+        type: 3}
+=======
+>>>>>>> c80a3a9acd0e3bcd9a4d8dc5e06efbc873cfac57
       propertyPath: fillSpeed
       value: 0.4
       objectReference: {fileID: 0}
+=======
+>>>>>>> parent of a561169... Update _MainGame.unity
+=======
+>>>>>>> parent of acfb434... Dpad timers updated
+=======
+>>>>>>> parent of acfb434... Dpad timers updated
     m_RemovedComponents:
     - {fileID: 1454390662, guid: 585c6690eff4d3949b44254720f21b6c, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 585c6690eff4d3949b44254720f21b6c, type: 3}

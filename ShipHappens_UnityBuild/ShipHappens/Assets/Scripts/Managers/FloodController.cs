@@ -5,7 +5,7 @@ using UnityEngine;
 public class FloodController : MonoBehaviour
 {
     public GameObject floodPlane;
-    private Vector3 startPosition = new Vector3(-3.863f, 4.0f, 3.35f);
+    private Vector3 currentPosition = new Vector3(-3.863f, 4.0f, 3.35f);
     private Vector3 maxHeight = new Vector3(-3.863f, 12.25f, 3.35f);
 
     public static int numberOfHoles;
@@ -20,14 +20,14 @@ public class FloodController : MonoBehaviour
 
     private void Start()
     {
-        floodPlane.transform.position = startPosition;
+        floodPlane.transform.position = currentPosition;
     }
 
     void Update ()
     {
         floodRate = numberOfHoles * (floodRateModifier * 0.001f * Time.deltaTime);
 
-        floodPlane.transform.position = new Vector3(startPosition.x, startPosition.y += floodRate, startPosition.z);
+        floodPlane.transform.position = new Vector3(currentPosition.x, currentPosition.y += floodRate, currentPosition.z);
 
 
 
@@ -41,7 +41,8 @@ public class FloodController : MonoBehaviour
         //float newLevel = currentLevel - bailAmount;
 
         Debug.Log("I HAVE ARRIVED");
-        floodPlane.transform.position = new Vector3(startPosition.x, startPosition.y - bailAmount, startPosition.z);
+        currentPosition.y -= bailAmount;
+        //floodPlane.transform.position = new Vector3(currentPosition.x, currentPosition.y - bailAmount, currentPosition.z);
     }
 
     void ClampFloodLevel()
@@ -49,7 +50,7 @@ public class FloodController : MonoBehaviour
         //clamp min, max y-axis values
         if (floodPlane.transform.position.y <= 3.95f)
         {
-            floodPlane.transform.position = startPosition;
+            floodPlane.transform.position = currentPosition;
         }
         if (floodPlane.transform.position.y > 12.2f)
         {

@@ -5,12 +5,14 @@ using UnityEngine.UI;
 
 public class DpadBarrelTimer : MonoBehaviour
 {
+    public PlayerController p1Controller;
+    public PlayerController p2Controller;
+
     public Image countdownImg;
     public float fillCountdown = 1f;
     public float fillSpeed;
 
     public bool onCooldown;
-
 
 
     void Update()
@@ -24,6 +26,15 @@ public class DpadBarrelTimer : MonoBehaviour
             {
                 onCooldown = false;
                 fillCountdown = 1;
+
+                if (p1Controller.rightIsPressed == true)
+                {
+                    p1Controller.rightIsPressed = false;
+                }
+                if (p2Controller.rightIsPressed == true)
+                {
+                    p2Controller.rightIsPressed = false;
+                }
             }
         }
         else

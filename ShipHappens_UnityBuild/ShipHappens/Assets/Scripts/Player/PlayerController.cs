@@ -15,7 +15,7 @@ public class PlayerController : MonoBehaviour
     [HideInInspector] public MopObj mop;
     [HideInInspector] public WoodObj wood;
     [HideInInspector] public BucketStates bucketStates;
-    [HideInInspector] public WoodStates woodStates;
+    public WoodStates woodStates;
 
     public bool upIsPressed;
     public bool leftIsPressed;
@@ -26,6 +26,7 @@ public class PlayerController : MonoBehaviour
     public bool edge = false;
 
     public bool interacting = false;
+    public bool repaired = false;
 
 
     void Start()
@@ -100,15 +101,17 @@ public class PlayerController : MonoBehaviour
             {
                 if (Input.GetKey(KeyCode.I) || playerInput.ButtonIsDown(PlayerInput.Button.A))
                 {
-                    if(woodStates == null) { woodStates = wood.GetComponent<WoodStates>(); }
+                    if (woodStates == null) { woodStates = wood.GetComponent<WoodStates>(); }
                     woodStates.currentState = WoodStates.WoodState.Repairing;
+                }
 
-                    if (wood.timer <= 0)
-                    {
-                        wood.RepairDeck(hole);
-                    }
+                if(repaired == true)
+                {
+                    wood.RepairDeck(hole);
                 }
             }
+
+          
         }
 
         if (col.tag == "Edge" && playerState.playerState == PlayerStates.PlayerState.pBucket)

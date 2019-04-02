@@ -123,8 +123,8 @@ public class DpadMenu : MonoBehaviour
                 GameObject newWood = objectPooler.SpawnFromPool("Planks", transform.position, transform.rotation);
                 newWood.GetComponent<WoodObj>().EnableWood(ref playerStates, ref woodPlayerObj);
 
-                WoodStates woodStates = newWood.GetComponent<WoodStates>();
-                woodStates.currentState = WoodStates.WoodState.Held;
+                //WoodStates woodStates = newWood.GetComponent<WoodStates>();
+                //woodStates.currentState = WoodStates.WoodState.Held;
                 playerStates = null;
 
                 break;

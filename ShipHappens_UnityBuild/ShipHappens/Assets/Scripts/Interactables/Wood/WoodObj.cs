@@ -11,6 +11,10 @@ public class WoodObj : InteractableObjs
 
     private Rigidbody rigid;
 
+    private Projector projector;
+
+    public GameObject hole;
+
     [SerializeField]
     public float timer;
     private const float REPAIR_TIMER = 5f;
@@ -19,6 +23,7 @@ public class WoodObj : InteractableObjs
     {
         woodStates = GetComponent<WoodStates>();
         rigid = GetComponent<Rigidbody>();
+        timer = REPAIR_TIMER;
     }
 
     public void EnableWood(ref PlayerStates states, ref GameObject player)
@@ -31,6 +36,7 @@ public class WoodObj : InteractableObjs
 
         if(playerController == null) { playerController = player.GetComponent<PlayerController>(); }
         playerController.wood = this;
+        playerController.woodStates = woodStates;
 
         SetPickedUpObjectComponents(ref playerStates, ref rigid, gameObject);
     }
@@ -46,6 +52,7 @@ public class WoodObj : InteractableObjs
 
         if (playerController == null) { playerController = player.GetComponent<PlayerController>(); }
         playerController.wood = this;
+        playerController.woodStates = woodStates;
 
         SetPickedUpObjectComponents(ref playerStates, ref rigid, gameObject);
     }
@@ -54,7 +61,22 @@ public class WoodObj : InteractableObjs
     {
         if (woodStates.currentState == WoodStates.WoodState.Repairing)
         {
+            //Debug.Log("Wood Timer = " + timer);
             timer -= Time.deltaTime;
+
+            float inverseLerp = Mathf.InverseLerp(REPAIR_TIMER, 0, timer);
+
+            if (projector == null) { projector = playerController.transform.GetChild(2).transform.GetChild(1).GetComponent<Projector>(); }
+            projector.orthographicSize = inverseLerp * 2.15f;
+
+            if(timer <= 0)
+            {
+                playerController.repaired = true;
+            }
+        }
+        else if(woodStates.currentState == WoodStates.WoodState.Held)
+        {
+            timer = REPAIR_TIMER;
         }
     }
 
@@ -64,6 +86,7 @@ public class WoodObj : InteractableObjs
         {
             transform.parent = null;
             playerController.wood = null;
+            playerController.woodStates = null;
             playerController = null;
             woodStates.currentState = WoodStates.WoodState.Dropped;
             ResetComponents(ref playerStates, ref rigid);
@@ -72,11 +95,16 @@ public class WoodObj : InteractableObjs
 
     public void RepairDeck(GameObject hole)
     {
-            hole.SetActive(false);
-            gameObject.SetActive(false);
-            playerStates.playerState = PlayerStates.PlayerState.pEmpty;
-            playerController.wood = null;
-            playerStates.itemHeld = null;
-            playerController = null;
+        Debug.Log("REPAIRRRRR MEHHH");
+        hole.SetActive(false);
+        gameObject.SetActive(false);
+        playerStates.playerState = PlayerStates.PlayerState.pEmpty;
+        playerController.wood = null;
+        playerStates.itemHeld = null;
+        playerController.repaired = false;
+        playerController = null;
+        hole = null;
+        timer = REPAIR_TIMER;
     }
+
 }

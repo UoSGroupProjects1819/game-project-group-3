@@ -34,7 +34,7 @@ public class HoleRadius : MonoBehaviour
                 rot = new Vector3(rot.x + 180, rot.y, rot.z);
                 transform.rotation = Quaternion.Euler(rot);
                 FloodController.numberOfHoles--;
-                holeStates = HoleStates.Repaired;
+                holeStates = HoleStates.Dormant;
                 break;
 
             case HoleStates.Dormant: //waiting for next input

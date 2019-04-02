@@ -29,6 +29,23 @@ public class DistanceTimerBar : MonoBehaviour
             //move ship down (sink)
             ship.transform.position += new Vector3(0, -3, 0) * Time.deltaTime;
             Destroy(floodwater);
+
+            GameObject[] poos;
+            poos = GameObject.FindGameObjectsWithTag("poo");
+            foreach (GameObject poop in poos)
+            {
+                poop.gameObject.SetActive(false);
+            }
+
+            GameObject[] holes;
+            holes = GameObject.FindGameObjectsWithTag("Hole");
+            foreach (GameObject hole in holes)
+            {
+                hole.gameObject.SetActive(false);
+            }
+
+
+
             //when ship has reached y position
             if (ship.transform.position.y < -15)
             {

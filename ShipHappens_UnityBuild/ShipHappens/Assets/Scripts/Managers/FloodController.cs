@@ -25,7 +25,7 @@ public class FloodController : MonoBehaviour
 
     void Update ()
     {
-        floodRate = numberOfHoles * (floodRateModifier * 1f * Time.deltaTime);
+        floodRate = numberOfHoles * (floodRateModifier * 0.001f * Time.deltaTime);
 
         floodPlane.transform.position = new Vector3(startPosition.x, startPosition.y += floodRate, startPosition.z);
 

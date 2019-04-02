@@ -1,4 +1,4 @@
-﻿using System.Collections;
+﻿    using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -12,6 +12,7 @@ public class CannonObj : InteractableObjs
     // Player References
     private PlayerStates playerStates;
     private PlayerController playerController;
+    private Projector projector;
 
     // Misc References
     private Animator animator;
@@ -19,7 +20,7 @@ public class CannonObj : InteractableObjs
    
     // TIMER
     private string taskName;
-    private const float CANNONBALL_TIMER = 0f, GUNPOWDER_TIMER = 0f;
+    private const float CANNONBALL_TIMER = 5f, GUNPOWDER_TIMER = 5f;
     private const string CANNONBALL_TASK = "Cannonball", GUNPOWDER_TASK = "Gunpowder";
     [SerializeField] private float timer;
     #endregion
@@ -121,6 +122,21 @@ public class CannonObj : InteractableObjs
     {
         // Decrease the timer
         timer -= Time.deltaTime;
+
+        //if (task == CANNONBALL_TASK)
+        //{
+        //    float inverseLerp = Mathf.InverseLerp(CANNONBALL_TIMER, 0, timer);
+
+        //    if (projector == null) { projector = playerController.GetComponent<Projector>(); }
+        //    projector.orthographicSize = inverseLerp * 2.15f;
+        //}
+        //else if (task == GUNPOWDER_TASK)
+        //{
+        //    float inverseLerp = Mathf.InverseLerp(GUNPOWDER_TIMER, 0, timer);
+
+        //    if (projector == null) { projector = playerController.GetComponent<Projector>(); }
+        //    projector.orthographicSize = inverseLerp * 2.15f;
+        //}
 
         // If the player interacts until the time runs 
         if (timer <= 0)

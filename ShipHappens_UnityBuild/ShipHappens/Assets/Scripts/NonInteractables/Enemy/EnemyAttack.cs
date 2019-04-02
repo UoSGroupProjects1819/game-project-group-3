@@ -7,7 +7,7 @@ public class EnemyAttack : MonoBehaviour
     public MultiObjectPool objectPooler;
     public GameObject spawnArea;
     private Vector3 spawnAreaCoords;
-    private Vector3 randomSpawnPos;
+    public  Vector3 randomSpawnPos;
 
     public GameObject prefab;
     public GameObject cannonballPrefab;

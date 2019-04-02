@@ -5,7 +5,8 @@ using UnityEngine;
 public class FloodController : MonoBehaviour
 {
     public GameObject floodPlane;
-    private Vector3 currentPosition = new Vector3(-3.863f, 4.0f, 3.35f);
+    private Vector3 startPosition = new Vector3(-3.863f, 4.0f, 3.35f);
+    private Vector3 currentPosition;
     private Vector3 maxHeight = new Vector3(-3.863f, 12.25f, 3.35f);
 
     public static int numberOfHoles;
@@ -20,7 +21,7 @@ public class FloodController : MonoBehaviour
 
     private void Start()
     {
-        floodPlane.transform.position = currentPosition;
+        floodPlane.transform.position = startPosition;
     }
 
     void Update ()
@@ -50,7 +51,7 @@ public class FloodController : MonoBehaviour
         //clamp min, max y-axis values
         if (floodPlane.transform.position.y <= 3.95f)
         {
-            floodPlane.transform.position = currentPosition;
+            floodPlane.transform.position = startPosition;
         }
         if (floodPlane.transform.position.y > 12.2f)
         {

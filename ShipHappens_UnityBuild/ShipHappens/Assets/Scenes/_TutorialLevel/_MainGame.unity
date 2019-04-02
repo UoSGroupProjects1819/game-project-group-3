@@ -6622,10 +6622,10 @@ MonoBehaviour:
     modifier: 0
     spawner: {fileID: 1278823197}
   - name: Rocks
-    maxAllowedActive: 0
+    maxAllowedActive: 1
     weight: 2
     modifier: 3
-    spawner: {fileID: 225308010}
+    spawner: {fileID: 2066308388}
   - name: Whale
     maxAllowedActive: 1
     weight: 2
@@ -6662,7 +6662,7 @@ MonoBehaviour:
   floodRate: 0
   floodRateModifier: 20
   currentLevel: 0
-  bailAmount: 1000
+  bailAmount: 10
   isGameOver: 0
   distanceTimerBar: {fileID: 1166340238}
 --- !u!114 &1329773201

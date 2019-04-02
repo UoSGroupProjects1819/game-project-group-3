@@ -12,7 +12,7 @@ public class CannonObj : InteractableObjs
     // Player References
     private PlayerStates playerStates;
     private PlayerController playerController;
-    private Projector projector;
+    public Projector projector;
 
     // Misc References
     private Animator animator;
@@ -123,20 +123,20 @@ public class CannonObj : InteractableObjs
         // Decrease the timer
         timer -= Time.deltaTime;
 
-        //if (task == CANNONBALL_TASK)
-        //{
-        //    float inverseLerp = Mathf.InverseLerp(CANNONBALL_TIMER, 0, timer);
+        if (task == CANNONBALL_TASK)
+        {
+            float inverseLerp = Mathf.InverseLerp(CANNONBALL_TIMER, 0, timer);
 
-        //    if (projector == null) { projector = playerController.GetComponent<Projector>(); }
-        //    projector.orthographicSize = inverseLerp * 2.15f;
-        //}
-        //else if (task == GUNPOWDER_TASK)
-        //{
-        //    float inverseLerp = Mathf.InverseLerp(GUNPOWDER_TIMER, 0, timer);
+            if (projector == null) { projector = playerController.transform.GetChild(2).transform.GetChild(1).GetComponent<Projector>(); }
+            projector.orthographicSize = inverseLerp * 2.15f;
+        }
+         if (task == GUNPOWDER_TASK)
+        {
+            float inverseLerp = Mathf.InverseLerp(GUNPOWDER_TIMER, 0, timer);
 
-        //    if (projector == null) { projector = playerController.GetComponent<Projector>(); }
-        //    projector.orthographicSize = inverseLerp * 2.15f;
-        //}
+            if (projector == null) { projector = playerController.transform.GetChild(2).transform.GetChild(1).GetComponent<Projector>(); }
+            projector.orthographicSize = inverseLerp * 2.15f;
+        }
 
         // If the player interacts until the time runs 
         if (timer <= 0)

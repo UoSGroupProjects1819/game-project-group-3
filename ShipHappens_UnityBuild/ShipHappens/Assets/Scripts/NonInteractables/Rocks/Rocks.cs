@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Rocks : MonoBehaviour
+public class Rocks : Event
 {
     public enum RockStates { Idle, Entering, Active, Exiting };
     public RockStates rockStates;
@@ -16,9 +16,9 @@ public class Rocks : MonoBehaviour
     public CrowsNestUI CNui;
     public ScreenShake screenShake;
     public Wheel wheel;
-       
 
-    void Spawn()
+
+    public override void Spawn()
     {
         rockStates = RockStates.Entering;
     }

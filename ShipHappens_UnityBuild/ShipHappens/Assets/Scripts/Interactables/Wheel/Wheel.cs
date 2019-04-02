@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Wheel : Interactable
+public class Wheel : InteractableObjs
 {
     public enum WheelStates { Idle, Active, Exiting };
     public WheelStates wheelStates;
@@ -45,7 +45,7 @@ public class Wheel : Interactable
                 //    shipWheel.transform.Rotate(Vector3.up * -wheelSpeed * Time.deltaTime);
                 //}
 
-                Debug.Log("player x vel: " + currPlayer.GetComponent<Rigidbody>().velocity.x);
+                //Debug.Log("player x vel: " + currPlayer.GetComponent<Rigidbody>().velocity.x);
                 if (currPlayer.GetComponent<Rigidbody>().velocity.x > 0.0000015f || currPlayer.GetComponent<Rigidbody>().velocity.z > 0.0000015f) //if player moves during timer, timer resets + action is cancelled + wheel states exiting
                 {
                     wheelStates = WheelStates.Exiting;
@@ -60,7 +60,7 @@ public class Wheel : Interactable
         }
     }
 
-    public override void Action(GameObject player)
+    public override void Interact(GameObject player)
     {
         if (isInteractable == false)
         {
@@ -83,7 +83,6 @@ public class Wheel : Interactable
 
     public override void DropItem()
     {
-        base.DropItem();
         wheelStates = WheelStates.Exiting;
     }
 

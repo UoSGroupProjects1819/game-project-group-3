@@ -59,6 +59,8 @@ public class WoodObj : InteractableObjs
 
     private void Update()
     {
+        if (woodStates.currentState == WoodStates.WoodState.Held) { projector.orthographicSize = 2.1f; }
+
         if (woodStates.currentState == WoodStates.WoodState.Repairing)
         {
             //Debug.Log("Wood Timer = " + timer);
@@ -69,15 +71,16 @@ public class WoodObj : InteractableObjs
             if (projector == null) { projector = playerController.transform.GetChild(2).transform.GetChild(1).GetComponent<Projector>(); }
             projector.orthographicSize = inverseLerp * 2.15f;
 
-            if(timer <= 0)
+            if (timer <= 0)
             {
                 playerController.repaired = true;
             }
         }
-        else if(woodStates.currentState == WoodStates.WoodState.Held)
+        else
         {
             timer = REPAIR_TIMER;
         }
+
     }
 
     public override void DropItem()

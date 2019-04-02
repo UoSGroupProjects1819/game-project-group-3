@@ -26,7 +26,7 @@ public class Wood : InteractableObjs
         SetPosition(ref player);
         woodStates.currentState = WoodStates.WoodState.Held;
         playerState.playerState = PlayerStates.PlayerState.pWood;
-        playerController.wood = this;
+        //playerController.wood = this;
         SetPickedUpObjectComponents(ref playerState, ref rb, this.gameObject); 
     }
 
@@ -40,7 +40,7 @@ public class Wood : InteractableObjs
             SetPosition(ref player);
             woodStates.currentState = WoodStates.WoodState.Held;
             playerState.playerState = PlayerStates.PlayerState.pWood;
-            playerController.wood = this;
+            //playerController.wood = this;
             SetPickedUpObjectComponents(ref playerState, ref rb, this.gameObject);
         }
     }

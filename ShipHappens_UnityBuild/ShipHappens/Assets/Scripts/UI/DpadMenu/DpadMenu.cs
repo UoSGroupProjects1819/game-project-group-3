@@ -14,6 +14,7 @@ public class DpadMenu : MonoBehaviour
     public bool inMenu;
 
     PlayerController playerController;
+    PlayerStates playerStates;
 
     Cannonball cannonball;
     public DpadCannonballTimer cballBool;
@@ -85,13 +86,15 @@ public class DpadMenu : MonoBehaviour
 
     public void CollectedWhenPressed(PlayerController player, PlayerController.Direction direction)
     {
+        if(playerStates == null) { playerStates = player.GetComponent<PlayerStates>(); }
+
         switch (direction)
         {
             case PlayerController.Direction.left:
                 cballBool.onCooldown = true;
 
                 GameObject ballPlayerObj = player.gameObject;
-                PlayerStates playerStates = player.GetComponent<PlayerStates>();
+                //PlayerStates playerStates = player.GetComponent<PlayerStates>();
                 //GameObject newBall = Instantiate(cannonballPrefab);
                 GameObject newBall = objectPooler.SpawnFromPool("Cannonballs", transform.position, transform.rotation);
                 newBall.GetComponent<CannonballObj>().EnableCannonball(ref playerStates, ref ballPlayerObj);
@@ -112,9 +115,10 @@ public class DpadMenu : MonoBehaviour
                 woodBool.onCooldown = true;
 
                 GameObject woodPlayerObj = player.gameObject;
+                //PlayerStates playerStates = player.GetComponent<PlayerStates>();
                 //GameObject newWood = Instantiate(woodPrefab);
                 GameObject newWood = objectPooler.SpawnFromPool("Planks", transform.position, transform.rotation);
-                newWood.GetComponent<Wood>().Spawn(woodPlayerObj);
+                newWood.GetComponent<WoodObj>().EnableWood(ref playerStates, ref woodPlayerObj);
 
                 WoodStates woodStates = newWood.GetComponent<WoodStates>();
                 woodStates.currentState = WoodStates.WoodState.Held;

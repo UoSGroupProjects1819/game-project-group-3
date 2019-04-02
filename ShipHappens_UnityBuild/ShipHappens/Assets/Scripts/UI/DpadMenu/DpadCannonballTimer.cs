@@ -27,13 +27,13 @@ public class DpadCannonballTimer : MonoBehaviour
                 onCooldown = false;
                 fillCountdown = 1;
 
-                if (p1Controller.rightIsPressed == true)
+                if (p1Controller.leftIsPressed == true)
                 {
-                    p1Controller.rightIsPressed = false;
+                    p1Controller.leftIsPressed = false;
                 }
-                if (p2Controller.rightIsPressed == true)
+                if (p2Controller.leftIsPressed == true)
                 {
-                    p2Controller.rightIsPressed = false;
+                    p2Controller.leftIsPressed = false;
                 }
             }
         }

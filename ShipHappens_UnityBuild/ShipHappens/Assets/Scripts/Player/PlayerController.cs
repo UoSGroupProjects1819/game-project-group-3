@@ -103,11 +103,6 @@ public class PlayerController : MonoBehaviour
                 {
                     if (woodStates == null) { woodStates = wood.GetComponent<WoodStates>(); }
                     woodStates.currentState = WoodStates.WoodState.Repairing;
-
-                    //if (wood.timer <= 0)
-                    //{
-
-                    //}
                 }
 
                 if(repaired == true)

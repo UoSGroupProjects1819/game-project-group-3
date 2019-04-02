@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class WoodStates : MonoBehaviour {
 
-	public enum WoodState { Dropped, Held };
+	public enum WoodState { Dropped, Held, Repairing };
 
     public WoodState currentState;
 

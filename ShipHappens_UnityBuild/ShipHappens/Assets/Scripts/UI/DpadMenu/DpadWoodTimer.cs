@@ -5,6 +5,9 @@ using UnityEngine.UI;
 
 public class DpadWoodTimer : MonoBehaviour
 {
+    public PlayerController p1Controller;
+    public PlayerController p2Controller;
+
     public Image countdownImg;
     public float fillCountdown = 1f;
     public float fillSpeed;
@@ -22,6 +25,15 @@ public class DpadWoodTimer : MonoBehaviour
             {
                 onCooldown = false;
                 fillCountdown = 1;
+
+                if (p1Controller.upIsPressed == true)
+                {
+                    p1Controller.upIsPressed = false;
+                }
+                if (p2Controller.upIsPressed == true)
+                {
+                    p2Controller.upIsPressed = false;
+                }
             }
         }
         else

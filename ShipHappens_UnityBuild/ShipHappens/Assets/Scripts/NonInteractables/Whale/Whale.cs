@@ -79,6 +79,7 @@ public class Whale : Event
                 players[i].GetComponent<PlayerMovement>().enabled = false;
                 players[i].GetComponent<Rigidbody>().AddForceAtPosition(new Vector3(randomForceX, randomForceY, randomForceZ), players[i].transform.position, ForceMode.Impulse);
                 players[i].GetComponent<Rigidbody>().AddRelativeTorque(new Vector3(500, 225, 600));
+                players[i].GetComponentInChildren<InteractableObjs>().DropItem();
                 players[i].GetComponent<PlayerStates>().playerState = PlayerStates.PlayerState.pWhaled;
             }
         }

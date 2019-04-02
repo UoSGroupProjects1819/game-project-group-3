@@ -14,6 +14,7 @@ public class BucketObj : InteractableObjs
     [SerializeField] private float timer;
     private const float BAIL_TIMER = 5f;
     private bool bailing = false;
+    public Projector projector;
 
     private void Awake()
     {
@@ -66,6 +67,16 @@ public class BucketObj : InteractableObjs
     public void BailWater()
     {
         timer -= Time.deltaTime;
+
+        float inverseLerp = Mathf.InverseLerp(BAIL_TIMER, 0, timer);
+
+        if (projector == null)
+        {
+            projector = playerController.transform.GetChild(2).transform.GetChild(1).GetComponent<Projector>();
+        }
+
+        projector.orthographicSize = inverseLerp * 2.15f;
+
         Debug.Log("Bail Timer");
         if (timer <= 0)
         {

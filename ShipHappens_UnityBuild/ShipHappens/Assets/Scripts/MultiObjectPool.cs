@@ -34,6 +34,7 @@ public class MultiObjectPool : MonoBehaviour
     public List<Pool> pools;
     //public GameObject prefab;
 
+    [SerializeField]
     public Dictionary<string, Queue<GameObject>> poolDictionary;
     
 

@@ -98,6 +98,7 @@ public class DpadMenu : MonoBehaviour
                 //GameObject newBall = Instantiate(cannonballPrefab);
                 GameObject newBall = objectPooler.SpawnFromPool("Cannonballs", transform.position, transform.rotation);
                 newBall.GetComponent<CannonballObj>().EnableCannonball(ref playerStates, ref ballPlayerObj);
+                playerStates = null;
 
                 //newBall.GetComponent<CannonballObj>().EnableCannonball();
                 break;
@@ -109,6 +110,8 @@ public class DpadMenu : MonoBehaviour
                 //GameObject newBarrel = Instantiate(barrelPrefab);
                 GameObject newBarrel = objectPooler.SpawnFromPool("Gunpowder", transform.position, transform.rotation);
                 newBarrel.GetComponent<GunpowderObj>().EnableGunpowder(ref playerStates, ref barrelPlayerObj);
+                playerStates = null;
+
                 break;
 
             case PlayerController.Direction.up:
@@ -122,6 +125,8 @@ public class DpadMenu : MonoBehaviour
 
                 WoodStates woodStates = newWood.GetComponent<WoodStates>();
                 woodStates.currentState = WoodStates.WoodState.Held;
+                playerStates = null;
+
                 break;
         }
     }

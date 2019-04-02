@@ -129,7 +129,7 @@ public class PlayerController : MonoBehaviour
             if (Input.GetKey(KeyCode.I) || playerInput.ButtonIsDown(PlayerInput.Button.A))
             {
                 Debug.Log("Holding");
-                hunkerDown.Action(this.gameObject);
+                hunkerDown.Interact(this.gameObject);
             }
         }
 
@@ -205,6 +205,12 @@ public class PlayerController : MonoBehaviour
         if (playerState.itemHeld != null)
         {
             InteractableObjs other = this.GetComponentInChildren<InteractableObjs>();
+
+            if (playerState.itemHeld.name == "Mast")
+            {
+                HunkerDown hunker = FindObjectOfType<HunkerDown>();
+                hunker.ReleaseMast(gameObject);
+            }
 
             if (other != null)
             {

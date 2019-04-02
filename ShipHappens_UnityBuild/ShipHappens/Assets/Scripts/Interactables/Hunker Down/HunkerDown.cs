@@ -2,10 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HunkerDown : Interactable
+public class HunkerDown : InteractableObjs
 {
-    public override void Action(GameObject player)
+
+    GameObject playerObj; 
+
+    public override void Interact(GameObject player)
     {
+        Debug.Log("ACtioning g fds f");
         PlayerStates playerState = player.GetComponent<PlayerStates>();
 
         if (playerState.playerState == PlayerStates.PlayerState.pEmpty)
@@ -14,6 +18,7 @@ public class HunkerDown : Interactable
             playerState.playerState = PlayerStates.PlayerState.pHoldingOn;
             playerState.itemHeld = this.gameObject;
             player.GetComponent<PlayerMovement>().canMove = false;
+            playerObj = player;
         }
     }
 

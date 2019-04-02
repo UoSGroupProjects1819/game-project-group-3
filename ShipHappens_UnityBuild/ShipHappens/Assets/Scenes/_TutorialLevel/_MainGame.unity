@@ -5398,7 +5398,7 @@ PrefabInstance:
       objectReference: {fileID: 304513687}
     - target: {fileID: 1491205856, guid: 5909c434129e53b4387a10b7ca64a92f, type: 3}
       propertyPath: maxTimer
-      value: 1
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 1484223359, guid: 5909c434129e53b4387a10b7ca64a92f, type: 3}
       propertyPath: m_AnchorMin.x
@@ -5455,6 +5455,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1640976083, guid: 5909c434129e53b4387a10b7ca64a92f, type: 3}
       propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2068983456, guid: 5909c434129e53b4387a10b7ca64a92f, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1491205855, guid: 5909c434129e53b4387a10b7ca64a92f, type: 3}
+      propertyPath: m_Direction
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []

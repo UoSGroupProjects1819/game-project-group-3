@@ -108,7 +108,7 @@ public class DpadMenu : MonoBehaviour
                 GameObject barrelPlayerObj = player.gameObject;
                 //GameObject newBarrel = Instantiate(barrelPrefab);
                 GameObject newBarrel = objectPooler.SpawnFromPool("Gunpowder", transform.position, transform.rotation);
-                newBarrel.GetComponent<Gunpowder>().Spawn(barrelPlayerObj);
+                newBarrel.GetComponent<GunpowderObj>().EnableGunpowder(ref playerStates, ref barrelPlayerObj);
                 break;
 
             case PlayerController.Direction.up:

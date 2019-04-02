@@ -23,8 +23,8 @@ public class EnemyAttack : MonoBehaviour
         {
             if (TestPosition())
             {
-                //Instantiate(prefab, randomSpawnPos, Quaternion.Euler(90, 0, 0));
-                objectPooler.SpawnFromPool("EnemyAttack", randomSpawnPos, Quaternion.Euler(90, 0, 0));
+                Instantiate(prefab, randomSpawnPos, Quaternion.Euler(90, 0, 0));
+                //objectPooler.SpawnFromPool("EnemyAttack", randomSpawnPos, Quaternion.Euler(90, 0, 0));
                 spawned = true;
             }
         } while (spawned == false);

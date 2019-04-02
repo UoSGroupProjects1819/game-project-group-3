@@ -13,7 +13,8 @@ public class DistanceTimerBar : MonoBehaviour
     public ParticleSystem endPS;
 
     public bool isGameOver;
-    public GameObject shipLevel;
+    public GameObject ship;
+    public GameObject floodwater;
     public LevelManager levelManagerScript;
 
     void Start()
@@ -26,9 +27,10 @@ public class DistanceTimerBar : MonoBehaviour
         if (isGameOver)
         {
             //move ship down (sink)
-            shipLevel.transform.position += new Vector3(0, -0.2f, 0);
+            ship.transform.position += new Vector3(0, -3, 0) * Time.deltaTime;
+            Destroy(floodwater);
             //when ship has reached y position
-            if (shipLevel.transform.position.y < -27)
+            if (ship.transform.position.y < -15)
             {
                 levelManagerScript.FadeToLevel(0);
             }

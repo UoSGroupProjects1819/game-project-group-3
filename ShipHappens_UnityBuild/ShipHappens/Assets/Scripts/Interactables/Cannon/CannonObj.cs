@@ -20,7 +20,7 @@ public class CannonObj : InteractableObjs
    
     // TIMER
     private string taskName;
-    private const float CANNONBALL_TIMER = 5f, GUNPOWDER_TIMER = 5f;
+    private const float CANNONBALL_TIMER = 3f, GUNPOWDER_TIMER = 3f;
     private const string CANNONBALL_TASK = "Cannonball", GUNPOWDER_TASK = "Gunpowder";
     [SerializeField] private float timer;
     #endregion

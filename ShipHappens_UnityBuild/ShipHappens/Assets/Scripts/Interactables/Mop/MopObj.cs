@@ -10,7 +10,7 @@ public class MopObj : InteractableObjs
     private Rigidbody rigid;
 
     public float timer;
-    private const float CLEAN_TIMER = 5f;
+    private const float CLEAN_TIMER = 2f;
 
     public Projector projector;
 

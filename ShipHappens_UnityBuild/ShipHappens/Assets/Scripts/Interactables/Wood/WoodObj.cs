@@ -17,7 +17,7 @@ public class WoodObj : InteractableObjs
 
     [SerializeField]
     public float timer;
-    private const float REPAIR_TIMER = 5f;
+    private const float REPAIR_TIMER = 4f;
 
     private void Awake()
     {

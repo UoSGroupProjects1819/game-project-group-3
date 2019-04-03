@@ -1604,6 +1604,11 @@ PrefabInstance:
       propertyPath: p2Controller
       value: 
       objectReference: {fileID: 1149857716}
+    - target: {fileID: 114401021217630524, guid: 585c6690eff4d3949b44254720f21b6c,
+        type: 3}
+      propertyPath: fillSpeed
+      value: 0.4
+      objectReference: {fileID: 0}
     - target: {fileID: 114903582636299894, guid: 585c6690eff4d3949b44254720f21b6c,
         type: 3}
       propertyPath: p1Controller
@@ -1614,6 +1619,11 @@ PrefabInstance:
       propertyPath: p2Controller
       value: 
       objectReference: {fileID: 1149857716}
+    - target: {fileID: 114903582636299894, guid: 585c6690eff4d3949b44254720f21b6c,
+        type: 3}
+      propertyPath: fillSpeed
+      value: 0.4
+      objectReference: {fileID: 0}
     - target: {fileID: 114418156778595132, guid: 585c6690eff4d3949b44254720f21b6c,
         type: 3}
       propertyPath: p1Controller
@@ -1624,6 +1634,11 @@ PrefabInstance:
       propertyPath: p2Controller
       value: 
       objectReference: {fileID: 1149857716}
+    - target: {fileID: 114418156778595132, guid: 585c6690eff4d3949b44254720f21b6c,
+        type: 3}
+      propertyPath: fillSpeed
+      value: 0.2
+      objectReference: {fileID: 0}
     - target: {fileID: 114112411289287678, guid: 585c6690eff4d3949b44254720f21b6c,
         type: 3}
       propertyPath: objectPooler

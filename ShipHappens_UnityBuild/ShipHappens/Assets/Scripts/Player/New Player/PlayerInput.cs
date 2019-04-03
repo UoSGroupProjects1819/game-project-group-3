@@ -57,7 +57,9 @@ public class PlayerInput : MonoBehaviour
         if (playerNumber > 0)
         {
             HorizontalMovement = Input.GetAxis(horizontalAxis);
+            if (Mathf.Abs(HorizontalMovement) < 0.1) { HorizontalMovement = 0; }
             VerticalMovement = Input.GetAxis(verticalAxis);
+            if (Mathf.Abs(VerticalMovement) < 0.1) { VerticalMovement = 0; }
         }
     }
 }

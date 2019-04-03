@@ -303,7 +303,7 @@ public class TutorialManager : MonoBehaviour
 
             case 14:
                 Debug.Log("case: " + stage);
-                if (shipRight.gameObject == null && shipLeft.gameObject == null)
+                if (shipRight.activeSelf == false && shipLeft.activeSelf == false)
                 {
                     Debug.Log("right and left r ded");
                     tutorialBubbleInterior.sprite = enemyImg;

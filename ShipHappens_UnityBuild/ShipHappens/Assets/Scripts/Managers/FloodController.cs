@@ -5,18 +5,14 @@ using UnityEngine;
 public class FloodController : MonoBehaviour
 {
     public GameObject floodPlane;
-    private Vector3 startPosition = new Vector3(-3.863f, 4.0f, 3.35f);
-    private Vector3 currentPosition;
-    private Vector3 maxHeight = new Vector3(-3.863f, 12.25f, 3.35f);
-
-    public float maxTimer = 5;
-    public float timer;
+    private Vector3 startPosition = new Vector3(-3.863f, 4.0f, 6.85f);
+    public Vector3 currentPosition;
+    private Vector3 maxHeight = new Vector3(-3.863f, 12.25f, 6.85f);
 
     public static int numberOfHoles;
     public float floodRate;
     public float floodRateModifier;
 
-    public float currentLevel;
     public float bailAmount;
 
     public bool isGameOver;
@@ -24,8 +20,7 @@ public class FloodController : MonoBehaviour
 
     private void Start()
     {
-        timer = maxTimer;
-        floodPlane.transform.position = startPosition;
+        currentPosition = startPosition;
     }
 
     void Update ()

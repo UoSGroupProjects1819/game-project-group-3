@@ -117,9 +117,7 @@ public class PlayerController : MonoBehaviour
                 {
                     wood.RepairDeck(hole);
                 }
-            }
-
-          
+            } 
         }
 
         if (col.tag == "Edge" && playerState.playerState == PlayerStates.PlayerState.pBucket)

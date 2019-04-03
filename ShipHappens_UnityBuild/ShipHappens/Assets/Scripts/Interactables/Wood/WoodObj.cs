@@ -11,7 +11,7 @@ public class WoodObj : InteractableObjs
 
     private Rigidbody rigid;
 
-    private Projector projector;
+    public Projector projector;
 
     public GameObject hole;
 
@@ -59,7 +59,7 @@ public class WoodObj : InteractableObjs
 
     private void Update()
     {
-        if (woodStates.currentState == WoodStates.WoodState.Held) { projector.orthographicSize = 2.1f; }
+        if (woodStates.currentState == WoodStates.WoodState.Held) { projector.orthographicSize = 2.1f; projector = null; }
 
         if (woodStates.currentState == WoodStates.WoodState.Repairing)
         {
@@ -101,6 +101,7 @@ public class WoodObj : InteractableObjs
         Debug.Log("REPAIRRRRR MEHHH");
         hole.SetActive(false);
         gameObject.SetActive(false);
+        transform.parent = null;
         playerStates.playerState = PlayerStates.PlayerState.pEmpty;
         playerController.wood = null;
         playerStates.itemHeld = null;

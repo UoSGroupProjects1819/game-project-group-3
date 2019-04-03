@@ -16,6 +16,7 @@ public class PlayerController : MonoBehaviour
     [HideInInspector] public WoodObj wood;
     [HideInInspector] public BucketStates bucketStates;
     public WoodStates woodStates;
+    public MopStates mopStates;
 
     public bool upIsPressed;
     public bool leftIsPressed;
@@ -27,6 +28,7 @@ public class PlayerController : MonoBehaviour
 
     public bool interacting = false;
     public bool repaired = false;
+    public bool cleaned = false;
 
 
     void Start()
@@ -87,6 +89,12 @@ public class PlayerController : MonoBehaviour
             if (playerState.playerState == PlayerStates.PlayerState.pMop)
             {
                 if (Input.GetKey(KeyCode.I) || playerInput.ButtonIsDown(PlayerInput.Button.A))
+                {
+                    if(mopStates == null) { mopStates = mop.GetComponent<MopStates>(); }
+                    mopStates.currentState = MopStates.MopState.Cleaning;
+                }
+
+                if(cleaned == true)
                 {
                     mop.CleanPoo(poo);
                 }

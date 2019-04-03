@@ -220,8 +220,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2.9802442, y: 2.5411606, z: 3.030178}
-  m_Center: {x: 0.0020940304, y: 0.2744503, z: 0.0038166046}
+  m_Size: {x: 3.507131, y: 2.5411606, z: 3.3972778}
+  m_Center: {x: -0.020364126, y: 0.2744503, z: -0.010317485}
 --- !u!114 &114612427026054330
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -249,6 +249,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PickPosition: {x: 0, y: 0, z: 0}
   PickRotation: {x: 0, y: 0, z: 0}
+  floodController: {fileID: 0}
+  timer: 0
+  projector: {fileID: 0}
 --- !u!95 &123300686
 Animator:
   serializedVersion: 3

@@ -5384,6 +5384,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PickPosition: {x: 0, y: 0, z: 0}
   PickRotation: {x: 0, y: 0, z: 0}
+  projector: {fileID: 0}
   timer: 0
 --- !u!114 &114408522570137396
 MonoBehaviour:
@@ -5410,8 +5411,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 4.3447227, y: 4.542234, z: 6.8935847}
-  m_Center: {x: 0.000000019478156, y: 2.271117, z: -0.27500004}
+  m_Size: {x: 6.7266498, y: 4.542234, z: 8.247082}
+  m_Center: {x: -0.05731969, y: 2.271117, z: 0.4017482}
 --- !u!65 &709805924
 BoxCollider:
   m_ObjectHideFlags: 0

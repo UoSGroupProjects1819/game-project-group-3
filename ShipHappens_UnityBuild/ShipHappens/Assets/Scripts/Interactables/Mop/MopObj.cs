@@ -9,6 +9,11 @@ public class MopObj : InteractableObjs
     private PlayerController playerController;
     private Rigidbody rigid;
 
+    public float timer;
+    private const float CLEAN_TIMER = 5f;
+
+    public Projector projector;
+
     private void Awake()
     {
         mopStates = GetComponent<MopStates>();
@@ -27,6 +32,31 @@ public class MopObj : InteractableObjs
             playerStates.playerState = PlayerStates.PlayerState.pMop;
             playerController.mop = this;
             SetPickedUpObjectComponents(ref playerStates, ref rigid, gameObject);
+        }
+    }
+
+    private void Update()
+    {
+        if (mopStates.currentState == MopStates.MopState.Held) { projector.orthographicSize = 2.1f; projector = null; }
+
+        if (mopStates.currentState == MopStates.MopState.Cleaning)
+        {
+            //Debug.Log("Wood Timer = " + timer);
+            timer -= Time.deltaTime;
+
+            float inverseLerp = Mathf.InverseLerp(CLEAN_TIMER, 0, timer);
+
+            if (projector == null) { projector = playerController.transform.GetChild(2).transform.GetChild(1).GetComponent<Projector>(); }
+            projector.orthographicSize = inverseLerp * 2.15f;
+
+            if (timer <= 0)
+            {
+                playerController.cleaned = true;
+            }
+        }
+        else
+        {
+            timer = CLEAN_TIMER;
         }
     }
 

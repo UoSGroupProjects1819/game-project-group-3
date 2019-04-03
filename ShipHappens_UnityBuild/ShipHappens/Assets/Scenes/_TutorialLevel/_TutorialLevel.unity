@@ -6959,7 +6959,7 @@ MonoBehaviour:
   maxTimer: 5
   timer: 0
   floodRate: 0
-  floodRateModifier: 0.5
+  floodRateModifier: 5
   currentLevel: 0
   bailAmount: 0
   isGameOver: 0

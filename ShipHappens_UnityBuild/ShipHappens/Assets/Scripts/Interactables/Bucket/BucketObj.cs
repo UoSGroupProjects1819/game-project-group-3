@@ -12,7 +12,7 @@ public class BucketObj : InteractableObjs
     private Rigidbody rigid;
 
     [SerializeField] private float timer;
-    private const float BAIL_TIMER = 5f;
+    private const float BAIL_TIMER = 2f;
     private bool bailing = false;
     public Projector projector;
 

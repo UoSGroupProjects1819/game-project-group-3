@@ -43,7 +43,7 @@ public class Player : MonoBehaviour
     {
         if (interactable != null)
         {
-            interactable.Interact(gameObject);
+            interactable.Pickup(gameObject);
         }
     }
 

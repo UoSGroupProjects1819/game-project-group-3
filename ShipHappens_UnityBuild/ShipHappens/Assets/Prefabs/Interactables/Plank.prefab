@@ -108,6 +108,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PickPosition: {x: 0.8, y: 2, z: 0}
   PickRotation: {x: 0, y: 90, z: 90}
+  interactableTag: Hole
+  projector: {fileID: 0}
+  hole: {fileID: 0}
+  timer: 0
 --- !u!114 &114504945741345214
 MonoBehaviour:
   m_ObjectHideFlags: 0

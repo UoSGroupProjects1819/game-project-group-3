@@ -7,7 +7,7 @@ public class HunkerDown : InteractableObjs
 
     GameObject playerObj; 
 
-    public override void Interact(GameObject player)
+    public override void Pickup(GameObject player, PlayerController pController = null, PlayerStates pStates = null)
     {
         Debug.Log("ACtioning g fds f");
         PlayerStates playerState = player.GetComponent<PlayerStates>();
@@ -22,9 +22,11 @@ public class HunkerDown : InteractableObjs
         }
     }
 
+    public override void Activate(GameObject otherObject) { }
+
     public override void DropItem()
     {
-        base.DropItem();
+        
     }
 
     public void ReleaseMast(GameObject player)

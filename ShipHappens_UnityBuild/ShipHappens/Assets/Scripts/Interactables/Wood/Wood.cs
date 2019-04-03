@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Wood : InteractableObjs
+public class Wood : Interactable
 {
     WoodStates woodStates;
     PlayerStates playerState;
@@ -27,23 +27,23 @@ public class Wood : InteractableObjs
         woodStates.currentState = WoodStates.WoodState.Held;
         playerState.playerState = PlayerStates.PlayerState.pWood;
         //playerController.wood = this;
-        SetPickedUpObjectComponents(ref playerState, ref rb, this.gameObject); 
+        //SetPickedUpObjectComponents(ref playerState, ref rb, this.gameObject); 
     }
 
-    public override void Interact(GameObject player)
-    {
-        playerState = player.GetComponent<PlayerStates>();
-        playerController = player.GetComponent<PlayerController>();
+    //public override void Pickup(GameObject player)
+    //{
+    //    playerState = player.GetComponent<PlayerStates>();
+    //    playerController = player.GetComponent<PlayerController>();
 
-        if (woodStates.currentState == WoodStates.WoodState.Dropped && playerState.playerState == PlayerStates.PlayerState.pEmpty)
-        {
-            SetPosition(ref player);
-            woodStates.currentState = WoodStates.WoodState.Held;
-            playerState.playerState = PlayerStates.PlayerState.pWood;
-            //playerController.wood = this;
-            SetPickedUpObjectComponents(ref playerState, ref rb, this.gameObject);
-        }
-    }
+    //    if (woodStates.currentState == WoodStates.WoodState.Dropped && playerState.playerState == PlayerStates.PlayerState.pEmpty)
+    //    {
+    //        SetPosition(ref player);
+    //        woodStates.currentState = WoodStates.WoodState.Held;
+    //        playerState.playerState = PlayerStates.PlayerState.pWood;
+    //        //playerController.wood = this;
+    //        SetPickedUpObjectComponents(ref playerState, ref rb, this.gameObject);
+    //    }
+    //}
 
     public override void DropItem()
     {
@@ -53,7 +53,7 @@ public class Wood : InteractableObjs
             playerController.wood = null;
             playerController = null;
             woodStates.currentState = WoodStates.WoodState.Dropped;
-            ResetComponents(ref playerState, ref rb);
+            //ResetComponents(ref playerState, ref rb);
         }
     }
 

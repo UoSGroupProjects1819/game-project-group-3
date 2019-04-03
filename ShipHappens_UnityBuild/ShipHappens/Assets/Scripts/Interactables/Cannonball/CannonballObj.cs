@@ -7,7 +7,8 @@ public class CannonballObj : InteractableObjs
     private CannonballStates cannonballStates;
     private Rigidbody rigid;
 
-    public PlayerStates playerState;
+    public PlayerStates playerStates;
+    private PlayerController playerController;
 
     // Initial set up
     private void Awake()
@@ -16,30 +17,37 @@ public class CannonballObj : InteractableObjs
         rigid = GetComponent<Rigidbody>();
     }
 
-    public void EnableCannonball(ref PlayerStates playerStates, ref GameObject player)
+    public override void Activate(GameObject otherObject)
     {
-        // Set up object pooling
+
+    }
+
+    //public void EnableCannonball(ref PlayerStates playerStates, ref GameObject player)
+    //{
+    //    // Set up object pooling
+    //    SetPosition(ref player);
+
+    //    playerStates.playerState = PlayerStates.PlayerState.pCannonball;
+    //    cannonballStates.currentState = CannonballStates.CannonballState.Held;
+    //    playerState = playerStates;
+
+    //    SetPickedUpObjectComponents(ref playerStates, ref rigid, gameObject);
+    //}
+
+    public override void Pickup(GameObject player, PlayerController pController = null, PlayerStates pStates = null)
+    {
         SetPosition(ref player);
+
+        playerStates = pStates;
 
         playerStates.playerState = PlayerStates.PlayerState.pCannonball;
         cannonballStates.currentState = CannonballStates.CannonballState.Held;
-        playerState = playerStates;
 
+        playerController = pController;
+        playerController.currentObject = this;
+
+        //projector = playerController.transform.GetChild(2).transform.GetChild(1).GetComponent<Projector>();
         SetPickedUpObjectComponents(ref playerStates, ref rigid, gameObject);
-    }
-
-    public override void Interact(GameObject player)
-    {
-        if(playerState == null) { playerState = player.GetComponent<PlayerStates>(); }
-
-        if (cannonballStates.currentState == CannonballStates.CannonballState.Dropped &&
-            playerState.playerState == PlayerStates.PlayerState.pEmpty)
-        {
-            SetPosition(ref player);
-            cannonballStates.currentState = CannonballStates.CannonballState.Held;
-            playerState.playerState = PlayerStates.PlayerState.pCannonball;
-            SetPickedUpObjectComponents(ref playerState, ref rigid, gameObject);
-        }
     }
 
     public override void DropItem()
@@ -50,7 +58,7 @@ public class CannonballObj : InteractableObjs
             this.transform.parent = null;
             cannonballStates.currentState = CannonballStates.CannonballState.Dropped;
 
-            ResetComponents(ref playerState, ref rigid);
+            ResetComponents(ref playerStates, ref rigid);
         }
     }
 }

@@ -8,6 +8,7 @@ public class GunpowderObj : InteractableObjs
     private Rigidbody rigid;
 
     private PlayerStates playerState;
+    private PlayerController playerController;
 
     private void Awake()
     {
@@ -15,29 +16,31 @@ public class GunpowderObj : InteractableObjs
         rigid = GetComponent<Rigidbody>();
     }
 
-    public void EnableGunpowder(ref PlayerStates playerStates, ref GameObject player)
+    //public void EnableGunpowder(ref PlayerStates playerStates, ref GameObject player)
+    //{
+    //    SetPosition(ref player);
+
+    //    playerStates.playerState = PlayerStates.PlayerState.pGunpowder;
+    //    gunpowderStates.currentState = GunpowderStates.PowderState.Held;
+    //    playerState = playerStates;
+
+    //    SetPickedUpObjectComponents(ref playerState, ref rigid, gameObject);
+    //}
+
+    public override void Pickup(GameObject player, PlayerController pController = null, PlayerStates pStates = null)
     {
         SetPosition(ref player);
 
-        playerStates.playerState = PlayerStates.PlayerState.pGunpowder;
+        playerState = pStates;
+
+        playerState.playerState = PlayerStates.PlayerState.pGunpowder;
         gunpowderStates.currentState = GunpowderStates.PowderState.Held;
-        playerState = playerStates;
 
+        playerController = pController;
+        playerController.currentObject = this;
+
+        //projector = playerController.transform.GetChild(2).transform.GetChild(1).GetComponent<Projector>();
         SetPickedUpObjectComponents(ref playerState, ref rigid, gameObject);
-    }
-
-    public override void Interact(GameObject player)
-    {
-        if(playerState == null) { playerState = player.GetComponent<PlayerStates>(); }
-
-        if(gunpowderStates.currentState == GunpowderStates.PowderState.Dropped &&
-            playerState.playerState == PlayerStates.PlayerState.pEmpty)
-        {
-            SetPosition(ref player);
-            gunpowderStates.currentState = GunpowderStates.PowderState.Held;
-            playerState.playerState = PlayerStates.PlayerState.pGunpowder;
-            SetPickedUpObjectComponents(ref playerState, ref rigid, gameObject);
-        }
     }
 
     public override void DropItem()
@@ -51,5 +54,5 @@ public class GunpowderObj : InteractableObjs
         }
     }
 
-
+    public override void Activate(GameObject otherObject) { }
 }

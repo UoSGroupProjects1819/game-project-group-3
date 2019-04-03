@@ -25,7 +25,7 @@ public class BucketObj : InteractableObjs
     }
     #endregion
 
-    public override void Interact(GameObject player)
+    public override void Pickup(GameObject player, PlayerController pController = null, PlayerStates pStates = null)
     {
         if (playerController == null) { playerController = player.GetComponent<PlayerController>(); }
         if (playerStates == null) { playerStates = player.GetComponent<PlayerStates>(); }
@@ -38,6 +38,13 @@ public class BucketObj : InteractableObjs
             playerStates.playerState = PlayerStates.PlayerState.pBucket;
             SetPickedUpObjectComponents(ref playerStates, ref rigid, gameObject);
         }
+    }
+
+    public override void Activate(GameObject otherObject)
+    {
+        if (!otherObject.CompareTag(interactableTag) || bucketStates.currentState != BucketStates.BucketState.Held) return;
+
+        bucketStates.currentState = BucketStates.BucketState.Bailing;
     }
 
     private void Update()
@@ -71,11 +78,7 @@ public class BucketObj : InteractableObjs
 
         float inverseLerp = Mathf.InverseLerp(BAIL_TIMER, 0, timer);
 
-        if (projector == null)
-        {
-            projector = playerController.transform.GetChild(2).transform.GetChild(1).GetComponent<Projector>();
-        }
-
+        if (projector == null)  { projector = playerController.transform.GetChild(2).transform.GetChild(1).GetComponent<Projector>(); }
         projector.orthographicSize = inverseLerp * 2.15f;
 
         Debug.Log("Bail Timer");
@@ -84,6 +87,8 @@ public class BucketObj : InteractableObjs
             floodController.BailWater();
             bucketStates.currentState = BucketStates.BucketState.Held;
             timer = BAIL_TIMER;
+            projector.orthographicSize = 2.1f;
+            projector = null;
         }
     }
 }

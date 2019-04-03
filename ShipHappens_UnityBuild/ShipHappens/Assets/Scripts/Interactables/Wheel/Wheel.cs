@@ -17,10 +17,14 @@ public class Wheel : InteractableObjs
 
     Projector projector;
 
+    PlayerStates playerState;
+    PlayerController playerController;
+
     public float timer = 4;
     public float initialTime = 4;
 
-      
+    public override void Activate(GameObject otherObject) {}
+    public override void Deactivate() { wheelStates = WheelStates.Exiting; playerController.currentObject = null; }
 
     void Update()
     {
@@ -34,43 +38,30 @@ public class Wheel : InteractableObjs
 
                 float inverseLerp = Mathf.InverseLerp(initialTime, 0, timer);
 
-                if (projector == null) { projector = currPlayer.transform.GetChild(2).transform.GetChild(1).GetComponent<Projector>(); }
                 projector.orthographicSize = inverseLerp * 2.15f;
 
                 if (timer <= 0)
                 {
                     rocks.rockStates = Rocks.RockStates.Exiting;
-                    wheelStates = WheelStates.Exiting;
+                    Deactivate();
                 }
 
-                //int x = Random.Range(1, 2); //spins wheel in random dir
-                //if (x > 1)
+                //if (currPlayer.GetComponent<Rigidbody>().velocity.x > 0.0000015f || currPlayer.GetComponent<Rigidbody>().velocity.z > 0.0000015f) //if player moves during timer, timer resets + action is cancelled + wheel states exiting
                 //{
-                //    shipWheel.transform.Rotate(Vector3.up * wheelSpeed * Time.deltaTime);
+                //    wheelStates = WheelStates.Exiting;
                 //}
-                //else
-                //{
-                //    shipWheel.transform.Rotate(Vector3.up * -wheelSpeed * Time.deltaTime);
-                //}
-
-                //Debug.Log("player x vel: " + currPlayer.GetComponent<Rigidbody>().velocity.x);
-                if (currPlayer.GetComponent<Rigidbody>().velocity.x > 0.0000015f || currPlayer.GetComponent<Rigidbody>().velocity.z > 0.0000015f) //if player moves during timer, timer resets + action is cancelled + wheel states exiting
-                {
-                    wheelStates = WheelStates.Exiting;
-                }
                 break;
 
             case WheelStates.Exiting:
                 timer = initialTime;
                 projector.orthographicSize = 2.1f;
-                projector = null;
                 ReleaseWheel(currPlayer);
                 wheelStates = WheelStates.Idle;
                 break;
         }
     }
 
-    public override void Interact(GameObject player)
+    public override void Pickup(GameObject player, PlayerController pController = null, PlayerStates pStates = null)
     {
         if (isInteractable == false)
         {
@@ -80,11 +71,15 @@ public class Wheel : InteractableObjs
         {
             currPlayer = player;
 
-            PlayerStates playerState = player.GetComponent<PlayerStates>();
+            playerState = pStates;
+            playerController = pController;
+            playerController.currentObject = this;
 
             if (playerState.playerState == PlayerStates.PlayerState.pEmpty)
             {
                 playerState.playerState = PlayerStates.PlayerState.pWheel;
+
+                projector = playerController.transform.GetChild(2).transform.GetChild(1).GetComponent<Projector>();
 
                 wheelStates = WheelStates.Active;
             }
@@ -104,7 +99,6 @@ public class Wheel : InteractableObjs
         }
         else
         {
-          PlayerStates playerState = player.GetComponent<PlayerStates>();
           playerState.playerState = PlayerStates.PlayerState.pEmpty;
 
           currPlayer = null;            

@@ -47,11 +47,10 @@ public class CannonObj : InteractableObjs
         }
     }
 
-    public override void Interact(GameObject player)
+    public override void Pickup(GameObject player, PlayerController pController = null, PlayerStates pStates = null)
     {
-        // Performance safety checks
-        if(playerStates == null) { playerStates = player.GetComponent<PlayerStates>(); }
-        if(playerController == null) { playerController = player.GetComponent<PlayerController>(); }
+        playerStates = pStates;
+        playerController = pController;
 
         switch (playerStates.playerState)
         {
@@ -64,6 +63,7 @@ public class CannonObj : InteractableObjs
 
                 timer = CANNONBALL_TIMER;
                 taskName = CANNONBALL_TASK;
+                projector = playerController.transform.GetChild(2).transform.GetChild(1).GetComponent<Projector>();
 
                 playerController.interacting = true;
                 cannonState.currentState = CannonState.CannonStates.cPreLoaded;
@@ -78,6 +78,7 @@ public class CannonObj : InteractableObjs
 
                 timer = GUNPOWDER_TIMER;
                 taskName = GUNPOWDER_TASK;
+                projector = playerController.transform.GetChild(2).transform.GetChild(1).GetComponent<Projector>();
 
                 playerController.interacting = true;
                 cannonState.currentState = CannonState.CannonStates.cPreLoaded;
@@ -88,7 +89,7 @@ public class CannonObj : InteractableObjs
                 if (cannonState.currentState == CannonState.CannonStates.cFullyLoaded && animator.GetBool("InRange") == true)
                 {
                     cannonState.currentState = CannonState.CannonStates.cEmpty;
-                    Destroy(target); // TODO NEEDS TO BE ADJUSTED FOR OBJECTPOOLING
+                    target.SetActive(false);
                     target = null;
                     animator.SetBool("InRange", false);
                     cannonFire.Play();
@@ -127,14 +128,12 @@ public class CannonObj : InteractableObjs
         {
             float inverseLerp = Mathf.InverseLerp(CANNONBALL_TIMER, 0, timer);
 
-            if (projector == null) { projector = playerController.transform.GetChild(2).transform.GetChild(1).GetComponent<Projector>(); }
             projector.orthographicSize = inverseLerp * 2.15f;
         }
          if (task == GUNPOWDER_TASK)
         {
             float inverseLerp = Mathf.InverseLerp(GUNPOWDER_TIMER, 0, timer);
-
-            if (projector == null) { projector = playerController.transform.GetChild(2).transform.GetChild(1).GetComponent<Projector>(); }
+                       
             projector.orthographicSize = inverseLerp * 2.15f;
         }
 
@@ -161,10 +160,16 @@ public class CannonObj : InteractableObjs
                     cannonState.UpdateState(CannonState.CannonStates.cGunpowder);
                     break;
             }
+            
 
             // Empty out the taskName ready for the next timer
             taskName = null;
         }
+    }
+
+    private void ResetValues()
+    {
+        projector.orthographicSize = 2.1f;
     }
 
     private void OnTriggerStay(Collider other)
@@ -208,5 +213,20 @@ public class CannonObj : InteractableObjs
     {
         playerController = null;
         playerStates = null;
+    }
+
+    public override void Activate(GameObject otherObject)
+    {
+       
+    }
+
+    public override void Deactivate()
+    {
+        ResetValues();
+    }
+
+    public override void DropItem()
+    {
+       
     }
 }

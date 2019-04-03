@@ -9,14 +9,18 @@ public class PlayerController : MonoBehaviour
     Direction direction;
 
     public PlayerStates playerState;
-    private PlayerStates.PlayerState tempState;
     private PlayerInput playerInput;
+
+    public InteractableObjs currentObject;
 
     [HideInInspector] public MopObj mop;
     [HideInInspector] public WoodObj wood;
     [HideInInspector] public BucketStates bucketStates;
     public WoodStates woodStates;
     public MopStates mopStates;
+
+    public InteractableObjs touchedInteractable;
+    public GameObject touchedGameObject;
 
     public bool upIsPressed;
     public bool leftIsPressed;
@@ -27,8 +31,6 @@ public class PlayerController : MonoBehaviour
     public bool edge = false;
 
     public bool interacting = false;
-    public bool repaired = false;
-    public bool cleaned = false;
 
 
     void Start()
@@ -46,105 +48,46 @@ public class PlayerController : MonoBehaviour
             DropItem();
         }
 
-        //weak D-pad test
-        #region Dpad TEST
-        //if (Input.GetAxisRaw(DpadVertical) > 0 && !upIsPressed)
-        //{
-        //    upIsPressed = true;
-        //    Debug.Log("up dpad");
-        //}
-        //else if (Input.GetAxisRaw(DpadVertical) < 0)
-        //{
-        //    Debug.Log("down dpad");
-        //}
+        if (Input.GetKey(KeyCode.I) || playerInput.ButtonIsDown(PlayerInput.Button.A))
+        { 
+            if ( touchedInteractable != null)
+            {
+                touchedInteractable.Pickup(gameObject, this, this.playerState);
+                return;
+            }
 
-        //if (Input.GetAxisRaw(DpadHorizontal) > 0 && !rightIsPressed)
-        //{
-        //    rightIsPressed = true;
-        //    Debug.Log("right dpad");
-        //}
-        //else if (Input.GetAxisRaw(DpadHorizontal) < 0 && !leftIsPressed)
-        //{
-        //    leftIsPressed = true;
-        //    Debug.Log("left dpad");
-        //}
-        #endregion
+            if(playerState.playerState == PlayerStates.PlayerState.pBucket && touchedGameObject.CompareTag("Edge"))
+            {
+                if (bucketStates.currentState == BucketStates.BucketState.Held)
+                    bucketStates.currentState = BucketStates.BucketState.Bailing;
+            }
+
+            if ( currentObject && touchedGameObject)
+            {
+                currentObject.Activate(touchedGameObject);
+            }
+
+            if (touchedGameObject)
+            {
+                HunkerDown hunkerDown = touchedGameObject.gameObject.GetComponent<HunkerDown>();
+
+                if (hunkerDown != null)
+                {
+                    Debug.Log("Holding");
+                    hunkerDown.Pickup(this.gameObject);
+                }
+            }
+        }
+    }
+
+    private void OnTriggerEnter(Collider col)
+    {
+        touchedInteractable = col.gameObject.GetComponent<InteractableObjs>();
+        touchedGameObject = col.gameObject;
     }
 
     private void OnTriggerStay(Collider col)
     {
-        InteractableObjs other = col.gameObject.GetComponent<InteractableObjs>();
-
-        if (other != null)
-        {
-            if (Input.GetKeyUp(KeyCode.I) || playerInput.ButtonIsDown(PlayerInput.Button.A))
-            {
-                other.Interact(gameObject);
-            }
-        }
-
-        if (col.gameObject.tag == "poo")
-        {
-            GameObject poo = col.gameObject;
-            if (playerState.playerState == PlayerStates.PlayerState.pMop)
-            {
-                if (Input.GetKey(KeyCode.I) || playerInput.ButtonIsDown(PlayerInput.Button.A))
-                {
-                    if(mopStates == null) { mopStates = mop.GetComponent<MopStates>(); }
-                    mopStates.currentState = MopStates.MopState.Cleaning;
-                }
-
-                if(cleaned == true)
-                {
-                    mop.CleanPoo(poo);
-                }
-            }
-        }
-
-        if (col.gameObject.tag == "Hole")
-        {
-            Debug.Log("Hit a Hole!");
-            GameObject hole = col.gameObject;
-            if (playerState.playerState == PlayerStates.PlayerState.pWood)
-            {
-                if (Input.GetKey(KeyCode.I) || playerInput.ButtonIsDown(PlayerInput.Button.A))
-                {
-                    if (woodStates == null) { woodStates = wood.GetComponent<WoodStates>(); }
-                    woodStates.currentState = WoodStates.WoodState.Repairing;
-                }
-
-                if(repaired == true)
-                {
-                    wood.RepairDeck(hole);
-                }
-            } 
-        }
-
-        if (col.tag == "Edge" && playerState.playerState == PlayerStates.PlayerState.pBucket)
-        {
-            //playerState.playerState = PlayerStates.PlayerState.pEdge;
-
-            if (playerInput.ButtonIsDown(PlayerInput.Button.A) && bucketStates.currentState == BucketStates.BucketState.Held)
-            {
-                Debug.Log("Begin Bailing");
-                bucketStates.currentState = BucketStates.BucketState.Bailing;
-            }
-        }
-
-        HunkerDown hunkerDown = col.gameObject.GetComponent<HunkerDown>();
-
-        if (hunkerDown != null)
-        {
-            if (Input.GetKey(KeyCode.I) || playerInput.ButtonIsDown(PlayerInput.Button.A)) 
-            {
-                Debug.Log("Holding");
-                hunkerDown.Interact(this.gameObject);
-            }
-        }
-
-        {
-            DpadMenu menu = col.gameObject.GetComponent<DpadMenu>();
-
             if (Input.GetAxisRaw(playerInput.GetVerticalDPad()) > 0 && upIsPressed == false && dPadMenu.woodTimer.onCooldown == false && playerState.playerState == PlayerStates.PlayerState.pEmpty)
             {
                 upIsPressed = true;
@@ -153,7 +96,7 @@ public class PlayerController : MonoBehaviour
                 Debug.Log("DpadWood");
 
                 direction = Direction.up;
-                menu.CollectedWhenPressed(this, direction);
+                dPadMenu.CollectedWhenPressed(this, direction);
                 return;
             }
 
@@ -163,7 +106,7 @@ public class PlayerController : MonoBehaviour
                 leftIsPressed = false;
                 upIsPressed = false;
                 direction = Direction.right;
-                menu.CollectedWhenPressed(this, direction);
+                dPadMenu.CollectedWhenPressed(this, direction);
 
                 Debug.Log("DpadBarrel");
                 return;
@@ -175,12 +118,11 @@ public class PlayerController : MonoBehaviour
                 rightIsPressed = false;
                 upIsPressed = false;
                 direction = Direction.left;
-                menu.CollectedWhenPressed(this, direction);
+                dPadMenu.CollectedWhenPressed(this, direction);
 
                 Debug.Log("DpadCannonBall");
                 return;
             }
-        }
     }
 
     private void OnTriggerExit(Collider other)
@@ -190,18 +132,21 @@ public class PlayerController : MonoBehaviour
             bucketStates.currentState = BucketStates.BucketState.Held;        
         }
 
-        if(other.tag == "Hole" && playerState.playerState == PlayerStates.PlayerState.pWood)
-        {
-            woodStates.currentState = WoodStates.WoodState.Held;
-        }
+        if (currentObject != null)
+            currentObject.Deactivate();
+
+        if (touchedInteractable != null)
+            touchedInteractable.Deactivate();
+
+        touchedInteractable = null;
+        touchedGameObject = null;
     }
 
     private void DropItem()
     {
         Debug.Log("Drop mehhhhh");
-        if (playerState.itemHeld == null) { return; }
 
-        if (playerState.playerState == PlayerStates.PlayerState.pHoldingOn && Input.GetKey(KeyCode.U))
+        if (playerState.playerState == PlayerStates.PlayerState.pHoldingOn)
         {
             HunkerDown other = this.GetComponentInParent<HunkerDown>();
 
@@ -211,21 +156,9 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        if (playerState.itemHeld != null)
+        if (currentObject != null)
         {
-            InteractableObjs other = this.GetComponentInChildren<InteractableObjs>();
-
-            if (playerState.itemHeld.name == "Mast")
-            {
-                HunkerDown hunker = FindObjectOfType<HunkerDown>();
-                hunker.ReleaseMast(gameObject);
-            }
-
-            if (other != null)
-            {
-                Debug.Log("Drop meh");
-                other.DropItem();
-            }
+            currentObject.DropItem();
         }
     }
 }

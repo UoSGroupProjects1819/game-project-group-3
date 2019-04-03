@@ -2,11 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class InteractableObjs : MonoBehaviour
+public abstract class InteractableObjs : MonoBehaviour
 { 
     [Header("Pickup Position")]
     public Vector3 PickPosition;
     public Vector3 PickRotation;
+
+    public string interactableTag;
 
     // Timer variables
     private PlayerStates pState;
@@ -24,8 +26,10 @@ public class InteractableObjs : MonoBehaviour
     }
 
     // Actionable functions
-    public virtual void Interact(GameObject player) { }
-    public virtual void DropItem() { }
+    public virtual void Deactivate() { }
+    public abstract void Activate(GameObject otherObject);
+    public abstract void Pickup(GameObject player, PlayerController pController = null, PlayerStates pStates = null);
+    public abstract void DropItem();
     
     // Set the objects position in the player's hand.  Position is assigned in the inspector of the object.
     public void SetPosition(ref GameObject player)

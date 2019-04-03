@@ -98,6 +98,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PickPosition: {x: 0, y: 0, z: 0}
   PickRotation: {x: 180, y: 0, z: 0}
+  interactableTag: poo
   timer: 0
   projector: {fileID: 0}
 --- !u!65 &65522779910365690

@@ -101,7 +101,7 @@ public class DpadMenu : MonoBehaviour
                 //PlayerStates playerStates = player.GetComponent<PlayerStates>();
                 //GameObject newBall = Instantiate(cannonballPrefab);
                 GameObject newBall = objectPooler.SpawnFromPool("Cannonballs", transform.position, transform.rotation);
-                newBall.GetComponent<CannonballObj>().EnableCannonball(ref playerStates, ref ballPlayerObj);
+                newBall.GetComponent<CannonballObj>().Pickup(player.gameObject, player, player.playerState);
                 playerStates = null;
 
                 //newBall.GetComponent<CannonballObj>().EnableCannonball();
@@ -113,7 +113,7 @@ public class DpadMenu : MonoBehaviour
                 GameObject barrelPlayerObj = player.gameObject;
                 //GameObject newBarrel = Instantiate(barrelPrefab);
                 GameObject newBarrel = objectPooler.SpawnFromPool("Gunpowder", transform.position, transform.rotation);
-                newBarrel.GetComponent<GunpowderObj>().EnableGunpowder(ref playerStates, ref barrelPlayerObj);
+                newBarrel.GetComponent<GunpowderObj>().Pickup(player.gameObject, player, player.playerState);
                 playerStates = null;
 
                 break;
@@ -125,7 +125,7 @@ public class DpadMenu : MonoBehaviour
                 //PlayerStates playerStates = player.GetComponent<PlayerStates>();
                 //GameObject newWood = Instantiate(woodPrefab);
                 GameObject newWood = objectPooler.SpawnFromPool("Planks", transform.position, transform.rotation);
-                newWood.GetComponent<WoodObj>().EnableWood(ref playerStates, ref woodPlayerObj);
+                newWood.GetComponent<WoodObj>().Pickup(player.gameObject, player, player.playerState);
 
                 //WoodStates woodStates = newWood.GetComponent<WoodStates>();
                 //woodStates.currentState = WoodStates.WoodState.Held;

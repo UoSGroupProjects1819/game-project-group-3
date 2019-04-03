@@ -74,7 +74,7 @@ public class Rocks : Event
                 //remove from game manager
                 rockSlider.gameObject.SetActive(false);
                 rockStates = RockStates.Idle;
-                wheel.wheelStates = Wheel.WheelStates.Exiting;
+                //wheel.wheelStates = Wheel.WheelStates.Exiting;
                 wheel.isInteractable = true;
                 break;
         }

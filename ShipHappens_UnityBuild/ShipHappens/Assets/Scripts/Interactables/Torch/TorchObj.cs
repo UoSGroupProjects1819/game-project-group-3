@@ -6,7 +6,11 @@ public class TorchObj : InteractableObjs
 {
     private TorchStates torchStates;
     private PlayerStates playerStates;
+    private PlayerController playerController;
     private Rigidbody rigid;
+
+    public override void Activate(GameObject otherObject) { }
+    public override void Deactivate() { }
 
     private void Start()
     {
@@ -14,17 +18,20 @@ public class TorchObj : InteractableObjs
         rigid = GetComponent<Rigidbody>();
     }
 
-    public override void Interact(GameObject player)
+    public override void Pickup(GameObject player, PlayerController pController = null, PlayerStates pStates = null)
     {
-        if(playerStates == null) { playerStates = player.GetComponent<PlayerStates>(); }
+        SetPosition(ref player);
 
-        if(torchStates.currentState == TorchStates.TorchState.Dropped && playerStates.playerState == PlayerStates.PlayerState.pEmpty)
-        {
-            SetPosition(ref player);
-            torchStates.currentState = TorchStates.TorchState.Held;
-            playerStates.playerState = PlayerStates.PlayerState.pTorch;
-            SetPickedUpObjectComponents(ref playerStates, ref rigid, gameObject);
-        }
+        playerStates = pStates;
+
+        playerStates.playerState = PlayerStates.PlayerState.pTorch;
+        torchStates.currentState = TorchStates.TorchState.Held;
+
+        playerController = pController;
+        playerController.currentObject = this;
+
+        //projector = playerController.transform.GetChild(2).transform.GetChild(1).GetComponent<Projector>();
+        SetPickedUpObjectComponents(ref playerStates, ref rigid, gameObject);
     }
 
     public override void DropItem()

@@ -40,6 +40,15 @@ public class DpadBarrelTimer : MonoBehaviour
         else
         {
             countdownImg.fillAmount = 0;
+
+            if (p1Controller.rightIsPressed == true)
+            {
+                p1Controller.rightIsPressed = false;
+            }
+            if (p2Controller.rightIsPressed == true)
+            {
+                p2Controller.rightIsPressed = false;
+            }
         }
     }
 }

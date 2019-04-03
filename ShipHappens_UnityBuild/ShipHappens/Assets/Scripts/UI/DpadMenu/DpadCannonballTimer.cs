@@ -40,6 +40,15 @@ public class DpadCannonballTimer : MonoBehaviour
         else
         {
             countdownImg.fillAmount = 0;
+
+            if (p1Controller.leftIsPressed == true)
+            {
+                p1Controller.leftIsPressed = false;
+            }
+            if (p2Controller.leftIsPressed == true)
+            {
+                p2Controller.leftIsPressed = false;
+            }
         }
     }
 }

@@ -16,6 +16,10 @@ public class DpadMenu : MonoBehaviour
     PlayerController playerController;
     PlayerStates playerStates;
 
+    public DpadBarrelTimer barrelTimer;
+    public DpadWoodTimer woodTimer;
+    public DpadCannonballTimer cballTimer;
+
     Cannonball cannonball;
     public DpadCannonballTimer cballBool;
     public GameObject cannonballPrefab;

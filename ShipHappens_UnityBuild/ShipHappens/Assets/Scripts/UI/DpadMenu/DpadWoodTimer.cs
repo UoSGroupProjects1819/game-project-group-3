@@ -39,6 +39,15 @@ public class DpadWoodTimer : MonoBehaviour
         else
         {
             countdownImg.fillAmount = 0;
+
+            if (p1Controller.upIsPressed == true)
+            {
+                p1Controller.upIsPressed = false;
+            }
+            if (p2Controller.upIsPressed == true)
+            {
+                p2Controller.upIsPressed = false;
+            }
         }
     }
 }

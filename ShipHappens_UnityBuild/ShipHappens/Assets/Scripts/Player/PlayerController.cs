@@ -22,7 +22,7 @@ public class PlayerController : MonoBehaviour
     public bool leftIsPressed;
     public bool rightIsPressed;
 
-    public CrowsNestUI UIManager;
+    public DpadMenu dPadMenu;
 
     public bool edge = false;
 
@@ -33,7 +33,7 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
-        UIManager = FindObjectOfType<CrowsNestUI>();
+        dPadMenu = FindObjectOfType<DpadMenu>();
         playerState = this.GetComponent<PlayerStates>();
         bucketStates = FindObjectOfType<BucketStates>();
         playerInput = GetComponent<PlayerInput>();
@@ -147,7 +147,7 @@ public class PlayerController : MonoBehaviour
         {
             DpadMenu menu = col.gameObject.GetComponent<DpadMenu>();
 
-            if (Input.GetAxisRaw(playerInput.GetVerticalDPad()) > 0 && upIsPressed == false && UIManager.woodTimer.onCooldown == false && playerState.playerState == PlayerStates.PlayerState.pEmpty)
+            if (Input.GetAxisRaw(playerInput.GetVerticalDPad()) > 0 && upIsPressed == false && dPadMenu.woodTimer.onCooldown == false && playerState.playerState == PlayerStates.PlayerState.pEmpty)
             {
                 upIsPressed = true;
                 leftIsPressed = false;
@@ -159,7 +159,7 @@ public class PlayerController : MonoBehaviour
                 return;
             }
 
-            if (Input.GetAxisRaw(playerInput.GetHorizontalDPad()) > 0 && rightIsPressed == false && UIManager.barrelTimer.onCooldown == false && playerState.playerState == PlayerStates.PlayerState.pEmpty)
+            if (Input.GetAxisRaw(playerInput.GetHorizontalDPad()) > 0 && rightIsPressed == false && dPadMenu.barrelTimer.onCooldown == false && playerState.playerState == PlayerStates.PlayerState.pEmpty)
             {
                 rightIsPressed = true;
                 leftIsPressed = false;
@@ -171,7 +171,7 @@ public class PlayerController : MonoBehaviour
                 return;
             }
 
-            if (Input.GetAxisRaw(playerInput.GetHorizontalDPad()) < 0 &&  leftIsPressed == false && UIManager.cballTimer.onCooldown == false && playerState.playerState == PlayerStates.PlayerState.pEmpty)
+            if (Input.GetAxisRaw(playerInput.GetHorizontalDPad()) < 0 &&  leftIsPressed == false && dPadMenu.cballTimer.onCooldown == false && playerState.playerState == PlayerStates.PlayerState.pEmpty)
             {
                 leftIsPressed = true;
                 rightIsPressed = false;

@@ -61,6 +61,11 @@ public class TutorialManager : MonoBehaviour
     //HOLE
     public Sprite holeImg;
 
+    //static destroyable enemies
+    private bool staticShipSpawned;
+    public GameObject shipLeft;
+    public GameObject shipRight;
+
     private void Start()
     {
         woodCircle.Stop();
@@ -267,11 +272,13 @@ public class TutorialManager : MonoBehaviour
                 {
                     if (CNanim.GetBool("PlayTutorialBubble") == false)
                     {
-                        Instantiate(enemyTutorialShip, enemySpawnerBR.transform.position, enemySpawnerBR.transform.rotation);
-                        tutorialBubbleInterior.sprite = enemyImg;
-                        CNanim.SetBool("PlayTutorialBubble", true);
-                        timer = 4;
-                        stage = 13;
+                        if (staticShipSpawned == false)
+                        {
+                            shipRight = Instantiate(enemyTutorialShip, enemySpawnerBR.transform.position, enemySpawnerBR.transform.rotation);
+                            tutorialBubbleInterior.sprite = enemyImg;
+                            CNanim.SetBool("PlayTutorialBubble", true);
+                            staticShipSpawned = true;
+                        }
                     }
                 }
                 break;
@@ -283,41 +290,54 @@ public class TutorialManager : MonoBehaviour
                 {
                     if (CNanim.GetBool("PlayTutorialBubble") == false)
                     {
-                        Instantiate(enemyTutorialShip, enemySpawnerBL.transform.position, enemySpawnerBL.transform.rotation);
-                        tutorialBubbleInterior.sprite = enemyImg;
-                        CNanim.SetBool("PlayTutorialBubble", true);
-                        timer = 17;
-                        stage = 14;
+                        if (staticShipSpawned == true)
+                        {
+                            shipLeft = Instantiate(enemyTutorialShip, enemySpawnerBL.transform.position, enemySpawnerBL.transform.rotation);
+                            tutorialBubbleInterior.sprite = enemyImg;
+                            CNanim.SetBool("PlayTutorialBubble", true);
+                            staticShipSpawned = false;
+                        }
                     }
                 }
                 break;
 
             case 14:
                 Debug.Log("case: " + stage);
-                if (CNanim.GetBool("PlayTutorialBubble") == false)
+                if (shipRight.gameObject == null && shipLeft.gameObject == null)
                 {
-                    timer -= 1 * Time.deltaTime;
-                    if (timer <= 0)
-                    {
-                        tutorialBubbleInterior.sprite = holeImg;
-                        CNanim.SetBool("PlayTutorialBubble", true);
-                        stage = 15;
-                    }
+                    Debug.Log("right and left r ded");
+                    tutorialBubbleInterior.sprite = enemyImg;
+                    CNanim.SetBool("PlayTutorialBubble", true);
+
+                    Instantiate(enemyTutorialShip, enemySpawnerBL.transform.position, enemySpawnerBL.transform.rotation);
+
+                    timer = 17;
+                    stage = 15;
                 }
                 break;
 
             case 15:
+                timer -= 1 * Time.deltaTime;
+                if (timer <= 0)
+                {
+                    tutorialBubbleInterior.sprite = holeImg;
+                    CNanim.SetBool("PlayTutorialBubble", true);
+                    stage = 16;
+                }
+                break;
+
+            case 16:
                 Debug.Log("case: " + stage);
                 if (CNanim.GetBool("PlayTutorialBubble") == false)
                 {
                     tutorialBubbleInterior.sprite = shipHoldImg;
                     CNanim.SetBool("PlayTutorialBubble", true);
                     shipHoldAnim.SetBool("PlayTutorialHold", true);
-                    stage = 16;
+                    stage = 17;
                 }
                 break;
 
-            case 16:
+            case 17:
                 Debug.Log("case: " + stage);
                 if (dpadMenu.alpha > 0.5f)
                 {
@@ -341,7 +361,7 @@ public class TutorialManager : MonoBehaviour
                         {
                             woodCircle.Stop();
                             bubbleHasPlayed = false;
-                            stage = 17;
+                            stage = 18;
                             break;
                         }
                     }
@@ -353,17 +373,17 @@ public class TutorialManager : MonoBehaviour
                 }
                 break;
 
-            case 17:
+            case 18:
                 Debug.Log("case: " + stage);
                 if (CNanim.GetBool("PlayTutorialBubble") == false)
                 {
                     tutorialBubbleInterior.sprite = holeImg;
                     CNanim.SetBool("PlayTutorialBubble", true);
-                    stage = 18;
+                    stage = 19;
                 }
                 break;
 
-            case 18:
+            case 19:
                 Debug.Log("case: " + stage);
                 Debug.Log("case 18 is end of current tutorial.");
                 break;

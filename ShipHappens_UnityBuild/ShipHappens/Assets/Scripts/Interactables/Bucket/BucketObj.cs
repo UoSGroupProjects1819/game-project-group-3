@@ -51,6 +51,7 @@ public class BucketObj : InteractableObjs
         if(bucketStates.currentState == BucketStates.BucketState.Held)
         {
             timer = BAIL_TIMER;
+            projector = null;
         }
     }
 

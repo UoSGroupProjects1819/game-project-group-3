@@ -144,6 +144,7 @@ public class CannonObj : InteractableObjs
             // Stop the player from interacting and remove the references to the player
             CompleteAction(playerStates);
             playerController.interacting = false;
+            projector = null;
             NullPlayer();
 
             // Reset the cannon states
@@ -196,6 +197,7 @@ public class CannonObj : InteractableObjs
 
                 NullPlayer();
                 taskName = null;
+                projector = null;
             }
 
         }

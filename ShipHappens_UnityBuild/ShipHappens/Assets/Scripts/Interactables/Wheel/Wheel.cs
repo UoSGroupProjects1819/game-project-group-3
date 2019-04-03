@@ -15,6 +15,8 @@ public class Wheel : InteractableObjs
 
     public GameObject currPlayer = null;
 
+    Projector projector;
+
     public float timer = 4;
     public float initialTime = 4;
 
@@ -29,6 +31,12 @@ public class Wheel : InteractableObjs
 
             case WheelStates.Active:
                 timer -= Time.deltaTime; //if player completes timer, rock state exiting, wheel state exiting
+
+                float inverseLerp = Mathf.InverseLerp(initialTime, 0, timer);
+
+                if (projector == null) { projector = currPlayer.transform.GetChild(2).transform.GetChild(1).GetComponent<Projector>(); }
+                projector.orthographicSize = inverseLerp * 2.15f;
+
                 if (timer <= 0)
                 {
                     rocks.rockStates = Rocks.RockStates.Exiting;
@@ -54,6 +62,8 @@ public class Wheel : InteractableObjs
 
             case WheelStates.Exiting:
                 timer = initialTime;
+                projector.orthographicSize = 2.1f;
+                projector = null;
                 ReleaseWheel(currPlayer);
                 wheelStates = WheelStates.Idle;
                 break;

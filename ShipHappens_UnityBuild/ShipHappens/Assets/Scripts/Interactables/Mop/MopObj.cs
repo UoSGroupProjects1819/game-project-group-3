@@ -50,6 +50,7 @@ public class MopObj : InteractableObjs
         playerController = pController;
         playerController.currentObject = this;
 
+        RotateShoulders(player.transform.GetChild(0).GetChild(0), 90);
         projector = playerController.transform.GetChild(2).transform.GetChild(1).GetComponent<Projector>();
         SetPickedUpObjectComponents(ref playerStates, ref rigid, gameObject);
     }
@@ -89,6 +90,7 @@ public class MopObj : InteractableObjs
             transform.parent = null;
             playerController.mop = null;
             mopStates.currentState = MopStates.MopState.Dropped;
+            RotateShoulders(playerStates.transform.GetChild(0).GetChild(0), -90);
             ResetComponents(ref playerStates, ref rigid);
         }
     }

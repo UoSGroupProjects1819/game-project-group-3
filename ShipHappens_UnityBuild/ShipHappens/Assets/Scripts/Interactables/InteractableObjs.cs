@@ -60,4 +60,9 @@ public abstract class InteractableObjs : MonoBehaviour
         rb.isKinematic = false;
         rb.detectCollisions = true;
     }
+
+    public void RotateShoulders(Transform rightArm, float rotateAmount)
+    {
+        rightArm.transform.Rotate(rotateAmount, 0, 0);
+    }
 }

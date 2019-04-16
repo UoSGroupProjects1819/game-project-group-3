@@ -39,6 +39,7 @@ public class GunpowderObj : InteractableObjs
         playerController = pController;
         playerController.currentObject = this;
 
+        RotateShoulders(player.transform.GetChild(0).GetChild(0), 90);
         //projector = playerController.transform.GetChild(2).transform.GetChild(1).GetComponent<Projector>();
         SetPickedUpObjectComponents(ref playerState, ref rigid, gameObject);
     }
@@ -49,6 +50,8 @@ public class GunpowderObj : InteractableObjs
         {
             transform.parent = null;
             gunpowderStates.currentState = GunpowderStates.PowderState.Dropped;
+
+            RotateShoulders(playerState.transform.GetChild(0).GetChild(0), -90);
 
             ResetComponents(ref playerState, ref rigid);
         }

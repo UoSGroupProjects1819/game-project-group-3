@@ -115,7 +115,8 @@ public class CannonObj : InteractableObjs
     {
         player.playerState = PlayerStates.PlayerState.pEmpty;
         GameObject interactable = player.GetComponentInChildren<InteractableObjs>().gameObject;
-        Destroy(interactable); // TODO NEEDS TO BE ADJUSTED FOR OBJECTPOOLING
+        RotateShoulders(player.transform.GetChild(0).GetChild(0), -90);
+        interactable.SetActive(false); // TODO NEEDS TO BE ADJUSTED FOR OBJECTPOOLING
     }
 
     // Timer to load in the cannonball or gunpowder

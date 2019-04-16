@@ -46,6 +46,7 @@ public class CannonballObj : InteractableObjs
         playerController = pController;
         playerController.currentObject = this;
 
+        RotateShoulders(player.transform.GetChild(0).GetChild(0), 90);
         //projector = playerController.transform.GetChild(2).transform.GetChild(1).GetComponent<Projector>();
         SetPickedUpObjectComponents(ref playerStates, ref rigid, gameObject);
     }
@@ -57,6 +58,8 @@ public class CannonballObj : InteractableObjs
         {
             this.transform.parent = null;
             cannonballStates.currentState = CannonballStates.CannonballState.Dropped;
+
+            RotateShoulders(playerStates.transform.GetChild(0).GetChild(0), -90);
 
             ResetComponents(ref playerStates, ref rigid);
         }

@@ -1316,6 +1316,7 @@ GameObject:
   - component: {fileID: 678706635}
   - component: {fileID: 678706634}
   - component: {fileID: 678706633}
+  - component: {fileID: 678706636}
   m_Layer: 0
   m_Name: tutorialareablockers
   m_TagString: Untagged
@@ -1348,8 +1349,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 9.36, y: 5, z: 7.25}
-  m_Center: {x: 22.3, y: 1.8, z: -28.32}
+  m_Size: {x: 31.68917, y: 10.083325, z: 6.8761444}
+  m_Center: {x: 14.063606, y: 4.341663, z: -28.506927}
 --- !u!65 &678706634
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1361,8 +1362,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 9.36, y: 5, z: 7.25}
-  m_Center: {x: 22.3, y: 1.8, z: 27.51}
+  m_Size: {x: 15.982328, y: 9.4229, z: 7.25}
+  m_Center: {x: 22.50922, y: 4.0114503, z: 27.51}
 --- !u!65 &678706635
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1374,8 +1375,21 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 3.19, y: 5, z: 50}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 3.19, y: 14.102745, z: 50}
+  m_Center: {x: 0, y: 4.5513725, z: 0}
+--- !u!65 &678706636
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 678706631}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.2464066, y: 11.554359, z: 47.68734}
+  m_Center: {x: 29.096794, y: 5.2771797, z: -0.60137177}
 --- !u!1001 &752414490
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -145,6 +145,18 @@ Transform:
   m_Father: {fileID: 1847826866}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &42491092 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1407056601011892, guid: 3599ba85434c1ef40858c8127f8b5566,
+    type: 3}
+  m_PrefabInstance: {fileID: 1690548261}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &42491093 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 965311354, guid: 3599ba85434c1ef40858c8127f8b5566,
+    type: 3}
+  m_PrefabInstance: {fileID: 1690548261}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &53465119 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 114951374952990596, guid: 585c6690eff4d3949b44254720f21b6c,
@@ -911,6 +923,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1682321360}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &535842879 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7942504731216601572, guid: abaf94ac1fa72064aa8161db450e799c,
+    type: 3}
+  m_PrefabInstance: {fileID: 644968581}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eafc636254e3ded4fa4260a25e9a4476, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &544084802 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4071465884737556, guid: f1db7e219e25f9e40ab18bbae41def6b,
@@ -1915,6 +1939,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab218cd1ed0d62b409bea255daf3d09a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mainCam: {fileID: 298738235}
+  levelManagerScript: {fileID: 535842879}
   stage: 0
   players:
   - {fileID: 547004372}
@@ -1965,10 +1991,25 @@ MonoBehaviour:
   shipRight: {fileID: 0}
   spawnSeagull: {fileID: 225308010}
   seagullImg: {fileID: 21300000, guid: 18e5cf051ae16c643994296d6b3e1144, type: 3}
-  mop: {fileID: 0}
-  mopAnim: {fileID: 0}
-  mopImg: {fileID: 0}
-  pooImg: {fileID: 0}
+  mop: {fileID: 42491092}
+  mopAnim: {fileID: 42491093}
+  mopImg: {fileID: 21300000, guid: 8cd90cea15dbfce41a37ee0fb57e190c, type: 3}
+  pooImg: {fileID: 21300000, guid: 9751b11781f82664a9fb9ccf04d9348f, type: 3}
+  rock: {fileID: 0}
+  rockImg: {fileID: 21300000, guid: 29bfecb6d208c8d458d07dd970611bd9, type: 3}
+  originalTimer: 0
+  originalInitialTimer: 0
+  tutorialTimer: 30
+  tutorialInitialTimer: 30
+  tutorialShortInitialTimer: 5
+  tutorialShortTimer: 5
+  wheel: {fileID: 2066308387}
+  wheelImg: {fileID: 21300000, guid: 53c9340d8b38b6d41bc41263e62ac70d, type: 3}
+  wheelAnim: {fileID: 2066308393}
+  whale: {fileID: 1464157553}
+  whaleImg: {fileID: 21300000, guid: d06c261ce38d75840a9687712ed9cc38, type: 3}
+  whaleAnim: {fileID: 1464157554}
+  mastAnim: {fileID: 891821003}
 --- !u!4 &1117603850 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4645694278088332, guid: 046986ab40a96a54b82409c42e762d3b,
@@ -2695,6 +2736,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cdf69ad87c86724fae077fa8bf513aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1464157553 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1427555234, guid: 05fa7690e89c7294880d85055c34234b,
+    type: 3}
+  m_PrefabInstance: {fileID: 1705297245}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1464157554 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 1427555238, guid: 05fa7690e89c7294880d85055c34234b,
+    type: 3}
+  m_PrefabInstance: {fileID: 1705297245}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1520383720 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 114401021217630524, guid: 585c6690eff4d3949b44254720f21b6c,
@@ -3479,7 +3532,7 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 1705297245}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1464157553}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5cd67c9b996652e429a7bc13a6dd49c0, type: 3}

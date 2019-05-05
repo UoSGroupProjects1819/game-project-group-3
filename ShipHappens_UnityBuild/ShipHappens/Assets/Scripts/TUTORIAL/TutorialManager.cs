@@ -807,7 +807,7 @@ public class TutorialManager : MonoBehaviour
 
                 if (mainCam.transform.position.z > 100)
                 {
-                    levelManagerScript.FadeToLevel(5);
+                    levelManagerScript.FadeToLevel(0);
                 }
                 stage = 404;
                 break;

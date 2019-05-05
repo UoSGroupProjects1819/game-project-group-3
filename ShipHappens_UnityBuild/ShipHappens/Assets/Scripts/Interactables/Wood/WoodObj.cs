@@ -111,6 +111,7 @@ public class WoodObj : InteractableObjs
         woodStates.currentState = WoodStates.WoodState.Dropped;
         playerController.currentObject = null;
         gameObject.SetActive(false);
+        FloodController.numberOfHoles = FloodController.numberOfHoles - 1;
     }
 
 }

@@ -20,6 +20,17 @@ public class TutorialManager : MonoBehaviour
     public Image TutorialBubble;
     public Image tutorialBubbleInterior;
 
+    //FLOOD CONTROLLER
+    public FloodController floodController;
+        //original flood values
+    public Vector3 originalMaxHeight;
+    public float originalFloodRateModifier;
+    public float originalBailAmount;
+        //tutorial flood values
+    public Vector3 tutorialMaxHeight = new Vector3(-3.863f, 8.5f, 6.85f);
+    public float tutorialFFloodRateModifier = 40f;
+    public float tutorialBailAmount = 5f;
+
     //DPAD MENU
     public CanvasGroup dpadMenu;
 
@@ -53,6 +64,14 @@ public class TutorialManager : MonoBehaviour
     public Animator torchAnim;
     public Sprite torchImg;
 
+    //BUCKET
+    public GameObject bucket;
+    public Animator bucketAnim;
+    public Sprite bucketImg;
+    public Animator bailAreaAnim;
+    public Projector leftProjector;
+    public Projector rightProjector;
+
     //ENEMY
     public GameObject enemyTutorialShip;
     public Sprite enemyImg;
@@ -68,9 +87,16 @@ public class TutorialManager : MonoBehaviour
 
     private void Start()
     {
+        originalMaxHeight = floodController.maxHeight;
+        originalFloodRateModifier = floodController.floodRateModifier;
+        originalBailAmount = floodController.bailAmount;
+
         woodCircle.Stop();
         gunpowderCircle.Stop();
         cannonballCircle.Stop();
+
+        leftProjector.gameObject.SetActive(false);
+        leftProjector.gameObject.SetActive(false);
     }
 
     void Update()
@@ -83,6 +109,7 @@ public class TutorialManager : MonoBehaviour
         switch (stage)
         {
             case 0:
+                floodController.isTutorial = true;
                 Debug.Log("case: " + stage);
                 tutorialBubbleInterior.sprite = enemyImg;
 
@@ -311,14 +338,22 @@ public class TutorialManager : MonoBehaviour
 
                     Instantiate(enemyTutorialShip, enemySpawnerBL.transform.position, enemySpawnerBL.transform.rotation);
 
-                    timer = 17;
+                    //timer = 17;
                     stage = 15;
                 }
                 break;
 
             case 15:
-                timer -= 1 * Time.deltaTime;
-                if (timer <= 0)
+                Debug.Log("case: " + stage);
+                //timer -= 1 * Time.deltaTime;
+                //if (timer <= 0)
+                //{
+                //    tutorialBubbleInterior.sprite = holeImg;
+                //    CNanim.SetBool("PlayTutorialBubble", true);
+                //    stage = 16;
+                //}
+
+                if (FloodController.numberOfHoles > 0)
                 {
                     tutorialBubbleInterior.sprite = holeImg;
                     CNanim.SetBool("PlayTutorialBubble", true);
@@ -328,17 +363,37 @@ public class TutorialManager : MonoBehaviour
 
             case 16:
                 Debug.Log("case: " + stage);
+                //if (CNanim.GetBool("PlayTutorialBubble") == false)
+                //{
+                //    tutorialBubbleInterior.sprite = shipHoldImg;
+                //    CNanim.SetBool("PlayTutorialBubble", true);
+                //    shipHoldAnim.SetBool("PlayTutorialHold", true);
+                //    stage = 17;
+                //}
+
                 if (CNanim.GetBool("PlayTutorialBubble") == false)
                 {
-                    tutorialBubbleInterior.sprite = shipHoldImg;
-                    CNanim.SetBool("PlayTutorialBubble", true);
-                    shipHoldAnim.SetBool("PlayTutorialHold", true);
-                    stage = 17;
+                    floodController.maxHeight = tutorialMaxHeight;
+                    floodController.floodRateModifier = tutorialFFloodRateModifier;
+                    floodController.bailAmount = tutorialBailAmount;
+
+                    if (floodController.currentPosition.y > tutorialMaxHeight.y)
+                    {
+                        stage = 17;
+                    }
                 }
                 break;
 
             case 17:
                 Debug.Log("case: " + stage);
+
+                tutorialBubbleInterior.sprite = shipHoldImg;
+                CNanim.SetBool("PlayTutorialBubble", true);
+                shipHoldAnim.SetBool("PlayTutorialHold", true);
+                stage = 18;
+                break;
+
+            case 18:
                 if (dpadMenu.alpha > 0.5f)
                 {
                     shipHoldAnim.SetBool("PlayTutorialHold", false);
@@ -361,34 +416,100 @@ public class TutorialManager : MonoBehaviour
                         {
                             woodCircle.Stop();
                             bubbleHasPlayed = false;
-                            stage = 18;
+                            stage = 19;
                             break;
                         }
                     }
                 }
                 else
                 {
-
                     woodCircle.Stop();
-                }
-                break;
-
-            case 18:
-                Debug.Log("case: " + stage);
-                if (CNanim.GetBool("PlayTutorialBubble") == false)
-                {
-                    tutorialBubbleInterior.sprite = holeImg;
-                    CNanim.SetBool("PlayTutorialBubble", true);
-                    stage = 19;
                 }
                 break;
 
             case 19:
                 Debug.Log("case: " + stage);
-                Debug.Log("case 18 is end of current tutorial.");
+                if (CNanim.GetBool("PlayTutorialBubble") == false)
+                {
+                    tutorialBubbleInterior.sprite = holeImg;
+                    CNanim.SetBool("PlayTutorialBubble", true);
+                    stage = 20;
+                }
+                break;
+
+            case 20:
+                Debug.Log("case: " + stage);
+
+                if (FloodController.numberOfHoles == 0)
+                {
+                    tutorialBubbleInterior.sprite = bucketImg;
+                    CNanim.SetBool("PlayTutorialBubble", true);
+                    bucketAnim.SetBool("PlayTutorialBucket", true);
+                    stage = 21;
+                }
+                break;
+
+            case 21:
+                Debug.Log("case: " + stage);
+                if (bucket.GetComponent<BucketStates>().currentState == BucketStates.BucketState.Held)
+                {
+                    bucketAnim.SetBool("PlayTutorialBucket", false);
+
+                    leftProjector.gameObject.SetActive(true);
+                    leftProjector.gameObject.SetActive(true);
+                    bailAreaAnim.SetBool("PlayTutorialBailArea", true);
+                    stage = 22;
+                }
+
+
+                break;
+
+            case 22:
+                Debug.Log("case: " + stage);
+                if (bucket.GetComponent<BucketStates>().currentState == BucketStates.BucketState.Bailing)
+                {
+                    bailAreaAnim.SetBool("PlayTutorialBailArea", false);
+                    leftProjector.gameObject.SetActive(false);
+                    leftProjector.gameObject.SetActive(false);
+                    timer = 2;
+                    stage = 23;
+                }
+                break;
+
+//START THE MANAGER/////////////////////////////////////////////////
+            case 23:
+                Debug.Log("case: " + stage);
+                timer -= 1 * Time.deltaTime;
+                if (timer <= 0)
+                {
+                    //TOGGLE MANAGER ON
+                    timer = 50;
+                    stage = 24;
+                }
+                break;
+
+
+            case 24:
+                timer -= 1 * Time.deltaTime;
+                if (timer <= 0)
+                {
+                    //TOGGLE MANAGER OFF
+                    stage = 25;
+                }
+                break;
+//END THE MANAGER/////////////////////////////////////////////////
+
+            case 999:
+                Debug.Log("case: " + stage + ". Flood controller values reset.");
+                floodController.maxHeight = originalMaxHeight;
+                floodController.floodRateModifier = originalFloodRateModifier;
+                floodController.bailAmount = originalBailAmount;
+                floodController.isTutorial = false;
                 break;
         }
     }
+
+    //set flood controller values back
 
     public void StopTutorialBubble()
     {

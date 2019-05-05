@@ -85,6 +85,33 @@ public class TutorialManager : MonoBehaviour
     public GameObject shipLeft;
     public GameObject shipRight;
 
+    //SEAGULL
+    public SpawnSeagull spawnSeagull;
+    public Sprite seagullImg;
+
+    //MOP
+    public GameObject mop;
+    public Animator mopAnim;
+    public Sprite mopImg;
+
+    //POO
+    public Sprite pooImg;
+
+    //WHEEL / ROCK
+    public Rocks rock;
+    public Sprite rockImg;
+    public Wheel wheel;
+    public Sprite wheelImg;
+    public Animator wheelAnim;
+
+    //WHALE
+    public Sprite whaleImg;
+    public Animator whaleAnim;
+    public Animator mastAnim;
+
+
+
+
     private void Start()
     {
         originalMaxHeight = floodController.maxHeight;
@@ -108,6 +135,7 @@ public class TutorialManager : MonoBehaviour
     {
         switch (stage)
         {
+            #region cannons
             case 0:
                 floodController.isTutorial = true;
                 Debug.Log("case: " + stage);
@@ -135,13 +163,6 @@ public class TutorialManager : MonoBehaviour
                 if (dpadMenu.alpha > 0.5f)
                 {
                     shipHoldAnim.SetBool("PlayTutorialHold", false);
-
-                    //if (CNanim.GetBool("PlayTutorialBubble") == false)
-                    //{
-                    //    tutorialBubbleInterior.sprite = cannonballImg;
-                    //    CNanim.SetBool("PlayTutorialBubble", true);
-                    //}
-
 
                     if (!cannonballCircle.isPlaying)
                     {
@@ -196,14 +217,6 @@ public class TutorialManager : MonoBehaviour
                 if (dpadMenu.alpha > 0.5f)
                 {
                     shipHoldAnim.SetBool("PlayTutorialHold", false);
-
-                    
-                    //if (CNanim.GetBool("PlayTutorialBubble") == false)
-                    //{
-                    //    tutorialBubbleInterior.sprite = gunpowderImg;
-                    //    CNanim.SetBool("PlayTutorialBubble", true);
-                    //}
-
 
                     if (!gunpowderCircle.isPlaying)
                     {
@@ -342,16 +355,10 @@ public class TutorialManager : MonoBehaviour
                     stage = 15;
                 }
                 break;
-
+            #endregion
+            #region repair
             case 15:
                 Debug.Log("case: " + stage);
-                //timer -= 1 * Time.deltaTime;
-                //if (timer <= 0)
-                //{
-                //    tutorialBubbleInterior.sprite = holeImg;
-                //    CNanim.SetBool("PlayTutorialBubble", true);
-                //    stage = 16;
-                //}
 
                 if (FloodController.numberOfHoles > 0)
                 {
@@ -363,13 +370,6 @@ public class TutorialManager : MonoBehaviour
 
             case 16:
                 Debug.Log("case: " + stage);
-                //if (CNanim.GetBool("PlayTutorialBubble") == false)
-                //{
-                //    tutorialBubbleInterior.sprite = shipHoldImg;
-                //    CNanim.SetBool("PlayTutorialBubble", true);
-                //    shipHoldAnim.SetBool("PlayTutorialHold", true);
-                //    stage = 17;
-                //}
 
                 if (CNanim.GetBool("PlayTutorialBubble") == false)
                 {
@@ -397,13 +397,6 @@ public class TutorialManager : MonoBehaviour
                 if (dpadMenu.alpha > 0.5f)
                 {
                     shipHoldAnim.SetBool("PlayTutorialHold", false);
-
-                    //if (CNanim.GetBool("PlayTutorialBubble") == false)
-                    //{
-                    //    tutorialBubbleInterior.sprite = woodImg;
-                    //    CNanim.SetBool("PlayTutorialBubble", true);
-                    //}
-
 
                     if (!woodCircle.isPlaying)
                     {
@@ -436,7 +429,8 @@ public class TutorialManager : MonoBehaviour
                     stage = 20;
                 }
                 break;
-
+            #endregion
+            #region bail
             case 20:
                 Debug.Log("case: " + stage);
 
@@ -475,8 +469,9 @@ public class TutorialManager : MonoBehaviour
                     stage = 23;
                 }
                 break;
-
-//START THE MANAGER/////////////////////////////////////////////////
+            #endregion
+            #region GAME MANAGER FREEPLAY #1 (including above)
+            //START THE MANAGER/////////////////////////////////////////////////
             case 23:
                 Debug.Log("case: " + stage);
                 timer -= 1 * Time.deltaTime;
@@ -497,7 +492,132 @@ public class TutorialManager : MonoBehaviour
                     stage = 25;
                 }
                 break;
-//END THE MANAGER/////////////////////////////////////////////////
+            //END THE MANAGER/////////////////////////////////////////////////
+            #endregion
+
+            #region seagull
+
+            case 25:
+                tutorialBubbleInterior.sprite = seagullImg;
+                CNanim.SetBool("PlayTutorialBubble", true);
+                spawnSeagull.Spawn();
+                break;
+
+            case 26:
+                tutorialBubbleInterior.sprite = mopImg;
+                CNanim.SetBool("PlayTutorialBubble", true);
+                mopAnim.SetBool("PlayTutorialMop", true);
+                break;
+
+            case 27:
+                if (torch.GetComponent<MopStates>().currentState == MopStates.MopState.Held)
+                {
+                    mopAnim.SetBool("PlayTutorialMop", false);
+
+                    if (CNanim.GetBool("PlayTutorialBubble") == false)
+                    {
+                        tutorialBubbleInterior.sprite = pooImg;
+                        CNanim.SetBool("PlayTutorialBubble", true);
+                        stage = 28;
+                    }
+                }
+                break;
+
+            case 28:
+                if (torch.GetComponent<MopStates>().currentState == MopStates.MopState.Cleaning)
+                {
+                    stage = 29;
+                }
+                break;
+
+            case 29:
+                if (torch.GetComponent<MopStates>().currentState == MopStates.MopState.Held)
+                {
+                    timer = 2;
+                    stage = 30;
+                }
+                break;
+
+            case 30:
+                timer -= Time.deltaTime;
+                if (timer <= 0)
+                {
+                    tutorialBubbleInterior.sprite = seagullImg;
+                    CNanim.SetBool("PlayTutorialBubble", true);
+                    spawnSeagull.Spawn();
+                    timer = 2.5f;
+                    stage = 31;
+                }
+                break;
+
+            case 31:
+                timer -= Time.deltaTime;
+                if (timer <= 0)
+                {
+                    tutorialBubbleInterior.sprite = seagullImg;
+                    CNanim.SetBool("PlayTutorialBubble", true);
+                    spawnSeagull.Spawn();
+                    timer = 2.5f;
+                    stage = 32;
+                }
+                break;
+
+            case 32:
+                timer -= Time.deltaTime;
+                if (timer <= 0)
+                {
+                    tutorialBubbleInterior.sprite = seagullImg;
+                    CNanim.SetBool("PlayTutorialBubble", true);
+                    spawnSeagull.Spawn();
+                    stage = 33;
+                }
+                break;
+            #endregion
+            #region GAME MANAGER FREEPLAY #2 (including above)
+            //START THE MANAGER/////////////////////////////////////////////////
+            case 33:
+                Debug.Log("case: " + stage);
+                timer -= 1 * Time.deltaTime;
+                if (timer <= 0)
+                {
+                    //TOGGLE MANAGER ON
+                    timer = 50;
+                    stage = 34;
+                }
+                break;
+
+
+            case 34:
+                timer -= 1 * Time.deltaTime;
+                if (timer <= 0)
+                {
+                    //TOGGLE MANAGER OFF
+                    stage = 35;
+                }
+                break;
+            //END THE MANAGER/////////////////////////////////////////////////
+            #endregion
+
+            #region wheel
+            case 35:
+                tutorialBubbleInterior.sprite = rockImg;
+                CNanim.SetBool("PlayTutorialBubble", true);
+                stage = 36;
+                break;
+
+            case 36:
+
+                break;
+            #endregion
+            #region GAME MANAGER FREEPLAY #3(including above)
+            #endregion
+
+            #region whale
+            #endregion
+            #region GAME MANAGER FREEPLAY #4 (including above)
+            #endregion
+
+            #region end tutorial, reassign initial flood manager defaults
 
             case 999:
                 Debug.Log("case: " + stage + ". Flood controller values reset.");
@@ -506,10 +626,10 @@ public class TutorialManager : MonoBehaviour
                 floodController.bailAmount = originalBailAmount;
                 floodController.isTutorial = false;
                 break;
+
+            #endregion
         }
     }
-
-    //set flood controller values back
 
     public void StopTutorialBubble()
     {

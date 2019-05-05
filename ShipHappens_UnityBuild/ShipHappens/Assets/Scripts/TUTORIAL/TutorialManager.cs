@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class TutorialManager : MonoBehaviour
 {
+    public Camera mainCam;
+    public LevelManager levelManagerScript;
     public int stage = 0;
 
     private float timer;
@@ -100,14 +102,23 @@ public class TutorialManager : MonoBehaviour
     //WHEEL / ROCK
     public Rocks rock;
     public Sprite rockImg;
+    public float originalTimer;
+    public float originalInitialTimer;
+    public float tutorialTimer;
+    public float tutorialInitialTimer;
+    public float tutorialShortInitialTimer;
+    public float tutorialShortTimer;
     public Wheel wheel;
     public Sprite wheelImg;
     public Animator wheelAnim;
 
     //WHALE
+    public GameObject whale;
     public Sprite whaleImg;
     public Animator whaleAnim;
     public Animator mastAnim;
+    
+
 
 
 
@@ -117,6 +128,9 @@ public class TutorialManager : MonoBehaviour
         originalMaxHeight = floodController.maxHeight;
         originalFloodRateModifier = floodController.floodRateModifier;
         originalBailAmount = floodController.bailAmount;
+
+        originalInitialTimer = rock.initialTime;
+        originalTimer = rock.timer;
 
         woodCircle.Stop();
         gunpowderCircle.Stop();
@@ -569,6 +583,7 @@ public class TutorialManager : MonoBehaviour
                     tutorialBubbleInterior.sprite = seagullImg;
                     CNanim.SetBool("PlayTutorialBubble", true);
                     spawnSeagull.Spawn();
+                    timer = 2.5f;
                     stage = 33;
                 }
                 break;
@@ -592,6 +607,7 @@ public class TutorialManager : MonoBehaviour
                 if (timer <= 0)
                 {
                     //TOGGLE MANAGER OFF
+                    timer = 5f;
                     stage = 35;
                 }
                 break;
@@ -602,19 +618,175 @@ public class TutorialManager : MonoBehaviour
             case 35:
                 tutorialBubbleInterior.sprite = rockImg;
                 CNanim.SetBool("PlayTutorialBubble", true);
+                rock.initialTime = tutorialShortInitialTimer;
+                rock.timer = tutorialShortTimer;
                 stage = 36;
                 break;
 
             case 36:
+                if (CNanim.GetBool("PlayTutorialBubble") == false)
+                {
+                    rock.Spawn();
+                    stage = 37;
+                }
+                break;
 
+            case 37:
+                if (rock.GetComponent<Rocks>().rockStates == Rocks.RockStates.Idle)
+                {
+                    timer = 2.5f;
+
+                    stage = 38;
+                }
+                break;
+
+            case 38:
+                timer -= Time.deltaTime;
+                if (timer <= 0)
+                {
+                    tutorialBubbleInterior.sprite = rockImg;
+                    CNanim.SetBool("PlayTutorialBubble", true);
+                    rock.initialTime = tutorialInitialTimer;
+                    rock.timer = tutorialTimer;
+                    stage = 39;
+                }
+                break;
+
+
+            case 39:
+                rock.Spawn();
+                if (CNanim.GetBool("PlayTutorialBubble") == false)
+                {
+                    tutorialBubbleInterior.sprite = wheelImg;
+                    CNanim.SetBool("PlayTutorialBubble", true);
+                    wheelAnim.SetBool("PlayTutorialWheel", true);
+
+                    stage = 40;
+                }
+                break;
+
+            case 40:
+                if (wheel.GetComponent<Wheel>().wheelStates == Wheel.WheelStates.Active)
+                {
+                    wheelAnim.SetBool("PlayTutorialWheel", false);
+                    stage = 41;
+                }
+                break;
+
+            case 41:
+                if (wheel.GetComponent<Wheel>().wheelStates == Wheel.WheelStates.Exiting)
+                {
+                    timer = 2.5f;
+                    stage = 42;
+                }
                 break;
             #endregion
             #region GAME MANAGER FREEPLAY #3(including above)
+            //START THE MANAGER/////////////////////////////////////////////////
+            case 42:
+                Debug.Log("case: " + stage);
+                timer -= 1 * Time.deltaTime;
+                if (timer <= 0)
+                {
+                    //TOGGLE MANAGER ON
+                    timer = 50;
+                    stage = 43;
+                }
+                break;
+
+
+            case 43:
+                timer -= 1 * Time.deltaTime;
+                if (timer <= 0)
+                {
+                    //TOGGLE MANAGER OFF
+                    timer = 5f;
+                    stage = 44;
+                }
+                break;
+            //END THE MANAGER/////////////////////////////////////////////////
             #endregion
 
             #region whale
+            case 44:
+                tutorialBubbleInterior.sprite = whaleImg;
+                CNanim.SetBool("PlayTutorialBubble", true);
+                stage = 45;
+                break;
+
+            case 45:
+                whale.SetActive(true);
+                timer = 10f;
+                stage = 46;
+                break;
+
+            case 46:
+                timer -= Time.deltaTime;
+                if (timer <= 0)
+                {
+                    tutorialBubbleInterior.sprite = whaleImg;
+                    CNanim.SetBool("PlayTutorialBubble", true);
+                    stage = 47;
+                }
+                break;
+
+            case 47:
+                if (CNanim.GetBool("PlayTutorialBubble") == false)
+                {
+                    mastAnim.SetBool("PlayTutorialMast", true);
+                    stage = 48;
+                }
+                break;
+
+            case 48:
+                for (int i = 0; i < players.Length; i++)
+                {
+                    if (players[1].GetComponent<PlayerStates>().playerState == PlayerStates.PlayerState.pHoldingOn && players[2].GetComponent<PlayerStates>().playerState == PlayerStates.PlayerState.pHoldingOn)
+                    {
+                        mastAnim.SetBool("PlayTutorialMast", false);
+                        Debug.Log("both players are holding on");
+                        stage = 49;
+                    }
+                }
+                break;
+
+            case 49:
+                whale.SetActive(true);
+                stage = 50;
+                break;
+
+            case 50:
+                if (whale.GetComponent<Whale>().whaleStates == Whale.WhaleStates.exiting)
+                {
+                    whale.SetActive(false);
+                    timer = 7f;
+                    stage = 51;
+                }
+                break;
             #endregion
             #region GAME MANAGER FREEPLAY #4 (including above)
+            //START THE MANAGER/////////////////////////////////////////////////
+            case 51:
+                Debug.Log("case: " + stage);
+                timer -= 1 * Time.deltaTime;
+                if (timer <= 0)
+                {
+                    //TOGGLE MANAGER ON
+                    timer = 50;
+                    stage = 52;
+                }
+                break;
+
+
+            case 52:
+                timer -= 1 * Time.deltaTime;
+                if (timer <= 0)
+                {
+                    //TOGGLE MANAGER OFF
+                    stage = 53;
+                }
+                break;
+            //END THE MANAGER/////////////////////////////////////////////////
             #endregion
 
             #region end tutorial, reassign initial flood manager defaults
@@ -625,8 +797,24 @@ public class TutorialManager : MonoBehaviour
                 floodController.floodRateModifier = originalFloodRateModifier;
                 floodController.bailAmount = originalBailAmount;
                 floodController.isTutorial = false;
+
+                Debug.Log("case: " + stage + ". Rock controller values reset.");
+                rock.initialTime = originalInitialTimer;
+                rock.timer = originalTimer;
+
+                Debug.Log("THE TUTORIAL IS WON! ONWARD TO THE HIGH SEAS!");
+                mainCam.transform.position += new Vector3(0, 0, 0.4f);
+
+                if (mainCam.transform.position.z > 100)
+                {
+                    levelManagerScript.FadeToLevel(5);
+                }
+                stage = 404;
                 break;
 
+            case 404:
+                Debug.Log("post ending case");
+                break;
             #endregion
         }
     }

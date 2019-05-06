@@ -17,6 +17,8 @@ public class RespawnerTorch : MonoBehaviour
     public Image clock;
     public Text text;
 
+    public bool isRespawning;
+
 
     void Start()
     {
@@ -29,43 +31,37 @@ public class RespawnerTorch : MonoBehaviour
 
     void Update()
     {
-        if (torch.transform.position.y < sea.transform.position.y)
+        if (torch.transform.position.y < sea.transform.position.y - 0.5f && isRespawning == false)
         {
             torch.SetActive(false);
             torch.transform.parent = null;
             timer = initialTimer;
-            StartCoroutine(DelayRespawn());
+
+            rb.velocity = Vector3.zero;
+            rb.constraints = RigidbodyConstraints.FreezeAll;
+            rb.constraints = RigidbodyConstraints.None;
+            rb.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
+
+            isRespawning = true;
         }
-    }
 
-    IEnumerator DelayRespawn()
-    {
-        yield return new WaitForSeconds(1f);
-
-        rb.velocity = Vector3.zero;
-        rb.constraints = RigidbodyConstraints.FreezeAll;
-        rb.constraints = RigidbodyConstraints.None;
-        rb.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
-
-        RespawnTimer();
-    }
-
-    void RespawnTimer()
-    {
-        clockbase.enabled = true;
-        clock.enabled = true;
-        text.enabled = true;
-
-        timer -= Time.deltaTime;
-        text.text = timer.ToString("F0");
-        clock.fillAmount = timer / initialTimer;
-
-        if (timer <= 0)
+        if (isRespawning)
         {
-            clockbase.enabled = false;
-            clock.enabled = false;
-            text.enabled = false;
-            Respawn();
+            clockbase.enabled = true;
+            clock.enabled = true;
+            text.enabled = true;
+
+            timer -= 1 * Time.deltaTime;
+            text.text = timer.ToString("F0");
+            clock.fillAmount = timer / initialTimer;
+
+            if (timer <= 0)
+            {
+                clockbase.enabled = false;
+                clock.enabled = false;
+                text.enabled = false;
+                Respawn();
+            }
         }
     }
 
@@ -75,5 +71,6 @@ public class RespawnerTorch : MonoBehaviour
         torch.transform.position = spawnPoint.transform.position;
         torch.transform.rotation = spawnPoint.transform.rotation;
         torch.SetActive(true);
+        isRespawning = false;
     }
 }

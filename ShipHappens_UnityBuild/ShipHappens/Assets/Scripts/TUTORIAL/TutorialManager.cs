@@ -577,7 +577,7 @@ public class TutorialManager : MonoBehaviour
 
             case 31:
                 Debug.Log("case: " + stage);
-                timer -= Time.deltaTime;
+                timer -= 1 * Time.deltaTime;
                 if (timer <= 0)
                 {
                     tutorialBubbleInterior.sprite = seagullImg;
@@ -590,7 +590,7 @@ public class TutorialManager : MonoBehaviour
 
             case 32:
                 Debug.Log("case: " + stage);
-                timer -= Time.deltaTime;
+                timer -= 1 * Time.deltaTime;
                 if (timer <= 0)
                 {
                     tutorialBubbleInterior.sprite = seagullImg;
@@ -603,7 +603,7 @@ public class TutorialManager : MonoBehaviour
 
             case 33:
                 Debug.Log("case: " + stage);
-                timer -= Time.deltaTime;
+                timer -= 1 * Time.deltaTime;
                 if (timer <= 0)
                 {
                     tutorialBubbleInterior.sprite = seagullImg;
@@ -678,7 +678,7 @@ public class TutorialManager : MonoBehaviour
 
             case 39:
                 Debug.Log("case: " + stage);
-                timer -= Time.deltaTime;
+                timer -= 1 * Time.deltaTime;
                 if (timer <= 0)
                 {
                     tutorialBubbleInterior.sprite = rockImg;
@@ -721,7 +721,7 @@ public class TutorialManager : MonoBehaviour
                 }
                 break;
             #endregion
-            #region GAME MANAGER FREEPLAY #3(including above)
+            #region GAME MANAGER FREEPLAY #3 (including above)
             //START THE MANAGER/////////////////////////////////////////////////
             case 43:
                 Debug.Log("case: " + stage);
@@ -771,7 +771,7 @@ public class TutorialManager : MonoBehaviour
 
             case 47:
                 Debug.Log("case: " + stage);
-                timer -= Time.deltaTime;
+                timer -= 1 * Time.deltaTime;
                 if (timer <= 0)
                 {
                     tutorialBubbleInterior.sprite = whaleImg;

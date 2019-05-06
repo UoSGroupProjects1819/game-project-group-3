@@ -1905,7 +1905,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4190940965351046, guid: 585c6690eff4d3949b44254720f21b6c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.8
+      value: 9.1
       objectReference: {fileID: 0}
     - target: {fileID: 1946728840516390, guid: 585c6690eff4d3949b44254720f21b6c, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -2058,7 +2058,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mainCam: {fileID: 298738235}
   levelManagerScript: {fileID: 535842879}
-  stage: 25
+  stage: 45
   players:
   - {fileID: 547004372}
   - {fileID: 1149857708}
@@ -3866,10 +3866,13 @@ MonoBehaviour:
   timer: 15
   initialTime: 15
   rockSlider: {fileID: 1839716914}
-  rockDamage: 3
+  rockDamage: 7
+  tutorialRockDamage: 75
   CNui: {fileID: 0}
   screenShake: {fileID: 298738237}
   wheel: {fileID: 2066308387}
+  floodController: {fileID: 1329773200}
+  isTutorial: 1
 --- !u!65 &2066308392
 BoxCollider:
   m_ObjectHideFlags: 0

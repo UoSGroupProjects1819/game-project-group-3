@@ -157,6 +157,8 @@ public class TutorialManager : MonoBehaviour
             #region cannons
             case 0:
                 floodController.isTutorial = true;
+                rock.isTutorial = true;
+                spawnSeagull.isTutorial = true;
                 Debug.Log("case: " + stage);
                 tutorialBubbleInterior.sprite = enemyImg;
 
@@ -640,29 +642,29 @@ public class TutorialManager : MonoBehaviour
                 CNanim.SetBool("PlayTutorialBubble", true);
                 rock.initialTime = tutorialShortInitialTimer;
                 rock.timer = tutorialShortTimer;
-                stage = 36;
-                break;
-
-            case 36:
-                Debug.Log("case: " + stage);
-                if (CNanim.GetBool("PlayTutorialBubble") == false)
-                {
-                    rock.Spawn();
-                    stage = 37;
-                }
+                stage = 37;
                 break;
 
             case 37:
                 Debug.Log("case: " + stage);
-                if (rock.GetComponent<Rocks>().rockStates == Rocks.RockStates.Idle)
+                if (CNanim.GetBool("PlayTutorialBubble") == false)
                 {
-                    timer = 2.5f;
-
+                    rock.Spawn();
                     stage = 38;
                 }
                 break;
 
             case 38:
+                Debug.Log("case: " + stage);
+                if (rock.GetComponent<Rocks>().rockStates == Rocks.RockStates.Idle)
+                {
+                    timer = 2.5f;
+
+                    stage = 39;
+                }
+                break;
+
+            case 39:
                 Debug.Log("case: " + stage);
                 timer -= Time.deltaTime;
                 if (timer <= 0)
@@ -671,12 +673,12 @@ public class TutorialManager : MonoBehaviour
                     CNanim.SetBool("PlayTutorialBubble", true);
                     rock.initialTime = tutorialInitialTimer;
                     rock.timer = tutorialTimer;
-                    stage = 39;
+                    stage = 40;
                 }
                 break;
 
 
-            case 39:
+            case 40:
                 Debug.Log("case: " + stage);
                 rock.Spawn();
                 if (CNanim.GetBool("PlayTutorialBubble") == false)
@@ -685,91 +687,91 @@ public class TutorialManager : MonoBehaviour
                     CNanim.SetBool("PlayTutorialBubble", true);
                     wheelAnim.SetBool("PlayTutorialWheel", true);
 
-                    stage = 40;
-                }
-                break;
-
-            case 40:
-                Debug.Log("case: " + stage);
-                if (wheel.GetComponent<Wheel>().wheelStates == Wheel.WheelStates.Active)
-                {
-                    wheelAnim.SetBool("PlayTutorialWheel", false);
                     stage = 41;
                 }
                 break;
 
             case 41:
                 Debug.Log("case: " + stage);
+                if (wheel.GetComponent<Wheel>().wheelStates == Wheel.WheelStates.Active)
+                {
+                    wheelAnim.SetBool("PlayTutorialWheel", false);
+                    stage = 42;
+                }
+                break;
+
+            case 42:
+                Debug.Log("case: " + stage);
                 if (wheel.GetComponent<Wheel>().wheelStates == Wheel.WheelStates.Exiting)
                 {
                     timer = 2.5f;
-                    stage = 42;
+                    stage = 43;
                 }
                 break;
             #endregion
             #region GAME MANAGER FREEPLAY #3(including above)
             //START THE MANAGER/////////////////////////////////////////////////
-            case 42:
+            case 43:
                 Debug.Log("case: " + stage);
                 timer -= 1 * Time.deltaTime;
                 if (timer <= 0)
                 {
                     //TOGGLE MANAGER ON
                     timer = 50;
-                    stage = 43;
+                    stage = 44;
                 }
                 break;
 
 
-            case 43:
+            case 44:
                 Debug.Log("case: " + stage);
                 timer -= 1 * Time.deltaTime;
                 if (timer <= 0)
                 {
                     //TOGGLE MANAGER OFF
                     timer = 5f;
-                    stage = 44;
+                    stage = 45;
                 }
                 break;
             //END THE MANAGER/////////////////////////////////////////////////
             #endregion
 
             #region whale
-            case 44:
+            case 45:
                 Debug.Log("case: " + stage);
                 tutorialBubbleInterior.sprite = whaleImg;
                 CNanim.SetBool("PlayTutorialBubble", true);
-                stage = 45;
-                break;
-
-            case 45:
-                Debug.Log("case: " + stage);
-                whale.SetActive(true);
-                timer = 10f;
                 stage = 46;
                 break;
 
             case 46:
+                Debug.Log("case: " + stage);
+                whale.SetActive(true);
+                timer = 10f;
+                stage = 47;
+                break;
+
+            case 47:
                 Debug.Log("case: " + stage);
                 timer -= Time.deltaTime;
                 if (timer <= 0)
                 {
                     tutorialBubbleInterior.sprite = whaleImg;
                     CNanim.SetBool("PlayTutorialBubble", true);
-                    stage = 47;
-                }
-                break;
-
-            case 47:
-                Debug.Log("case: " + stage);
-                if (CNanim.GetBool("PlayTutorialBubble") == false)
-                {
-                    mastAnim.SetBool("PlayTutorialMast", true);
                     stage = 48;
                 }
                 break;
 
             case 48:
+                Debug.Log("case: " + stage);
+                if (CNanim.GetBool("PlayTutorialBubble") == false)
+                {
+                    mastAnim.SetBool("PlayTutorialMast", true);
+                    stage = 49;
+                }
+                break;
+
+            case 49:
                 Debug.Log("case: " + stage);
                 for (int i = 0; i < players.Length; i++)
                 {
@@ -777,48 +779,48 @@ public class TutorialManager : MonoBehaviour
                     {
                         mastAnim.SetBool("PlayTutorialMast", false);
                         Debug.Log("both players are holding on");
-                        stage = 49;
+                        stage = 50;
                     }
                 }
                 break;
 
-            case 49:
+            case 50:
                 Debug.Log("case: " + stage);
                 whale.SetActive(true);
-                stage = 50;
+                stage = 51;
                 break;
 
-            case 50:
+            case 51:
                 Debug.Log("case: " + stage);
                 if (whale.GetComponent<Whale>().whaleStates == Whale.WhaleStates.exiting)
                 {
                     whale.SetActive(false);
                     timer = 7f;
-                    stage = 51;
+                    stage = 52;
                 }
                 break;
             #endregion
             #region GAME MANAGER FREEPLAY #4 (including above)
             //START THE MANAGER/////////////////////////////////////////////////
-            case 51:
+            case 52:
                 Debug.Log("case: " + stage);
                 timer -= 1 * Time.deltaTime;
                 if (timer <= 0)
                 {
                     //TOGGLE MANAGER ON
                     timer = 50;
-                    stage = 52;
+                    stage = 53;
                 }
                 break;
 
 
-            case 52:
+            case 53:
                 Debug.Log("case: " + stage);
                 timer -= 1 * Time.deltaTime;
                 if (timer <= 0)
                 {
                     //TOGGLE MANAGER OFF
-                    stage = 53;
+                    stage = 999;
                 }
                 break;
             //END THE MANAGER/////////////////////////////////////////////////
@@ -836,6 +838,10 @@ public class TutorialManager : MonoBehaviour
                 Debug.Log("case: " + stage + ". Rock controller values reset.");
                 rock.initialTime = originalInitialTimer;
                 rock.timer = originalTimer;
+                rock.isTutorial = false;
+
+                Debug.Log("case: " + stage + ". Seagull controller values reset.");
+                spawnSeagull.isTutorial = false;
 
                 Debug.Log("case: " + stage + ". THE TUTORIAL IS WON! ONWARD TO THE HIGH SEAS!");
                 mainCam.transform.position += new Vector3(0, 0, 0.4f);

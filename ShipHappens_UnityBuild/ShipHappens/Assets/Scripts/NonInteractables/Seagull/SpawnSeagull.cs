@@ -21,6 +21,8 @@ public class SpawnSeagull : Event
 
     public CrowsNestUI CNui;
 
+    public bool isTutorial = false;
+
 
     private void Update()
     {
@@ -51,8 +53,11 @@ public class SpawnSeagull : Event
 
     public override void Spawn()
     {
-        CNui.nextAvailableBubbleContents = CNui.ImgSeagull;
-        CNui.playNextAvailableBubble = true;
+        if (!isTutorial)
+        {
+            CNui.nextAvailableBubbleContents = CNui.ImgSeagull;
+            CNui.playNextAvailableBubble = true;
+        }
         
         spawnPosition = new Vector3(Random.Range(-radiusRange, radiusRange), shipCentre.transform.position.y, Random.Range(-radiusRange, radiusRange));
         float distance = Vector3.Distance(spawnPosition, shipCentre.transform.position);

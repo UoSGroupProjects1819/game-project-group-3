@@ -12,10 +12,16 @@ public class Rocks : Event
     public float initialTime = 15;
     public Slider rockSlider;
     public int rockDamage;
+    public int tutorialRockDamage;
 
     public CrowsNestUI CNui;
     public ScreenShake screenShake;
     public Wheel wheel;
+
+    public FloodController floodController;
+
+
+    public bool isTutorial = false;
 
 
     public override void Spawn()
@@ -41,9 +47,12 @@ public class Rocks : Event
             case RockStates.Entering:
                 /////////////////////////////////////add count to game manager
 
-                //update UI manager
-                CNui.nextAvailableBubbleContents = CNui.ImgRocks;
-                CNui.playNextAvailableBubble = true;
+                if (!isTutorial)
+                {
+                    //update UI manager
+                    CNui.nextAvailableBubbleContents = CNui.ImgRocks;
+                    CNui.playNextAvailableBubble = true;
+                }
 
                 //update wheel event
                 wheel.isInteractable = true;
@@ -64,7 +73,15 @@ public class Rocks : Event
                     screenShake.lightShake = true; //shake screen
                     screenShake.shouldShake = true;
 
-                    FloodController.numberOfHoles = FloodController.numberOfHoles + rockDamage;
+                    if (isTutorial)
+                    {
+                        //floodController.currentPosition.y = 9;
+                        FloodController.numberOfHoles = FloodController.numberOfHoles + tutorialRockDamage;
+                    }
+                    else
+                    {
+                        FloodController.numberOfHoles = FloodController.numberOfHoles + rockDamage;
+                    }
 
                     rockStates = RockStates.Exiting;
                 }

@@ -5,14 +5,20 @@ using UnityEngine;
 public class FirstPooCheckRegion : MonoBehaviour
 {
     public TutorialManager tutorialManager;
-    public bool notPood;
+    public bool hasPood;
 
-    private void OnCollisionEnter(Collision collision)
+
+    private void Start()
     {
-        if (collision.gameObject.tag == "poo" && notPood)
+        hasPood = false;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "poo" && hasPood == false)
         {
             tutorialManager.stage++;
-            notPood = false;
+            hasPood = true;
         }
     }
 }

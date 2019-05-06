@@ -1612,7 +1612,12 @@ PrefabInstance:
         type: 3}
       propertyPath: CNui
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 148818565}
+    - target: {fileID: 114093728264921568, guid: 585c6690eff4d3949b44254720f21b6c,
+        type: 3}
+      propertyPath: objectPooler
+      value: 
+      objectReference: {fileID: 1329773201}
     - target: {fileID: 114627571917256750, guid: 585c6690eff4d3949b44254720f21b6c,
         type: 3}
       propertyPath: m_Color.r
@@ -2053,7 +2058,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mainCam: {fileID: 298738235}
   levelManagerScript: {fileID: 535842879}
-  stage: 0
+  stage: 25
   players:
   - {fileID: 547004372}
   - {fileID: 1149857708}
@@ -2107,7 +2112,7 @@ MonoBehaviour:
   mopAnim: {fileID: 42491093}
   mopImg: {fileID: 21300000, guid: 8cd90cea15dbfce41a37ee0fb57e190c, type: 3}
   pooImg: {fileID: 21300000, guid: 9751b11781f82664a9fb9ccf04d9348f, type: 3}
-  rock: {fileID: 0}
+  rock: {fileID: 2066308388}
   rockImg: {fileID: 21300000, guid: 29bfecb6d208c8d458d07dd970611bd9, type: 3}
   originalTimer: 0
   originalInitialTimer: 0
@@ -3700,8 +3705,9 @@ GameObject:
   m_Component:
   - component: {fileID: 2036451262}
   - component: {fileID: 2036451263}
+  - component: {fileID: 2036451264}
   m_Layer: 2
-  m_Name: GameObject
+  m_Name: TutorialPooChecker
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3730,10 +3736,24 @@ BoxCollider:
   m_GameObject: {fileID: 2036451261}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 60, y: 1, z: 80}
   m_Center: {x: -2.68, y: 0, z: 0}
+--- !u!114 &2036451264
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2036451261}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ee89c3e6a865c04fb4a376a45b9a345, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tutorialManager: {fileID: 1102516138}
+  hasPood: 0
 --- !u!1001 &2038874335
 PrefabInstance:
   m_ObjectHideFlags: 0

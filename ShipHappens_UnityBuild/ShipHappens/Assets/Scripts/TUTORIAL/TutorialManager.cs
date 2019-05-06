@@ -144,7 +144,7 @@ public class TutorialManager : MonoBehaviour
     {
         TutorialSteps();
 
-        if (Input.GetKeyUp(KeyCode.KeypadPlus))
+        if (Input.GetKeyUp(KeyCode.PageUp))
         {
             stage++;
         }
@@ -370,18 +370,14 @@ public class TutorialManager : MonoBehaviour
                     stage = 15;
                 }
                 break;
-            #endregion
+            #endregion 
             #region repair
             case 15:
                 Debug.Log("case: " + stage);
-                Debug.Log("this is still 15");
                 if (FloodController.numberOfHoles > 0)
                 {
-                    Debug.Log("aaaaaaaa");
                     tutorialBubbleInterior.sprite = holeImg;
-                    Debug.Log("bbbbbbb");
                     CNanim.SetBool("PlayTutorialBubble", true);
-                    Debug.Log("cccccccc");
                     stage = 16;
                 }
                 Debug.Log("this is also still 15");
@@ -392,17 +388,12 @@ public class TutorialManager : MonoBehaviour
 
                 if (CNanim.GetBool("PlayTutorialBubble") == false)
                 {
-                    Debug.Log("ddddddddddd");
                     floodController.maxHeight = tutorialMaxHeight;
-                    Debug.Log("eeeeeeeee");
                     floodController.floodRateModifier = tutorialFFloodRateModifier;
-                    Debug.Log("fffffffff");
                     floodController.bailAmount = tutorialBailAmount;
-                    Debug.Log("gggggggggg");
 
                     if (floodController.currentPosition.y > tutorialMaxHeight.y)
                     {
-                        Debug.Log("hhhhhhhhh");
                         stage = 17;
                     }
                 }
@@ -489,7 +480,7 @@ public class TutorialManager : MonoBehaviour
                     bailAreaAnim.SetBool("PlayTutorialBailArea", false);
                     leftProjector.gameObject.SetActive(false);
                     leftProjector.gameObject.SetActive(false);
-                    timer = 2;
+                    timer = 4.5f;
                     stage = 23;
                 }
                 break;
@@ -525,19 +516,28 @@ public class TutorialManager : MonoBehaviour
                 Debug.Log("case: " + stage);
                 tutorialBubbleInterior.sprite = seagullImg;
                 CNanim.SetBool("PlayTutorialBubble", true);
-                spawnSeagull.Spawn();
+                spawnSeagull.TutorialSpawn();
+                stage = 26;
                 break;
 
             case 26:
                 Debug.Log("case: " + stage);
-                tutorialBubbleInterior.sprite = mopImg;
-                CNanim.SetBool("PlayTutorialBubble", true);
-                mopAnim.SetBool("PlayTutorialMop", true);
                 break;
 
             case 27:
                 Debug.Log("case: " + stage);
-                if (torch.GetComponent<MopStates>().currentState == MopStates.MopState.Held)
+                if (CNanim.GetBool("PlayTutorialBubble") == false)
+                {
+                    tutorialBubbleInterior.sprite = mopImg;
+                    CNanim.SetBool("PlayTutorialBubble", true);
+                    mopAnim.SetBool("PlayTutorialMop", true);
+                    stage = 28;
+                }
+                break;
+
+            case 28:
+                Debug.Log("case: " + stage);
+                if (mop.GetComponent<MopStates>().currentState == MopStates.MopState.Held)
                 {
                     mopAnim.SetBool("PlayTutorialMop", false);
 
@@ -545,37 +545,24 @@ public class TutorialManager : MonoBehaviour
                     {
                         tutorialBubbleInterior.sprite = pooImg;
                         CNanim.SetBool("PlayTutorialBubble", true);
-                        stage = 28;
+                        stage = 29;
                     }
-                }
-                break;
-
-            case 28:
-                Debug.Log("case: " + stage);
-                if (torch.GetComponent<MopStates>().currentState == MopStates.MopState.Cleaning)
-                {
-                    stage = 29;
                 }
                 break;
 
             case 29:
                 Debug.Log("case: " + stage);
-                if (torch.GetComponent<MopStates>().currentState == MopStates.MopState.Held)
+                if (mop.GetComponent<MopStates>().currentState == MopStates.MopState.Cleaning)
                 {
-                    timer = 2;
                     stage = 30;
                 }
                 break;
 
             case 30:
                 Debug.Log("case: " + stage);
-                timer -= Time.deltaTime;
-                if (timer <= 0)
+                if (mop.GetComponent<MopStates>().currentState == MopStates.MopState.Held)
                 {
-                    tutorialBubbleInterior.sprite = seagullImg;
-                    CNanim.SetBool("PlayTutorialBubble", true);
-                    spawnSeagull.Spawn();
-                    timer = 2.5f;
+                    timer = 2;
                     stage = 31;
                 }
                 break;
@@ -587,7 +574,7 @@ public class TutorialManager : MonoBehaviour
                 {
                     tutorialBubbleInterior.sprite = seagullImg;
                     CNanim.SetBool("PlayTutorialBubble", true);
-                    spawnSeagull.Spawn();
+                    spawnSeagull.TutorialSpawn();
                     timer = 2.5f;
                     stage = 32;
                 }
@@ -600,41 +587,54 @@ public class TutorialManager : MonoBehaviour
                 {
                     tutorialBubbleInterior.sprite = seagullImg;
                     CNanim.SetBool("PlayTutorialBubble", true);
-                    spawnSeagull.Spawn();
-                    timer = 2.5f;
+                    spawnSeagull.TutorialSpawn();
+                    timer = 3.5f;
                     stage = 33;
+                }
+                break;
+
+            case 33:
+                Debug.Log("case: " + stage);
+                timer -= Time.deltaTime;
+                if (timer <= 0)
+                {
+                    tutorialBubbleInterior.sprite = seagullImg;
+                    CNanim.SetBool("PlayTutorialBubble", true);
+                    spawnSeagull.Spawn();
+                    timer = 10f;
+                    stage = 34;
                 }
                 break;
             #endregion
             #region GAME MANAGER FREEPLAY #2 (including above)
             //START THE MANAGER/////////////////////////////////////////////////
-            case 33:
+            case 34:
                 Debug.Log("case: " + stage);
                 timer -= 1 * Time.deltaTime;
                 if (timer <= 0)
                 {
                     //TOGGLE MANAGER ON
                     timer = 50;
-                    stage = 34;
+                    stage = 35;
                 }
                 break;
 
 
-            case 34:
+            case 35:
                 Debug.Log("case: " + stage);
                 timer -= 1 * Time.deltaTime;
                 if (timer <= 0)
                 {
                     //TOGGLE MANAGER OFF
                     timer = 5f;
-                    stage = 35;
+                    stage = 36;
                 }
                 break;
             //END THE MANAGER/////////////////////////////////////////////////
             #endregion
 
             #region wheel
-            case 35:
+            case 36:
                 Debug.Log("case: " + stage);
                 tutorialBubbleInterior.sprite = rockImg;
                 CNanim.SetBool("PlayTutorialBubble", true);

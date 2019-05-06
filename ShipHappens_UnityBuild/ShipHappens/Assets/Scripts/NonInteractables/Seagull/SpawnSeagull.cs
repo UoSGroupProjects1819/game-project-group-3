@@ -32,12 +32,28 @@ public class SpawnSeagull : Event
         CheckWaterOnDeck();
     }
 
+    public void TutorialSpawn()
+    {
+        spawnPosition = new Vector3(Random.Range(-radiusRange, radiusRange), shipCentre.transform.position.y, Random.Range(-radiusRange, radiusRange));
+        float distance = Vector3.Distance(spawnPosition, shipCentre.transform.position);
+
+        if (distance > minRadius && distance < maxRadius)
+        {
+            GameObject gull = objectPooler.SpawnFromPool("Seagull", spawnPosition, Quaternion.LookRotation(new Vector3(-spawnPosition.x, 0, -spawnPosition.z)));
+            gull.GetComponent<Seagull>().seagullState = Seagull.SeagullStates.entering;
+            //GameObject gull = Instantiate(seagull, spawnPosition, Quaternion.identity);
+        }
+        else
+        {
+            Spawn();
+        }
+    }
+
     public override void Spawn()
     {
         CNui.nextAvailableBubbleContents = CNui.ImgSeagull;
         CNui.playNextAvailableBubble = true;
-
-
+        
         spawnPosition = new Vector3(Random.Range(-radiusRange, radiusRange), shipCentre.transform.position.y, Random.Range(-radiusRange, radiusRange));
         float distance = Vector3.Distance(spawnPosition, shipCentre.transform.position);
 

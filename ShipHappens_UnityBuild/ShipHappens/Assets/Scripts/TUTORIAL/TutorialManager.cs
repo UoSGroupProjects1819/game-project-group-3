@@ -143,6 +143,11 @@ public class TutorialManager : MonoBehaviour
     void Update()
     {
         TutorialSteps();
+
+        if (Input.GetKeyUp(KeyCode.KeypadPlus))
+        {
+            stage++;
+        }
     }
 
     void TutorialSteps()
@@ -502,8 +507,8 @@ public class TutorialManager : MonoBehaviour
                 }
                 break;
 
-
             case 24:
+                Debug.Log("case: " + stage);
                 timer -= 1 * Time.deltaTime;
                 if (timer <= 0)
                 {
@@ -517,18 +522,21 @@ public class TutorialManager : MonoBehaviour
             #region seagull
 
             case 25:
+                Debug.Log("case: " + stage);
                 tutorialBubbleInterior.sprite = seagullImg;
                 CNanim.SetBool("PlayTutorialBubble", true);
                 spawnSeagull.Spawn();
                 break;
 
             case 26:
+                Debug.Log("case: " + stage);
                 tutorialBubbleInterior.sprite = mopImg;
                 CNanim.SetBool("PlayTutorialBubble", true);
                 mopAnim.SetBool("PlayTutorialMop", true);
                 break;
 
             case 27:
+                Debug.Log("case: " + stage);
                 if (torch.GetComponent<MopStates>().currentState == MopStates.MopState.Held)
                 {
                     mopAnim.SetBool("PlayTutorialMop", false);
@@ -543,6 +551,7 @@ public class TutorialManager : MonoBehaviour
                 break;
 
             case 28:
+                Debug.Log("case: " + stage);
                 if (torch.GetComponent<MopStates>().currentState == MopStates.MopState.Cleaning)
                 {
                     stage = 29;
@@ -550,6 +559,7 @@ public class TutorialManager : MonoBehaviour
                 break;
 
             case 29:
+                Debug.Log("case: " + stage);
                 if (torch.GetComponent<MopStates>().currentState == MopStates.MopState.Held)
                 {
                     timer = 2;
@@ -558,6 +568,7 @@ public class TutorialManager : MonoBehaviour
                 break;
 
             case 30:
+                Debug.Log("case: " + stage);
                 timer -= Time.deltaTime;
                 if (timer <= 0)
                 {
@@ -570,6 +581,7 @@ public class TutorialManager : MonoBehaviour
                 break;
 
             case 31:
+                Debug.Log("case: " + stage);
                 timer -= Time.deltaTime;
                 if (timer <= 0)
                 {
@@ -582,6 +594,7 @@ public class TutorialManager : MonoBehaviour
                 break;
 
             case 32:
+                Debug.Log("case: " + stage);
                 timer -= Time.deltaTime;
                 if (timer <= 0)
                 {

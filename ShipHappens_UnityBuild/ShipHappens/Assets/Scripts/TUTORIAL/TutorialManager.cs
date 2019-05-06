@@ -359,13 +359,9 @@ public class TutorialManager : MonoBehaviour
                 Debug.Log("case: " + stage);
                 if (shipRight.activeSelf == false && shipLeft.activeSelf == false)
                 {
-                    Debug.Log("right and left r ded");
                     tutorialBubbleInterior.sprite = enemyImg;
                     CNanim.SetBool("PlayTutorialBubble", true);
-
                     Instantiate(enemyTutorialShip, enemySpawnerBL.transform.position, enemySpawnerBL.transform.rotation);
-
-                    //timer = 17;
                     stage = 15;
                 }
                 break;
@@ -373,13 +369,17 @@ public class TutorialManager : MonoBehaviour
             #region repair
             case 15:
                 Debug.Log("case: " + stage);
-
+                Debug.Log("this is still 15");
                 if (FloodController.numberOfHoles > 0)
                 {
+                    Debug.Log("aaaaaaaa");
                     tutorialBubbleInterior.sprite = holeImg;
+                    Debug.Log("bbbbbbb");
                     CNanim.SetBool("PlayTutorialBubble", true);
+                    Debug.Log("cccccccc");
                     stage = 16;
                 }
+                Debug.Log("this is also still 15");
                 break;
 
             case 16:
@@ -387,12 +387,17 @@ public class TutorialManager : MonoBehaviour
 
                 if (CNanim.GetBool("PlayTutorialBubble") == false)
                 {
+                    Debug.Log("ddddddddddd");
                     floodController.maxHeight = tutorialMaxHeight;
+                    Debug.Log("eeeeeeeee");
                     floodController.floodRateModifier = tutorialFFloodRateModifier;
+                    Debug.Log("fffffffff");
                     floodController.bailAmount = tutorialBailAmount;
+                    Debug.Log("gggggggggg");
 
                     if (floodController.currentPosition.y > tutorialMaxHeight.y)
                     {
+                        Debug.Log("hhhhhhhhh");
                         stage = 17;
                     }
                 }

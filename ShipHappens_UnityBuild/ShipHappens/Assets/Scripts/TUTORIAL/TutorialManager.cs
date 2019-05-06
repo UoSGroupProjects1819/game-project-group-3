@@ -621,6 +621,7 @@ public class TutorialManager : MonoBehaviour
 
 
             case 34:
+                Debug.Log("case: " + stage);
                 timer -= 1 * Time.deltaTime;
                 if (timer <= 0)
                 {
@@ -634,6 +635,7 @@ public class TutorialManager : MonoBehaviour
 
             #region wheel
             case 35:
+                Debug.Log("case: " + stage);
                 tutorialBubbleInterior.sprite = rockImg;
                 CNanim.SetBool("PlayTutorialBubble", true);
                 rock.initialTime = tutorialShortInitialTimer;
@@ -642,6 +644,7 @@ public class TutorialManager : MonoBehaviour
                 break;
 
             case 36:
+                Debug.Log("case: " + stage);
                 if (CNanim.GetBool("PlayTutorialBubble") == false)
                 {
                     rock.Spawn();
@@ -650,6 +653,7 @@ public class TutorialManager : MonoBehaviour
                 break;
 
             case 37:
+                Debug.Log("case: " + stage);
                 if (rock.GetComponent<Rocks>().rockStates == Rocks.RockStates.Idle)
                 {
                     timer = 2.5f;
@@ -659,6 +663,7 @@ public class TutorialManager : MonoBehaviour
                 break;
 
             case 38:
+                Debug.Log("case: " + stage);
                 timer -= Time.deltaTime;
                 if (timer <= 0)
                 {
@@ -672,6 +677,7 @@ public class TutorialManager : MonoBehaviour
 
 
             case 39:
+                Debug.Log("case: " + stage);
                 rock.Spawn();
                 if (CNanim.GetBool("PlayTutorialBubble") == false)
                 {
@@ -684,6 +690,7 @@ public class TutorialManager : MonoBehaviour
                 break;
 
             case 40:
+                Debug.Log("case: " + stage);
                 if (wheel.GetComponent<Wheel>().wheelStates == Wheel.WheelStates.Active)
                 {
                     wheelAnim.SetBool("PlayTutorialWheel", false);
@@ -692,6 +699,7 @@ public class TutorialManager : MonoBehaviour
                 break;
 
             case 41:
+                Debug.Log("case: " + stage);
                 if (wheel.GetComponent<Wheel>().wheelStates == Wheel.WheelStates.Exiting)
                 {
                     timer = 2.5f;
@@ -714,6 +722,7 @@ public class TutorialManager : MonoBehaviour
 
 
             case 43:
+                Debug.Log("case: " + stage);
                 timer -= 1 * Time.deltaTime;
                 if (timer <= 0)
                 {
@@ -727,18 +736,21 @@ public class TutorialManager : MonoBehaviour
 
             #region whale
             case 44:
+                Debug.Log("case: " + stage);
                 tutorialBubbleInterior.sprite = whaleImg;
                 CNanim.SetBool("PlayTutorialBubble", true);
                 stage = 45;
                 break;
 
             case 45:
+                Debug.Log("case: " + stage);
                 whale.SetActive(true);
                 timer = 10f;
                 stage = 46;
                 break;
 
             case 46:
+                Debug.Log("case: " + stage);
                 timer -= Time.deltaTime;
                 if (timer <= 0)
                 {
@@ -749,6 +761,7 @@ public class TutorialManager : MonoBehaviour
                 break;
 
             case 47:
+                Debug.Log("case: " + stage);
                 if (CNanim.GetBool("PlayTutorialBubble") == false)
                 {
                     mastAnim.SetBool("PlayTutorialMast", true);
@@ -757,6 +770,7 @@ public class TutorialManager : MonoBehaviour
                 break;
 
             case 48:
+                Debug.Log("case: " + stage);
                 for (int i = 0; i < players.Length; i++)
                 {
                     if (players[1].GetComponent<PlayerStates>().playerState == PlayerStates.PlayerState.pHoldingOn && players[2].GetComponent<PlayerStates>().playerState == PlayerStates.PlayerState.pHoldingOn)
@@ -769,11 +783,13 @@ public class TutorialManager : MonoBehaviour
                 break;
 
             case 49:
+                Debug.Log("case: " + stage);
                 whale.SetActive(true);
                 stage = 50;
                 break;
 
             case 50:
+                Debug.Log("case: " + stage);
                 if (whale.GetComponent<Whale>().whaleStates == Whale.WhaleStates.exiting)
                 {
                     whale.SetActive(false);
@@ -797,6 +813,7 @@ public class TutorialManager : MonoBehaviour
 
 
             case 52:
+                Debug.Log("case: " + stage);
                 timer -= 1 * Time.deltaTime;
                 if (timer <= 0)
                 {
@@ -820,7 +837,7 @@ public class TutorialManager : MonoBehaviour
                 rock.initialTime = originalInitialTimer;
                 rock.timer = originalTimer;
 
-                Debug.Log("THE TUTORIAL IS WON! ONWARD TO THE HIGH SEAS!");
+                Debug.Log("case: " + stage + ". THE TUTORIAL IS WON! ONWARD TO THE HIGH SEAS!");
                 mainCam.transform.position += new Vector3(0, 0, 0.4f);
 
                 if (mainCam.transform.position.z > 100)

@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class Respawner : MonoBehaviour
 {
     public GameObject player;
+    public Projector playerProjector;
     PlayerStates playerStates;
     public GameObject spawnPoint;
 
@@ -14,6 +15,10 @@ public class Respawner : MonoBehaviour
     public Image clockbase;
     public Image clock;
     public Text text;
+
+    private float fadeTimer;
+    private float initialFadeTimer;
+
 
     void Start()
     {
@@ -29,6 +34,7 @@ public class Respawner : MonoBehaviour
         switch (playerStates.playerState)
         {
             case PlayerStates.PlayerState.pWhaled:
+                playerProjector.enabled = false;
                 timer = initialTimer;
                 StartCoroutine(DelayRespawn());
                 break;
@@ -61,8 +67,8 @@ public class Respawner : MonoBehaviour
 
     IEnumerator DelayRespawn()
     {
-        yield return new WaitForSeconds(1f);
-
+        yield return new WaitForSeconds(5f);
+        player.SetActive(false);
         Rigidbody rb = player.GetComponent<Rigidbody>();
         rb.velocity = Vector3.zero;
         rb.constraints = RigidbodyConstraints.FreezeAll;
@@ -74,6 +80,7 @@ public class Respawner : MonoBehaviour
 
     void RespawnPlayer()
     {
+        playerProjector.enabled = true;
         playerStates.playerState = PlayerStates.PlayerState.pEmpty;
         player.transform.position = spawnPoint.transform.position;
         player.transform.rotation = spawnPoint.transform.rotation;

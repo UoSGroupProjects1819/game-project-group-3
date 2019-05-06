@@ -63,7 +63,7 @@ public class Whale : Event
         for (int i = 0; i < players.Length; i++)
         {
             float randomForceX = Random.Range(-20, 20);
-            float randomForceY = Random.Range(60, 75);
+            float randomForceY = Random.Range(60, 85);
             float randomForceZ = Random.Range(20, 75);
             float randomTorque = Random.Range(250, 666);
 

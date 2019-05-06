@@ -494,6 +494,9 @@ public class TutorialManager : MonoBehaviour
                 timer -= 1 * Time.deltaTime;
                 if (timer <= 0)
                 {
+                    floodController.isTutorial = false;
+                    rock.isTutorial = false;
+                    spawnSeagull.isTutorial = false;
                     //TOGGLE MANAGER ON
                     timer = 50;
                     stage = 24;
@@ -505,6 +508,9 @@ public class TutorialManager : MonoBehaviour
                 timer -= 1 * Time.deltaTime;
                 if (timer <= 0)
                 {
+                    floodController.isTutorial = true;
+                    rock.isTutorial = true;
+                    spawnSeagull.isTutorial = true;
                     //TOGGLE MANAGER OFF
                     stage = 25;
                 }
@@ -518,7 +524,7 @@ public class TutorialManager : MonoBehaviour
                 Debug.Log("case: " + stage);
                 tutorialBubbleInterior.sprite = seagullImg;
                 CNanim.SetBool("PlayTutorialBubble", true);
-                spawnSeagull.TutorialSpawn();
+                spawnSeagull.Spawn();
                 stage = 26;
                 break;
 
@@ -576,7 +582,7 @@ public class TutorialManager : MonoBehaviour
                 {
                     tutorialBubbleInterior.sprite = seagullImg;
                     CNanim.SetBool("PlayTutorialBubble", true);
-                    spawnSeagull.TutorialSpawn();
+                    spawnSeagull.Spawn();
                     timer = 2.5f;
                     stage = 32;
                 }
@@ -589,7 +595,7 @@ public class TutorialManager : MonoBehaviour
                 {
                     tutorialBubbleInterior.sprite = seagullImg;
                     CNanim.SetBool("PlayTutorialBubble", true);
-                    spawnSeagull.TutorialSpawn();
+                    spawnSeagull.Spawn();
                     timer = 3.5f;
                     stage = 33;
                 }
@@ -615,6 +621,9 @@ public class TutorialManager : MonoBehaviour
                 timer -= 1 * Time.deltaTime;
                 if (timer <= 0)
                 {
+                    floodController.isTutorial = false;
+                    rock.isTutorial = false;
+                    spawnSeagull.isTutorial = false;
                     //TOGGLE MANAGER ON
                     timer = 50;
                     stage = 35;
@@ -627,6 +636,9 @@ public class TutorialManager : MonoBehaviour
                 timer -= 1 * Time.deltaTime;
                 if (timer <= 0)
                 {
+                    floodController.isTutorial = true;
+                    rock.isTutorial = true;
+                    spawnSeagull.isTutorial = true;
                     //TOGGLE MANAGER OFF
                     timer = 5f;
                     stage = 36;
@@ -716,6 +728,9 @@ public class TutorialManager : MonoBehaviour
                 timer -= 1 * Time.deltaTime;
                 if (timer <= 0)
                 {
+                    floodController.isTutorial = false;
+                    rock.isTutorial = false;
+                    spawnSeagull.isTutorial = false;
                     //TOGGLE MANAGER ON
                     timer = 50;
                     stage = 44;
@@ -728,6 +743,9 @@ public class TutorialManager : MonoBehaviour
                 timer -= 1 * Time.deltaTime;
                 if (timer <= 0)
                 {
+                    floodController.isTutorial = true;
+                    rock.isTutorial = true;
+                    spawnSeagull.isTutorial = true;
                     //TOGGLE MANAGER OFF
                     timer = 5f;
                     stage = 45;
@@ -807,6 +825,9 @@ public class TutorialManager : MonoBehaviour
                 timer -= 1 * Time.deltaTime;
                 if (timer <= 0)
                 {
+                    floodController.isTutorial = false;
+                    rock.isTutorial = false;
+                    spawnSeagull.isTutorial = false;
                     //TOGGLE MANAGER ON
                     timer = 50;
                     stage = 53;
@@ -820,7 +841,7 @@ public class TutorialManager : MonoBehaviour
                 if (timer <= 0)
                 {
                     //TOGGLE MANAGER OFF
-                    stage = 999;
+                    stage = 998;
                 }
                 break;
             //END THE MANAGER/////////////////////////////////////////////////
@@ -828,7 +849,7 @@ public class TutorialManager : MonoBehaviour
 
             #region end tutorial, reassign initial flood manager defaults
 
-            case 999:
+            case 998:
                 Debug.Log("case: " + stage + ". Flood controller values reset.");
                 floodController.maxHeight = originalMaxHeight;
                 floodController.floodRateModifier = originalFloodRateModifier;
@@ -843,6 +864,10 @@ public class TutorialManager : MonoBehaviour
                 Debug.Log("case: " + stage + ". Seagull controller values reset.");
                 spawnSeagull.isTutorial = false;
 
+                stage = 999;
+                break;
+
+            case 999:
                 Debug.Log("case: " + stage + ". THE TUTORIAL IS WON! ONWARD TO THE HIGH SEAS!");
                 mainCam.transform.position += new Vector3(0, 0, 0.4f);
 
@@ -850,13 +875,8 @@ public class TutorialManager : MonoBehaviour
                 {
                     levelManagerScript.FadeToLevel(0);
                 }
-                stage = 404;
                 break;
-
-            case 404:
-                Debug.Log("post ending case");
-                break;
-            #endregion
+                #endregion
         }
     }
 

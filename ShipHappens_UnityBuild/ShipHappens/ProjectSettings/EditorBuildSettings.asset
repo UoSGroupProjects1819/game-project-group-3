@@ -23,4 +23,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/_TutorialLevel/_RewardIsland.unity
     guid: ac59a55066feddf42b9336343c2722ba
+  - enabled: 1
+    path: Assets/Scenes/_TutorialLevel/_MainGameInstructionsLoadScreen.unity
+    guid: b57506dbedd59a84f9e532a71198dfe6
+  - enabled: 1
+    path: Assets/Scenes/_TutorialLevel/_TutorialInstructionsLoadScreen.unity
+    guid: f2b8c5ec356b61f48b7b89fdeb7d8d60
   m_configObjects: {}

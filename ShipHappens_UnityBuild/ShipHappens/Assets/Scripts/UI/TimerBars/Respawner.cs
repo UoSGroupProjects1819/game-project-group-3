@@ -67,7 +67,8 @@ public class Respawner : MonoBehaviour
 
     IEnumerator DelayRespawn()
     {
-        yield return new WaitForSeconds(5f);
+        Debug.Log("respawn delay");
+        yield return new WaitForSeconds(3.5f);
         player.SetActive(false);
         Rigidbody rb = player.GetComponent<Rigidbody>();
         rb.velocity = Vector3.zero;
@@ -80,6 +81,7 @@ public class Respawner : MonoBehaviour
 
     void RespawnPlayer()
     {
+        Debug.Log("respawn player");
         playerProjector.enabled = true;
         playerStates.playerState = PlayerStates.PlayerState.pEmpty;
         player.transform.position = spawnPoint.transform.position;

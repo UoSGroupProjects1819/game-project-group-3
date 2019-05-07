@@ -54,7 +54,9 @@ public class FloodController : MonoBehaviour
             currentPosition = maxHeight;
             isGameOver = true;
 
-            if (isTutorial == false)
+            if (isTutorial)
+                return;
+            else if (isTutorial == false)
                 distanceTimerBar.isGameOver = true;
         }
     }

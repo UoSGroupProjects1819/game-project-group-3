@@ -16,6 +16,8 @@ public class BucketObj : InteractableObjs
     private bool bailing = false;
     public Projector projector;
 
+    public ParticleSystem PS_splash;
+
     private void Awake()
     {
         floodController = FindObjectOfType<FloodController>();
@@ -95,6 +97,7 @@ public class BucketObj : InteractableObjs
         Debug.Log("Bail Timer");
         if (timer <= 0)
         {
+            PS_splash.Play();
             floodController.BailWater();
             bucketStates.currentState = BucketStates.BucketState.Held;
             timer = BAIL_TIMER;

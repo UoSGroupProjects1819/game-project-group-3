@@ -31,7 +31,7 @@ Transform:
   m_GameObject: {fileID: 1160097813426636}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -3.85, y: 8.291866, z: -12.75}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -108,7 +108,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PickPosition: {x: -0.1, y: -1, z: 0}
   PickRotation: {x: 0, y: 0, z: 0}
-  playerState: {fileID: 0}
+  interactableTag: 
+  playerStates: {fileID: 0}
 --- !u!114 &114792045372585246
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -4714,6 +4714,7 @@ GameObject:
   - component: {fileID: 6201662809193491669}
   - component: {fileID: 114641404244062996}
   - component: {fileID: 1401089433}
+  - component: {fileID: 1401089440}
   m_Layer: 0
   m_Name: torch
   m_TagString: Untagged
@@ -4826,6 +4827,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PickPosition: {x: 0, y: 0, z: 0}
   PickRotation: {x: 180, y: 0, z: 0}
+  interactableTag: 
 --- !u!114 &114641404244062996
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4858,6 +4860,24 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1401089440
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1034449612811780}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a23e91e1c0d8331499731d27461ac3b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rb: {fileID: 54268936038848868}
+  waterLevel: 0
+  water: {fileID: 0}
+  bouyancyHeightRange: 1
+  bounceDamp: 1
+  bouyancyOffset: {x: 0.3, y: 0.3, z: 1.5}
 --- !u!1 &1111687915124884
 GameObject:
   m_ObjectHideFlags: 0

@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class TutorialManager : MonoBehaviour
 {
+    public bool startFromBeginning;
+
     public Camera mainCam;
     public LevelManager levelManagerScript;
     public int stage = 0;
@@ -138,6 +140,9 @@ public class TutorialManager : MonoBehaviour
 
         leftProjector.gameObject.SetActive(false);
         leftProjector.gameObject.SetActive(false);
+
+        if (startFromBeginning)
+            stage = 0;
     }
 
     void Update()

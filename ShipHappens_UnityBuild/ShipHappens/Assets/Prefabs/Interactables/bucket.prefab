@@ -168,6 +168,7 @@ GameObject:
   - component: {fileID: 114612427026054330}
   - component: {fileID: 123300687}
   - component: {fileID: 123300686}
+  - component: {fileID: 429454934}
   m_Layer: 0
   m_Name: bucket
   m_TagString: Untagged
@@ -274,6 +275,24 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &429454934
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1845392620882758}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a23e91e1c0d8331499731d27461ac3b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rb: {fileID: 54645049495763330}
+  waterLevel: 0
+  water: {fileID: 0}
+  bouyancyHeightRange: 1
+  bounceDamp: 1
+  bouyancyOffset: {x: 0.2, y: -1, z: 0.2}
 --- !u!1 &1861020637407712
 GameObject:
   m_ObjectHideFlags: 0

@@ -1286,13 +1286,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerState: {fileID: 0}
+  currentObject: {fileID: 0}
   mop: {fileID: 0}
   wood: {fileID: 0}
   bucketStates: {fileID: 0}
+  woodStates: {fileID: 0}
+  mopStates: {fileID: 0}
+  touchedInteractable: {fileID: 0}
+  touchedGameObject: {fileID: 0}
   upIsPressed: 0
   leftIsPressed: 0
   rightIsPressed: 0
-  UIManager: {fileID: 0}
+  dPadMenu: {fileID: 0}
   edge: 0
   interacting: 0
 --- !u!114 &1915511846

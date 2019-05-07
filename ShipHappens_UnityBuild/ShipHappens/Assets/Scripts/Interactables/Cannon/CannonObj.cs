@@ -170,7 +170,8 @@ public class CannonObj : InteractableObjs
 
     private void ResetValues()
     {
-        projector.orthographicSize = 2.1f;
+        if(projector != null)
+            projector.orthographicSize = 2.1f;
     }
 
     private void OnTriggerStay(Collider other)

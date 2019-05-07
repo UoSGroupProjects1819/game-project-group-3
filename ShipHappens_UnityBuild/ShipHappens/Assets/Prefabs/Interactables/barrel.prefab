@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 114566629926323074}
   - component: {fileID: 1391374785665529819}
   - component: {fileID: 65673129117945256}
+  - component: {fileID: 7628510441564674550}
   m_Layer: 0
   m_Name: barrel
   m_TagString: Untagged
@@ -29,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 1367587494110952}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.361, y: 12.301, z: -25.077}
-  m_LocalScale: {x: 0.19999999, y: 0.20000009, z: 0.20000009}
+  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
   m_Children:
   - {fileID: 4367457005255304}
   - {fileID: 4304404605489170}
@@ -81,6 +82,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PickPosition: {x: 0, y: -1, z: 0}
   PickRotation: {x: 90, y: 0, z: 0}
+  interactableTag: 
 --- !u!65 &65673129117945256
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -94,6 +96,24 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 3.9389813, y: 4.683583, z: 3.8935547}
   m_Center: {x: 0.016524645, y: 0.0230573, z: -0.00007152554}
+--- !u!114 &7628510441564674550
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1367587494110952}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a23e91e1c0d8331499731d27461ac3b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rb: {fileID: 54821562403757828}
+  waterLevel: 0
+  water: {fileID: 0}
+  bouyancyHeightRange: 1
+  bounceDamp: 1
+  bouyancyOffset: {x: 0.6, y: 1, z: 0.6}
 --- !u!1 &1408346953762168
 GameObject:
   m_ObjectHideFlags: 0

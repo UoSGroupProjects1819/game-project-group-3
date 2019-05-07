@@ -2111,9 +2111,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab218cd1ed0d62b409bea255daf3d09a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startFromBeginning: 0
   mainCam: {fileID: 298738235}
   levelManagerScript: {fileID: 535842879}
-  stage: 0
+  stage: 36
   players:
   - {fileID: 547004372}
   - {fileID: 1149857708}
@@ -2325,7 +2326,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4802477298599378, guid: 8ea515953aa2e9b4b874020026bfcfa9, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -20.54
+      value: -7.87
       objectReference: {fileID: 0}
     - target: {fileID: 4802477298599378, guid: 8ea515953aa2e9b4b874020026bfcfa9, type: 3}
       propertyPath: m_LocalRotation.x
@@ -2358,6 +2359,14 @@ PrefabInstance:
     - target: {fileID: 4802477298599378, guid: 8ea515953aa2e9b4b874020026bfcfa9, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 429454934, guid: 8ea515953aa2e9b4b874020026bfcfa9, type: 3}
+      propertyPath: water
+      value: 
+      objectReference: {fileID: 304513687}
+    - target: {fileID: 429454934, guid: 8ea515953aa2e9b4b874020026bfcfa9, type: 3}
+      propertyPath: bounceDamp
+      value: 0.1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8ea515953aa2e9b4b874020026bfcfa9, type: 3}
@@ -2705,7 +2714,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4775905988168786, guid: 81cad89171338f4418e6f9f07abafa7e, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -20.15
+      value: -14.43
       objectReference: {fileID: 0}
     - target: {fileID: 4775905988168786, guid: 81cad89171338f4418e6f9f07abafa7e, type: 3}
       propertyPath: m_LocalRotation.x
@@ -2739,21 +2748,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -90
       objectReference: {fileID: 0}
-    - target: {fileID: 65926129446060074, guid: 81cad89171338f4418e6f9f07abafa7e,
-        type: 3}
-      propertyPath: m_Size.x
-      value: 0.04207548
-      objectReference: {fileID: 0}
-    - target: {fileID: 65926129446060074, guid: 81cad89171338f4418e6f9f07abafa7e,
-        type: 3}
-      propertyPath: m_Size.y
-      value: 0.062292803
-      objectReference: {fileID: 0}
-    - target: {fileID: 65926129446060074, guid: 81cad89171338f4418e6f9f07abafa7e,
-        type: 3}
-      propertyPath: m_Size.z
-      value: 0.027093578
-      objectReference: {fileID: 0}
+    - target: {fileID: 1401089440, guid: 81cad89171338f4418e6f9f07abafa7e, type: 3}
+      propertyPath: water
+      value: 
+      objectReference: {fileID: 304513687}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 81cad89171338f4418e6f9f07abafa7e, type: 3}
 --- !u!1 &1401089432 stripped
@@ -3358,7 +3356,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4339860188741278, guid: 3599ba85434c1ef40858c8127f8b5566, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -19.62
+      value: 24.04
       objectReference: {fileID: 0}
     - target: {fileID: 4339860188741278, guid: 3599ba85434c1ef40858c8127f8b5566, type: 3}
       propertyPath: m_LocalRotation.x
@@ -3392,21 +3390,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 65522779910365690, guid: 3599ba85434c1ef40858c8127f8b5566,
-        type: 3}
-      propertyPath: m_Size.x
-      value: 0.036747042
-      objectReference: {fileID: 0}
-    - target: {fileID: 65522779910365690, guid: 3599ba85434c1ef40858c8127f8b5566,
-        type: 3}
-      propertyPath: m_Size.z
-      value: 0.020000007
-      objectReference: {fileID: 0}
-    - target: {fileID: 65522779910365690, guid: 3599ba85434c1ef40858c8127f8b5566,
-        type: 3}
-      propertyPath: m_Size.y
-      value: 0.040042944
-      objectReference: {fileID: 0}
+    - target: {fileID: 42491100, guid: 3599ba85434c1ef40858c8127f8b5566, type: 3}
+      propertyPath: water
+      value: 
+      objectReference: {fileID: 304513687}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3599ba85434c1ef40858c8127f8b5566, type: 3}
 --- !u!1001 &1705297245

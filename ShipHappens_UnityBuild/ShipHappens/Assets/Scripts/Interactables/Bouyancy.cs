@@ -16,6 +16,12 @@ public class Bouyancy : MonoBehaviour
     private Vector3 actionPoint;
     private Vector3 uplift;
 
+
+    private void Start()
+    {
+        water = GameObject.FindWithTag("FloodWater");
+    }
+
     private void FixedUpdate()
     {
         waterLevel = water.transform.position.y - 0.35f;

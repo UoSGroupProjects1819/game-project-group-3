@@ -2135,7 +2135,7 @@ MonoBehaviour:
   startFromBeginning: 0
   mainCam: {fileID: 298738235}
   levelManagerScript: {fileID: 535842879}
-  stage: 36
+  stage: 25
   players:
   - {fileID: 547004372}
   - {fileID: 1149857708}
@@ -2389,6 +2389,14 @@ PrefabInstance:
     - target: {fileID: 429454934, guid: 8ea515953aa2e9b4b874020026bfcfa9, type: 3}
       propertyPath: bounceDamp
       value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 123300687, guid: 8ea515953aa2e9b4b874020026bfcfa9, type: 3}
+      propertyPath: PickPosition.y
+      value: -1.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 123300687, guid: 8ea515953aa2e9b4b874020026bfcfa9, type: 3}
+      propertyPath: PickPosition.z
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 3180531296706915557, guid: 8ea515953aa2e9b4b874020026bfcfa9,
         type: 3}
@@ -4165,14 +4173,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1915511852, guid: 6ea7db6a918b4be4b81743cf9573047b, type: 3}
-      propertyPath: speed
-      value: 22
-      objectReference: {fileID: 0}
-    - target: {fileID: 1915511848, guid: 6ea7db6a918b4be4b81743cf9573047b, type: 3}
-      propertyPath: m_Mass
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 1915511854, guid: 6ea7db6a918b4be4b81743cf9573047b, type: 3}
       propertyPath: UIManager
       value: 
@@ -4181,6 +4181,18 @@ PrefabInstance:
       propertyPath: m_Material
       value: 
       objectReference: {fileID: 2100000, guid: 36cae96044ed143429f985799431489f, type: 2}
+    - target: {fileID: 800405988, guid: 6ea7db6a918b4be4b81743cf9573047b, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 800405988, guid: 6ea7db6a918b4be4b81743cf9573047b, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 800405988, guid: 6ea7db6a918b4be4b81743cf9573047b, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6ea7db6a918b4be4b81743cf9573047b, type: 3}
 --- !u!1 &2089775407

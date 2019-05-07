@@ -45,6 +45,8 @@ public class FloodController : MonoBehaviour
     public void IncreaseFloodAmount(int amount)
     {
         currentPosition += new Vector3(currentPosition.x, amount, currentPosition.z);
+        currentPosition.x = startPosition.x;
+        currentPosition.z = startPosition.z;
     }
 
     void ClampFloodLevel()

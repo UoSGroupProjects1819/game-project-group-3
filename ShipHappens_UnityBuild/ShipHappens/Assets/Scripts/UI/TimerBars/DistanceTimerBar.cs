@@ -67,7 +67,7 @@ public class DistanceTimerBar : MonoBehaviour
                 
                 if (mainCam.transform.position.z > 100)
                 {
-                    levelManagerScript.FadeToLevel(5);
+                    levelManagerScript.FadeToLevel(7);
                 }
             }
         }

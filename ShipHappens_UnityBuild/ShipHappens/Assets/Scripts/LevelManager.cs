@@ -52,7 +52,7 @@ public class LevelManager : MonoBehaviour
 
     public void LoadTutorialLevel()
     {
-        FadeToLevel(2);
+        FadeToLevel(1);
     }
 
     public void LoadMainGameLevel()

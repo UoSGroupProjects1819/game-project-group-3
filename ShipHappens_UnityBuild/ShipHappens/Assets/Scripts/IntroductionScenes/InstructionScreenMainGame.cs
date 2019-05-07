@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class InstructionScreen : MonoBehaviour
+public class InstructionScreenMainGame : MonoBehaviour
 {
     public RectTransform PressAToContinue;
     public LevelManager levelManagerScript;
@@ -29,7 +29,7 @@ public class InstructionScreen : MonoBehaviour
 
             if (Input.GetKeyDown("joystick button 0"))
             {
-                levelManagerScript.FadeToLevel(0);
+                levelManagerScript.FadeToLevel(6);
             }
         }
     }

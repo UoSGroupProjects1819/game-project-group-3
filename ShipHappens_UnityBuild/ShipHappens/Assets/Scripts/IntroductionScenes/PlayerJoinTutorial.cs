@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PlayerJoin : MonoBehaviour
+public class PlayerJoinTutorial : MonoBehaviour
 {
     public LevelManager levelManagerScript;
     public GameObject player;
@@ -36,7 +36,7 @@ public class PlayerJoin : MonoBehaviour
 
         if (Input.GetKeyDown("joystick 1 button 7"))
         {
-            levelManagerScript.FadeToLevel(0);
+            levelManagerScript.FadeToLevel(2);
         }
     }
 

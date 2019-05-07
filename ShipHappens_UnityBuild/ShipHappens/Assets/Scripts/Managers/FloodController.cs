@@ -54,9 +54,7 @@ public class FloodController : MonoBehaviour
             floodPlane.transform.position = maxHeight;
             isGameOver = true;
 
-            if (isTutorial)
-                return;
-            else if (isTutorial == false)
+            if (isTutorial == false)
                 distanceTimerBar.isGameOver = true;
         }
     }

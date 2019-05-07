@@ -2187,6 +2187,7 @@ MonoBehaviour:
   whaleImg: {fileID: 21300000, guid: d06c261ce38d75840a9687712ed9cc38, type: 3}
   whaleAnim: {fileID: 1464157554}
   mastAnim: {fileID: 891821003}
+  mastImg: {fileID: 21300000, guid: 16b7a7d85bf932d46b256949b01b39f1, type: 3}
 --- !u!4 &1117603850 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4645694278088332, guid: 046986ab40a96a54b82409c42e762d3b,

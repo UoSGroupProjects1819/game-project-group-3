@@ -119,6 +119,7 @@ public class TutorialManager : MonoBehaviour
     public Sprite whaleImg;
     public Animator whaleAnim;
     public Animator mastAnim;
+    public Sprite mastImg;
     
 
 
@@ -789,6 +790,8 @@ public class TutorialManager : MonoBehaviour
                 Debug.Log("case: " + stage);
                 if (CNanim.GetBool("PlayTutorialBubble") == false)
                 {
+                    tutorialBubbleInterior.sprite = mastImg;
+                    CNanim.SetBool("PlayTutorialBubble", true);
                     mastAnim.SetBool("PlayTutorialMast", true);
                     stage = 49;
                 }

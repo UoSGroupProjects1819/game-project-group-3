@@ -43,10 +43,20 @@ public class HoleRadius : MonoBehaviour
         }
     }
 
+    public void ReopenHole()
+    {
+        Vector3 rot = transform.rotation.eulerAngles;
+        rot = new Vector3(rot.x + 180, rot.y, rot.z);
+        holeStates = HoleStates.Impact;
+    }
+
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "DropBall")
+        if (other.tag == "Hole" && holeStates == HoleStates.Dormant)
         {
+            Debug.Log("Hole reopened");
+            Vector3 rot = transform.rotation.eulerAngles;
+            rot = new Vector3(rot.x + 180, rot.y, rot.z);
             holeStates = HoleStates.Impact;
         }
     }

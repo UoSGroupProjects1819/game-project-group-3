@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 5473660004231193785}
   - component: {fileID: 2679540953387573020}
   - component: {fileID: 2778233139087372117}
+  - component: {fileID: 3996989422923291940}
   m_Layer: 0
   m_Name: DropBall
   m_TagString: Untagged
@@ -121,4 +122,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b2919f8f858e6b4cb9ea0e1b3005925, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  objectPooler: {fileID: 0}
   holePrefab: {fileID: 1813765403530404, guid: f1be82c1e25980b4a9cedda318d0e134, type: 3}
+--- !u!135 &3996989422923291940
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4689451772261821488}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 1.4561944
+  m_Center: {x: 0.011007337, y: 0.015469911, z: 0.0033178192}

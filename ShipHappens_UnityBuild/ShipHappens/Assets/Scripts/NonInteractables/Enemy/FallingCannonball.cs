@@ -34,4 +34,27 @@ public class FallingCannonball : MonoBehaviour
             playerStates.playerState = PlayerStates.PlayerState.pDead;
         }
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.CompareTag("Player"))
+        {
+            Debug.Log("Hit the player!  Ignore!");
+            return;
+        }
+
+        Debug.Log("Triggered!");
+        if(other.CompareTag("Hole"))
+        {
+            Debug.Log("Dropball hit a hole!");
+
+            HoleRadius hole = other.GetComponent<HoleRadius>();
+
+            if(hole != null && hole.holeStates == HoleRadius.HoleStates.Dormant)
+            {
+                Debug.Log("Reopened a hole!");
+                hole.ReopenHole();
+            }
+        }
+    }
 }

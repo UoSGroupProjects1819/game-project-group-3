@@ -1249,6 +1249,7 @@ GameObject:
   - component: {fileID: 1915511850}
   - component: {fileID: 1915511849}
   - component: {fileID: 1915511848}
+  - component: {fileID: 58095093}
   m_Layer: 0
   m_Name: Pirate Player
   m_TagString: Player
@@ -1325,7 +1326,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1498e6a21a3a5c94fae1db4e225ee3c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 15
+  speed: 22
   canMove: 1
 --- !u!114 &1915511851
 MonoBehaviour:
@@ -1401,3 +1402,15 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 80
   m_CollisionDetection: 0
+--- !u!75 &58095093
+ConstantForce:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1915511845}
+  m_Enabled: 1
+  m_Force: {x: 0, y: -100, z: 0}
+  m_RelativeForce: {x: 0, y: 0, z: 0}
+  m_Torque: {x: 0, y: 0, z: 0}
+  m_RelativeTorque: {x: 0, y: 0, z: 0}

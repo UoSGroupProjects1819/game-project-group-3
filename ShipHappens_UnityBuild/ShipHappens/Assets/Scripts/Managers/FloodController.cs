@@ -13,7 +13,7 @@ public class FloodController : MonoBehaviour
     public float floodRate;
     public float floodRateModifier;
 
-    public float bailAmount;
+    public float bailAmount =5 ;
 
     public bool isGameOver;
     public DistanceTimerBar distanceTimerBar;
@@ -40,6 +40,11 @@ public class FloodController : MonoBehaviour
     public void BailWater()
     {
         currentPosition.y -= bailAmount;
+    }
+
+    public void IncreaseFloodAmount(int amount)
+    {
+        currentPosition += new Vector3(currentPosition.x, amount, currentPosition.z);
     }
 
     void ClampFloodLevel()

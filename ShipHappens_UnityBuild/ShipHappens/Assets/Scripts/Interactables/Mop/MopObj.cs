@@ -98,5 +98,6 @@ public class MopObj : InteractableObjs
     private void CleanPoo()
     {
         hazard.SetActive(false);
+        mopStates.currentState = MopStates.MopState.Held;
     }
 }

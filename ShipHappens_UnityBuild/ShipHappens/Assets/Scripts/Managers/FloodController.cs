@@ -45,13 +45,13 @@ public class FloodController : MonoBehaviour
     void ClampFloodLevel()
     {
         //clamp min, max y-axis values
-        if (floodPlane.transform.position.y <= startPosition.y - 0.05f)
+        if (currentPosition.y <= startPosition.y - 0.05f)
         {
-            floodPlane.transform.position = startPosition;
+            currentPosition = startPosition;
         }
-        if (floodPlane.transform.position.y > maxHeight.y - 0.05f)
+        if (currentPosition.y > maxHeight.y - 0.05f)
         {
-            floodPlane.transform.position = maxHeight;
+            currentPosition = maxHeight;
             isGameOver = true;
 
             if (isTutorial)

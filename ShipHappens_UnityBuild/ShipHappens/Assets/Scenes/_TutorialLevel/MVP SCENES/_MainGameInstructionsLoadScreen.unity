@@ -167,7 +167,7 @@ MonoBehaviour:
   m_Script: {fileID: -619905303, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_FirstSelected: {fileID: 0}
+  m_FirstSelected: {fileID: 721033821748615639}
   m_sendNavigationEvents: 1
   m_DragThreshold: 10
 --- !u!4 &74755787
@@ -792,12 +792,12 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1925138114}
-        m_MethodName: LoadTutorialLevel
-        m_Mode: 1
+        m_MethodName: FadeToLevel
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 6
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -1262,4 +1262,4 @@ MonoBehaviour:
   PressAToContinue: {fileID: 721033821748615636}
   levelManagerScript: {fileID: 1925138114}
   timer: 0
-  initialTimer: 4
+  initialTimer: 2

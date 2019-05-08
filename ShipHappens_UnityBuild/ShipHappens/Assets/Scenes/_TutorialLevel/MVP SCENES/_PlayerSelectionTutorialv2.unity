@@ -1213,9 +1213,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 983246964}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 08a850c62f0e27e4d9d5adb693c6d2d8, type: 3}
+  m_Script: {fileID: 11500000, guid: 7f52cc6864ee6d24781edafb53dae8dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  levelManagerScript: {fileID: 1925138114}
+  player: {fileID: 799878271}
+  Abutton: {fileID: 1525269927}
+  initialTimer: 1
 --- !u!1 &999920377
 GameObject:
   m_ObjectHideFlags: 0
@@ -1986,9 +1990,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1375337999}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 08a850c62f0e27e4d9d5adb693c6d2d8, type: 3}
+  m_Script: {fileID: 11500000, guid: 7f52cc6864ee6d24781edafb53dae8dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  levelManagerScript: {fileID: 1925138114}
+  player: {fileID: 1312349049}
+  Abutton: {fileID: 1145356575}
+  initialTimer: 1
 --- !u!1 &1399557544
 GameObject:
   m_ObjectHideFlags: 0

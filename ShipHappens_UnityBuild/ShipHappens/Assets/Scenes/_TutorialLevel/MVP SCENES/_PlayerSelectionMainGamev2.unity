@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44796067, g: 0.4979602, b: 0.5754927, a: 1}
+  m_IndirectSpecularColor: {r: 0.44796008, g: 0.4979595, b: 0.57549167, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1219,7 +1219,7 @@ MonoBehaviour:
   levelManagerScript: {fileID: 1925138114}
   player: {fileID: 799878271}
   Abutton: {fileID: 1525269927}
-  initialTimer: 2
+  initialTimer: 1
 --- !u!1 &999920377
 GameObject:
   m_ObjectHideFlags: 0
@@ -1996,7 +1996,7 @@ MonoBehaviour:
   levelManagerScript: {fileID: 1925138114}
   player: {fileID: 1312349049}
   Abutton: {fileID: 1145356575}
-  initialTimer: 2
+  initialTimer: 1
 --- !u!1 &1399557544
 GameObject:
   m_ObjectHideFlags: 0

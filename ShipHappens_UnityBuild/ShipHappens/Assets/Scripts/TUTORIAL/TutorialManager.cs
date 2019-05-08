@@ -120,7 +120,13 @@ public class TutorialManager : MonoBehaviour
     public Animator whaleAnim;
     public Animator mastAnim;
     public Sprite mastImg;
-    
+
+    //TICK PICS
+    public Sprite enemyTick;
+    public Sprite cannonTick;
+    public Sprite whaleTick;
+    public Sprite rockTick;
+    public Sprite seagullTick;    
 
 
 
@@ -493,7 +499,7 @@ public class TutorialManager : MonoBehaviour
                 }
                 break;
             #endregion
-            #region GAME MANAGER FREEPLAY #1 (including above)
+            #region SECTION #1 completed
             //START THE MANAGER/////////////////////////////////////////////////
             case 23:
                 Debug.Log("case: " + stage);
@@ -620,7 +626,7 @@ public class TutorialManager : MonoBehaviour
                 }
                 break;
             #endregion
-            #region GAME MANAGER FREEPLAY #2 (including above)
+            #region SECTION #2 completed
             //START THE MANAGER/////////////////////////////////////////////////
             case 34:
                 Debug.Log("case: " + stage);
@@ -727,7 +733,7 @@ public class TutorialManager : MonoBehaviour
                 }
                 break;
             #endregion
-            #region GAME MANAGER FREEPLAY #3 (including above)
+            #region SECTION #3 completed
             //START THE MANAGER/////////////////////////////////////////////////
             case 43:
                 Debug.Log("case: " + stage);
@@ -826,7 +832,7 @@ public class TutorialManager : MonoBehaviour
                 }
                 break;
             #endregion
-            #region GAME MANAGER FREEPLAY #4 (including above)
+            #region SECTION #4 completed
             //START THE MANAGER/////////////////////////////////////////////////
             case 52:
                 Debug.Log("case: " + stage);

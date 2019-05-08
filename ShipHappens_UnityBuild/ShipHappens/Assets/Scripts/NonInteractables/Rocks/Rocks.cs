@@ -75,12 +75,11 @@ public class Rocks : Event
 
                     if (isTutorial)
                     {
-                        floodController.IncreaseFloodAmount(5);
-                        //FloodController.numberOfHoles = FloodController.numberOfHoles + tutorialRockDamage;
+                        floodController.IncreaseFloodAmount(5);                       
                     }
                     else
                     {
-                        FloodController.numberOfHoles = FloodController.numberOfHoles + rockDamage;
+                        floodController.IncreaseFloodAmount(3);
                     }
 
                     rockStates = RockStates.Exiting;

@@ -12,7 +12,7 @@ public class BucketObj : InteractableObjs
     private Rigidbody rigid;
 
     [SerializeField] private float timer;
-    private const float BAIL_TIMER = 2f;
+    private const float BAIL_TIMER = 1f;
     private bool bailing = false;
     public Projector projector;
 
@@ -63,13 +63,13 @@ public class BucketObj : InteractableObjs
     {
         if (bucketStates.currentState == BucketStates.BucketState.Bailing)
         {
-            Debug.Log("Update");
             BailWater();
         }
 
         if(bucketStates.currentState == BucketStates.BucketState.Held)
         {
             timer = BAIL_TIMER;
+            projector.orthographicSize = 2.1f;
             projector = null;
         }
     }
@@ -87,22 +87,32 @@ public class BucketObj : InteractableObjs
 
     public void BailWater()
     {
-        timer -= Time.deltaTime;
-
-        float inverseLerp = Mathf.InverseLerp(BAIL_TIMER, 0, timer);
-
-        if (projector == null)  { projector = playerController.transform.GetChild(2).transform.GetChild(1).GetComponent<Projector>(); }
-        projector.orthographicSize = inverseLerp * 2.15f;
-
-        Debug.Log("Bail Timer");
-        if (timer <= 0)
+        if (floodController.currentPosition.y < floodController.waterOnDeck.y)
         {
-            PS_splash.Play();
-            floodController.BailWater();
             bucketStates.currentState = BucketStates.BucketState.Held;
-            timer = BAIL_TIMER;
-            projector.orthographicSize = 2.1f;
-            projector = null;
+            Debug.Log("No water to bail");
+            return;
+        }
+
+        else if (floodController.currentPosition.y >= floodController.waterOnDeck.y)
+        {
+            timer -= Time.deltaTime;
+
+            float inverseLerp = Mathf.InverseLerp(BAIL_TIMER, 0, timer);
+
+            if (projector == null) { projector = playerController.transform.GetChild(2).transform.GetChild(1).GetComponent<Projector>(); }
+            projector.orthographicSize = inverseLerp * 2.15f;
+
+            Debug.Log("Bail Timer");
+            if (timer <= 0)
+            {
+                PS_splash.Play();
+                floodController.BailWater();
+                bucketStates.currentState = BucketStates.BucketState.Held;
+                timer = BAIL_TIMER;
+                projector.orthographicSize = 2.1f;
+                projector = null;
+            }
         }
     }
 }

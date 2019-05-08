@@ -494,26 +494,15 @@ public class TutorialManager : MonoBehaviour
                     bailAreaAnim.SetBool("PlayTutorialBailArea", false);
                     leftProjector.gameObject.SetActive(false);
                     leftProjector.gameObject.SetActive(false);
-                    timer = 4.5f;
+                    timer = 5f;
                     stage = 23;
                 }
                 break;
             #endregion
             #region SECTION #1 completed
-            //START THE MANAGER/////////////////////////////////////////////////
+            //START/////////////////////////////////////////////////
             case 23:
                 Debug.Log("case: " + stage);
-                timer -= 1 * Time.deltaTime;
-                if (timer <= 0)
-                {
-                    floodController.isTutorial = false;
-                    rock.isTutorial = false;
-                    spawnSeagull.isTutorial = false;
-                    //TOGGLE MANAGER ON
-                    timer = 50;
-                    stage = 24;
-                }
-                break;
 
                 if (CNanim.GetBool("PlayTutorialBubble") == false)
                 {
@@ -521,30 +510,28 @@ public class TutorialManager : MonoBehaviour
                     CNanim.SetBool("PlayTutorialBubble", true);
 
                     floodController.currentPosition.y = floodController.startPosition.y;
+                    //dont do the above, lerp it 
 
-                    floodController.maxHeight = tutorialMaxHeight;
-                    floodController.floodRateModifier = tutorialFFloodRateModifier;
-                    floodController.bailAmount = tutorialBailAmount;
-
-                    if (floodController.currentPosition.y > tutorialMaxHeight.y)
+                if (floodController.currentPosition == floodController.startPosition)
                     {
-                        stage = 17;
+                        timer = 1;
+                        stage = 24;
                     }
+
                 }
+                break;
+
+
 
             case 24:
                 Debug.Log("case: " + stage);
                 timer -= 1 * Time.deltaTime;
                 if (timer <= 0)
                 {
-                    floodController.isTutorial = true;
-                    rock.isTutorial = true;
-                    spawnSeagull.isTutorial = true;
-                    //TOGGLE MANAGER OFF
                     stage = 25;
                 }
                 break;
-            //END THE MANAGER/////////////////////////////////////////////////
+            //END/////////////////////////////////////////////////
             #endregion
 
             #region seagull
@@ -638,42 +625,43 @@ public class TutorialManager : MonoBehaviour
                     tutorialBubbleInterior.sprite = seagullImg;
                     CNanim.SetBool("PlayTutorialBubble", true);
                     spawnSeagull.Spawn();
-                    timer = 10f;
+                    timer = 1f;
                     stage = 34;
                 }
                 break;
             #endregion
             #region SECTION #2 completed
-            //START THE MANAGER/////////////////////////////////////////////////
+            //START/////////////////////////////////////////////////
             case 34:
                 Debug.Log("case: " + stage);
-                timer -= 1 * Time.deltaTime;
-                if (timer <= 0)
+
+                if (CNanim.GetBool("PlayTutorialBubble") == false)
                 {
-                    floodController.isTutorial = false;
-                    rock.isTutorial = false;
-                    spawnSeagull.isTutorial = false;
-                    //TOGGLE MANAGER ON
-                    timer = 50;
-                    stage = 35;
+                    tutorialBubbleInterior.sprite = seagullTick;
+                    CNanim.SetBool("PlayTutorialBubble", true);
+
+                    floodController.currentPosition.y = floodController.startPosition.y;
+                    //dont do the above, lerp it 
+
+                    if (floodController.currentPosition == floodController.startPosition)
+                    {
+                        timer = 1;
+                        stage = 35;
+                    }
+
                 }
                 break;
-
+                
 
             case 35:
                 Debug.Log("case: " + stage);
                 timer -= 1 * Time.deltaTime;
                 if (timer <= 0)
                 {
-                    floodController.isTutorial = true;
-                    rock.isTutorial = true;
-                    spawnSeagull.isTutorial = true;
-                    //TOGGLE MANAGER OFF
-                    timer = 5f;
                     stage = 36;
                 }
                 break;
-            //END THE MANAGER/////////////////////////////////////////////////
+            //END/////////////////////////////////////////////////
             #endregion
 
             #region wheel
@@ -745,42 +733,43 @@ public class TutorialManager : MonoBehaviour
                 Debug.Log("case: " + stage);
                 if (wheel.GetComponent<Wheel>().wheelStates == Wheel.WheelStates.Exiting)
                 {
-                    timer = 2.5f;
+                    timer = 1f;
                     stage = 43;
                 }
                 break;
             #endregion
             #region SECTION #3 completed
-            //START THE MANAGER/////////////////////////////////////////////////
+            //START/////////////////////////////////////////////////
             case 43:
                 Debug.Log("case: " + stage);
-                timer -= 1 * Time.deltaTime;
-                if (timer <= 0)
+
+                if (CNanim.GetBool("PlayTutorialBubble") == false)
                 {
-                    floodController.isTutorial = false;
-                    rock.isTutorial = false;
-                    spawnSeagull.isTutorial = false;
-                    //TOGGLE MANAGER ON
-                    timer = 50;
-                    stage = 44;
+                    tutorialBubbleInterior.sprite = rockTick;
+                    CNanim.SetBool("PlayTutorialBubble", true);
+
+                    floodController.currentPosition.y = floodController.startPosition.y;
+                    //dont do the above, lerp it 
+
+                    if (floodController.currentPosition == floodController.startPosition)
+                    {
+                        timer = 1;
+                        stage = 44;
+                    }
+
                 }
                 break;
-
 
             case 44:
                 Debug.Log("case: " + stage);
                 timer -= 1 * Time.deltaTime;
                 if (timer <= 0)
                 {
-                    floodController.isTutorial = true;
-                    rock.isTutorial = true;
-                    spawnSeagull.isTutorial = true;
-                    //TOGGLE MANAGER OFF
-                    timer = 5f;
+                    timer = 2f;
                     stage = 45;
                 }
                 break;
-            //END THE MANAGER/////////////////////////////////////////////////
+            //END/////////////////////////////////////////////////
             #endregion
 
             #region whale
@@ -844,38 +833,42 @@ public class TutorialManager : MonoBehaviour
                 if (whale.GetComponent<Whale>().whaleStates == Whale.WhaleStates.exiting)
                 {
                     whale.SetActive(false);
-                    timer = 7f;
+                    timer = 1f;
                     stage = 52;
                 }
                 break;
             #endregion
             #region SECTION #4 completed
-            //START THE MANAGER/////////////////////////////////////////////////
+            //START/////////////////////////////////////////////////
             case 52:
                 Debug.Log("case: " + stage);
-                timer -= 1 * Time.deltaTime;
-                if (timer <= 0)
+
+                if (CNanim.GetBool("PlayTutorialBubble") == false)
                 {
-                    floodController.isTutorial = false;
-                    rock.isTutorial = false;
-                    spawnSeagull.isTutorial = false;
-                    //TOGGLE MANAGER ON
-                    timer = 50;
-                    stage = 53;
+                    tutorialBubbleInterior.sprite = whaleTick;
+                    CNanim.SetBool("PlayTutorialBubble", true);
+
+                    floodController.currentPosition.y = floodController.startPosition.y;
+                    //dont do the above, lerp it 
+
+                    if (floodController.currentPosition == floodController.startPosition)
+                    {
+                        timer = 1;
+                        stage = 53;
+                    }
+
                 }
                 break;
-
 
             case 53:
                 Debug.Log("case: " + stage);
                 timer -= 1 * Time.deltaTime;
                 if (timer <= 0)
                 {
-                    //TOGGLE MANAGER OFF
                     stage = 998;
                 }
                 break;
-            //END THE MANAGER/////////////////////////////////////////////////
+            //END/////////////////////////////////////////////////
             #endregion
 
             #region end tutorial, reassign initial flood manager defaults

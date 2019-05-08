@@ -2225,7 +2225,8 @@ MonoBehaviour:
   startFromBeginning: 0
   mainCam: {fileID: 298738235}
   levelManagerScript: {fileID: 535842879}
-  stage: 25
+  stage: 36
+  waterlerp: 0
   players:
   - {fileID: 547004372}
   - {fileID: 1149857708}
@@ -2285,13 +2286,13 @@ MonoBehaviour:
   originalInitialTimer: 0
   tutorialTimer: 30
   tutorialInitialTimer: 30
-  tutorialShortInitialTimer: 5
-  tutorialShortTimer: 5
+  tutorialShortInitialTimer: 4
+  tutorialShortTimer: 4
   wheel: {fileID: 2066308387}
   wheelImg: {fileID: 21300000, guid: 53c9340d8b38b6d41bc41263e62ac70d, type: 3}
   wheelAnim: {fileID: 2066308393}
   whale: {fileID: 1464157553}
-  whaleImg: {fileID: 21300000, guid: d06c261ce38d75840a9687712ed9cc38, type: 3}
+  whaleImg: {fileID: 21300000, guid: 8026d779001832c4d9c76bc7f2f4d2e3, type: 3}
   whaleAnim: {fileID: 1464157554}
   mastAnim: {fileID: 891821003}
   mastImg: {fileID: 21300000, guid: 16b7a7d85bf932d46b256949b01b39f1, type: 3}

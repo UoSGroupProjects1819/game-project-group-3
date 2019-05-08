@@ -22,6 +22,8 @@ public class PlayerMovement : MonoBehaviour
     {
         rb = this.GetComponent<Rigidbody>();
         playerInput = GetComponent<PlayerInput>();
+
+        speed = normalSpeed;
     }
 
     private void Update()

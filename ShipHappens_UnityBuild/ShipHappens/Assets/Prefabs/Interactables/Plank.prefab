@@ -107,7 +107,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c999a862361721946a940394b7b4b9f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PickPosition: {x: 0.8, y: 2, z: 0}
+  PickPosition: {x: 0.28, y: 0.5, z: 0}
   PickRotation: {x: 0, y: 90, z: 90}
   interactableTag: Hole
   projector: {fileID: 0}

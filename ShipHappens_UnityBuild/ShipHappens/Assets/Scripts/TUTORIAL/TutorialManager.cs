@@ -515,6 +515,23 @@ public class TutorialManager : MonoBehaviour
                 }
                 break;
 
+                if (CNanim.GetBool("PlayTutorialBubble") == false)
+                {
+                    tutorialBubbleInterior.sprite = enemyTick;
+                    CNanim.SetBool("PlayTutorialBubble", true);
+
+                    floodController.currentPosition.y = floodController.startPosition.y;
+
+                    floodController.maxHeight = tutorialMaxHeight;
+                    floodController.floodRateModifier = tutorialFFloodRateModifier;
+                    floodController.bailAmount = tutorialBailAmount;
+
+                    if (floodController.currentPosition.y > tutorialMaxHeight.y)
+                    {
+                        stage = 17;
+                    }
+                }
+
             case 24:
                 Debug.Log("case: " + stage);
                 timer -= 1 * Time.deltaTime;

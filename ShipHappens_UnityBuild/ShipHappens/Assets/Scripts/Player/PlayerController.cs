@@ -77,7 +77,7 @@ public class PlayerController : MonoBehaviour
                     hunkerDown.Pickup(this.gameObject);
                 }
             }
-        }
+        }    
     }
 
     private void OnTriggerEnter(Collider col)

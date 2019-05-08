@@ -8,9 +8,14 @@ public class PlayerMovement : MonoBehaviour
     private PlayerInput playerInput;
 
     [Header("[Movement variables]")]
-    public float speed = 5f;
+    public float speed;
+    private const float normalSpeed = 22f;
+    private const float slowedSpeed = 11f;
+    private float slowTimer;
 
     public bool canMove = true;
+
+    private bool isSlowed { get; set; }
 
     // Use this for initialization
     void Start ()
@@ -18,9 +23,17 @@ public class PlayerMovement : MonoBehaviour
         rb = this.GetComponent<Rigidbody>();
         playerInput = GetComponent<PlayerInput>();
     }
-	
-	// Update is called once per frame
-	void FixedUpdate ()
+
+    private void Update()
+    {
+        if (isSlowed)
+        {
+            SlowPlayer();
+        }
+    }
+
+    // Update is called once per frame
+    void FixedUpdate ()
     {
         if (canMove)
         {
@@ -32,5 +45,24 @@ public class PlayerMovement : MonoBehaviour
                 transform.forward = -move;
             }
         }
+    }
+
+    private void SlowPlayer()
+    {
+        slowTimer -= Time.deltaTime;
+
+        if(slowTimer <= 0)
+        {
+            Debug.Log("Player returns to normal speed");
+            speed = normalSpeed;
+        }
+    }
+
+    public void SetSlowTime(int time)
+    {
+        Debug.Log("Player is slowed by poo");
+        slowTimer = time;
+        isSlowed = true;
+        speed = slowedSpeed;
     }
 }

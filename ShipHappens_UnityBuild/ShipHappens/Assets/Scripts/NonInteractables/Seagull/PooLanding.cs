@@ -100,4 +100,14 @@ public class PooLanding : MonoBehaviour
             pooPrefab.transform.SetParent(collision.gameObject.transform);
         }
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            Debug.Log("PLAYER STEPPED ON POO");
+            PlayerMovement movement = other.GetComponent<PlayerMovement>();
+            movement.SetSlowTime(3);
+        }
+    }
 }

@@ -755,7 +755,7 @@ public class TutorialManager : MonoBehaviour
 
                 if (floodController.currentPosition.y < 7f)
                 {
-                    timer = 4;
+                    timer = 2;
                     stage = 45;
                 }
                 break;
@@ -841,6 +841,8 @@ public class TutorialManager : MonoBehaviour
                     tutorialBubbleInterior.sprite = whaleTick;
                     CNanim.SetBool("PlayTutorialBubble", true);
 
+                    timer = 3;
+
                     stage = 53;
                 }
                 break;
@@ -848,12 +850,18 @@ public class TutorialManager : MonoBehaviour
             case 53:
                 Debug.Log("case: " + stage);
 
-                floodController.currentPosition.y = Mathf.Lerp(floodController.currentPosition.y, floodController.startPosition.y, 0.1f * Time.deltaTime);
-
-                if (floodController.currentPosition.y < 7f)
+                if (CNanim.GetBool("PlayTutorialBubble") == false)
                 {
-                    timer = 4;
-                    stage = 998;
+                    timer -= Time.deltaTime;
+                    if (timer < 0)
+                    {
+                        floodController.currentPosition.y = Mathf.Lerp(floodController.currentPosition.y, floodController.startPosition.y, 0.1f * Time.deltaTime);
+
+                        if (floodController.currentPosition.y < 7f)
+                        {
+                            stage = 998;
+                        }
+                    }
                 }
                 break;
             //END/////////////////////////////////////////////////

@@ -16,6 +16,8 @@ public class Bouyancy : MonoBehaviour
     private Vector3 actionPoint;
     private Vector3 uplift;
 
+    public bool isOVerboard = false;
+
 
     private void Start()
     {
@@ -29,7 +31,7 @@ public class Bouyancy : MonoBehaviour
         actionPoint = transform.position + transform.TransformDirection(bouyancyOffset);
         forceFactor = 1f - ((actionPoint.y - waterLevel) / bouyancyHeightRange);
 
-        if (forceFactor > 0f)
+        if (forceFactor > 0f && isOVerboard == false)
         {
             uplift = -Physics.gravity * (forceFactor - rb.velocity.y * bounceDamp);
             rb.AddForceAtPosition(uplift, actionPoint);

@@ -21,6 +21,8 @@ public class FloodController : MonoBehaviour
 
     public bool isTutorial;
 
+    public static bool hasBeenFirstHole = false;
+
     private void Start()
     {
         currentPosition = startPosition;

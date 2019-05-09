@@ -594,7 +594,7 @@ public class TutorialManager : MonoBehaviour
                     tutorialBubbleInterior.sprite = seagullImg;
                     CNanim.SetBool("PlayTutorialBubble", true);
                     spawnSeagull.Spawn();
-                    timer = 2.5f;
+                    timer = 1f;
                     stage = 32;
                 }
                 break;
@@ -607,7 +607,7 @@ public class TutorialManager : MonoBehaviour
                     tutorialBubbleInterior.sprite = seagullImg;
                     CNanim.SetBool("PlayTutorialBubble", true);
                     spawnSeagull.Spawn();
-                    timer = 3.5f;
+                    timer = 1f;
                     stage = 33;
                 }
                 break;
@@ -620,7 +620,7 @@ public class TutorialManager : MonoBehaviour
                     tutorialBubbleInterior.sprite = seagullImg;
                     CNanim.SetBool("PlayTutorialBubble", true);
                     spawnSeagull.Spawn();
-                    timer = 1f;
+                    timer = 8f;
                     stage = 34;
                 }
                 break;
@@ -629,13 +629,16 @@ public class TutorialManager : MonoBehaviour
             //START/////////////////////////////////////////////////
             case 34:
                 Debug.Log("case: " + stage);
-
-                if (CNanim.GetBool("PlayTutorialBubble") == false)
+                timer -= Time.deltaTime;
+                if (timer < 0)
                 {
-                    tutorialBubbleInterior.sprite = seagullTick;
-                    CNanim.SetBool("PlayTutorialBubble", true);
+                    if (CNanim.GetBool("PlayTutorialBubble") == false)
+                    {
+                        tutorialBubbleInterior.sprite = seagullTick;
+                        CNanim.SetBool("PlayTutorialBubble", true);
 
-                    stage = 35;
+                        stage = 35;
+                    }
                 }
                 break;
 
@@ -646,7 +649,7 @@ public class TutorialManager : MonoBehaviour
 
                 if (floodController.currentPosition.y < 7f)
                 {
-                    timer = 4;
+                    timer = 8;
                     stage = 36;
                 }
                 break;

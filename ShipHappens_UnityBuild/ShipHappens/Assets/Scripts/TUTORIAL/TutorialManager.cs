@@ -620,7 +620,7 @@ public class TutorialManager : MonoBehaviour
                     tutorialBubbleInterior.sprite = seagullImg;
                     CNanim.SetBool("PlayTutorialBubble", true);
                     spawnSeagull.Spawn();
-                    timer = 8f;
+                    timer = 16f;
                     stage = 34;
                 }
                 break;
@@ -649,7 +649,7 @@ public class TutorialManager : MonoBehaviour
 
                 if (floodController.currentPosition.y < 7f)
                 {
-                    timer = 8;
+                    timer = 10;
                     stage = 36;
                 }
                 break;

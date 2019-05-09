@@ -63,6 +63,9 @@ public class Wheel : InteractableObjs
 
     public override void Pickup(GameObject player, PlayerController pController = null, PlayerStates pStates = null)
     {
+        currPlayer = player;
+        playerState = pStates;
+
         if (playerState.playerState != PlayerStates.PlayerState.pEmpty)
             return;
 
@@ -72,9 +75,7 @@ public class Wheel : InteractableObjs
         }
         else
         {
-            currPlayer = player;
-
-            playerState = pStates;
+            
             playerController = pController;
             playerController.currentObject = this;
 

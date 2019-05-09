@@ -29,8 +29,8 @@ public class BucketObj : InteractableObjs
 
     public override void Pickup(GameObject player, PlayerController pController = null, PlayerStates pStates = null)
     {
-        if (playerController == null) { playerController = player.GetComponent<PlayerController>(); }
-        if (playerStates == null) { playerStates = player.GetComponent<PlayerStates>(); }
+        if (playerController == null) { playerController = pController; }
+        if (playerStates == null) { playerStates = pStates; }
 
         if (playerStates.playerState != PlayerStates.PlayerState.pEmpty)
             return; 

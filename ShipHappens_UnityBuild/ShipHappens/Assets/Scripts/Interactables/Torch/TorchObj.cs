@@ -20,12 +20,12 @@ public class TorchObj : InteractableObjs
 
     public override void Pickup(GameObject player, PlayerController pController = null, PlayerStates pStates = null)
     {
+        playerStates = pStates;
+
         if (playerStates.playerState != PlayerStates.PlayerState.pEmpty)
             return;
 
         SetPosition(ref player);
-
-        playerStates = pStates;
 
         playerStates.playerState = PlayerStates.PlayerState.pTorch;
         torchStates.currentState = TorchStates.TorchState.Held;

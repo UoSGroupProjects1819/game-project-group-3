@@ -16,25 +16,14 @@ public class GunpowderObj : InteractableObjs
         rigid = GetComponent<Rigidbody>();
     }
 
-    //public void EnableGunpowder(ref PlayerStates playerStates, ref GameObject player)
-    //{
-    //    SetPosition(ref player);
-
-    //    playerStates.playerState = PlayerStates.PlayerState.pGunpowder;
-    //    gunpowderStates.currentState = GunpowderStates.PowderState.Held;
-    //    playerState = playerStates;
-
-    //    SetPickedUpObjectComponents(ref playerState, ref rigid, gameObject);
-    //}
-
     public override void Pickup(GameObject player, PlayerController pController = null, PlayerStates pStates = null)
     {
+        playerState = pStates;
+
         if (playerState.playerState != PlayerStates.PlayerState.pEmpty)
             return;
 
         SetPosition(ref player);
-
-        playerState = pStates;
 
         playerState.playerState = PlayerStates.PlayerState.pGunpowder;
         gunpowderStates.currentState = GunpowderStates.PowderState.Held;

@@ -24,12 +24,12 @@ public class CannonballObj : InteractableObjs
 
     public override void Pickup(GameObject player, PlayerController pController = null, PlayerStates pStates = null)
     {
+        playerStates = pStates;
+
         if (playerStates.playerState != PlayerStates.PlayerState.pEmpty)
             return;
 
-        SetPosition(ref player);
-
-        playerStates = pStates;
+        SetPosition(ref player);    
 
         playerStates.playerState = PlayerStates.PlayerState.pCannonball;
         cannonballStates.currentState = CannonballStates.CannonballState.Held;

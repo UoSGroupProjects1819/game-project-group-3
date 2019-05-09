@@ -9,8 +9,7 @@ public class HunkerDown : InteractableObjs
 
     public override void Pickup(GameObject player, PlayerController pController = null, PlayerStates pStates = null)
     {
-        Debug.Log("ACtioning g fds f");
-        PlayerStates playerState = player.GetComponent<PlayerStates>();
+        PlayerStates playerState = pStates;
 
         if (playerState.playerState != PlayerStates.PlayerState.pEmpty)
             return;

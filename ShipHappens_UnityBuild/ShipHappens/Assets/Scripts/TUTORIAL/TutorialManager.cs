@@ -805,15 +805,14 @@ public class TutorialManager : MonoBehaviour
 
             case 49:
                 Debug.Log("case: " + stage);
-                for (int i = 0; i < players.Length; i++)
+
+                if (players[0].GetComponent<PlayerStates>().playerState == PlayerStates.PlayerState.pHoldingOn && players[1].GetComponent<PlayerStates>().playerState == PlayerStates.PlayerState.pHoldingOn)
                 {
-                    if (players[1].GetComponent<PlayerStates>().playerState == PlayerStates.PlayerState.pHoldingOn && players[2].GetComponent<PlayerStates>().playerState == PlayerStates.PlayerState.pHoldingOn)
-                    {
-                        mastAnim.SetBool("PlayTutorialMast", false);
-                        Debug.Log("both players are holding on");
-                        stage = 50;
-                    }
+                    mastAnim.SetBool("PlayTutorialMast", false);
+                    Debug.Log("both players are holding on");
+                    stage = 50;
                 }
+
                 break;
 
             case 50:

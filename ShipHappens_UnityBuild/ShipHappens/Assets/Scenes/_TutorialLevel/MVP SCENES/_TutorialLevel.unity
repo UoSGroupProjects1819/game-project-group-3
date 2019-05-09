@@ -2225,7 +2225,7 @@ MonoBehaviour:
   startFromBeginning: 0
   mainCam: {fileID: 298738235}
   levelManagerScript: {fileID: 535842879}
-  stage: 36
+  stage: 48
   players:
   - {fileID: 547004372}
   - {fileID: 1149857708}

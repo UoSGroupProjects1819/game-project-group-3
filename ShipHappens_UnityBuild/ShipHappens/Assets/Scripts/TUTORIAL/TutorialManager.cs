@@ -392,7 +392,6 @@ public class TutorialManager : MonoBehaviour
                     CNanim.SetBool("PlayTutorialBubble", true);
                     stage = 16;
                 }
-                Debug.Log("this is also still 15");
                 break;
 
             case 16:
@@ -404,7 +403,7 @@ public class TutorialManager : MonoBehaviour
                     floodController.floodRateModifier = tutorialFFloodRateModifier;
                     floodController.bailAmount = tutorialBailAmount;
 
-                    if (floodController.currentPosition.y > tutorialMaxHeight.y)
+                    if (floodController.currentPosition.y >= tutorialMaxHeight.y)
                     {
                         stage = 17;
                     }

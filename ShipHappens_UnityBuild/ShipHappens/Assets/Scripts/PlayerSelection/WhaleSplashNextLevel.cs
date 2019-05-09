@@ -27,6 +27,6 @@ public class WhaleSplashNextLevel : MonoBehaviour
         anim.SetBool("PlayWhaleSplash", false);
 
         //loadgamelevel
-        levelManager.FadeToLevel(3);
+        levelManager.FadeToLevel(4);
     }
 }

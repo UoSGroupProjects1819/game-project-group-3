@@ -29,7 +29,7 @@ public class HoleRadius : MonoBehaviour
 
             case HoleStates.Open: //waiting for next input
                 if (FloodController.hasBeenFirstHole == false)
-                holeStates = HoleStates.Open;
+                holeStates = HoleStates.Impact;
                 break;
 
             case HoleStates.Repaired: //set when player repairs, amends flood manager, sets self to dormant

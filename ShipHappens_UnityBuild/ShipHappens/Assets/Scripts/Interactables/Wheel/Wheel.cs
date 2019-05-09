@@ -63,7 +63,7 @@ public class Wheel : InteractableObjs
 
     public override void Pickup(GameObject player, PlayerController pController = null, PlayerStates pStates = null)
     {
-        if (playerStates.playerState != PlayerStates.PlayerState.pEmpty)
+        if (playerState.playerState != PlayerStates.PlayerState.pEmpty)
             return;
 
         if (isInteractable == false)

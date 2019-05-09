@@ -13,8 +13,6 @@ public class TutorialManager : MonoBehaviour
 
     private float timer;
 
-    public float waterlerp;
-
     //PLAYERS
     public GameObject[] players;
 

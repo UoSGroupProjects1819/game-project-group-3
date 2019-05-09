@@ -29,6 +29,9 @@ public class GunpowderObj : InteractableObjs
 
     public override void Pickup(GameObject player, PlayerController pController = null, PlayerStates pStates = null)
     {
+        if (playerState.playerState != PlayerStates.PlayerState.pEmpty)
+            return;
+
         SetPosition(ref player);
 
         playerState = pStates;

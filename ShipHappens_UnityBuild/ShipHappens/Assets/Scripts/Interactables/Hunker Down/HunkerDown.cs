@@ -12,6 +12,9 @@ public class HunkerDown : InteractableObjs
         Debug.Log("ACtioning g fds f");
         PlayerStates playerState = player.GetComponent<PlayerStates>();
 
+        if (playerState.playerState != PlayerStates.PlayerState.pEmpty)
+            return;
+
         if (playerState.playerState == PlayerStates.PlayerState.pEmpty)
         {
             player.transform.parent = this.transform;

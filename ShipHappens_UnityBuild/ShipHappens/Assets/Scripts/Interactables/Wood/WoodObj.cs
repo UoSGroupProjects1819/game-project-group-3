@@ -26,21 +26,6 @@ public class WoodObj : InteractableObjs
         timer = REPAIR_TIMER;
     }
 
-    //public void EnableWood(ref PlayerStates states, ref GameObject player)
-    //{
-    //    SetPosition(ref player);
-
-    //    states.playerState = PlayerStates.PlayerState.pWood;
-    //    woodStates.currentState = WoodStates.WoodState.Held;
-    //    playerStates = states;
-
-    //    if(playerController == null) { playerController = player.GetComponent<PlayerController>(); }
-    //    playerController.wood = this;
-    //    playerController.woodStates = woodStates;
-
-    //    SetPickedUpObjectComponents(ref playerStates, ref rigid, gameObject);
-    //}
-
     public override void Activate(GameObject otherObject)
     {
         if (!otherObject.CompareTag(interactableTag)) return;
@@ -58,6 +43,9 @@ public class WoodObj : InteractableObjs
 
     public override void Pickup(GameObject player, PlayerController pController = null, PlayerStates pStates = null)
     {
+        if (playerStates.playerState != PlayerStates.PlayerState.pEmpty)
+            return;
+
         SetPosition(ref player);
 
         playerStates = pStates;

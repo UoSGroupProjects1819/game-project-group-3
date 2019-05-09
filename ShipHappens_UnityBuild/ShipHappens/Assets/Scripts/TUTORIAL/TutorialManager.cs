@@ -727,7 +727,6 @@ public class TutorialManager : MonoBehaviour
                 Debug.Log("case: " + stage);
                 if (wheel.GetComponent<Wheel>().wheelStates == Wheel.WheelStates.Exiting)
                 {
-                    waterlerp = floodController.currentPosition.y;
                     timer = 1f;
                     stage = 43;
                 }

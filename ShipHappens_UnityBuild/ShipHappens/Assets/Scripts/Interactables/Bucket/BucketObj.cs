@@ -32,6 +32,9 @@ public class BucketObj : InteractableObjs
         if (playerController == null) { playerController = player.GetComponent<PlayerController>(); }
         if (playerStates == null) { playerStates = player.GetComponent<PlayerStates>(); }
 
+        if (playerStates.playerState != PlayerStates.PlayerState.pEmpty)
+            return; 
+
         // Pick up bucket
         if (bucketStates.currentState == BucketStates.BucketState.Dropped && playerStates.playerState == PlayerStates.PlayerState.pEmpty)
         {

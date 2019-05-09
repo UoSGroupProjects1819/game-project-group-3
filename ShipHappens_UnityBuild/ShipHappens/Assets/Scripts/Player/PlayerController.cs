@@ -50,7 +50,7 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetKey(KeyCode.I) || playerInput.ButtonIsDown(PlayerInput.Button.A))
         { 
-            if ( touchedInteractable != null && playerState.playerState == PlayerStates.PlayerState.pEmpty)
+            if ( touchedInteractable != null)
             {
                 touchedInteractable.Pickup(gameObject, this, this.playerState);
                 return;

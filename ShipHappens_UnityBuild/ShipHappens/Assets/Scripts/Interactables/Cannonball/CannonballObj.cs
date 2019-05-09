@@ -22,20 +22,11 @@ public class CannonballObj : InteractableObjs
 
     }
 
-    //public void EnableCannonball(ref PlayerStates playerStates, ref GameObject player)
-    //{
-    //    // Set up object pooling
-    //    SetPosition(ref player);
-
-    //    playerStates.playerState = PlayerStates.PlayerState.pCannonball;
-    //    cannonballStates.currentState = CannonballStates.CannonballState.Held;
-    //    playerState = playerStates;
-
-    //    SetPickedUpObjectComponents(ref playerStates, ref rigid, gameObject);
-    //}
-
     public override void Pickup(GameObject player, PlayerController pController = null, PlayerStates pStates = null)
     {
+        if (playerStates.playerState != PlayerStates.PlayerState.pEmpty)
+            return;
+
         SetPosition(ref player);
 
         playerStates = pStates;

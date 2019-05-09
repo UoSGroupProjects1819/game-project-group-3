@@ -90,7 +90,10 @@ public class WoodObj : InteractableObjs
 
     private void CompleteRepair()
     {
-        hole.SetActive(false);
+        //hole.SetActive(false);
+        HoleRadius radius = hole.GetComponent<HoleRadius>();
+
+        radius.holeStates = HoleRadius.HoleStates.Repaired;
 
         transform.parent = null;
         playerStates.itemHeld = null;
@@ -99,7 +102,6 @@ public class WoodObj : InteractableObjs
         woodStates.currentState = WoodStates.WoodState.Dropped;
         playerController.currentObject = null;
         gameObject.SetActive(false);
-        FloodController.numberOfHoles = FloodController.numberOfHoles - 1;
     }
 
 }

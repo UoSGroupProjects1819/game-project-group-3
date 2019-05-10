@@ -16,7 +16,7 @@ public class Bouyancy : MonoBehaviour
     private Vector3 actionPoint;
     private Vector3 uplift;
 
-    public bool isOverboard;
+    public bool isOverboard = false;
 
 
     private void Start()
@@ -42,25 +42,34 @@ public class Bouyancy : MonoBehaviour
     {
         if (Input.GetMouseButton(0))
         {
-            rb.AddForce(new Vector3(0.3f, 1, 0.5f), ForceMode.Impulse); 
+            rb.AddForce(new Vector3(0.3f, 1, 0.5f), ForceMode.Impulse);
         }
 
-        if (transform.position.x > -32.5f || transform.position.x < 25f || transform.position.z > -38f || transform.position.z < 42f)
+        RaycastHit hit;
+        Debug.DrawRay(transform.position, Vector3.up * -10, Color.white);
+        if (Physics.Raycast(transform.position, Vector3.up * -10, out hit))
         {
-            isOverboard = true;
+            Debug.Log("hit: " + hit.transform.name);
+
+            if (hit.transform.tag == "Sea")
+                isOverboard = true;
+            else
+            {
+                isOverboard = false;
+            }
         }
 
 
 
         ///////////// IF FRICTION IS TOO GREAT/LOW IN WATER vs ON DRY DECK
         //if water level is greater than [amount]
-            //set rb.drag = [value]
+        //set rb.drag = [value]
 
 
         ///////////// IF FRICTION IS TOO GREAT/LOW IN WATER vs ON DRY DECK
         //if floating too high in water / float rotation weird
-            //find height of object on current local:global y axis and set water level minus to 45% of current orientation height
-            //could give bouyant objects for states/bools to determine if floating, then lock rotation (prevent mop vertical)
+        //find height of object on current local:global y axis and set water level minus to 45% of current orientation height
+        //could give bouyant objects for states/bools to determine if floating, then lock rotation (prevent mop vertical)
     }
 
 }

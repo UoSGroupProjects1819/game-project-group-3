@@ -215,6 +215,7 @@ public class CannonObj : InteractableObjs
     // Remove player references
     private void NullPlayer()
     {
+        projector.orthographicSize = 2.1f;
         playerController = null;
         playerStates = null;
     }

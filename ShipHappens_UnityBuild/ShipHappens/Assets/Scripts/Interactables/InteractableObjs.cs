@@ -49,20 +49,34 @@ public abstract class InteractableObjs : MonoBehaviour
     }
 
     // When an object is dropped reset the player and objects components
-    public void ResetComponents(ref PlayerStates playerState, ref Rigidbody rb)
+    public void ResetComponents(ref PlayerStates playerState, ref Rigidbody rb, Transform rightArm, PlayerController playerController = null)
     {
         // Player components
         playerState.playerState = PlayerStates.PlayerState.pEmpty;
         playerState.itemHeld = null;
+        RotateShoulders(rightArm, playerState);
         playerState = null;
+
+        if (playerController != null)
+        {
+            Debug.Log("playerController = " + playerController);
+            playerController.currentObject = null;
+        }
 
         // Object components
         rb.isKinematic = false;
         rb.detectCollisions = true;
     }
 
-    public void RotateShoulders(Transform rightArm, float rotateAmount)
+    public void RotateShoulders(Transform rightArm, PlayerStates playerState = null)
     {
-        rightArm.transform.Rotate(rotateAmount, 0, 0);
+        if (playerState.itemHeld == null)
+        {            
+            rightArm.transform.localEulerAngles = new Vector3(0, 0, 0);
+        }
+        else if (playerState.itemHeld != null)
+        {
+            rightArm.transform.localEulerAngles = new Vector3(90, 0, 0);
+        }
     }
 }

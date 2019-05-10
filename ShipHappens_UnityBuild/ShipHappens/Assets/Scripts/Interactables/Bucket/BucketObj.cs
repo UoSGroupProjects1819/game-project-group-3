@@ -48,10 +48,11 @@ public class BucketObj : InteractableObjs
             playerController = pController;
             playerController.currentObject = this;
 
-            RotateShoulders(player.transform.GetChild(0).GetChild(0), 90);
+            SetPickedUpObjectComponents(ref playerStates, ref rigid, gameObject);
+            RotateShoulders(player.transform.GetChild(0).GetChild(0), playerStates);
 
             //projector = playerController.transform.GetChild(2).transform.GetChild(1).GetComponent<Projector>();
-            SetPickedUpObjectComponents(ref playerStates, ref rigid, gameObject);
+            
         }
     }
 
@@ -83,8 +84,8 @@ public class BucketObj : InteractableObjs
         {
             transform.parent = null;
             bucketStates.currentState = BucketStates.BucketState.Dropped;
-            RotateShoulders(playerStates.transform.GetChild(0).GetChild(0), -90);
-            ResetComponents(ref playerStates, ref rigid);
+
+            ResetComponents(ref playerStates, ref rigid, playerStates.transform.GetChild(0).GetChild(0), playerController);                   
         }
     }
 

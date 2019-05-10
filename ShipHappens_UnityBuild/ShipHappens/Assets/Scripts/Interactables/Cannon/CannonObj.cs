@@ -114,9 +114,11 @@ public class CannonObj : InteractableObjs
     private void CompleteAction(PlayerStates player)
     {
         player.playerState = PlayerStates.PlayerState.pEmpty;
-        GameObject interactable = player.GetComponentInChildren<InteractableObjs>().gameObject;
-        RotateShoulders(player.transform.GetChild(0).GetChild(0), -90);
-        interactable.SetActive(false); // TODO NEEDS TO BE ADJUSTED FOR OBJECTPOOLING
+        //GameObject interactable = player.GetComponentInChildren<InteractableObjs>().gameObject;
+        player.itemHeld.SetActive(false);
+        player.itemHeld = null;
+        RotateShoulders(player.transform.GetChild(0).GetChild(0), player);
+        //interactable.SetActive(false);
     }
 
     // Timer to load in the cannonball or gunpowder

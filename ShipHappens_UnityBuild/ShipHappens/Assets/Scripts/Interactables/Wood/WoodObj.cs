@@ -84,7 +84,7 @@ public class WoodObj : InteractableObjs
         {
             transform.parent = null;
             woodStates.currentState = WoodStates.WoodState.Dropped;
-            ResetComponents(ref playerStates, ref rigid);
+            ResetComponents(ref playerStates, ref rigid, playerStates.transform.GetChild(0).GetChild(0), playerController);
         }
     }
 

@@ -89,14 +89,14 @@ public class MopObj : InteractableObjs
 
     public override void DropItem()
     {
-        if (mopStates.currentState == MopStates.MopState.Held)
-        {
+        //if (mopStates.currentState == MopStates.MopState.Held)
+        //{
             transform.parent = null;
             playerController.mop = null;
             mopStates.currentState = MopStates.MopState.Dropped;
 
             ResetComponents(ref playerStates, ref rigid, playerStates.transform.GetChild(0).GetChild(0), playerController);
-        }
+        //}
     }
 
     private void CleanPoo()

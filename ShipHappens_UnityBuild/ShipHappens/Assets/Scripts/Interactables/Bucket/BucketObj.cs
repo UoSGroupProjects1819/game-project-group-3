@@ -77,13 +77,13 @@ public class BucketObj : InteractableObjs
 
     public override void DropItem()
     {
-        if (bucketStates.currentState == BucketStates.BucketState.Held)
-        {
+        //if (bucketStates.currentState == BucketStates.BucketState.Held)
+        //{
             transform.parent = null;
             bucketStates.currentState = BucketStates.BucketState.Dropped;
 
             ResetComponents(ref playerStates, ref rigid, playerStates.transform.GetChild(0).GetChild(0), playerController);                   
-        }
+        //}
     }
 
     public void BailWater()

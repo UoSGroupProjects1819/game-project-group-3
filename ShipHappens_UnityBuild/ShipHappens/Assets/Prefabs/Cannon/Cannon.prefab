@@ -5384,6 +5384,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PickPosition: {x: 0, y: 0, z: 0}
   PickRotation: {x: 0, y: 0, z: 0}
+  interactableTag: 
   projector: {fileID: 0}
   timer: 0
 --- !u!114 &114408522570137396
@@ -5458,6 +5459,7 @@ GameObject:
   - component: {fileID: 114770061311027420}
   - component: {fileID: 114922941425601280}
   - component: {fileID: 114662897679632146}
+  - component: {fileID: 845129585}
   m_Layer: 0
   m_Name: Cannon UI Canvas
   m_TagString: Untagged
@@ -5568,3 +5570,16 @@ MonoBehaviour:
   cannonballSprite: {fileID: 21300000, guid: 9751b11781f82664a9fb9ccf04d9348f, type: 3}
   gunpowderSprite: {fileID: 21300000, guid: 59575fefd83c9f443b82039e959edc98, type: 3}
   cannonState: {fileID: 0}
+--- !u!114 &845129585
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1828402898261006}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: adc5d6d3e2d9d9345a022d449679007d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objToFace: {fileID: 0}

@@ -32,9 +32,7 @@ public class GunpowderObj : InteractableObjs
         playerController.currentObject = this;
 
         SetPickedUpObjectComponents(ref playerState, ref rigid, gameObject);
-        RotateShoulders(player.transform.GetChild(0).GetChild(0), playerState);
-        //projector = playerController.transform.GetChild(2).transform.GetChild(1).GetComponent<Projector>();
-        
+        RotateShoulders(player.transform.GetChild(0).GetChild(0), playerState); 
     }
 
     public override void DropItem()

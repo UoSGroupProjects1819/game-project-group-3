@@ -114,11 +114,11 @@ public class CannonObj : InteractableObjs
     private void CompleteAction(PlayerStates player)
     {
         player.playerState = PlayerStates.PlayerState.pEmpty;
-        //GameObject interactable = player.GetComponentInChildren<InteractableObjs>().gameObject;
+        GameObject interactable = player.GetComponentInChildren<InteractableObjs>().gameObject;
         player.itemHeld.SetActive(false);
         player.itemHeld = null;
         RotateShoulders(player.transform.GetChild(0).GetChild(0), player);
-        //interactable.SetActive(false);
+        interactable.SetActive(false);
     }
 
     // Timer to load in the cannonball or gunpowder
@@ -146,7 +146,6 @@ public class CannonObj : InteractableObjs
             // Stop the player from interacting and remove the references to the player
             CompleteAction(playerStates);
             playerController.interacting = false;
-            projector = null;
             NullPlayer();
 
             // Reset the cannon states
@@ -163,8 +162,6 @@ public class CannonObj : InteractableObjs
                     cannonState.UpdateState(CannonState.CannonStates.cGunpowder);
                     break;
             }
-            
-
             // Empty out the taskName ready for the next timer
             taskName = null;
         }
@@ -216,14 +213,12 @@ public class CannonObj : InteractableObjs
     private void NullPlayer()
     {
         projector.orthographicSize = 2.1f;
+        projector = null;
         playerController = null;
         playerStates = null;
     }
 
-    public override void Activate(GameObject otherObject)
-    {
-       
-    }
+    public override void Activate(GameObject otherObject) { }
 
     public override void Deactivate()
     {

@@ -10,7 +10,6 @@ public class CannonballObj : InteractableObjs
     public PlayerStates playerStates;
     private PlayerController playerController;
 
-    // Initial set up
     private void Awake()
     {
         cannonballStates = GetComponent<CannonballStates>();
@@ -38,9 +37,7 @@ public class CannonballObj : InteractableObjs
         playerController.currentObject = this;
 
         SetPickedUpObjectComponents(ref playerStates, ref rigid, gameObject);
-        RotateShoulders(player.transform.GetChild(0).GetChild(0), playerStates);
-        //projector = playerController.transform.GetChild(2).transform.GetChild(1).GetComponent<Projector>();
-        
+        RotateShoulders(player.transform.GetChild(0).GetChild(0), playerStates);   
     }
 
     public override void DropItem()

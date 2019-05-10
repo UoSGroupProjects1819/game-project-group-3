@@ -34,12 +34,8 @@ public class TorchObj : InteractableObjs
         playerController.currentObject = this;
 
         SetPickedUpObjectComponents(ref playerStates, ref rigid, gameObject);
-        RotateShoulders(player.transform.GetChild(0).GetChild(0), playerStates);
-
-        //projector = playerController.transform.GetChild(2).transform.GetChild(1).GetComponent<Projector>();
-        
+        RotateShoulders(player.transform.GetChild(0).GetChild(0), playerStates);        
     }
-
     public override void DropItem()
     {
         if(torchStates.currentState == TorchStates.TorchState.Held)
